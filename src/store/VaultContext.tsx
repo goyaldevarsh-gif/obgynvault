@@ -40,7 +40,9 @@ const VaultCtx = createContext<VaultApi | null>(null);
 export function VaultProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<VaultState>(() => ({ ...EMPTY, ...readJSON<Partial<VaultState>>(KEY, {}) }));
 
-  useEffect(() => writeJSON(KEY, state), [state]);
+  useEffect(() => {
+    writeJSON(KEY, state);
+  }, [state]);
 
   // Phase 2 sync: when signed in, merge the cloud copy once, then save changes (debounced).
   const { userId } = useAuth();

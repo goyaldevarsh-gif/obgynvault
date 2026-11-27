@@ -1,6 +1,6 @@
 import { CheckCircle2, GitCompareArrows, Info, ListOrdered, Share2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { BookmarkButton, CitationChips, CitedParagraph, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
 import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui';
@@ -35,6 +35,7 @@ export default function TopicDetailPage() {
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  const { hash } = useLocation();
   const { recordView } = useVault();
   const { statusFor } = useReviews();
   const share = useShare();
@@ -44,6 +45,13 @@ export default function TopicDetailPage() {
     setTab('overview');
     setOpenSections(new Set());
   }, [topic, recordView]);
+
+  // Deep link: /topics/:slug#section-id opens and scrolls to that section (used by Emergency).
+  useEffect(() => {
+    const id = decodeURIComponent(hash.slice(1));
+    if (id && topic?.sections.some((x) => x.id === id)) jumpTo(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hash, topic?.slug]);
 
   const guidelines = useMemo(
     () =>

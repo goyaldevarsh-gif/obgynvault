@@ -20,6 +20,8 @@ const ToolsPage = lazy(() => import('@/pages/ToolsPage'));
 const ComingSoonPage = lazy(() => import('@/pages/ComingSoonPage'));
 const ComparePage = lazy(() => import('@/pages/ComparePage'));
 const AdminPage = lazy(() => import('@/pages/AdminPage'));
+const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
+const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
 
 const Loading = () => <div className="grid min-h-[50vh] place-items-center"><div className="size-8 animate-spin rounded-full border-4 border-teal-100 border-t-teal" /></div>;
 const s = (el: React.ReactNode) => <Suspense fallback={<Loading />}>{el}</Suspense>;
@@ -45,6 +47,8 @@ const router = createRouter(
         { path: 'tools', element: s(<ToolsPage />) },
         { path: 'tools/compare', element: s(<ComparePage />) },
         { path: 'tools/admin', element: s(<AdminPage />) },
+        { path: 'tools/calculators', element: s(<CalculatorsPage />) },
+        { path: 'tools/emergency', element: s(<EmergencyPage />) },
         { path: 'tools/:module', element: s(<ComingSoonPage />) },
         { path: '*', element: <NotFoundPage /> },
       ],

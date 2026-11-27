@@ -11,7 +11,9 @@ export function NoteEditor({ kind, targetId }: { kind: BookmarkKind; targetId: s
   const toast = useToast();
   const existing = noteFor(kind, targetId);
   const [text, setText] = useState(existing?.text ?? '');
-  useEffect(() => setText(existing?.text ?? ''), [existing?.text]);
+  useEffect(() => {
+    setText(existing?.text ?? '');
+  }, [existing?.text]);
 
   const dirty = text !== (existing?.text ?? '');
   return (
