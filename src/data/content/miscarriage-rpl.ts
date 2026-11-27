@@ -104,7 +104,8 @@ export const miscarriageRpl: Partial<Topic> = {
       icon: 'injection',
       body: [
         { text: 'NICE: 250 IU (50 µg) for Rh-negative women having surgical management; not after medical-only management, threatened, complete miscarriage or PUL; no Kleihauer test.', refs: [{ guidelineId: N, locator: '1.7.x (older numbering)' }] },
-        { text: 'ACOG: at least 50 µg within 72 hours of the first misoprostol dose, i.e. after medical management too. MoHFW: anti-D 50 µg for Rh-negative women. RANZCOG: 250 IU up to 12 weeks, 625 IU after 12 weeks.', refs: [{ guidelineId: A }, { guidelineId: MC, locator: 'Ch.6 §VIII, p.47' }, { guidelineId: RZ, locator: 'GPS 29' }] },
+        { text: 'Newer ACOG advice: the 2024 Clinical Practice Update suggests forgoing routine Rh testing and anti-D for pregnancy loss before 12+0 weeks, medical or surgical (see Rh Isoimmunisation). BSH (UK) still gives at least 500 IU before 12 weeks after surgical evacuation or miscarriage, which differs from NICE 250 IU.', refs: [{ guidelineId: 'acog-cpu-rh-2024' }, { guidelineId: 'bsh-antid-aide', locator: '<12 weeks' }] },
+        { text: 'Older ACOG PB 200 (2018): at least 50 µg within 72 hours of the first misoprostol dose, i.e. after medical management too. MoHFW: anti-D 50 µg for Rh-negative women. RANZCOG: 250 IU up to 12 weeks, 625 IU after 12 weeks.', refs: [{ guidelineId: A }, { guidelineId: MC, locator: 'Ch.6 §VIII, p.47' }, { guidelineId: RZ, locator: 'GPS 29' }] },
       ],
     },
     {
@@ -177,7 +178,8 @@ export const miscarriageRpl: Partial<Topic> = {
       domain: 'Anti-D after miscarriage',
       entries: [
         { guidelineId: N, text: '250 IU only with surgical management.' },
-        { guidelineId: A, text: 'At least 50 µg, including after medical management.' },
+        { guidelineId: A, text: 'PB 200 (2018): at least 50 µg, including after medical management.' },
+        { guidelineId: 'acog-cpu-rh-2024', text: 'Before 12 weeks: forgo routine anti-D (shared decision).' },
         { guidelineId: MC, text: '50 µg to Rh-negative women.', locator: 'p.47' },
         { guidelineId: RZ, text: '250 IU to 12 weeks; 625 IU after.', locator: 'GPS 29' },
       ],

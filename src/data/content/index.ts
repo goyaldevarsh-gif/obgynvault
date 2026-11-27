@@ -29,6 +29,7 @@ import { endometrialHyperplasia } from './endometrial-hyperplasia';
 import { pidVaginalDischarge } from './pid-vaginal-discharge';
 import { ovarianCystAdnexalMass } from './ovarian-cyst-adnexal-mass';
 import { miscarriageRpl } from './miscarriage-rpl';
+import { mtpIndia } from './mtp-india';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -65,4 +66,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'pid-vaginal-discharge': pidVaginalDischarge,
   'ovarian-cyst-adnexal-mass': ovarianCystAdnexalMass,
   'miscarriage-rpl': miscarriageRpl,
+  'mtp-india': mtpIndia,
 };
