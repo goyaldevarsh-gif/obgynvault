@@ -1,3 +1,4 @@
+/// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -11,6 +12,7 @@ const base = process.env.BASE_PATH ?? '/';
 const singleFile = process.env.SINGLE_FILE === 'true';
 
 export default defineConfig({
+  test: { environment: 'node' },
   base: singleFile ? './' : base,
   build: singleFile ? { outDir: 'dist-preview' } : undefined,
   resolve: {
@@ -34,6 +36,11 @@ export default defineConfig({
         orientation: 'portrait',
         start_url: '.',
         scope: '.',
+        shortcuts: [
+          { name: 'Search', short_name: 'Search', url: './search', icons: [{ src: 'pwa-192.png', sizes: '192x192' }] },
+          { name: 'Emergency', short_name: 'Emergency', url: './tools/emergency', icons: [{ src: 'pwa-192.png', sizes: '192x192' }] },
+          { name: 'Calculators', short_name: 'Calculators', url: './tools/calculators', icons: [{ src: 'pwa-192.png', sizes: '192x192' }] },
+        ],
         icons: [
           { src: 'pwa-192.png', sizes: '192x192', type: 'image/png' },
           { src: 'pwa-512.png', sizes: '512x512', type: 'image/png' },
@@ -42,6 +49,8 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: 'index.html',
+        // Never cache the backend API: auth and review status must be live.
+        navigateFallbackDenylist: [/^\/auth/, /^\/rest/],
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
         runtimeCaching: [
           {

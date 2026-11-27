@@ -309,9 +309,9 @@ Planned for later phases: `ComparisonTable`, `RecommendationRow` (source + stren
 | 0 | Architecture, sitemap, navigation, DB plan, screens, components | ✅ this document |
 | 1 | Branding + frontend: Home, Search, Libraries, Guidelines, Topic page, My Vault (local), PWA shell | ✅ |
 | 2 | Supabase: auth, profiles, roles, RLS, bookmarks/notes sync, Admin review queue | ✅ code + SQL (needs project keys) |
-| 3 | Knowledge engine: real catalogue (verified), recommendations table, full-text search RPC, Guideline Comparison | ◐ Compare + full-text search live; 8 draft topic reviews |
+| 3 | Knowledge engine: real catalogue (verified), recommendations table, full-text search RPC, Guideline Comparison | ◐ Compare + full-text search live; 7 draft topic reviews |
 | 4 | Clinical tools: Calculators, Emergency Algorithms, Drug Vault, Research feed, AI Assistant (source-grounded, cited) | ◐ Calculators + Emergency live; Drug Vault waits for pharmacology review; AI needs an API key |
-| 5 | PWA hardening: offline topics, push for guideline updates, analytics, testing, custom domain | |
+| 5 | PWA hardening: offline topics, push for guideline updates, analytics, testing, custom domain | ◐ Offline (all content precached) + offline banner, home-screen shortcuts, citation integrity tests in CI |
 
 ---
 
