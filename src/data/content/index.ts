@@ -11,6 +11,7 @@ import { pretermLabour } from './preterm-labour';
 import { anaemiaInPregnancy } from './anaemia-in-pregnancy';
 import { vteInPregnancy } from './vte-in-pregnancy';
 import { fetalGrowthRestriction } from './fetal-growth-restriction';
+import { rhIsoimmunisation } from './rh-isoimmunisation';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -29,4 +30,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'anaemia-in-pregnancy': anaemiaInPregnancy,
   'vte-in-pregnancy': vteInPregnancy,
   'fetal-growth-restriction': fetalGrowthRestriction,
+  'rh-isoimmunisation': rhIsoimmunisation,
 };
