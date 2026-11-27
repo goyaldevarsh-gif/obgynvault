@@ -31,7 +31,7 @@ export default defineConfig({
         short_name: 'ObGynVault',
         description: 'Clinical knowledge & evidence platform for Obstetrics and Gynaecology. One search. Every guideline.',
         theme_color: '#102A43',
-        background_color: '#F4F7FA',
+        background_color: '#102A43',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '.',
@@ -52,6 +52,8 @@ export default defineConfig({
         // Never cache the backend API: auth and review status must be live.
         navigateFallbackDenylist: [/^\/auth/, /^\/rest/],
         globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
+        // iOS launch images and optional onboarding art are fetched on demand, not precached.
+        globIgnores: ['splash/**', 'onboarding/**'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,

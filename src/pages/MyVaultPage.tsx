@@ -1,4 +1,5 @@
-import { Bookmark, History, NotebookPen, Trash2 } from 'lucide-react';
+import { Bookmark, History, NotebookPen, PlayCircle, Trash2 } from 'lucide-react';
+import { showGettingStarted } from '@/components/onboarding/GettingStarted';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { AccountCard } from '@/components/account/AccountCard';
@@ -51,6 +52,9 @@ export default function MyVaultPage() {
         {tab === 'display' && (
           <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-navy-100/60">
             <ReadingSettingsPanel />
+            <button type="button" onClick={showGettingStarted} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-navy-100 py-3 text-sm font-semibold text-navy-600">
+              <PlayCircle className="size-4 text-teal" /> Show the welcome tour again
+            </button>
           </section>
         )}
 

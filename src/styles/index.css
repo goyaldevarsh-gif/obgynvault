@@ -141,3 +141,29 @@
   font-size: calc(var(--read-size) * 0.9);
   line-height: calc(var(--read-leading) * 0.94);
 }
+
+/* Skeleton placeholders shown while a page's code loads. */
+@utility skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: color-mix(in srgb, var(--color-navy-100) 70%, transparent);
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-surface) 60%, transparent), transparent);
+    animation: skeleton-shimmer 1.3s ease-in-out infinite;
+  }
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after { animation: none; }
+}
+@keyframes onb-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}

@@ -7,6 +7,8 @@ import { VaultProvider } from '@/store/VaultContext';
 import { ToastProvider } from '@/store/ToastContext';
 import { AuthProvider } from '@/store/AuthContext';
 import { ReviewProvider } from '@/store/ReviewContext';
+import { PageSkeleton } from '@/components/ui/Skeleton';
+import { GettingStarted } from '@/components/onboarding/GettingStarted';
 
 // Route-level code splitting keeps the first load small on mobile networks.
 const SearchPage = lazy(() => import('@/pages/SearchPage'));
@@ -23,8 +25,7 @@ const AdminPage = lazy(() => import('@/pages/AdminPage'));
 const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
 const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
 
-const Loading = () => <div className="grid min-h-[50vh] place-items-center"><div className="size-8 animate-spin rounded-full border-4 border-teal-100 border-t-teal" /></div>;
-const s = (el: React.ReactNode) => <Suspense fallback={<Loading />}>{el}</Suspense>;
+const s = (el: React.ReactNode) => <Suspense fallback={<PageSkeleton />}>{el}</Suspense>;
 
 // Hash routing is used only for the single-file preview build, where the page has no server routes.
 const useHash = import.meta.env.VITE_HASH_ROUTER === 'true';
@@ -64,6 +65,7 @@ export default function App() {
         <VaultProvider>
           <ToastProvider>
             <RouterProvider router={router} />
+            <GettingStarted />
           </ToastProvider>
         </VaultProvider>
       </ReviewProvider>
