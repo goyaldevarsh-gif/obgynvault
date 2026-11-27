@@ -26,9 +26,9 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
   pending: {},
 };
 
-export const FEED: FeedItem[
+export const FEED: FeedItem[] = [
   { id: 'topic-iol-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Induction of Labour', body: 'Timing, Bishop score, misoprostol, Foley, oxytocin and previous caesarean, with FOGSI, MoHFW, NICE, WHO and ACOG side by side.', to: '/topics/induction-of-labour' },
-  { id: 'app-labour-room-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Labour room toolkit', body: 'CTG classifier (NICE NG229), labour progress checks (WHO LCG, NICE) and the NHS maternity early warning score.', to: '/tools/labour-room' },] = [
+  { id: 'app-labour-room-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Labour room toolkit', body: 'CTG classifier (NICE NG229), labour progress checks (WHO LCG, NICE) and the NHS maternity early warning score.', to: '/tools/labour-room' },
   { id: '2026-11-27-share', date: '2026-11-27', kind: 'app', title: 'Share any topic as a summary card', body: 'Tap Share on a topic to send a clean summary image on WhatsApp.', to: '/topics/postpartum-haemorrhage' },
   { id: '2026-11-27-ng257', date: '2026-11-27', kind: 'guideline', title: 'NICE NG257 replaces CG156', body: 'Fertility problems: assessment and treatment (March 2026) is now the NICE source for infertility.', to: '/topics/infertility-evaluation' },
   { id: '2026-11-27-gtg65', date: '2026-11-27', kind: 'guideline', title: 'RCOG GTG 65 archived', body: 'RCOG archived its red-cell antibody guideline in January 2026; the review now follows BSH 2025.', to: '/topics/rh-isoimmunisation' },
