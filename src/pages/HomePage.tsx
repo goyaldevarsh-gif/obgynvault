@@ -11,7 +11,7 @@ import { useUnreadCount } from '@/lib/feed';
 import { useVault } from '@/store/VaultContext';
 import { GuidelineCard } from '@/components/content';
 
-const HOME_TILES = ['obstetrics', 'gynaecology', 'guidelines', 'compare', 'calculators', 'vault'];
+const HOME_TILES = ['obstetrics', 'gynaecology', 'guidelines', 'drugs', 'calculators', 'vault'];
 
 export default function HomePage() {
   const navigate = useNavigate();

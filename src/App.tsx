@@ -27,6 +27,7 @@ const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
 const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
 const UpdatesPage = lazy(() => import('@/pages/UpdatesPage'));
 const LabourRoomPage = lazy(() => import('@/pages/LabourRoomPage'));
+const DrugVaultPage = lazy(() => import('@/pages/DrugVaultPage'));
 
 const s = (el: React.ReactNode) => <Suspense fallback={<PageSkeleton />}>{el}</Suspense>;
 
@@ -55,6 +56,8 @@ const router = createRouter(
         { path: 'tools/emergency', element: s(<EmergencyPage />) },
         { path: 'updates', element: s(<UpdatesPage />) },
         { path: 'tools/labour-room', element: s(<LabourRoomPage />) },
+        { path: 'tools/drug-vault', element: s(<DrugVaultPage />) },
+        { path: 'tools/drug-vault/:slug', element: s(<DrugVaultPage />) },
         { path: 'tools/:module', element: s(<ComingSoonPage />) },
         { path: '*', element: <NotFoundPage /> },
       ],
