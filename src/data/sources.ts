@@ -14,6 +14,11 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'SMFM', shortName: 'SMFM', fullName: 'Society for Maternal-Fetal Medicine', region: 'USA', priority: 11, color: '#0F766E' },
   { id: 'ISUOG', shortName: 'ISUOG', fullName: 'International Society of Ultrasound in Obstetrics and Gynecology', region: 'Global', priority: 12, color: '#9333EA' },
   { id: 'BSH', shortName: 'BSH', fullName: 'British Society for Haematology', region: 'UK', priority: 10, color: '#B91C1C' },
+  { id: 'ICMR', shortName: 'ICMR', fullName: 'Indian Council of Medical Research (Standard Treatment Workflows)', region: 'India', priority: 13, color: '#C2410C' },
+  { id: 'AAFP', shortName: 'AAFP', fullName: 'American Academy of Family Physicians (American Family Physician)', region: 'USA', priority: 14, color: '#475569' },
+  { id: 'NHS', shortName: 'NHS', fullName: 'NHS England / UK Health Security Agency screening programmes', region: 'UK', priority: 15, color: '#005EB8' },
+  { id: 'USPSTF', shortName: 'USPSTF', fullName: 'US Preventive Services Task Force', region: 'USA', priority: 16, color: '#1E3A8A' },
+  { id: 'ASCCP', shortName: 'ASCCP', fullName: 'American Society for Colposcopy and Cervical Pathology', region: 'USA', priority: 17, color: '#0F766E' },
 ];
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));
