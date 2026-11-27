@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-ovary-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Ovarian Cyst & Adnexal Mass', body: 'Pre- and postmenopausal flowcharts, RMI I scoring table, IOTA, follow-up by cyst size and surgery (RCOG GTG 62, NICE CG122).', to: '/topics/ovarian-cyst-adnexal-mass' },
   { id: 'topic-pid-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: PID & Vaginal Discharge', body: 'NACO colour-coded kits, CDC 2021 PID regimens and admission criteria, BV, candida and trichomonas, with a PID flowchart.', to: '/topics/pid-vaginal-discharge' },
   { id: 'app-checklists-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Labour room: IOL and VBAC checklists', body: 'Tick-as-you-go bedside checklists, each line cited. Plus flowcharts in Ectopic, Hyperemesis, PROM and Endometrial Hyperplasia.', to: '/tools/labour-room' },
   { id: 'topic-eh-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Endometrial Hyperplasia', body: 'LNG-IUS first line, surveillance biopsies, when to operate and fertility-sparing care (RCOG GTG 67), with a flowchart.', to: '/topics/endometrial-hyperplasia' },
