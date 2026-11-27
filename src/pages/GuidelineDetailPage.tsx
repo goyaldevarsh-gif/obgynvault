@@ -67,11 +67,11 @@ export default function GuidelineDetailPage() {
           <p className="text-sm leading-relaxed text-navy-600">{g.summary}</p>
         </section>
         {g.officialUrl ? (
-          <a href={g.officialUrl} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white hover:bg-navy-800">
+          <a href={g.officialUrl} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 rounded-2xl bg-ink px-4 py-3 text-sm font-bold text-white hover:bg-ink-800">
             <ExternalLink className="size-4" /> Open official source
           </a>
         ) : (
-          <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white opacity-50">
+          <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-2xl bg-ink px-4 py-3 text-sm font-bold text-white opacity-50">
             <ExternalLink className="size-4" /> Official link not yet added
           </button>
         )}

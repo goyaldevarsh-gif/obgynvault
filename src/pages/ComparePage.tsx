@@ -110,7 +110,7 @@ export default function ComparePage() {
         <div className="hidden overflow-x-auto rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60 md:block">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
-              <tr className="bg-navy text-white">
+              <tr className="bg-ink text-white">
                 <th className="w-44 px-4 py-3 text-xs font-bold uppercase tracking-wide">Question</th>
                 {shown.map((s) => (
                   <th key={s} className="px-4 py-3 text-xs font-bold uppercase tracking-wide">{getSource(s).shortName}</th>

@@ -32,7 +32,7 @@ export default function LibraryPage() {
             </Link>
           );
         })}
-        <Link to="/guidelines" className="flex items-center gap-4 rounded-3xl bg-navy p-5 text-white shadow-float transition hover:bg-navy-800">
+        <Link to="/guidelines" className="flex items-center gap-4 rounded-3xl bg-ink p-5 text-white shadow-float transition hover:bg-ink-800">
           <span className="grid size-14 place-items-center rounded-2xl bg-white/10">
             <BookOpen className="size-7 text-teal" aria-hidden />
           </span>

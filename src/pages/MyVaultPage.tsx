@@ -7,9 +7,10 @@ import { Card, Chip, EmptyState } from '@/components/ui';
 import { getGuideline, getTopic } from '@/data';
 import { useVault } from '@/store/VaultContext';
 import { relativeTime } from '@/lib/format';
+import { ReadingSettingsPanel } from '@/components/settings/ReadingSettings';
 import type { BookmarkKind } from '@/types/content';
 
-type Tab = 'saved' | 'notes' | 'history';
+type Tab = 'saved' | 'notes' | 'history' | 'display';
 
 function targetInfo(kind: BookmarkKind, id: string) {
   if (kind === 'topic') {
@@ -40,11 +41,18 @@ export default function MyVaultPage() {
       <PageHeader title="My Vault" back={false} />
       <div className="space-y-4 px-4 md:px-6">
         <AccountCard />
-        <div className="flex gap-2" role="tablist">
+        <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:px-0" role="tablist">
           <Chip role="tab" active={tab === 'saved'} count={bookmarks.length} onClick={() => setTab('saved')}>Saved</Chip>
           <Chip role="tab" active={tab === 'notes'} count={notes.length} onClick={() => setTab('notes')}>Notes</Chip>
           <Chip role="tab" active={tab === 'history'} onClick={() => setTab('history')}>History</Chip>
+          <Chip role="tab" active={tab === 'display'} onClick={() => setTab('display')}>Text &amp; theme</Chip>
         </div>
+
+        {tab === 'display' && (
+          <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-navy-100/60">
+            <ReadingSettingsPanel />
+          </section>
+        )}
 
         {tab === 'saved' &&
           (bookmarks.length === 0 ? (

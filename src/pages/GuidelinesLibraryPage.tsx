@@ -48,7 +48,7 @@ export default function GuidelinesLibraryPage() {
               type="button"
               onClick={() => setSpec(s)}
               aria-pressed={spec === s}
-              className={`rounded-lg px-3 py-1 text-xs font-bold capitalize ${spec === s ? 'bg-navy text-white' : 'text-navy-500 hover:bg-surface'}`}
+              className={`rounded-lg px-3 py-1 text-xs font-bold capitalize ${spec === s ? 'bg-ink text-white' : 'text-navy-500 hover:bg-surface'}`}
             >
               {s === 'all' ? 'All' : s}
             </button>

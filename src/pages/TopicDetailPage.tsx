@@ -9,6 +9,7 @@ import { useVault } from '@/store/VaultContext';
 import { useReviews } from '@/store/ReviewContext';
 import { useShare } from '@/hooks/useShare';
 import { formatDate } from '@/lib/format';
+import { ReadingSettingsButton } from '@/components/settings/ReadingSettings';
 import NotFoundPage from './NotFoundPage';
 
 type Tab = 'overview' | 'guidelines' | 'notes';
@@ -72,6 +73,7 @@ export default function TopicDetailPage() {
         title={topic.title}
         actions={
           <>
+            <ReadingSettingsButton />
             <button type="button" onClick={() => share(topic.title)} aria-label="Share" className="grid size-9 place-items-center rounded-full text-navy hover:bg-surface">
               <Share2 className="size-5" />
             </button>
@@ -93,8 +95,8 @@ export default function TopicDetailPage() {
             <span className="text-xs font-semibold text-navy-500">{topic.category}</span>
             <StatusBadge status={status} />
           </div>
-          <h2 className="text-[28px] font-extrabold leading-tight tracking-tight text-navy">{topic.title}</h2>
-          <p className="text-[15px] font-medium text-navy-500">{topic.subtitle}</p>
+          <h2 className="text-[30px] font-extrabold leading-[1.15] tracking-tight text-navy">{topic.title}</h2>
+          <p className="mt-1 text-[16px] font-medium text-navy-500">{topic.subtitle}</p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {Array.from(new Set(guidelines.map((g) => g.sourceId))).map((id) => (
               <SourceBadge key={id} id={id} />
@@ -106,24 +108,25 @@ export default function TopicDetailPage() {
 
         {tab === 'overview' && (
           <>
-            <section className="rounded-2xl bg-teal-50 p-4 ring-1 ring-teal/20">
-              <h3 className="mb-2 text-base font-extrabold text-navy">
-                {topic.status === 'sample' ? (<><span className="text-teal-700">Key</span> points</>) : (<><span className="text-teal-700">Summary</span> &amp; recommendations</>)}
+            <p className="prose-read text-[16.5px] text-navy-700">{topic.overview}</p>
+
+            <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-teal/25">
+              <h3 className="flex items-center gap-2 bg-teal-50 px-4 py-3 text-[17px] font-extrabold text-navy">
+                <CheckCircle2 className="size-5 fill-teal text-white" aria-hidden />
+                {topic.status === 'sample' ? 'Key points' : 'Summary & recommendations'}
               </h3>
-              <ul className="space-y-2">
-                {topic.keyPoints.map((k) => (
-                  <li key={k.text} className="flex gap-2.5 text-sm font-medium leading-snug text-navy-700">
-                    <CheckCircle2 className="mt-px size-[18px] shrink-0 fill-teal text-white" aria-hidden />
-                    <span>
-                      {k.text}
+              <ol className="divide-y divide-navy-100/70">
+                {topic.keyPoints.map((k, i) => (
+                  <li key={k.text} className="flex gap-3 px-4 py-3.5">
+                    <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-teal text-[12px] font-bold text-white tabular-nums">{i + 1}</span>
+                    <div className="min-w-0">
+                      <p className="prose-read font-medium text-navy">{k.text}</p>
                       <CitationChips refs={k.refs} />
-                    </span>
+                    </div>
                   </li>
                 ))}
-              </ul>
+              </ol>
             </section>
-
-            <p className="text-sm leading-relaxed text-navy-600">{topic.overview}</p>
 
             <nav id="contents" aria-label="Contents" className="scroll-mt-20 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60">
               <div className="mb-2 flex items-center justify-between px-1">
@@ -139,7 +142,7 @@ export default function TopicDetailPage() {
               <ol className="grid gap-1 sm:grid-cols-2">
                 {topic.sections.map((x, i) => (
                   <li key={x.id}>
-                    <button type="button" onClick={() => jumpTo(x.id)} className="flex w-full items-baseline gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] font-semibold text-navy-600 hover:bg-teal-50 hover:text-teal-700">
+                    <button type="button" onClick={() => jumpTo(x.id)} className="flex w-full items-baseline gap-2 rounded-lg px-2 py-2 text-left text-[14.5px] font-semibold text-navy-700 hover:bg-teal-50 hover:text-teal-700">
                       <span className="w-4 shrink-0 text-right tabular-nums text-navy-300">{i + 1}</span>
                       {x.title}
                     </button>
@@ -164,7 +167,7 @@ export default function TopicDetailPage() {
             {topic.positions && <PositionsTable positions={topic.positions} />}
 
             {topic.editorNote && (
-              <p className="flex gap-2 rounded-xl bg-navy-100/40 p-3 text-xs leading-relaxed text-navy-600">
+              <p className="flex gap-2 rounded-xl bg-navy-100/40 p-3.5 text-[13.5px] leading-relaxed text-navy-600">
                 <Info className="mt-px size-4 shrink-0 text-navy-400" aria-hidden />
                 {topic.editorNote}
               </p>
@@ -193,7 +196,7 @@ export default function TopicDetailPage() {
           <button
             type="button"
             onClick={() => document.getElementById('contents')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-            className="fixed bottom-24 right-4 z-30 flex items-center gap-1.5 rounded-full bg-navy px-4 py-2.5 text-sm font-bold text-white shadow-lg md:bottom-6"
+            className="fixed bottom-24 right-4 z-30 flex items-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-sm font-bold text-white shadow-lg md:bottom-6"
           >
             <ListOrdered className="size-4" aria-hidden />
             Contents

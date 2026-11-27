@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 @theme {
-  --font-sans: 'Manrope', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Manrope', 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   --color-navy: #102a43;
   --color-navy-800: #1b3a57;
@@ -27,6 +30,10 @@
   --color-alert: #dc2626;
   --color-alert-50: #fdecec;
 
+  /* Fixed dark ink for filled buttons and banners; does not flip in dark mode. */
+  --color-ink: #102a43;
+  --color-ink-800: #1b3a57;
+
   --color-canvas: #f4f7fa;
   --color-surface: #ffffff;
 
@@ -41,6 +48,10 @@
   }
   body {
     @apply bg-canvas text-navy font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
   }
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-teal;
@@ -55,4 +66,78 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* ---------- Reading preferences (set on <html> by src/lib/reading.ts) ---------- */
+:root {
+  --read-size: 16.5px;
+  --read-leading: 1.7;
+  --read-font: var(--font-sans);
+}
+:root[data-read-size='sm'] { --read-size: 15px; }
+:root[data-read-size='lg'] { --read-size: 18px; }
+:root[data-read-size='xl'] { --read-size: 20px; }
+:root[data-read-spacing='compact'] { --read-leading: 1.5; }
+:root[data-read-spacing='relaxed'] { --read-leading: 1.9; }
+:root[data-read-font='serif'] { --read-font: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
+:root[data-read-font='system'] { --read-font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; }
+
+/* Sepia: warm paper, lower glare for long reading. */
+:root[data-theme='sepia'] {
+  --color-navy: #3b2e21;
+  --color-navy-800: #45372a;
+  --color-navy-700: #4c3d2e;
+  --color-navy-600: #5d4b39;
+  --color-navy-500: #76624d;
+  --color-navy-400: #907b64;
+  --color-navy-300: #b6a389;
+  --color-navy-200: #d2c3a8;
+  --color-navy-100: #e5d8bf;
+  --color-canvas: #f3ead6;
+  --color-surface: #fbf6ea;
+  --color-teal-50: #eaf0df;
+  --color-teal-100: #d8e6cc;
+}
+
+/* Dark: navy shades flip to light text on deep slate. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-navy: #e7eef6;
+  --color-navy-800: #dbe4ee;
+  --color-navy-700: #cbd6e2;
+  --color-navy-600: #b0bfcf;
+  --color-navy-500: #93a5b8;
+  --color-navy-400: #7a8da1;
+  --color-navy-300: #56687b;
+  --color-navy-200: #3d4d5e;
+  --color-navy-100: #2b3846;
+  --color-canvas: #0e1620;
+  --color-surface: #16212d;
+  --color-teal: #2bb8ab;
+  --color-teal-700: #6fd6cb;
+  --color-teal-600: #4cc7bb;
+  --color-teal-100: #1b4440;
+  --color-teal-50: #132e2c;
+  --color-amber-700: #f0c07e;
+  --color-amber-100: #3d2f18;
+  --color-amber-50: #2a2213;
+  --color-alert: #f87171;
+  --color-alert-50: #3a1919;
+  --color-ink: #0a1119;
+  --color-ink-800: #1d2a38;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 4px 16px rgb(0 0 0 / 0.25);
+}
+
+/* Long-form reading text in topic reviews. Follows the reader's size, spacing and font. */
+@utility prose-read {
+  font-family: var(--read-font);
+  font-size: var(--read-size);
+  line-height: var(--read-leading);
+  color: var(--color-navy-700);
+  letter-spacing: -0.003em;
+}
+@utility prose-read-sm {
+  font-family: var(--read-font);
+  font-size: calc(var(--read-size) * 0.9);
+  line-height: calc(var(--read-leading) * 0.94);
 }

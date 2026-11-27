@@ -43,7 +43,7 @@ export default function HomePage() {
           <Link
             key={u.id}
             to={u.to}
-            className="relative flex min-h-36 w-[86%] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy-800 to-teal-700 p-5 text-white shadow-float sm:w-[70%]"
+            className="relative flex min-h-36 w-[86%] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-ink via-ink-800 to-teal-700 p-5 text-white shadow-float sm:w-[70%]"
           >
             <LogoMark inverted className="pointer-events-none absolute -bottom-6 -right-6 size-40 opacity-15" />
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide">
