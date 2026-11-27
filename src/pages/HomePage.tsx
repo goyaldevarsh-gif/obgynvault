@@ -1,6 +1,6 @@
 import { ArrowRight, Bell, ChevronRight, Siren } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Logo, LogoMark } from '@/components/brand/Logo';
+import { Logo } from '@/components/brand/Logo';
 import { ModuleTile, TopicCard } from '@/components/content';
 import { SampleNotice, SearchField, SectionHeader } from '@/components/ui';
 import { getModule } from '@/config/modules';
@@ -9,7 +9,7 @@ import { greeting } from '@/lib/format';
 import { useVault } from '@/store/VaultContext';
 import { GuidelineCard } from '@/components/content';
 
-const HOME_TILES = ['obstetrics', 'gynaecology', 'guidelines', 'ai', 'drugs', 'calculators'];
+const HOME_TILES = ['obstetrics', 'gynaecology', 'guidelines', 'compare', 'calculators', 'vault'];
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -38,21 +38,21 @@ export default function HomePage() {
       </section>
 
       {/* Featured carousel */}
-      <section aria-label="Featured" className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 md:-mx-6 md:px-6">
+      <section aria-label="Featured" className="no-scrollbar -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 md:-mx-6 md:scroll-px-6 md:px-6">
         {UPDATES.map((u) => (
           <Link
             key={u.id}
             to={u.to}
-            className="relative flex min-h-36 w-[86%] shrink-0 snap-start flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-ink via-ink-800 to-teal-700 p-5 text-white shadow-float sm:w-[70%]"
+            className="relative flex min-h-32 w-[84%] shrink-0 snap-start flex-col justify-between gap-4 overflow-hidden rounded-2xl bg-gradient-to-br from-ink via-ink-800 to-teal-700 p-4 text-white shadow-card sm:w-[60%]"
           >
-            <LogoMark inverted className="pointer-events-none absolute -bottom-6 -right-6 size-40 opacity-15" />
-            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide">
+            <span aria-hidden className="pointer-events-none absolute -right-10 -top-10 size-36 rounded-full bg-white/5" />
+            <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wide">
               {u.label}
             </span>
             <span>
-              <span className="block text-xl font-extrabold leading-tight">{u.title}</span>
-              <span className="mt-1 inline-flex items-center gap-1 text-[13px] font-semibold text-white/80">
-                {u.subtitle} <ArrowRight className="size-4" />
+              <span className="block font-display text-lg font-extrabold leading-tight">{u.title}</span>
+              <span className="mt-1 flex items-center justify-between gap-2 text-[12.5px] font-medium text-white/75">
+                <span className="line-clamp-1">{u.subtitle}</span> <ArrowRight className="size-4 shrink-0" />
               </span>
             </span>
           </Link>
@@ -60,7 +60,7 @@ export default function HomePage() {
       </section>
 
       {/* Modules */}
-      <section aria-label="Modules" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      <section aria-label="Modules" className="grid grid-cols-3 gap-2.5">
         {HOME_TILES.map((k) => {
           const m = getModule(k)!;
           return <ModuleTile key={k} to={m.to} label={m.label} icon={m.icon} tint={m.tint} fg={m.fg} soon={m.phase > 1} />;
@@ -76,7 +76,7 @@ export default function HomePage() {
           </span>
           <span className="flex-1">
             <span className="block text-[15px] font-bold text-alert">Emergency protocols</span>
-            <span className="block text-xs font-medium text-navy-500">PPH · Eclampsia · Sepsis · coming in Phase 4</span>
+            <span className="block text-xs font-medium text-navy-500">PPH · Eclampsia · Preterm · Shoulder dystocia · Ectopic</span>
           </span>
           <ChevronRight className="size-5 text-alert/60" aria-hidden />
         </Link>
@@ -128,7 +128,7 @@ export default function HomePage() {
         )}
       </section>
 
-      <SampleNotice />
+      <SampleNotice compact status="draft" />
       <p className="pb-2 text-center text-[11px] text-navy-400">{TOPICS.filter((t) => t.status !== 'sample').length} draft reviews · {TOPICS.length} topics in the library</p>
     </div>
   );
