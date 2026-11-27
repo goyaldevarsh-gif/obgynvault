@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { BottomNav } from './BottomNav';
 import { SideNav } from './SideNav';
+import { AppFooter } from './AppFooter';
 import { WifiOff } from 'lucide-react';
 import { useOnline } from '@/hooks/useOnline';
 
@@ -23,6 +24,7 @@ export function AppShell() {
         )}
         <div className="mx-auto w-full max-w-3xl">
           <Outlet />
+          <AppFooter />
         </div>
       </main>
       <BottomNav />
