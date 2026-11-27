@@ -1,4 +1,4 @@
-import { CheckCircle2, GitCompareArrows, Info, ListOrdered, Share2 } from 'lucide-react';
+import { CheckCircle2, GitCompareArrows, Info, ListOrdered } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -7,7 +7,7 @@ import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui'
 import { getGuideline, getSource, getTopic } from '@/data';
 import { useVault } from '@/store/VaultContext';
 import { useReviews } from '@/store/ReviewContext';
-import { useShare } from '@/hooks/useShare';
+import { TopicShareButton } from '@/components/content/ShareSheet';
 import { formatDate } from '@/lib/format';
 import { ReadingSettingsButton } from '@/components/settings/ReadingSettings';
 import NotFoundPage from './NotFoundPage';
@@ -39,7 +39,6 @@ export default function TopicDetailPage() {
   const { hash } = useLocation();
   const { recordView } = useVault();
   const { statusFor } = useReviews();
-  const share = useShare();
 
   useEffect(() => {
     if (topic) recordView('topic', topic.slug);
@@ -63,6 +62,8 @@ export default function TopicDetailPage() {
     [topic],
   );
 
+  const sourceIds = useMemo(() => Array.from(new Set(guidelines.map((g) => g.sourceId))), [guidelines]);
+
   if (!topic) return <NotFoundPage />;
   const sp = SPECIALTY[topic.specialty];
   const status = statusFor(topic.slug, topic.status);
@@ -74,9 +75,7 @@ export default function TopicDetailPage() {
         actions={
           <>
             <ReadingSettingsButton />
-            <button type="button" onClick={() => share(topic.title)} aria-label="Share" className="grid size-9 place-items-center rounded-full text-navy hover:bg-surface">
-              <Share2 className="size-5" />
-            </button>
+            <TopicShareButton topic={topic} sourceIds={sourceIds} />
             <BookmarkButton kind="topic" id={topic.slug} label={topic.title} className="text-navy" />
           </>
         }
