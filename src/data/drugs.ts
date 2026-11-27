@@ -20,6 +20,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'oxytocin', name: 'Oxytocin', group: 'Uterotonics', terms: ['oxytocin'] },
   { slug: 'carbetocin', name: 'Carbetocin', group: 'Uterotonics', terms: ['carbetocin'] },
   { slug: 'misoprostol', name: 'Misoprostol', group: 'Uterotonics', terms: ['misoprostol'] },
+  { slug: 'mifepristone', name: 'Mifepristone', group: 'Uterotonics', terms: ['mifepristone'] },
   { slug: 'ergometrine', name: 'Ergometrine / methylergometrine', group: 'Uterotonics', terms: ['ergometrine', 'methylergo', 'ergonovine', 'syntometrine'] },
   { slug: 'carboprost', name: 'Carboprost (15-methyl PGF2α)', group: 'Uterotonics', terms: ['carboprost', 'PGF2'] },
   { slug: 'dinoprostone', name: 'Dinoprostone (PGE2)', group: 'Uterotonics', terms: ['dinoprostone', 'PGE2'] },
@@ -34,7 +35,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'corticosteroids', name: 'Antenatal corticosteroids', group: 'Labour & preterm', terms: ['betamethasone', 'dexamethasone', 'antenatal corticosteroid', 'antenatal steroid'] },
   { slug: 'atosiban', name: 'Atosiban', group: 'Labour & preterm', terms: ['atosiban'] },
   { slug: 'terbutaline', name: 'Terbutaline / betamimetics', group: 'Labour & preterm', terms: ['terbutaline', 'betamimetic', 'salbutamol', 'isoxsuprine'] },
-  { slug: 'progesterone', name: 'Progesterone', group: 'Hormonal', terms: ['progesterone', '17-OHPC', 'hydroxyprogesterone'] },
+  { slug: 'progesterone', name: 'Progesterone & dydrogesterone', group: 'Hormonal', terms: ['progesterone', '17-OHPC', 'hydroxyprogesterone', 'dydrogesterone', 'progestogen'] },
   { slug: 'iron', name: 'Iron (oral and IV)', group: 'Haematology', terms: ['iron sucrose', 'carboxymaltose', '\\bFCM\\b', 'oral iron', '\\bIFA\\b', 'parenteral iron', 'IV iron'] },
   { slug: 'folic-acid', name: 'Folic acid', group: 'Other', terms: ['folic acid', 'folate'] },
   { slug: 'calcium', name: 'Calcium supplements', group: 'Other', terms: ['calcium(?! gluconate| channel)'] },
@@ -42,6 +43,10 @@ export const DRUGS: DrugDef[] = [
   { slug: 'lmwh', name: 'Low-molecular-weight heparin', group: 'Haematology', terms: ['LMWH', 'low-molecular-weight heparin', 'enoxaparin', 'dalteparin', 'tinzaparin'] },
   { slug: 'insulin', name: 'Insulin', group: 'Other', terms: ['insulin'] },
   { slug: 'metformin', name: 'Metformin', group: 'Other', terms: ['metformin'] },
+  { slug: 'antiemetics', name: 'Antiemetics (pregnancy)', group: 'Other', terms: ['ondansetron', 'metoclopramide', 'doxylamine', 'promethazine', 'cyclizine', 'prochlorperazine'] },
+  { slug: 'metronidazole', name: 'Metronidazole & nitroimidazoles', group: 'Other', terms: ['metronidazole', 'tinidazole', 'secnidazole'] },
+  { slug: 'doxycycline', name: 'Doxycycline', group: 'Other', terms: ['doxycycline'] },
+  { slug: 'antifungals', name: 'Antifungals (azoles)', group: 'Other', terms: ['fluconazole', 'clotrimazole', 'miconazole'] },
   { slug: 'methotrexate', name: 'Methotrexate', group: 'Other', terms: ['methotrexate'] },
   { slug: 'letrozole', name: 'Letrozole', group: 'Hormonal', terms: ['letrozole'] },
   { slug: 'clomiphene', name: 'Clomiphene', group: 'Hormonal', terms: ['clomiphene', 'clomifene'] },
@@ -49,7 +54,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'dienogest', name: 'Dienogest', group: 'Hormonal', terms: ['dienogest'] },
   { slug: 'lng-ius', name: 'LNG-IUS', group: 'Hormonal', terms: ['LNG-IUS', 'levonorgestrel'] },
   { slug: 'hrt', name: 'Menopausal hormone therapy', group: 'Hormonal', terms: ['hormone therapy', '\\bMHT\\b', '\\bHRT\\b', 'oestrogen', 'estrogen'] },
-  { slug: 'antibiotics', name: 'Antibiotics (obstetric use)', group: 'Other', terms: ['antibiotic', 'erythromycin', 'ampicillin', 'azithromycin', 'penicillin', 'co-amoxiclav', 'cefazolin', 'clindamycin', 'gentamicin'] },
+  { slug: 'antibiotics', name: 'Antibiotics (obstetric use)', group: 'Other', terms: ['antibiotic', 'erythromycin', 'ampicillin', 'azithromycin', 'penicillin', 'co-amoxiclav', 'cefazolin', 'clindamycin', 'gentamicin', 'ceftriaxone', 'cefixime', 'cefoxitin'] },
 ];
 
 export interface DrugMention {
