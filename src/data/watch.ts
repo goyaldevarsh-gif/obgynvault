@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-eh-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Endometrial Hyperplasia', body: 'LNG-IUS first line, surveillance biopsies, when to operate and fertility-sparing care (RCOG GTG 67), with a flowchart.', to: '/topics/endometrial-hyperplasia' },
   { id: 'topic-hg-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Hyperemesis Gravidarum', body: 'Stepwise antiemetics, admission criteria, fluids, thiamine and steroids from FOGSI and RCOG 2024.', to: '/topics/hyperemesis-gravidarum' },
   { id: 'topic-ppfp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Postpartum Contraception', body: 'PPIUCD windows, Antara, Chhaya, LAM and sterilisation timing from MoHFW and FOGSI, with WHO MEC 2025 changes.', to: '/topics/postpartum-contraception' },
   { id: 'topic-sepsis-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Intrapartum Fever & Maternal Sepsis', body: 'Fever thresholds, chorioamnionitis antibiotics, and the sepsis first-hour plan from NICE NG255 (2025) and ACOG.', to: '/topics/intrapartum-fever-sepsis' },

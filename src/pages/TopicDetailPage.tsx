@@ -47,7 +47,8 @@ export default function TopicDetailPage() {
   useEffect(() => {
     if (topic) recordView('topic', topic.slug);
     setTab('overview');
-    setOpenSections(new Set());
+    // Open the first management section by default: management is what clinicians come for.
+    setOpenSections(new Set((topic?.sections ?? []).filter((x) => MGMT_ICONS.has(x.icon)).slice(0, 1).map((x) => x.id)));
   }, [topic, recordView]);
 
   // Deep link: /topics/:slug#section-id opens and scrolls to that section (used by Emergency).

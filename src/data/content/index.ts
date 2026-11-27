@@ -25,6 +25,7 @@ import { twinPregnancy } from './twin-pregnancy';
 import { intrapartumFeverSepsis } from './intrapartum-fever-sepsis';
 import { postpartumContraception } from './postpartum-contraception';
 import { hyperemesisGravidarum } from './hyperemesis-gravidarum';
+import { endometrialHyperplasia } from './endometrial-hyperplasia';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -57,4 +58,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'intrapartum-fever-sepsis': intrapartumFeverSepsis,
   'postpartum-contraception': postpartumContraception,
   'hyperemesis-gravidarum': hyperemesisGravidarum,
+  'endometrial-hyperplasia': endometrialHyperplasia,
 };
