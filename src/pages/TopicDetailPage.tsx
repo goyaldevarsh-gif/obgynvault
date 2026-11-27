@@ -1,4 +1,4 @@
-import { CheckCircle2, GitCompareArrows, Info, Share2 } from 'lucide-react';
+import { CheckCircle2, GitCompareArrows, Info, ListOrdered, Share2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -16,12 +16,31 @@ export default function TopicDetailPage() {
   const { slug = '' } = useParams();
   const topic = getTopic(slug);
   const [tab, setTab] = useState<Tab>('overview');
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+  const toggleSection = (id: string) =>
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  const jumpTo = (id: string) => {
+    setOpenSections((prev) => new Set(prev).add(id));
+    window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  };
+  const [showJump, setShowJump] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowJump(window.scrollY > 700);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
   const { recordView } = useVault();
   const share = useShare();
 
   useEffect(() => {
     if (topic) recordView('topic', topic.slug);
     setTab('overview');
+    setOpenSections(new Set());
   }, [topic, recordView]);
 
   const guidelines = useMemo(
@@ -78,7 +97,7 @@ export default function TopicDetailPage() {
           <>
             <section className="rounded-2xl bg-teal-50 p-4 ring-1 ring-teal/20">
               <h3 className="mb-2 text-base font-extrabold text-navy">
-                <span className="text-teal-700">Key</span> points
+                {topic.status === 'sample' ? (<><span className="text-teal-700">Key</span> points</>) : (<><span className="text-teal-700">Summary</span> &amp; recommendations</>)}
               </h3>
               <ul className="space-y-2">
                 {topic.keyPoints.map((k) => (
@@ -95,11 +114,34 @@ export default function TopicDetailPage() {
 
             <p className="text-sm leading-relaxed text-navy-600">{topic.overview}</p>
 
+            <nav id="contents" aria-label="Contents" className="scroll-mt-20 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60">
+              <div className="mb-2 flex items-center justify-between px-1">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-navy-400">Contents</h3>
+                <button
+                  type="button"
+                  onClick={() => setOpenSections(openSections.size === topic.sections.length ? new Set() : new Set(topic.sections.map((x) => x.id)))}
+                  className="text-xs font-bold text-teal-700 hover:text-teal"
+                >
+                  {openSections.size === topic.sections.length ? 'Collapse all' : 'Expand all'}
+                </button>
+              </div>
+              <ol className="grid gap-1 sm:grid-cols-2">
+                {topic.sections.map((x, i) => (
+                  <li key={x.id}>
+                    <button type="button" onClick={() => jumpTo(x.id)} className="flex w-full items-baseline gap-2 rounded-lg px-2 py-1.5 text-left text-[13px] font-semibold text-navy-600 hover:bg-teal-50 hover:text-teal-700">
+                      <span className="w-4 shrink-0 text-right tabular-nums text-navy-300">{i + 1}</span>
+                      {x.title}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+
             <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
               {topic.sections.map((s) => {
                 const Icon = SECTION_ICONS[s.icon];
                 return (
-                  <AccordionItem key={s.id} id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined}>
+                  <AccordionItem key={s.id} id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined} open={openSections.has(s.id)} onToggle={() => toggleSection(s.id)}>
                     {s.body.map((p) => (
                       <CitedParagraph key={p.text} point={p} />
                     ))}
@@ -135,6 +177,17 @@ export default function TopicDetailPage() {
         )}
 
         {tab === 'notes' && <NoteEditor kind="topic" targetId={topic.slug} />}
+
+        {tab === 'overview' && showJump && topic.sections.length > 1 && (
+          <button
+            type="button"
+            onClick={() => document.getElementById('contents')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            className="fixed bottom-24 right-4 z-30 flex items-center gap-1.5 rounded-full bg-navy px-4 py-2.5 text-sm font-bold text-white shadow-lg md:bottom-6"
+          >
+            <ListOrdered className="size-4" aria-hidden />
+            Contents
+          </button>
+        )}
       </div>
     </div>
   );

@@ -45,8 +45,14 @@ export interface Citation {
 
 /** One statement shown to the user. Clinical statements must carry at least one citation. */
 export interface CitedPoint {
+  /** Optional sub-heading shown above this point (starts a new sub-section). */
+  heading?: string;
   text: string;
   refs?: Citation[];
+  /** Optional table shown under the text (e.g. shock classification, monitoring schedule). */
+  table?: { caption?: string; columns: string[]; rows: string[][] };
+  /** Render as a bullet in a list rather than a paragraph. */
+  bullet?: boolean;
 }
 
 export interface TopicSection {

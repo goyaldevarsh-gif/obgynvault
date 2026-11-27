@@ -8,10 +8,15 @@ interface Props {
   defaultOpen?: boolean;
   children: ReactNode;
   id?: string;
+  /** Controlled mode: pass open + onToggle. */
+  open?: boolean;
+  onToggle?: () => void;
 }
 
-export function AccordionItem({ title, icon, defaultOpen = false, children, id }: Props) {
-  const [open, setOpen] = useState(defaultOpen);
+export function AccordionItem({ title, icon, defaultOpen = false, children, id, open: openProp, onToggle }: Props) {
+  const [openState, setOpenState] = useState(defaultOpen);
+  const open = openProp ?? openState;
+  const setOpen = (fn: (o: boolean) => boolean) => (onToggle ? onToggle() : setOpenState(fn));
   const panelId = useId();
   return (
     <div id={id} className="scroll-mt-28 border-b border-navy-100 last:border-0">
