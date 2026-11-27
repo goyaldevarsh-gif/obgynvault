@@ -19,6 +19,9 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'NHS', shortName: 'NHS', fullName: 'NHS England / UK Health Security Agency screening programmes', region: 'UK', priority: 15, color: '#005EB8' },
   { id: 'USPSTF', shortName: 'USPSTF', fullName: 'US Preventive Services Task Force', region: 'USA', priority: 16, color: '#1E3A8A' },
   { id: 'ASCCP', shortName: 'ASCCP', fullName: 'American Society for Colposcopy and Cervical Pathology', region: 'USA', priority: 17, color: '#0F766E' },
+  { id: 'IMS', shortName: 'IMS (India)', fullName: 'Indian Menopause Society', region: 'India', priority: 18, color: '#BE185D' },
+  { id: 'NAMS', shortName: 'Menopause Society', fullName: 'The Menopause Society (formerly NAMS)', region: 'USA', priority: 19, color: '#9D174D' },
+  { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 
 const byId = new Map(SOURCES.map((s) => [s.id, s]));

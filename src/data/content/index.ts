@@ -17,6 +17,7 @@ import { shoulderDystocia } from './shoulder-dystocia';
 import { antenatalCare } from './antenatal-care';
 import { cervicalScreening } from './cervical-screening';
 import { infertilityEvaluation } from './infertility-evaluation';
+import { menopause } from './menopause';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -41,4 +42,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'antenatal-care': antenatalCare,
   'cervical-screening': cervicalScreening,
   'infertility-evaluation': infertilityEvaluation,
+  menopause,
 };
