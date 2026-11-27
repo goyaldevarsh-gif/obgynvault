@@ -105,6 +105,30 @@ export const ectopicPregnancy: Partial<Topic> = {
       ],
     },
     {
+      id: 'choosing',
+      title: 'Choosing Management: Flowchart',
+      icon: 'management',
+      body: [
+        {
+          text: 'Tubal ectopic pregnancy: which option, by NICE criteria, with FOGSI differences noted.',
+          refs: [{ guidelineId: N, locator: '1.6.3–1.6.10' }, { guidelineId: F, locator: 'Medical management' }],
+          flow: {
+            caption: 'Tubal ectopic: choosing management (NICE NG126; FOGSI)',
+            steps: [
+              { title: 'Tubal ectopic confirmed on TVS', text: 'Assess pain, haemodynamic state, mass size, heartbeat, hCG and whether she can return for follow-up.' },
+              { title: 'Surgery first line if any of:', text: 'Significant pain, signs of rupture or haemoperitoneum, mass 35 mm or more, visible heartbeat, hCG 5000 IU/L or more, or cannot return for follow-up.', tone: 'urgent' },
+              { title: 'Otherwise, by hCG (stable, no pain, mass under 35 mm, no heartbeat):', tone: 'decision', branches: [
+                { when: 'hCG 1000 IU/L or less', then: 'Offer expectant management (consider up to 1500); hCG days 2, 4, 7' },
+                { when: 'hCG under 1500 IU/L', then: 'Offer methotrexate (no intrauterine pregnancy, able to return)' },
+                { when: 'hCG 1500–4999 IU/L', then: 'Choice of methotrexate or surgery (FOGSI: methotrexate if 5000 or less)' },
+              ] },
+              { title: 'After methotrexate', text: 'hCG days 4 and 7: fall over 15% means weekly hCG until negative; 15% or less means second dose or surgery.' },
+            ],
+          },
+        },
+      ],
+    },
+    {
       id: 'expectant',
       title: 'Expectant Management',
       icon: 'monitoring',

@@ -43,6 +43,24 @@ export const hyperemesisGravidarum: Partial<Topic> = {
       title: 'Step-by-step Antiemetics',
       icon: 'drug',
       body: [
+        {
+          text: 'Escalate step by step; combine drug classes before moving up.',
+          refs: [{ guidelineId: R, locator: '5.1–5.2' }, { guidelineId: F, locator: 'p.6–7' }],
+          flow: {
+            caption: 'NVP / HG: stepwise care (FOGSI, RCOG 2024)',
+            steps: [
+              { title: 'PUQE score + exclude other causes', text: 'U&E to guide fluids. Weight and hydration status.' },
+              { title: 'Mild–moderate: community', text: 'Diet advice; doxylamine–pyridoxine, antihistamine or phenothiazine; combine classes if one fails.' },
+              { title: 'Second line', text: 'Metoclopramide (max 30 mg/24 h) or ondansetron (RCOG: do not discourage; FOGSI: avoid in first trimester).' },
+              { title: 'Oral treatment failing?', tone: 'decision', branches: [
+                { when: 'Community measures failed, no admission criteria', then: 'Ambulatory day care (RCOG)' },
+                { when: 'Cannot keep antiemetics down, over 5% weight loss, or comorbidity', then: 'Admit' },
+              ] },
+              { title: 'Inpatient', text: '0.9% saline + KCl (no dextrose), thiamine, LMWH, daily electrolytes.' },
+              { title: 'Refractory', text: 'Hydrocortisone 100 mg IV twice daily, then oral prednisolone taper (RCOG); screen for GDM. Nutrition support before considering termination.', tone: 'urgent' },
+            ],
+          },
+        },
         { heading: 'Step 1: mild (PUQE under 7)', text: 'Diet and lifestyle advice. FOGSI: pyridoxine orally 8-hourly (maximum 100 mg/day) and doxylamine–pyridoxine as first-line drug treatment. RCOG: doxylamine 10 mg + pyridoxine 10 mg delayed release can be used first line for mild–moderate NVP.', refs: [{ guidelineId: F, locator: 'p.6 (Grade A)' }, { guidelineId: R, locator: '5.2.1 (Grade B)' }] },
         { heading: 'Step 2: moderate (PUQE 7–12)', text: 'H1 antihistamines (promethazine, cyclizine, cinnarizine, dimenhydrinate) or phenothiazines. If one drug fails, use a combination of drugs from different classes.', refs: [{ guidelineId: F, locator: 'p.6' }, { guidelineId: R, locator: '5.2.1 (Grade A, GPP)' }] },
         { heading: 'Step 3: second line', text: 'Metoclopramide: FOGSI 5–10 mg orally three times daily, maximum 30 mg/day; RCOG maximum 30 mg/24 h or 0.5 mg/kg/24 h (whichever is lower), IV by slow bolus over at least 3 minutes, and may continue beyond 5 days if helping. Stop immediately if extrapyramidal symptoms occur.', refs: [{ guidelineId: F, locator: 'p.6 (Grade B)' }, { guidelineId: R, locator: '5.2.1 (Grade B–C)' }] },
