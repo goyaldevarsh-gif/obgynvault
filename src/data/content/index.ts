@@ -8,6 +8,7 @@ import { uterineFibroids } from './uterine-fibroids';
 import { abnormalUterineBleeding } from './abnormal-uterine-bleeding';
 import { endometriosis } from './endometriosis';
 import { pretermLabour } from './preterm-labour';
+import { anaemiaInPregnancy } from './anaemia-in-pregnancy';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -23,4 +24,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'abnormal-uterine-bleeding': abnormalUterineBleeding,
   endometriosis,
   'preterm-labour': pretermLabour,
+  'anaemia-in-pregnancy': anaemiaInPregnancy,
 };

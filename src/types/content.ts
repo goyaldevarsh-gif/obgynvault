@@ -6,7 +6,7 @@
 export type Specialty = 'obstetrics' | 'gynaecology';
 
 /** Guideline-issuing bodies. Priority order for display: FOGSI, ACOG, RCOG, NICE, then the rest. */
-export type SourceId = 'FOGSI' | 'ACOG' | 'RCOG' | 'NICE' | 'WHO' | 'FIGO' | 'MOHFW' | 'ESHRE' | 'ASRM';
+export type SourceId = 'FOGSI' | 'ACOG' | 'RCOG' | 'NICE' | 'WHO' | 'FIGO' | 'MOHFW' | 'ESHRE' | 'ASRM' | 'BSH';
 
 export interface GuidelineSource {
   id: SourceId;
