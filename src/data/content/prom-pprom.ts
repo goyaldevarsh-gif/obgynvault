@@ -83,6 +83,21 @@ export const promPprom: Partial<Topic> = {
       title: 'Timing & Mode of Birth',
       icon: 'delivery',
       body: [
+        {
+          text: 'When to deliver after PROM, by gestation (summary of the points below).',
+          refs: [{ guidelineId: N207, locator: '1.2.10–1.2.15' }, { guidelineId: A }, { guidelineId: R }],
+          flow: {
+            caption: 'PROM / PPROM: timing of birth',
+            steps: [
+              { title: 'Any gestation: deliver now if', text: 'Intra-amniotic infection, significant abruption or fetal compromise.', tone: 'urgent' },
+              { title: 'Otherwise, by gestation:', tone: 'decision', branches: [
+                { when: 'Below 34+0 weeks', then: 'Expectant management; antibiotics, steroids, MgSO4 if birth imminent' },
+                { when: '34+0 to 37+0 weeks', then: 'Discuss expectant (to 37+0) vs induction; GBS positive: deliver' },
+                { when: '37+0 weeks or more', then: 'Induce now or wait up to about 24 h; GBS positive: induce now' },
+              ] },
+            ],
+          },
+        },
         { heading: 'Below 34 weeks', text: 'Do not induce before 34+0 weeks unless there are additional obstetric indications such as infection or fetal compromise; offer expectant management (NICE, ACOG Level A, FOGSI).', refs: [{ guidelineId: N207, locator: '1.2.10' }, { guidelineId: A, locator: 'Level A' }, { guidelineId: F, locator: 'p.13' }] },
         { heading: '34+0 to 37+0 weeks', text: 'NICE: discuss expectant management until 37+0 weeks or induction, weighing sepsis risk, caesarean risk, NICU availability and her preference. RCOG: expectant management until 37+0 weeks if no contraindications. ACOG: either expectant management or immediate delivery is reasonable, but not beyond 37+0 weeks.', refs: [{ guidelineId: N207, locator: '1.2.11' }, { guidelineId: R }, { guidelineId: A, locator: 'Level B' }] },
         { heading: 'GBS positive', text: 'After 34+0 weeks: offer immediate induction or caesarean (NICE); early delivery may be preferable (FOGSI). Give intrapartum GBS prophylaxis when indicated regardless of earlier antibiotics (ACOG).', refs: [{ guidelineId: N207, locator: '1.2.12' }, { guidelineId: F, locator: 'p.13, Table 5' }, { guidelineId: A, locator: 'Level A' }] },
