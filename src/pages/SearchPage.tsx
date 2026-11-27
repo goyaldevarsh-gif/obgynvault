@@ -124,7 +124,7 @@ export default function SearchPage() {
                 )}
               </section>
             )}
-            <SampleNotice compact />
+            <SampleNotice compact status="draft" />
           </>
         )}
       </div>

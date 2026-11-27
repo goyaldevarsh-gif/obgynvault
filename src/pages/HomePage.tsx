@@ -129,7 +129,7 @@ export default function HomePage() {
       </section>
 
       <SampleNotice />
-      <p className="pb-2 text-center text-[11px] text-navy-400">{TOPICS.length} sample topics · Phase 1 preview</p>
+      <p className="pb-2 text-center text-[11px] text-navy-400">{TOPICS.filter((t) => t.status !== 'sample').length} draft reviews · {TOPICS.length} topics in the library</p>
     </div>
   );
 }

@@ -32,7 +32,7 @@ export function SideNav() {
         </ul>
       </nav>
       <p className="mt-auto px-2 text-[11px] leading-snug text-navy-400">
-        Phase 1 preview. All clinical content is sample data and not verified guidance.
+        Preview build. Topic reviews are drafts pending clinician verification; other entries are sample data.
       </p>
     </aside>
   );

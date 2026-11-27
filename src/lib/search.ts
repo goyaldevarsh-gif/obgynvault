@@ -27,6 +27,23 @@ function scoreText(query: string[], fields: Array<[string, number]>): number {
   return total;
 }
 
+/** Full text of each authored topic (summary, sections, tables), so a search for a drug or test finds the topic that covers it. */
+const topicText = new Map(
+  TOPICS.map((t) => {
+    const parts: string[] = [t.overview ?? ''];
+    const add = (p: { heading?: string; text: string; table?: { columns: string[]; rows: string[][] } }) => {
+      parts.push(p.heading ?? '', p.text);
+      if (p.table) parts.push(p.table.columns.join(' '), ...p.table.rows.flat());
+    };
+    t.keyPoints.forEach(add);
+    t.sections.forEach((s) => {
+      parts.push(s.title);
+      s.body.forEach(add);
+    });
+    return [t.slug, parts.join(' ')];
+  }),
+);
+
 export function search(raw: string): SearchResult[] {
   const terms = norm(raw).split(/\s+/).filter(Boolean);
   if (!terms.length) return [];
@@ -37,6 +54,8 @@ export function search(raw: string): SearchResult[] {
       ...t.tags.map((x) => [x, 8] as [string, number]),
       [t.subtitle, 4],
       [t.category, 3],
+      ...t.sections.map((x) => [x.title, 3] as [string, number]),
+      [topicText.get(t.slug) ?? '', 1],
     ]);
     if (score) results.push({ kind: 'topic', score: score + 5, item: t });
   }
