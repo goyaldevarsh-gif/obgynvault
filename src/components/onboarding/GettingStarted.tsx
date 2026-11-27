@@ -4,6 +4,10 @@ import { ArrowRight, BookmarkCheck, CheckCircle2, ChevronLeft, FileCheck2, Quote
 import { LogoMark } from '@/components/brand/Logo';
 import { getSource, PRIORITY_SOURCES, TOPICS } from '@/data';
 import { cx } from '@/lib/format';
+import welcomeArt from '@/assets/onboarding/welcome.webp';
+import sourcesArt from '@/assets/onboarding/sources.webp';
+import searchArt from '@/assets/onboarding/search.webp';
+import verifyArt from '@/assets/onboarding/verify.webp';
 
 const KEY = 'obgynvault.onboarded.v1';
 export const SHOW_ONBOARDING_EVENT = 'obgynvault:show-onboarding';
@@ -21,17 +25,13 @@ export function showGettingStarted() {
   window.dispatchEvent(new Event(SHOW_ONBOARDING_EVENT));
 }
 
-/**
- * Optional artwork. Drop files named here into /public/onboarding/ and they replace the built-in art;
- * until then (or if a file fails to load) the code-drawn illustration is shown.
- */
-function Art({ file, children }: { file: string; children: ReactNode }) {
+/** Illustration for a slide; the code-drawn art shows until the image loads (or if it fails). */
+function Art({ src, children }: { src: string; children: ReactNode }) {
   const [loaded, setLoaded] = useState(false);
-  const src = `${import.meta.env.BASE_URL}onboarding/${file}`;
   return (
     <div className="relative mx-auto grid aspect-square w-full max-w-[280px] place-items-center">
       {!loaded && children}
-      <img src={src} alt="" className={cx('absolute inset-0 size-full rounded-[2rem] object-cover', !loaded && 'hidden')} onLoad={() => setLoaded(true)} />
+      <img src={src} alt="" className={cx('absolute inset-0 size-full rounded-[2rem] object-cover shadow-card', !loaded && 'hidden')} onLoad={() => setLoaded(true)} />
     </div>
   );
 }
@@ -50,7 +50,7 @@ const SLIDES = [
     title: 'Your OBG guideline companion',
     body: 'Deep, well-organised topic reviews for obstetrics and gynaecology. Summary first, then the details when you need them.',
     art: (
-      <Art file="welcome.webp">
+      <Art src={welcomeArt}>
         <Blob>
           <LogoMark className="size-32 drop-shadow-sm" />
           <Floating className="left-3 top-6"><FileCheck2 className="size-4 text-teal" /> {TOPICS.length} topics</Floating>
@@ -63,7 +63,7 @@ const SLIDES = [
     title: 'Every line is cited',
     body: 'Each statement links to FOGSI, ACOG, RCOG, NICE or WHO. Where guidelines disagree, you see them side by side.',
     art: (
-      <Art file="sources.webp">
+      <Art src={sourcesArt}>
         <Blob tone="navy">
           <div className="w-[78%] space-y-2.5 rounded-2xl bg-surface p-4 shadow-card">
             <Quote className="size-5 text-teal" />
@@ -88,7 +88,7 @@ const SLIDES = [
     title: 'Find fast, save what matters',
     body: 'Search across every review, bookmark topics, keep notes, and set the text size and theme that suit you.',
     art: (
-      <Art file="search.webp">
+      <Art src={searchArt}>
         <Blob tone="amber">
           <div className="flex w-[78%] items-center gap-2 rounded-2xl bg-surface px-4 py-3 shadow-card">
             <Search className="size-5 text-teal" />
@@ -104,7 +104,7 @@ const SLIDES = [
     title: 'Draft content: check before use',
     body: 'Reviews are drafts until a clinician verifies them. Always confirm doses and decisions against the original guideline and your local protocol.',
     art: (
-      <Art file="verify.webp">
+      <Art src={verifyArt}>
         <Blob tone="amber">
           <div className="grid size-28 place-items-center rounded-full bg-surface shadow-card">
             <ShieldAlert className="size-14 text-amber-700" />

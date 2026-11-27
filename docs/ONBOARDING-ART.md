@@ -1,5 +1,7 @@
 # ObGynVault: ChatGPT image prompts for the "Getting started" screens
 
+> Status: the four images were made in ChatGPT and added on 2026-11-27. They live in `src/assets/onboarding/*.webp`; to change one, replace that file.
+
 These images are optional. The app already has built-in artwork, and any image you send will replace the artwork on its screen.
 
 **How to use these prompts**

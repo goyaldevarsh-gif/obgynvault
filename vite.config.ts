@@ -51,9 +51,9 @@ export default defineConfig({
         navigateFallback: 'index.html',
         // Never cache the backend API: auth and review status must be live.
         navigateFallbackDenylist: [/^\/auth/, /^\/rest/],
-        globPatterns: ['**/*.{js,css,html,svg,png,woff2}'],
-        // iOS launch images and optional onboarding art are fetched on demand, not precached.
-        globIgnores: ['splash/**', 'onboarding/**'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,woff2}'],
+        // iOS launch images are fetched on demand, not precached.
+        globIgnores: ['splash/**'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/i,
