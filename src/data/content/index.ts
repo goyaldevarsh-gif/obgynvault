@@ -5,6 +5,7 @@ import { gestationalDiabetes } from './gestational-diabetes';
 import { ectopicPregnancy } from './ectopic-pregnancy';
 import { pcos } from './pcos';
 import { uterineFibroids } from './uterine-fibroids';
+import { abnormalUterineBleeding } from './abnormal-uterine-bleeding';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -17,4 +18,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'ectopic-pregnancy': ectopicPregnancy,
   pcos,
   'uterine-fibroids': uterineFibroids,
+  'abnormal-uterine-bleeding': abnormalUterineBleeding,
 };
