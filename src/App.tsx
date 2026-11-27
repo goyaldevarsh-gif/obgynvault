@@ -5,6 +5,8 @@ import HomePage from '@/pages/HomePage';
 import NotFoundPage from '@/pages/NotFoundPage';
 import { VaultProvider } from '@/store/VaultContext';
 import { ToastProvider } from '@/store/ToastContext';
+import { AuthProvider } from '@/store/AuthContext';
+import { ReviewProvider } from '@/store/ReviewContext';
 
 // Route-level code splitting keeps the first load small on mobile networks.
 const SearchPage = lazy(() => import('@/pages/SearchPage'));
@@ -17,6 +19,7 @@ const MyVaultPage = lazy(() => import('@/pages/MyVaultPage'));
 const ToolsPage = lazy(() => import('@/pages/ToolsPage'));
 const ComingSoonPage = lazy(() => import('@/pages/ComingSoonPage'));
 const ComparePage = lazy(() => import('@/pages/ComparePage'));
+const AdminPage = lazy(() => import('@/pages/AdminPage'));
 
 const Loading = () => <div className="grid min-h-[50vh] place-items-center"><div className="size-8 animate-spin rounded-full border-4 border-teal-100 border-t-teal" /></div>;
 const s = (el: React.ReactNode) => <Suspense fallback={<Loading />}>{el}</Suspense>;
@@ -41,6 +44,7 @@ const router = createRouter(
         { path: 'vault', element: s(<MyVaultPage />) },
         { path: 'tools', element: s(<ToolsPage />) },
         { path: 'tools/compare', element: s(<ComparePage />) },
+        { path: 'tools/admin', element: s(<AdminPage />) },
         { path: 'tools/:module', element: s(<ComingSoonPage />) },
         { path: '*', element: <NotFoundPage /> },
       ],
@@ -51,10 +55,14 @@ const router = createRouter(
 
 export default function App() {
   return (
-    <VaultProvider>
-      <ToastProvider>
-        <RouterProvider router={router} />
-      </ToastProvider>
-    </VaultProvider>
+    <AuthProvider>
+      <ReviewProvider>
+        <VaultProvider>
+          <ToastProvider>
+            <RouterProvider router={router} />
+          </ToastProvider>
+        </VaultProvider>
+      </ReviewProvider>
+    </AuthProvider>
   );
 }

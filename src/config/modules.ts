@@ -29,7 +29,7 @@ export const MODULES: ModuleDef[] = [
   { key: 'emergency', label: 'Emergency', description: 'PPH, eclampsia, sepsis algorithms', to: '/tools/emergency', icon: Siren, tint: 'bg-alert-50', fg: 'text-alert', phase: 4 },
   { key: 'research', label: 'Research', description: 'Trials, reviews and evidence', to: '/tools/research', icon: FlaskConical, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 4 },
   { key: 'vault', label: 'My Vault', description: 'Bookmarks, notes and history', to: '/vault', icon: Bookmark, tint: 'bg-amber-50', fg: 'text-amber', phase: 1 },
-  { key: 'admin', label: 'Admin', description: 'Content management and review', to: '/tools/admin', icon: ShieldCheck, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 2 },
+  { key: 'admin', label: 'Admin', description: 'Content management and review', to: '/tools/admin', icon: ShieldCheck, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 1 },
 ];
 
 export const getModule = (key: string) => MODULES.find((m) => m.key === key);

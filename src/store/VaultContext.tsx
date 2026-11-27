@@ -1,6 +1,8 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Bookmark, BookmarkKind, HistoryEntry, Note } from '@/types/content';
 import { readJSON, writeJSON } from '@/lib/storage';
+import { supabase } from '@/lib/supabase';
+import { useAuth } from './AuthContext';
 
 /**
  * My Vault state (bookmarks, notes, history, recent searches).
@@ -14,7 +16,10 @@ interface VaultState {
   recentSearches: string[];
 }
 
+export type SyncState = 'local' | 'syncing' | 'synced' | 'error';
+
 interface VaultApi extends VaultState {
+  sync: SyncState;
   isBookmarked: (kind: BookmarkKind, id: string) => boolean;
   toggleBookmark: (kind: BookmarkKind, id: string) => boolean; // returns new state
   removeBookmark: (kind: BookmarkKind, id: string) => void;
@@ -36,6 +41,48 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<VaultState>(() => ({ ...EMPTY, ...readJSON<Partial<VaultState>>(KEY, {}) }));
 
   useEffect(() => writeJSON(KEY, state), [state]);
+
+  // Phase 2 sync: when signed in, merge the cloud copy once, then save changes (debounced).
+  const { userId } = useAuth();
+  const [sync, setSync] = useState<SyncState>('local');
+  const merged = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!supabase || !userId) {
+      merged.current = null;
+      setSync('local');
+      return;
+    }
+    let cancelled = false;
+    setSync('syncing');
+    supabase
+      .from('user_vaults')
+      .select('data')
+      .eq('user_id', userId)
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (cancelled) return;
+        if (error) return setSync('error');
+        setState((local) => mergeVaults(local, (data?.data ?? {}) as Partial<VaultState>));
+        merged.current = userId;
+        setSync('synced');
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [userId]);
+
+  useEffect(() => {
+    if (!supabase || !userId || merged.current !== userId) return;
+    const t = window.setTimeout(() => {
+      setSync('syncing');
+      supabase!
+        .from('user_vaults')
+        .upsert({ user_id: userId, data: state, updated_at: new Date().toISOString() })
+        .then(({ error }) => setSync(error ? 'error' : 'synced'));
+    }, 1200);
+    return () => window.clearTimeout(t);
+  }, [state, userId]);
 
   const isBookmarked = useCallback(
     (kind: BookmarkKind, id: string) => state.bookmarks.some((b) => b.kind === kind && b.id === id),
@@ -103,11 +150,30 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   const clearRecentSearches = useCallback(() => setState((s) => ({ ...s, recentSearches: [] })), []);
 
   const api = useMemo<VaultApi>(
-    () => ({ ...state, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches }),
-    [state, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches],
+    () => ({ ...state, sync, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches }),
+    [state, sync, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches],
   );
 
   return <VaultCtx.Provider value={api}>{children}</VaultCtx.Provider>;
+}
+
+/** Union of device and cloud copies. For the same item, the newer timestamp wins. */
+function mergeVaults(local: VaultState, remote: Partial<VaultState>): VaultState {
+  const byKey = <T,>(items: T[], key: (x: T) => string, time: (x: T) => string) => {
+    const m = new Map<string, T>();
+    for (const x of items) {
+      const k = key(x);
+      const prev = m.get(k);
+      if (!prev || time(x) > time(prev)) m.set(k, x);
+    }
+    return [...m.values()].sort((a, b) => (time(b) > time(a) ? 1 : -1));
+  };
+  return {
+    bookmarks: byKey([...local.bookmarks, ...(remote.bookmarks ?? [])], (b) => `${b.kind}:${b.id}`, (b) => b.savedAt),
+    notes: byKey([...local.notes, ...(remote.notes ?? [])], (n) => `${n.kind}:${n.targetId}`, (n) => n.updatedAt),
+    history: byKey([...local.history, ...(remote.history ?? [])], (h) => `${h.kind}:${h.id}`, (h) => h.viewedAt).slice(0, 30),
+    recentSearches: [...new Set([...local.recentSearches, ...(remote.recentSearches ?? [])])].slice(0, 8),
+  };
 }
 
 export function useVault(): VaultApi {

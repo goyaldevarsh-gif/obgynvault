@@ -6,6 +6,7 @@ import { BookmarkButton, CitationChips, CitedParagraph, GuidelineCard, NoteEdito
 import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui';
 import { getGuideline, getSource, getTopic } from '@/data';
 import { useVault } from '@/store/VaultContext';
+import { useReviews } from '@/store/ReviewContext';
 import { useShare } from '@/hooks/useShare';
 import { formatDate } from '@/lib/format';
 import NotFoundPage from './NotFoundPage';
@@ -35,6 +36,7 @@ export default function TopicDetailPage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   const { recordView } = useVault();
+  const { statusFor } = useReviews();
   const share = useShare();
 
   useEffect(() => {
@@ -54,6 +56,7 @@ export default function TopicDetailPage() {
 
   if (!topic) return <NotFoundPage />;
   const sp = SPECIALTY[topic.specialty];
+  const status = statusFor(topic.slug, topic.status);
 
   return (
     <div>
@@ -80,7 +83,7 @@ export default function TopicDetailPage() {
             <Link to={`/library/${topic.specialty}`} className="text-xs font-bold uppercase tracking-wide text-teal-700">{sp.label}</Link>
             <span className="text-xs text-navy-300">/</span>
             <span className="text-xs font-semibold text-navy-500">{topic.category}</span>
-            <StatusBadge status={topic.status} />
+            <StatusBadge status={status} />
           </div>
           <h2 className="text-[28px] font-extrabold leading-tight tracking-tight text-navy">{topic.title}</h2>
           <p className="text-[15px] font-medium text-navy-500">{topic.subtitle}</p>
@@ -91,7 +94,7 @@ export default function TopicDetailPage() {
           </div>
         </header>
 
-        <SampleNotice compact status={topic.status} />
+        <SampleNotice compact status={status} />
 
         {tab === 'overview' && (
           <>

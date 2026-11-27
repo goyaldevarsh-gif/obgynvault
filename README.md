@@ -23,7 +23,16 @@ The full plan (architecture, sitemap, navigation, database, screens, components,
 
 ## Tech stack
 
-React 18 · TypeScript · Vite 6 · Tailwind CSS v4 · lucide-react · react-router · vite-plugin-pwa. Supabase is planned for Phase 2.
+React 18 · TypeScript · Vite 6 · Tailwind CSS v4 · lucide-react · react-router · vite-plugin-pwa. Supabase (optional) powers sign-in, sync and the clinical review queue.
+
+### Switching on the backend (Phase 2)
+
+1. Create a Supabase project and run `supabase/migrations/0001_init.sql` in its SQL editor.
+2. Put the Project URL and anon key in `.env` as `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (for GitHub Pages, add them as repository secrets with the same names).
+3. Sign in from My Vault, then run `update public.profiles set role = 'admin' where email = '<your email>';`.
+4. Open Tools → Admin to review topics. The latest review sets each topic's status; "verified" removes the draft warning.
+
+Without these keys the app runs fully on-device.
 
 ## Getting started
 

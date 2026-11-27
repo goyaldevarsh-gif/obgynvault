@@ -1,6 +1,7 @@
 import { Bookmark, History, NotebookPen, Trash2 } from 'lucide-react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
+import { AccountCard } from '@/components/account/AccountCard';
 import { GuidelineCard, TopicCard } from '@/components/content';
 import { Card, Chip, EmptyState } from '@/components/ui';
 import { getGuideline, getTopic } from '@/data';
@@ -38,6 +39,7 @@ export default function MyVaultPage() {
     <div>
       <PageHeader title="My Vault" back={false} />
       <div className="space-y-4 px-4 md:px-6">
+        <AccountCard />
         <div className="flex gap-2" role="tablist">
           <Chip role="tab" active={tab === 'saved'} count={bookmarks.length} onClick={() => setTab('saved')}>Saved</Chip>
           <Chip role="tab" active={tab === 'notes'} count={notes.length} onClick={() => setTab('notes')}>Notes</Chip>
