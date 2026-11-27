@@ -1,8 +1,8 @@
 import type { UpdateItem } from '@/types/content';
 
-/** Sample "what's new" feed for the home carousel. Placeholder copy, not real announcements. */
+/** Home carousel. Points to topics; draft status is shown on the topic page itself. */
 export const UPDATES: UpdateItem[] = [
-  { id: 'u1', label: 'Featured', title: 'Hypertensive disorders of pregnancy', subtitle: 'FOGSI · ACOG · RCOG · NICE in one place', to: '/topics/preeclampsia' },
-  { id: 'u2', label: 'Emergency', title: 'Postpartum haemorrhage', subtitle: 'Guideline sources at a glance', to: '/topics/postpartum-haemorrhage' },
+  { id: 'u1', label: 'New · FOGSI 2026', title: 'Preeclampsia', subtitle: 'FOGSI · NICE · ACOG compared, with citations', to: '/topics/preeclampsia' },
+  { id: 'u2', label: 'WHO 2025 · FOGSI 2025', title: 'Postpartum haemorrhage', subtitle: 'MOTIVE bundle, shock index, escalation', to: '/topics/postpartum-haemorrhage' },
   { id: 'u3', label: 'Library', title: 'Gynaecology library', subtitle: 'PCOS, fibroids, AUB, endometriosis and more', to: '/library/gynaecology' },
 ];

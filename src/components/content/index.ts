@@ -6,3 +6,5 @@ export * from './ModuleTile';
 export * from './specialtyStyle';
 export * from './sectionIcons';
 export * from './NoteEditor';
+export * from './CitedText';
+export * from './PositionsTable';

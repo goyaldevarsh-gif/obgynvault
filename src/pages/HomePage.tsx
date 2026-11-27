@@ -48,7 +48,6 @@ export default function HomePage() {
             <LogoMark inverted className="pointer-events-none absolute -bottom-6 -right-6 size-40 opacity-15" />
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wide">
               {u.label}
-              <span className="rounded-full bg-amber px-1.5 text-[9px] text-navy">Sample</span>
             </span>
             <span>
               <span className="block text-xl font-extrabold leading-tight">{u.title}</span>

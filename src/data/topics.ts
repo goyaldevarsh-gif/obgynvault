@@ -1,5 +1,6 @@
 import type { Specialty, Topic, TopicSection } from '@/types/content';
 import { GUIDELINES } from './guidelines';
+import { AUTHORED_TOPICS } from './content';
 
 /**
  * SAMPLE TOPICS.
@@ -21,8 +22,8 @@ function placeholderSections(title: string): TopicSection[] {
   return SECTION_TEMPLATE.map((s) => ({
     ...s,
     body: [
-      `Sample placeholder. This section will summarise ${s.title.toLowerCase()} for ${title}, written from the linked source guidelines.`,
-      'Each statement will cite its guideline, year and section, and will only be published after clinical editorial review.',
+      { text: `Sample placeholder. This section will summarise ${s.title.toLowerCase()} for ${title}, written from the linked source guidelines.` },
+      { text: 'Each statement will cite its guideline, year and section, and will only be published after clinical editorial review.' },
     ],
   }));
 }
@@ -61,33 +62,22 @@ const SEEDS: TopicSeed[] = [
   { slug: 'infertility-evaluation', title: 'Infertility Evaluation', subtitle: 'Initial assessment of the couple', specialty: 'gynaecology', category: 'Reproductive medicine', tags: ['subfertility', 'AMH', 'HSG', 'semen analysis'], updatedAt: '2026-06-15' },
 ];
 
-/** Richer sample for the flagship topic page. Still framing text only: no thresholds, doses or timings. */
-const PREECLAMPSIA_OVERRIDE: Partial<Topic> = {
-  overview:
-    'Sample overview. Preeclampsia is a multisystem hypertensive disorder of pregnancy. This page will bring together the FOGSI, ACOG, RCOG/NICE and WHO positions on its diagnosis, severity assessment, timing of delivery and seizure prophylaxis, with each statement cited to its source.',
-  keyPoints: [
-    'Hypertensive disorder of pregnancy, usually presenting in the second half of pregnancy',
-    'Diagnostic criteria will be shown side by side as each guideline defines them',
-    'A major contributor to maternal and perinatal morbidity worldwide, including India',
-    'Management content will be published only after editorial review against source',
-  ],
-};
-
 export const TOPICS: Topic[] = SEEDS.map((seed) => {
   const guidelineIds = GUIDELINES.filter((g) => g.topicSlugs.includes(seed.slug)).map((g) => g.id);
   const base: Topic = {
     ...seed,
     overview: `Sample overview. This page will summarise current guidance on ${seed.title.toLowerCase()} from FOGSI, ACOG, RCOG, NICE and other bodies, with every statement linked to its source.`,
     keyPoints: [
-      `Structured summary of ${seed.title} across priority guidelines`,
-      'Source-cited key recommendations (pending editorial review)',
-      'Links to the original guideline documents',
+      { text: `Structured summary of ${seed.title} across priority guidelines` },
+      { text: 'Source-cited key recommendations (pending editorial review)' },
+      { text: 'Links to the original guideline documents' },
     ],
     sections: placeholderSections(seed.title),
     guidelineIds,
     status: 'sample',
   };
-  return seed.slug === 'preeclampsia' ? { ...base, ...PREECLAMPSIA_OVERRIDE } : base;
+  const authored = AUTHORED_TOPICS[seed.slug];
+  return authored ? { ...base, ...authored, guidelineIds: authored.guidelineIds ?? guidelineIds } : base;
 });
 
 const bySlug = new Map(TOPICS.map((t) => [t.slug, t]));

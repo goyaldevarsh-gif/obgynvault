@@ -1,8 +1,8 @@
-import { CheckCircle2, GitCompareArrows, Share2 } from 'lucide-react';
+import { CheckCircle2, GitCompareArrows, Info, Share2 } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { BookmarkButton, GuidelineCard, NoteEditor, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
+import { BookmarkButton, CitationChips, CitedParagraph, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
 import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui';
 import { getGuideline, getSource, getTopic } from '@/data';
 import { useVault } from '@/store/VaultContext';
@@ -72,7 +72,7 @@ export default function TopicDetailPage() {
           </div>
         </header>
 
-        <SampleNotice compact />
+        <SampleNotice compact status={topic.status} />
 
         {tab === 'overview' && (
           <>
@@ -82,9 +82,12 @@ export default function TopicDetailPage() {
               </h3>
               <ul className="space-y-2">
                 {topic.keyPoints.map((k) => (
-                  <li key={k} className="flex gap-2.5 text-sm font-medium leading-snug text-navy-700">
+                  <li key={k.text} className="flex gap-2.5 text-sm font-medium leading-snug text-navy-700">
                     <CheckCircle2 className="mt-px size-[18px] shrink-0 fill-teal text-white" aria-hidden />
-                    {k}
+                    <span>
+                      {k.text}
+                      <CitationChips refs={k.refs} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -98,12 +101,21 @@ export default function TopicDetailPage() {
                 return (
                   <AccordionItem key={s.id} id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined}>
                     {s.body.map((p) => (
-                      <p key={p}>{p}</p>
+                      <CitedParagraph key={p.text} point={p} />
                     ))}
                   </AccordionItem>
                 );
               })}
             </section>
+
+            {topic.positions && <PositionsTable positions={topic.positions} />}
+
+            {topic.editorNote && (
+              <p className="flex gap-2 rounded-xl bg-navy-100/40 p-3 text-xs leading-relaxed text-navy-600">
+                <Info className="mt-px size-4 shrink-0 text-navy-400" aria-hidden />
+                {topic.editorNote}
+              </p>
+            )}
 
             <Link to="/tools/compare" className="flex items-center gap-3 rounded-2xl bg-amber-50 p-4 ring-1 ring-amber/30">
               <GitCompareArrows className="size-6 shrink-0 text-amber-700" aria-hidden />
@@ -112,7 +124,7 @@ export default function TopicDetailPage() {
                 <span className="text-navy-500">Side-by-side comparison arrives in Phase 3.</span>
               </span>
             </Link>
-            <p className="text-xs text-navy-400">Last updated {formatDate(topic.updatedAt)} (sample date)</p>
+            <p className="text-xs text-navy-400">Last updated {formatDate(topic.updatedAt)}{topic.status === 'sample' ? ' (sample date)' : ''}</p>
           </>
         )}
 

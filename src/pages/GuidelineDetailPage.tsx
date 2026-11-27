@@ -50,7 +50,7 @@ export default function GuidelineDetailPage() {
           </div>
           <h2 className="text-2xl font-extrabold leading-tight tracking-tight text-navy">{g.title}</h2>
         </header>
-        <SampleNotice />
+        <SampleNotice status={g.status} />
         <Card className="divide-y divide-navy-100">
           {meta.map(({ icon: Icon, label, value }) => (
             <div key={label} className="flex items-start gap-3 px-4 py-3">
@@ -63,12 +63,18 @@ export default function GuidelineDetailPage() {
           ))}
         </Card>
         <section>
-          <h3 className="mb-1.5 text-sm font-bold text-navy">Scope</h3>
+          <h3 className="mb-1.5 text-sm font-bold text-navy">{g.status === 'sample' ? 'Scope' : 'About this document'}</h3>
           <p className="text-sm leading-relaxed text-navy-600">{g.summary}</p>
         </section>
-        <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white opacity-50">
-          <ExternalLink className="size-4" /> Open official document (link added after verification)
-        </button>
+        {g.officialUrl ? (
+          <a href={g.officialUrl} target="_blank" rel="noopener noreferrer" className="flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white hover:bg-navy-800">
+            <ExternalLink className="size-4" /> Open official source
+          </a>
+        ) : (
+          <button type="button" disabled className="flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-4 py-3 text-sm font-bold text-white opacity-50">
+            <ExternalLink className="size-4" /> Official link not yet added
+          </button>
+        )}
         {topics.length > 0 && (
           <section>
             <h3 className="mb-2 text-sm font-bold text-navy">Related topics</h3>

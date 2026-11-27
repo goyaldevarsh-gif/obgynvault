@@ -34,13 +34,32 @@ export interface Guideline {
   topicSlugs: string[];
   summary: string;
   status: VerificationStatus;
+  officialUrl?: string;
+}
+
+/** Pointer into a guideline: which document and where in it (rec number, section, page). */
+export interface Citation {
+  guidelineId: string;
+  locator?: string; // e.g. "1.5.3", "§6.2", "p. 14"
+}
+
+/** One statement shown to the user. Clinical statements must carry at least one citation. */
+export interface CitedPoint {
+  text: string;
+  refs?: Citation[];
 }
 
 export interface TopicSection {
   id: string;
   title: string;
   icon: string; // lucide icon key, resolved in components/content/sectionIcons
-  body: string[];
+  body: CitedPoint[];
+}
+
+/** "Where guidelines differ": one clinical question, answered per source in that source's own words. */
+export interface GuidelinePosition {
+  domain: string;
+  entries: Array<{ guidelineId: string; text: string; locator?: string }>;
 }
 
 export interface Topic {
@@ -51,8 +70,11 @@ export interface Topic {
   category: string;
   tags: string[];
   overview: string;
-  keyPoints: string[];
+  keyPoints: CitedPoint[];
   sections: TopicSection[];
+  positions?: GuidelinePosition[];
+  /** Plain-language note on what was and wasn't verifiable when the draft was written. */
+  editorNote?: string;
   guidelineIds: string[];
   updatedAt: string; // ISO date
   status: VerificationStatus;
