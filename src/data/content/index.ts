@@ -16,6 +16,7 @@ import { placentaAccretaSpectrum } from './placenta-accreta-spectrum';
 import { shoulderDystocia } from './shoulder-dystocia';
 import { antenatalCare } from './antenatal-care';
 import { cervicalScreening } from './cervical-screening';
+import { infertilityEvaluation } from './infertility-evaluation';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -39,4 +40,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'shoulder-dystocia': shoulderDystocia,
   'antenatal-care': antenatalCare,
   'cervical-screening': cervicalScreening,
+  'infertility-evaluation': infertilityEvaluation,
 };

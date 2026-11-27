@@ -15,7 +15,7 @@ function points(t: (typeof TOPICS)[number]): CitedPoint[] {
 
 describe('content integrity', () => {
   it('has authored topic reviews', () => {
-    expect(authored.length).toBeGreaterThanOrEqual(17);
+    expect(authored.length).toBeGreaterThanOrEqual(18);
   });
 
   it('guideline ids are unique', () => {
