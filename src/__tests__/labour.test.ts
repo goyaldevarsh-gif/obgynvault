@@ -55,3 +55,18 @@ describe('MEWS', () => {
     expect(mewsLevel(3, true)).toBe('medium');
   });
 });
+
+import { lcgEntryAlerts, timeAtCurrentDilatation } from '@/lib/labour';
+describe('Labour log', () => {
+  it('flags LCG alert values', () => {
+    expect(lcgEntryAlerts({ t: 0, fhr: 165, pulse: 80, temp: 37.5 })).toEqual(['FHR', 'Temperature']);
+    expect(lcgEntryAlerts({ t: 0, fhr: 140, ctx: 4 })).toEqual([]);
+  });
+  it('time at current dilatation', () => {
+    const h = 3_600_000;
+    const r = timeAtCurrentDilatation([{ t: 0, cm: 5 }, { t: 2 * h, cm: 6 }, { t: 4 * h, cm: 6 }], 7 * h)!;
+    expect(r.cm).toBe(6);
+    expect(r.hours).toBe(5);
+    expect(r.alert).toBe(true);
+  });
+});

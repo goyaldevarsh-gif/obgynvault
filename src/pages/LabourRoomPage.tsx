@@ -1,20 +1,21 @@
-import { useState, type ReactNode } from 'react';
-import { Activity, AlertTriangle, HeartPulse, Timer } from 'lucide-react';
+import { useEffect, useState, type ReactNode } from 'react';
+import { Activity, AlertTriangle, ClipboardList, Copy, HeartPulse, Plus, Timer, Trash2 } from 'lucide-react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { CitationChips } from '@/components/content';
 import { SampleNotice } from '@/components/ui';
 import { cx } from '@/lib/format';
 import {
   classifyCtg, CTG_FEATURES, LCG_DILATATION_LIMIT, lcgFirstStageAlert, lcgSecondStageAlert, MEWS_PARAMS, MEWS_PULSE_POSTNATAL_48H,
-  mewsLevel, mewsParamScore, niceSuspectedDelay, type CtgCategory, type Grade, type MewsLevel,
+  lcgEntryAlerts, mewsLevel, mewsParamScore, niceSuspectedDelay, timeAtCurrentDilatation, type CtgCategory, type Grade, type LogEntry, type MewsLevel,
 } from '@/lib/labour';
 
 /** Labour room toolkit: CTG classifier, labour progress checks and maternal early warning score. Draft, cited. */
-type Tab = 'ctg' | 'progress' | 'mews';
+type Tab = 'ctg' | 'progress' | 'mews' | 'log';
 const TABS: { key: Tab; label: string; icon: typeof Activity }[] = [
   { key: 'ctg', label: 'CTG', icon: Activity },
   { key: 'progress', label: 'Progress', icon: Timer },
   { key: 'mews', label: 'MEWS', icon: HeartPulse },
+  { key: 'log', label: 'Log', icon: ClipboardList },
 ];
 
 export default function LabourRoomPage() {
@@ -24,13 +25,13 @@ export default function LabourRoomPage() {
       <PageHeader title="Labour room" />
       <div className="space-y-4 px-4 md:px-6">
         <SampleNotice compact status="draft" />
-        <div className="grid grid-cols-3 gap-1 rounded-2xl bg-surface p-1 ring-1 ring-navy-100/60">
+        <div className="grid grid-cols-4 gap-1 rounded-2xl bg-surface p-1 ring-1 ring-navy-100/60">
           {TABS.map((t) => (
             <button
               key={t.key}
               type="button"
               onClick={() => setTab(t.key)}
-              className={cx('flex items-center justify-center gap-1.5 rounded-xl py-2.5 text-[13px] font-bold transition', tab === t.key ? 'bg-teal text-white' : 'text-navy-600')}
+              className={cx('flex flex-col items-center justify-center gap-0.5 rounded-xl py-2 text-[12px] font-bold transition', tab === t.key ? 'bg-teal text-white' : 'text-navy-600')}
             >
               <t.icon className="size-4" aria-hidden /> {t.label}
             </button>
@@ -39,6 +40,7 @@ export default function LabourRoomPage() {
         {tab === 'ctg' && <CtgTool />}
         {tab === 'progress' && <ProgressTool />}
         {tab === 'mews' && <MewsTool />}
+        {tab === 'log' && <LogTool />}
         <p className="pb-2 text-xs leading-relaxed text-navy-400">
           Decision aids for trained staff. They support, and never replace, clinical judgement, the whole clinical picture and your unit protocol.
         </p>
@@ -381,5 +383,130 @@ function MewsTool() {
       </p>
       <CitationChips refs={[{ guidelineId: 'nhs-mews-2024', locator: 'Table 2–3; chart escalation levels' }]} />
     </Panel>
+  );
+}
+
+// ---------------- Labour log ----------------
+const LOG_KEY = 'obgynvault.labour-log.v1';
+interface LogState {
+  label: string;
+  entries: LogEntry[];
+}
+function loadLog(): LogState {
+  try {
+    return JSON.parse(localStorage.getItem(LOG_KEY) || '') as LogState;
+  } catch {
+    return { label: '', entries: [] };
+  }
+}
+const FIELDS: { key: keyof Omit<LogEntry, 't' | 'note'>; label: string; step?: number }[] = [
+  { key: 'cm', label: 'Cervix (cm)', step: 1 },
+  { key: 'fhr', label: 'FHR (bpm)' },
+  { key: 'ctx', label: 'Contr. /10 min' },
+  { key: 'pulse', label: 'Pulse' },
+  { key: 'sbp', label: 'Systolic' },
+  { key: 'dbp', label: 'Diastolic' },
+  { key: 'temp', label: 'Temp (°C)', step: 0.1 },
+];
+const clock = (t: number) => new Date(t).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
+
+function LogTool() {
+  const [st, setSt] = useState<LogState>(loadLog);
+  const [draft, setDraft] = useState<Record<string, string>>({});
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    try {
+      localStorage.setItem(LOG_KEY, JSON.stringify(st));
+    } catch {
+      /* private mode */
+    }
+  }, [st]);
+  useEffect(() => {
+    const id = setInterval(() => setNow(Date.now()), 60_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const add = () => {
+    const e: LogEntry = { t: Date.now() };
+    for (const f of FIELDS) if (draft[f.key] !== undefined && draft[f.key] !== '' && !Number.isNaN(Number(draft[f.key]))) e[f.key] = Number(draft[f.key]);
+    if (draft.note?.trim()) e.note = draft.note.trim();
+    if (Object.keys(e).length === 1) return;
+    setSt({ ...st, entries: [...st.entries, e] });
+    setDraft({});
+    setNow(Date.now());
+  };
+  const dil = timeAtCurrentDilatation(st.entries, now);
+  const text = () =>
+    [`Labour log${st.label ? ` · ${st.label}` : ''}`, ...st.entries.map((e) => `${clock(e.t)}  ${FIELDS.filter((f) => e[f.key] !== undefined).map((f) => `${f.label} ${e[f.key]}`).join(', ')}${e.note ? `; ${e.note}` : ''}`)].join('\n');
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(text());
+    } catch {
+      /* ignore */
+    }
+  };
+  const clear = () => {
+    if (window.confirm('Start a new labour log? The current entries will be deleted from this device.')) setSt({ label: '', entries: [] });
+  };
+
+  return (
+    <>
+      <Panel title="Labour log">
+        <p className="text-xs text-navy-500">Quick time-stamped entries, flagged against WHO Labour Care Guide alert values. Saved only on this device. Do not enter names; use a bed number.</p>
+        <input value={st.label} onChange={(e) => setSt({ ...st, label: e.target.value })} placeholder="Bed / label (e.g. Bed 4)" className={inputCls} />
+        <div className="grid grid-cols-3 gap-2">
+          {FIELDS.map((f) => (
+            <label key={f.key} className="block">
+              <span className="mb-1 block text-[11px] font-bold uppercase tracking-wide text-navy-400">{f.label}</span>
+              <input type="number" inputMode="decimal" step={f.step ?? 1} value={draft[f.key] ?? ''} onChange={(e) => setDraft({ ...draft, [f.key]: e.target.value })} className={inputCls} />
+            </label>
+          ))}
+        </div>
+        <input value={draft.note ?? ''} onChange={(e) => setDraft({ ...draft, note: e.target.value })} placeholder="Note (liquor, oxytocin, plan…)" className={inputCls} />
+        <button type="button" onClick={add} className="flex w-full items-center justify-center gap-2 rounded-2xl bg-ink py-3 text-[15px] font-bold text-white dark:bg-teal-600 dark:text-ink">
+          <Plus className="size-5" aria-hidden /> Add entry now
+        </button>
+        {dil && dil.limit !== undefined && (
+          <Verdict
+            alert={dil.alert}
+            yes={`${dil.hours.toFixed(1)} h at ${dil.cm} cm: LCG alert (limit ${dil.limit} h). Reassess and record a plan.`}
+            no={`${dil.hours.toFixed(1)} h at ${dil.cm} cm (LCG limit ${dil.limit} h).`}
+          />
+        )}
+        <CitationChips refs={[{ guidelineId: 'who-lcg-2020', locator: 'Sections 3–5' }]} />
+      </Panel>
+
+      {st.entries.length > 0 && (
+        <Panel title={`Entries (${st.entries.length})`}>
+          <ol className="space-y-2">
+            {[...st.entries].reverse().map((e) => {
+              const alerts = lcgEntryAlerts(e);
+              return (
+                <li key={e.t} className={cx('rounded-xl p-3 text-sm ring-1', alerts.length ? 'bg-alert-50 ring-alert/30' : 'bg-bg ring-navy-100')}>
+                  <p className="flex items-center justify-between font-bold text-navy">
+                    <span>{clock(e.t)}</span>
+                    {alerts.length > 0 && <span className="text-xs font-bold text-alert">Alert: {alerts.join(', ')}</span>}
+                  </p>
+                  <p className="mt-0.5 text-navy-600">
+                    {FIELDS.filter((f) => e[f.key] !== undefined)
+                      .map((f) => `${f.label} ${e[f.key]}`)
+                      .join(' · ')}
+                  </p>
+                  {e.note && <p className="mt-0.5 text-navy-500">{e.note}</p>}
+                </li>
+              );
+            })}
+          </ol>
+          <div className="grid grid-cols-2 gap-2">
+            <button type="button" onClick={copy} className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-semibold text-navy ring-1 ring-navy-100">
+              <Copy className="size-4" aria-hidden /> Copy as text
+            </button>
+            <button type="button" onClick={clear} className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-sm font-semibold text-alert ring-1 ring-alert/30">
+              <Trash2 className="size-4" aria-hidden /> New labour
+            </button>
+          </div>
+        </Panel>
+      )}
+    </>
   );
 }

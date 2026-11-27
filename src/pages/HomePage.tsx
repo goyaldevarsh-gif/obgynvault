@@ -94,7 +94,7 @@ export default function HomePage() {
           </span>
           <span className="flex-1">
             <span className="block text-[15px] font-bold text-teal-700">Labour room</span>
-            <span className="block text-xs font-medium text-navy-500">CTG · Labour progress · MEWS</span>
+            <span className="block text-xs font-medium text-navy-500">CTG · Progress · MEWS · Labour log</span>
           </span>
           <ChevronRight className="size-5 text-teal/60" aria-hidden />
         </Link>

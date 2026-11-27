@@ -26,7 +26,7 @@ export const MODULES: ModuleDef[] = [
   { key: 'ai', label: 'AI Assistant', description: 'Source-grounded clinical Q&A', to: '/tools/ai-assistant', icon: Sparkles, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 4 },
   { key: 'drugs', label: 'Drug Vault', description: 'What guidelines say about each drug', to: '/tools/drug-vault', icon: Pill, tint: 'bg-amber-50', fg: 'text-amber', phase: 1 },
   { key: 'calculators', label: 'Calculators', description: 'EDD, GA, shock index, Bishop score, BMI', to: '/tools/calculators', icon: Calculator, tint: 'bg-teal-50', fg: 'text-teal', phase: 1 },
-  { key: 'labour', label: 'Labour Room', description: 'CTG, labour progress, MEWS', to: '/tools/labour-room', icon: Activity, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },
+  { key: 'labour', label: 'Labour Room', description: 'CTG, labour progress, MEWS, labour log', to: '/tools/labour-room', icon: Activity, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },
   { key: 'emergency', label: 'Emergency', description: 'PPH, eclampsia, ectopic, acute bleeding', to: '/tools/emergency', icon: Siren, tint: 'bg-alert-50', fg: 'text-alert', phase: 1 },
   { key: 'research', label: 'Research', description: 'Trials, reviews and evidence', to: '/tools/research', icon: FlaskConical, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 4 },
   { key: 'vault', label: 'My Vault', description: 'Bookmarks, notes and history', to: '/vault', icon: Bookmark, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },

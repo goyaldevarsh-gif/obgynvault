@@ -149,3 +149,40 @@ export function mewsLevel(total: number, concern: boolean): MewsLevel {
   if (concern) i = total > 2 ? Math.min(3, i + 1) : Math.max(i, 1);
   return order[i];
 }
+
+// ---------- Labour log: WHO LCG alert values (Sections 3–5) ----------
+export interface LogEntry {
+  t: number; // epoch ms
+  cm?: number;
+  fhr?: number;
+  ctx?: number; // contractions per 10 min
+  pulse?: number;
+  sbp?: number;
+  dbp?: number;
+  temp?: number;
+  note?: string;
+}
+
+/** Alert labels for one entry, using the WHO Labour Care Guide alert values. */
+export function lcgEntryAlerts(e: LogEntry): string[] {
+  const a: string[] = [];
+  if (e.fhr !== undefined && (e.fhr < 110 || e.fhr >= 160)) a.push('FHR');
+  if (e.ctx !== undefined && (e.ctx <= 2 || e.ctx > 5)) a.push('Contractions');
+  if (e.pulse !== undefined && (e.pulse < 60 || e.pulse >= 120)) a.push('Pulse');
+  if (e.sbp !== undefined && (e.sbp < 80 || e.sbp >= 140)) a.push('Systolic BP');
+  if (e.dbp !== undefined && e.dbp >= 90) a.push('Diastolic BP');
+  if (e.temp !== undefined && (e.temp < 35 || e.temp >= 37.5)) a.push('Temperature');
+  return a;
+}
+
+/** Hours since the cervix was first recorded at its current dilatation (active phase only), with the LCG limit. */
+export function timeAtCurrentDilatation(entries: LogEntry[], now: number) {
+  const withCm = entries.filter((e) => e.cm !== undefined).sort((x, y) => x.t - y.t);
+  if (!withCm.length) return null;
+  const cur = withCm[withCm.length - 1].cm!;
+  let since = withCm[withCm.length - 1].t;
+  for (let i = withCm.length - 1; i >= 0 && withCm[i].cm === cur; i--) since = withCm[i].t;
+  const hours = (now - since) / 3_600_000;
+  const limit = LCG_DILATATION_LIMIT[cur];
+  return { cm: cur, hours, limit, alert: limit !== undefined && hours >= limit };
+}
