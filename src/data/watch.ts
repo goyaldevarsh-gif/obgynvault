@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-twins-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Twin Pregnancy', body: 'Chorionicity, scan schedule, TTTS/TAPS, preterm prevention and timing of birth for DCDA, MCDA and MCMA.', to: '/topics/twin-pregnancy' },
   { id: 'topic-vbac-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Birth after Caesarean (VBAC)', body: 'Selection, counselling numbers, labour management, induction rules, uterine rupture and repeat caesarean timing.', to: '/topics/vbac' },
   { id: 'topic-prom-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: PROM & PPROM', body: 'Step-by-step PPROM management (antibiotics, steroids, MgSO4, timing) and term PROM, with FOGSI, NICE, RCOG, ACOG and WHO compared.', to: '/topics/prom-pprom' },
   { id: 'app-drug-vault-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Drug Vault is live', body: 'What the guidelines say about 34 drugs, each line cited, gathered from the topic reviews.', to: '/tools/drug-vault' },

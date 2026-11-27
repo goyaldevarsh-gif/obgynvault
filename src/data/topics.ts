@@ -53,6 +53,7 @@ const SEEDS: TopicSeed[] = [
   { slug: 'prom-pprom', title: 'PROM & PPROM', subtitle: 'Prelabour rupture of membranes, term and preterm', specialty: 'obstetrics', category: 'Labour & delivery', tags: ['PROM', 'PPROM', 'erythromycin', 'latency', 'chorioamnionitis', 'leaking'], updatedAt: '2026-11-28' },
   { slug: 'vbac', title: 'Birth after Caesarean (VBAC)', subtitle: 'TOLAC, uterine rupture and repeat caesarean', specialty: 'obstetrics', category: 'Labour & delivery', tags: ['VBAC', 'TOLAC', 'previous LSCS', 'scar', 'uterine rupture', 'ERCS'], updatedAt: '2026-11-28' },
   { slug: 'shoulder-dystocia', title: 'Shoulder Dystocia', subtitle: 'Obstetric emergency', specialty: 'obstetrics', category: 'Labour & delivery', tags: ['dystocia', 'HELPERR'], emergency: true, updatedAt: '2026-06-22' },
+  { slug: 'twin-pregnancy', title: 'Twin Pregnancy', subtitle: 'Chorionicity, surveillance, timing and mode of birth', specialty: 'obstetrics', category: 'Fetal medicine', tags: ['twins', 'DCDA', 'MCDA', 'MCMA', 'TTTS', 'chorionicity', 'multiple'], updatedAt: '2026-11-28' },
   { slug: 'fetal-growth-restriction', title: 'Fetal Growth Restriction', subtitle: 'Small-for-gestational-age fetus', specialty: 'obstetrics', category: 'Fetal medicine', tags: ['FGR', 'IUGR', 'SGA', 'Doppler'], updatedAt: '2026-06-10' },
   { slug: 'rh-isoimmunisation', title: 'Rh Isoimmunisation', subtitle: 'Red cell alloimmunisation in pregnancy', specialty: 'obstetrics', category: 'Fetal medicine', tags: ['Rh', 'anti-D', 'alloimmunisation'], updatedAt: '2026-05-28' },
   // Gynaecology
