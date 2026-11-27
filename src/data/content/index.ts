@@ -9,6 +9,7 @@ import { abnormalUterineBleeding } from './abnormal-uterine-bleeding';
 import { endometriosis } from './endometriosis';
 import { pretermLabour } from './preterm-labour';
 import { anaemiaInPregnancy } from './anaemia-in-pregnancy';
+import { vteInPregnancy } from './vte-in-pregnancy';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -25,4 +26,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   endometriosis,
   'preterm-labour': pretermLabour,
   'anaemia-in-pregnancy': anaemiaInPregnancy,
+  'vte-in-pregnancy': vteInPregnancy,
 };
