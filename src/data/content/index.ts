@@ -12,6 +12,8 @@ import { anaemiaInPregnancy } from './anaemia-in-pregnancy';
 import { vteInPregnancy } from './vte-in-pregnancy';
 import { fetalGrowthRestriction } from './fetal-growth-restriction';
 import { rhIsoimmunisation } from './rh-isoimmunisation';
+import { placentaAccretaSpectrum } from './placenta-accreta-spectrum';
+import { shoulderDystocia } from './shoulder-dystocia';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -31,4 +33,6 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'vte-in-pregnancy': vteInPregnancy,
   'fetal-growth-restriction': fetalGrowthRestriction,
   'rh-isoimmunisation': rhIsoimmunisation,
+  'placenta-accreta-spectrum': placentaAccretaSpectrum,
+  'shoulder-dystocia': shoulderDystocia,
 };

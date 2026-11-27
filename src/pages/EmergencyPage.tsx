@@ -13,6 +13,7 @@ const EMERGENCIES: { title: string; slug: string; keyPointIdx: number[]; section
   { title: 'Postpartum haemorrhage', slug: 'postpartum-haemorrhage', keyPointIdx: [2, 4, 5, 6], sections: ['recognition', 'first-response', 'mechanical-surgical', 'blood-products'] },
   { title: 'Eclampsia & severe hypertension', slug: 'preeclampsia', keyPointIdx: [3, 4], sections: ['antihypertensives', 'magnesium-eclampsia', 'hellp'] },
   { title: 'Preterm labour (before 34 weeks)', slug: 'preterm-labour', keyPointIdx: [2, 3, 4], sections: ['steroids', 'magnesium', 'tocolysis', 'pprom'] },
+  { title: 'Shoulder dystocia', slug: 'shoulder-dystocia', keyPointIdx: [0, 1, 2, 3], sections: ['management', 'avoid'] },
   { title: 'Ruptured / suspected ectopic', slug: 'ectopic-pregnancy', keyPointIdx: [0, 5], sections: ['presentation', 'diagnosis', 'surgery'] },
   { title: 'Acute heavy uterine bleeding', slug: 'abnormal-uterine-bleeding', keyPointIdx: [4], sections: ['acute', 'adolescents'] },
 ];
