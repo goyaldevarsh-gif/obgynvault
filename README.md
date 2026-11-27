@@ -23,14 +23,18 @@ The full plan (architecture, sitemap, navigation, database, screens, components,
 
 ## Tech stack
 
-React 18 · TypeScript · Vite 6 · Tailwind CSS v4 · lucide-react · react-router · vite-plugin-pwa. Supabase (optional) powers sign-in, sync and the clinical review queue.
+React 18 · TypeScript · Vite 6 · Tailwind CSS v4 · lucide-react · react-router · vite-plugin-pwa. Firebase (optional, free Spark plan) powers sign-in, sync and the clinical review queue.
 
 ### Switching on the backend (Phase 2)
 
-1. Create a Supabase project and run `supabase/migrations/0001_init.sql` in its SQL editor.
-2. Put the Project URL and anon key in `.env` as `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` (for GitHub Pages, add them as repository secrets with the same names).
-3. Sign in from My Vault, then run `update public.profiles set role = 'admin' where email = '<your email>';`.
-4. Open Tools → Admin to review topics. The latest review sets each topic's status; "verified" removes the draft warning.
+1. Create a project at console.firebase.google.com and add a **Web app**.
+2. Authentication → Sign-in method: enable **Google** and **Email/Password → Email link**. Add your site's domain (e.g. `<user>.github.io`) under Authorized domains.
+3. Firestore Database → Create database, then paste [`firestore.rules`](firestore.rules) into the Rules tab and publish.
+4. Copy `apiKey`, `authDomain`, `projectId` and `appId` from the web app config into `.env` as `VITE_FIREBASE_API_KEY`, `VITE_FIREBASE_AUTH_DOMAIN`, `VITE_FIREBASE_PROJECT_ID`, `VITE_FIREBASE_APP_ID` (for GitHub Pages, add repository secrets with the same names). These are public web values, not secrets; the rules protect the data.
+5. Sign in from My Vault, then in Firestore → `users` → your document, change `role` to `admin` (or `editor`).
+6. Open Tools → Admin to review topics. The latest review sets each topic's status; "verified" removes the draft warning.
+
+The backend sits behind one adapter (`src/lib/backend`), so another provider can be swapped in without touching pages.
 
 Without these keys the app runs fully on-device.
 
@@ -59,7 +63,7 @@ BASE_PATH=/obgynvault/ npm run build
 src/
   components/  brand · layout · ui · content
   config/      module registry (14 modules, phases)
-  data/        SAMPLE data (to be replaced by Supabase)
+  data/        SAMPLE data (to be replaced by the backend catalogue)
   hooks/ lib/ store/ types/
   pages/       one file per route
 docs/PLAN.md   Phase 0 plan

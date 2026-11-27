@@ -1,0 +1,34 @@
+rules_version = '2';
+// ObGynVault Phase 2. Paste into Firebase console → Firestore → Rules, then Publish.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+    function isEditor() { return signedIn() && role() in ['editor', 'admin']; }
+
+    // Profiles: you can read and create your own, always as reader. Only an admin changes roles.
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || role() == 'admin');
+      allow create: if signedIn() && request.auth.uid == uid && request.resource.data.role == 'reader';
+      allow update: if signedIn() && (
+        (request.auth.uid == uid && request.resource.data.role == resource.data.role) || role() == 'admin');
+    }
+
+    // My Vault: owner only.
+    match /vaults/{uid} {
+      allow read, write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Clinical review log: everyone can read statuses; editors add entries in their own name; nobody edits history.
+    match /topicReviews/{id} {
+      allow read: if true;
+      allow create: if isEditor()
+        && request.resource.data.reviewerId == request.auth.uid
+        && request.resource.data.status in ['draft', 'in_review', 'changes_requested', 'verified']
+        && request.resource.data.topicSlug is string;
+      allow update, delete: if false;
+    }
+  }
+}

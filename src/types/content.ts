@@ -1,5 +1,5 @@
 /**
- * Core content model. Mirrors the planned Supabase schema (docs/PLAN.md §4) so the
+ * Core content model. Mirrors the planned backend schema (docs/PLAN.md §4) so the
  * static sample data in src/data can be swapped for API calls without touching UI code.
  */
 

@@ -45,7 +45,7 @@ export default function AdminPage() {
           <>
             <AccountCard />
             <p className="rounded-2xl bg-amber-50 p-4 text-sm text-amber-700 ring-1 ring-amber/40">
-              Your account is a reader account. An admin can make you an editor in Supabase (profiles table, role = editor).
+              Your account is a reader account. An admin can make you an editor in the Firebase console (Firestore → users → your id → role = editor).
             </p>
           </>
         ) : (
@@ -148,12 +148,13 @@ function SetupCard() {
       <h2 className="flex items-center gap-2 text-[15px] font-extrabold text-navy">
         <ShieldCheck className="size-5 text-teal" aria-hidden /> Backend not connected yet
       </h2>
-      <p className="text-sm text-navy-600">The review queue, sign-in and sync need a free Supabase project. Setup takes about 5 minutes:</p>
+      <p className="text-sm text-navy-600">The review queue, sign-in and sync need a free Firebase project (Spark plan). Setup takes about 10 minutes:</p>
       <ol className="list-decimal space-y-1.5 pl-5 text-sm text-navy-600">
-        <li>Create a project at supabase.com.</li>
-        <li>Open the SQL editor and run <code className="rounded bg-bg px-1">supabase/migrations/0001_init.sql</code> from the repository.</li>
-        <li>Copy the Project URL and the anon public key (Settings → API) into <code className="rounded bg-bg px-1">VITE_SUPABASE_URL</code> and <code className="rounded bg-bg px-1">VITE_SUPABASE_ANON_KEY</code>.</li>
-        <li>Sign in once, then make yourself admin with the SQL line at the end of the migration file.</li>
+        <li>Create a project at console.firebase.google.com and add a Web app.</li>
+        <li>Authentication → Sign-in method: enable Google, and Email/Password with &quot;Email link&quot;. Add your site domain under Authorized domains.</li>
+        <li>Firestore Database → Create database, then paste <code className="rounded bg-bg px-1">firestore.rules</code> from the repository into Rules and publish.</li>
+        <li>Copy apiKey, authDomain, projectId and appId from the web app config into the <code className="rounded bg-bg px-1">VITE_FIREBASE_*</code> settings.</li>
+        <li>Sign in once, then set your own role to <code className="rounded bg-bg px-1">admin</code> in Firestore → users.</li>
       </ol>
     </section>
   );

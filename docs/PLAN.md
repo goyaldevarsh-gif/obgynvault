@@ -30,7 +30,7 @@ Contents:
 | Routing | react-router-dom v6 (data router) | `BASE_PATH` env supports GitHub Pages sub-path |
 | PWA | vite-plugin-pwa (Workbox) | Precache app shell, auto-update, installable |
 | State | React context (`VaultContext`, `ToastContext`) | No global store library needed yet |
-| Backend (Phase 2) | Supabase: Postgres, Auth, Storage, Edge Functions | RLS on every table |
+| Backend (Phase 2) | Firebase: Auth + Firestore behind `src/lib/backend` adapter (Supabase plan below kept for reference) | firestore.rules on every collection |
 | Hosting | GitHub → GitHub Pages or Vercel | CI builds on every push to `main` |
 
 ### Folder layout
@@ -308,7 +308,7 @@ Planned for later phases: `ComparisonTable`, `RecommendationRow` (source + stren
 |---|---|---|
 | 0 | Architecture, sitemap, navigation, DB plan, screens, components | ✅ this document |
 | 1 | Branding + frontend: Home, Search, Libraries, Guidelines, Topic page, My Vault (local), PWA shell | ✅ |
-| 2 | Supabase: auth, profiles, roles, RLS, bookmarks/notes sync, Admin review queue | ✅ code + SQL (needs project keys) |
+| 2 | Firebase (switched from Supabase, Nov 2026): auth, profiles, roles, Firestore rules, Vault sync, Admin review queue | ✅ code + rules (needs web config) |
 | 3 | Knowledge engine: real catalogue (verified), recommendations table, full-text search RPC, Guideline Comparison | ◐ Compare + full-text search live; 7 draft topic reviews |
 | 4 | Clinical tools: Calculators, Emergency Algorithms, Drug Vault, Research feed, AI Assistant (source-grounded, cited) | ◐ Calculators + Emergency live; Drug Vault waits for pharmacology review; AI needs an API key |
 | 5 | PWA hardening: offline topics, push for guideline updates, analytics, testing, custom domain | ◐ Offline (all content precached) + offline banner, home-screen shortcuts, citation integrity tests in CI |

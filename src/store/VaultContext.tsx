@@ -1,13 +1,13 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { Bookmark, BookmarkKind, HistoryEntry, Note } from '@/types/content';
 import { readJSON, writeJSON } from '@/lib/storage';
-import { supabase } from '@/lib/supabase';
+import { getBackend, isBackendConfigured } from '@/lib/backend';
 import { useAuth } from './AuthContext';
 
 /**
  * My Vault state (bookmarks, notes, history, recent searches).
- * Phase 1: persisted to localStorage. Phase 2: same interface, synced to Supabase tables
- * `bookmarks`, `notes`, `view_history` (docs/PLAN.md §4) with localStorage as offline cache.
+ * Always persisted to localStorage. When signed in (Phase 2), also synced to the backend
+ * (Firestore `vaults/{uid}`), with localStorage as the offline cache.
  */
 interface VaultState {
   bookmarks: Bookmark[];
@@ -50,24 +50,23 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   const merged = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!supabase || !userId) {
+    if (!isBackendConfigured || !userId) {
       merged.current = null;
       setSync('local');
       return;
     }
     let cancelled = false;
     setSync('syncing');
-    supabase
-      .from('user_vaults')
-      .select('data')
-      .eq('user_id', userId)
-      .maybeSingle()
-      .then(({ data, error }) => {
+    getBackend()
+      .then((b) => b!.loadVault(userId))
+      .then((remote) => {
         if (cancelled) return;
-        if (error) return setSync('error');
-        setState((local) => mergeVaults(local, (data?.data ?? {}) as Partial<VaultState>));
+        setState((local) => mergeVaults(local, (remote ?? {}) as Partial<VaultState>));
         merged.current = userId;
         setSync('synced');
+      })
+      .catch(() => {
+        if (!cancelled) setSync('error');
       });
     return () => {
       cancelled = true;
@@ -75,13 +74,13 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   }, [userId]);
 
   useEffect(() => {
-    if (!supabase || !userId || merged.current !== userId) return;
+    if (!isBackendConfigured || !userId || merged.current !== userId) return;
     const t = window.setTimeout(() => {
       setSync('syncing');
-      supabase!
-        .from('user_vaults')
-        .upsert({ user_id: userId, data: state, updated_at: new Date().toISOString() })
-        .then(({ error }) => setSync(error ? 'error' : 'synced'));
+      getBackend()
+        .then((b) => b!.saveVault(userId, state))
+        .then((error) => setSync(error ? 'error' : 'synced'))
+        .catch(() => setSync('error'));
     }, 1200);
     return () => window.clearTimeout(t);
   }, [state, userId]);

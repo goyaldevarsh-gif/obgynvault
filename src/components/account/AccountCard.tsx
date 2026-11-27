@@ -24,6 +24,12 @@ export function AccountCard() {
     else setSent(true);
   };
 
+  const google = async () => {
+    setError(null);
+    const err = await auth.signInWithGoogle();
+    if (err) setError(err);
+  };
+
   if (auth.userId) {
     const label = { local: 'Saved on this device', syncing: 'Syncing…', synced: 'Synced to your account', error: 'Sync failed, will retry' }[sync];
     const Icon = sync === 'error' ? CloudOff : sync === 'syncing' ? RefreshCw : Cloud;
@@ -71,6 +77,9 @@ export function AccountCard() {
           </button>
         </form>
       )}
+      <button type="button" onClick={google} className="mt-2 flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-surface text-sm font-bold text-navy ring-1 ring-navy-100 hover:bg-navy-50">
+        <span className="text-base font-extrabold text-teal-700" aria-hidden>G</span> Continue with Google
+      </button>
       {error && <p className="mt-2 text-xs font-semibold text-alert">{error}</p>}
     </section>
   );

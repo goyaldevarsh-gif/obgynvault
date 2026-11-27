@@ -2,7 +2,7 @@ import { GUIDELINES, TOPICS, getSource } from '@/data';
 import type { Guideline, Topic } from '@/types/content';
 
 /**
- * Client-side search over the sample catalogue. In Phase 3 this is replaced by a Supabase
+ * Client-side search over the sample catalogue. In Phase 3 this is replaced by a backend
  * RPC (Postgres full-text + pg_trgm), returning the same SearchResult shape.
  */
 export type SearchResult =

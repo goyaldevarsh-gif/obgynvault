@@ -7,7 +7,7 @@ import type { Guideline } from '@/types/content';
  * Entries with status 'sample' are UNCHECKED placeholders.
  * Titles, numbers and years are placeholders for UI demonstration only. Every entry is
  * status 'sample' and must be checked against the issuing body's official publication
- * (and replaced by the Supabase-backed catalogue) before any clinical use.
+ * (and replaced by the backend catalogue) before any clinical use.
  * Summaries deliberately describe scope only; they contain no recommendations.
  */
 export const GUIDELINES: Guideline[] = [

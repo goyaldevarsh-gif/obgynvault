@@ -1,22 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
-import { supabase } from '@/lib/supabase';
+import { getBackend, type ReviewRecord, type ReviewStatus } from '@/lib/backend';
 import type { VerificationStatus } from '@/types/content';
 import { useAuth } from './AuthContext';
 
 /**
- * Clinical review status for topics, from the Supabase `topic_reviews` table.
+ * Clinical review status for topics, from the backend review log (Firestore `topicReviews`).
  * The latest review overrides the status written in the content file. Without a backend,
  * every topic keeps the status in its file (draft or sample).
  */
-export type ReviewStatus = 'draft' | 'in_review' | 'changes_requested' | 'verified';
-
-export interface ReviewRecord {
-  topic_slug: string;
-  status: ReviewStatus;
-  comment: string | null;
-  reviewer_name: string | null;
-  created_at: string;
-}
+export type { ReviewRecord, ReviewStatus };
 
 interface ReviewApi {
   latest: Map<string, ReviewRecord>;
@@ -31,14 +23,24 @@ const ReviewCtx = createContext<ReviewApi | null>(null);
 export function ReviewProvider({ children }: { children: ReactNode }) {
   const { userId, email, name } = useAuth();
   const [latest, setLatest] = useState<Map<string, ReviewRecord>>(new Map());
+  const [all, setAll] = useState<ReviewRecord[]>([]);
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
-    if (!supabase) return;
-    supabase
-      .from('topic_review_status')
-      .select('*')
-      .then(({ data }) => setLatest(new Map((data ?? []).map((r) => [r.topic_slug as string, r as ReviewRecord]))));
+    let cancelled = false;
+    getBackend()
+      .then((b) => b?.listReviews())
+      .then((rows) => {
+        if (cancelled || !rows) return;
+        setAll(rows);
+        const m = new Map<string, ReviewRecord>();
+        for (const r of rows) if (!m.has(r.topic_slug)) m.set(r.topic_slug, r); // rows are newest first
+        setLatest(m);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
   }, [tick]);
 
   const statusFor = useCallback(
@@ -50,19 +52,14 @@ export function ReviewProvider({ children }: { children: ReactNode }) {
     [latest],
   );
 
-  const history = useCallback(async (slug: string) => {
-    if (!supabase) return [];
-    const { data } = await supabase.from('topic_reviews').select('*').eq('topic_slug', slug).order('created_at', { ascending: false });
-    return (data ?? []) as ReviewRecord[];
-  }, []);
+  const history = useCallback(async (slug: string) => all.filter((r) => r.topic_slug === slug), [all]);
 
   const submit = useCallback(
     async (slug: string, status: ReviewStatus, comment: string) => {
-      if (!supabase || !userId) return 'Please sign in first.';
-      const { error } = await supabase
-        .from('topic_reviews')
-        .insert({ topic_slug: slug, status, comment: comment.trim() || null, reviewer_id: userId, reviewer_name: name ?? email });
-      if (error) return error.message;
+      const b = await getBackend();
+      if (!b || !userId) return 'Please sign in first.';
+      const error = await b.addReview({ slug, status, comment: comment.trim() || null, reviewerId: userId, reviewerName: name ?? email });
+      if (error) return error;
       setTick((t) => t + 1);
       return null;
     },
