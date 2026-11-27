@@ -70,3 +70,13 @@ describe('Labour log', () => {
     expect(r.alert).toBe(true);
   });
 });
+
+import { rmiScore } from '@/pages/CalculatorsPage';
+describe('RMI I', () => {
+  it('scores U as 0, 1 or 3 and multiplies', () => {
+    expect(rmiScore(0, true, 100)).toBe(0);
+    expect(rmiScore(1, false, 50)).toBe(50);
+    expect(rmiScore(2, true, 30)).toBe(270);
+    expect(rmiScore(5, false, 70)).toBe(210);
+  });
+});

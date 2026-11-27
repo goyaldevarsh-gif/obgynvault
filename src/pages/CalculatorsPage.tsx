@@ -1,4 +1,4 @@
-import { Activity, Baby, CalendarDays, Gauge, Scale } from 'lucide-react';
+import { Activity, Baby, CalendarDays, Gauge, Scale, ScanSearch } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { CitationChips } from '@/components/content';
@@ -8,13 +8,14 @@ import { cx } from '@/lib/format';
  * Phase 4 calculators. Only standard arithmetic or scores; any interpretation shown is taken
  * from a cited ObGynVault topic. No drug-dose calculators.
  */
-type CalcKey = 'dates' | 'scan' | 'shock' | 'bishop' | 'bmi';
+type CalcKey = 'dates' | 'scan' | 'shock' | 'bishop' | 'rmi' | 'bmi';
 
 const CALCS: { key: CalcKey; label: string; icon: typeof Baby }[] = [
   { key: 'dates', label: 'EDD from LMP', icon: CalendarDays },
   { key: 'scan', label: 'GA from scan', icon: Baby },
   { key: 'shock', label: 'Shock index', icon: Activity },
   { key: 'bishop', label: 'Bishop score', icon: Gauge },
+  { key: 'rmi', label: 'RMI (ovarian mass)', icon: ScanSearch },
   { key: 'bmi', label: 'BMI', icon: Scale },
 ];
 
@@ -56,6 +57,7 @@ export default function CalculatorsPage() {
         {calc === 'scan' && <ScanCalc />}
         {calc === 'shock' && <ShockCalc />}
         {calc === 'bishop' && <BishopCalc />}
+        {calc === 'rmi' && <RmiCalc />}
         {calc === 'bmi' && <BmiCalc />}
         <p className="text-xs leading-relaxed text-navy-400">Calculators support, and do not replace, clinical judgement. Check every result before acting on it.</p>
       </div>
@@ -217,7 +219,10 @@ function BishopCalc() {
         </div>
       ))}
       <Result rows={[['Total score', done ? `${total} / 13` : `${total} (incomplete)`]]} />
-      <p className="text-xs text-navy-500">Standard Bishop score (0–13). Interpret against your unit&apos;s induction-of-labour protocol.</p>
+      <p className="text-xs text-navy-500">
+        Standard Bishop score (0–13). NICE uses a score of 6 or less vs more than 6 to choose the induction method; ACOG notes thresholds of 3 to 8 have been used.
+        <CitationChips refs={[{ guidelineId: 'nice-ng207', locator: '1.3.4, 1.3.7–1.3.9' }, { guidelineId: 'acog-cpg-9' }]} />
+      </p>
     </Panel>
   );
 }
@@ -241,6 +246,58 @@ function BmiCalc() {
       <p className="text-xs text-navy-500">
         Thresholds used in ObGynVault reviews: FOGSI PCOS lists BMI &gt;23 kg/m² as a risk factor in Indian adults and uses ≥25 kg/m² for metformin.
         <CitationChips refs={[{ guidelineId: 'fogsi-pcos', locator: 'Table 3, 7.2' }]} />
+      </p>
+    </Panel>
+  );
+}
+
+const RMI_FEATURES = ['Multilocular', 'Solid areas', 'Metastases', 'Ascites', 'Bilateral'];
+
+/** RMI I = U × M × CA-125 (scoring as in NHS GG&C 549 / 514, which follow RCOG). */
+export function rmiScore(features: number, postmenopausal: boolean, ca125: number) {
+  const u = features === 0 ? 0 : features === 1 ? 1 : 3;
+  return u * (postmenopausal ? 3 : 1) * ca125;
+}
+
+function RmiCalc() {
+  const [f, setF] = useState<Set<string>>(new Set());
+  const [post, setPost] = useState<boolean | null>(null);
+  const [ca, setCa] = useState('');
+  const ready = post !== null && ca !== '' && Number(ca) >= 0;
+  const rmi = ready ? rmiScore(f.size, post!, Number(ca)) : null;
+  const toggle = (k: string) => setF((p) => { const n = new Set(p); if (n.has(k)) n.delete(k); else n.add(k); return n; });
+  return (
+    <Panel title="Risk of Malignancy Index (RMI I)">
+      <div>
+        <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-navy-400">Ultrasound features (1 point each)</p>
+        <div className="flex flex-wrap gap-1.5">
+          {RMI_FEATURES.map((k) => (
+            <button key={k} type="button" onClick={() => toggle(k)} className={cx('rounded-lg px-3 py-2 text-xs font-bold', f.has(k) ? 'bg-teal text-white' : 'bg-bg text-navy-600 ring-1 ring-navy-100')}>{k}</button>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p className="mb-1.5 text-xs font-bold uppercase tracking-wide text-navy-400">Menopausal status</p>
+        <div className="grid grid-cols-2 gap-1.5">
+          {[['Premenopausal (M = 1)', false], ['Postmenopausal (M = 3)', true]].map(([l, v]) => (
+            <button key={String(l)} type="button" onClick={() => setPost(v as boolean)} className={cx('rounded-lg px-2 py-2 text-xs font-bold', post === v ? 'bg-teal text-white' : 'bg-bg text-navy-600 ring-1 ring-navy-100')}>{l as string}</button>
+          ))}
+        </div>
+      </div>
+      <Field label="CA-125 (IU/mL)">
+        <input type="number" inputMode="decimal" value={ca} onChange={(e) => setCa(e.target.value)} className={inputCls} />
+      </Field>
+      {rmi !== null && (
+        <>
+          <Result rows={[['U score', `${f.size === 0 ? 0 : f.size === 1 ? 1 : 3} (${f.size} feature${f.size === 1 ? '' : 's'})`], ['RMI I', Math.round(rmi).toString()]]} />
+          <p className={cx('rounded-xl px-3 py-2 text-sm font-bold', rmi >= 250 ? 'bg-alert-50 text-alert' : rmi >= 200 ? 'bg-amber-50 text-amber-700' : 'bg-teal-50 text-teal-700')}>
+            {rmi >= 250 ? '250 or more: NICE refers to a specialist MDT (also above the 200 cut-off)' : rmi >= 200 ? '200 or more: high risk by the RCOG / NHS GG&C cut-off (below NICE 250)' : 'Under 200: low risk by RMI; follow the cyst pathway by size and features'}
+          </p>
+        </>
+      )}
+      <p className="text-xs text-navy-500">
+        RMI I = U × M × CA-125. U = 0 (no features), 1 (one feature) or 3 (two or more). Any IOTA M-rule feature needs gynae-oncology referral whatever the RMI.
+        <CitationChips refs={[{ guidelineId: 'nhs-ggc-549' }, { guidelineId: 'nice-cg122', locator: 'Ch. 1' }, { guidelineId: 'rcog-gtg-62', locator: '5.1–5.2' }]} />
       </p>
     </Panel>
   );
