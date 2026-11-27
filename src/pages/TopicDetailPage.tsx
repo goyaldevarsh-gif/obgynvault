@@ -14,11 +14,15 @@ import NotFoundPage from './NotFoundPage';
 
 type Tab = 'overview' | 'guidelines' | 'notes';
 
+/** Section types that hold management: shown first in a quick bar and the first one opens by default. */
+const MGMT_ICONS = new Set(['management', 'emergency', 'drug', 'injection', 'delivery', 'fluids']);
+
 export default function TopicDetailPage() {
   const { slug = '' } = useParams();
   const topic = getTopic(slug);
   const [tab, setTab] = useState<Tab>('overview');
-  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+  const mgmtIds = (topic?.sections ?? []).filter((x) => MGMT_ICONS.has(x.icon)).map((x) => x.id);
+  const [openSections, setOpenSections] = useState<Set<string>>(() => new Set(mgmtIds.slice(0, 1)));
   const toggleSection = (id: string) =>
     setOpenSections((prev) => {
       const next = new Set(prev);
@@ -132,6 +136,21 @@ export default function TopicDetailPage() {
                 ))}
               </ol>
             </section>
+
+            {mgmtIds.length > 0 && (
+              <section className="rounded-2xl bg-ink p-4 text-white shadow-card dark:bg-teal-900">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-teal-200">Management</h3>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {topic.sections
+                    .filter((x) => mgmtIds.includes(x.id))
+                    .map((x) => (
+                      <button key={x.id} type="button" onClick={() => jumpTo(x.id)} className="rounded-xl bg-white/10 px-3 py-2 text-left text-[14px] font-semibold text-white ring-1 ring-white/15 hover:bg-white/20">
+                        {x.title}
+                      </button>
+                    ))}
+                </div>
+              </section>
+            )}
 
             <nav id="contents" aria-label="Contents" className="scroll-mt-20 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60">
               <div className="mb-2 flex items-center justify-between px-1">
