@@ -11,6 +11,8 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'MOHFW', shortName: 'MoHFW / NHM', fullName: 'Ministry of Health & Family Welfare, Government of India', region: 'India', priority: 7, color: '#C2410C' },
   { id: 'ESHRE', shortName: 'ESHRE', fullName: 'European Society of Human Reproduction and Embryology', region: 'Europe', priority: 8, color: '#2563EB' },
   { id: 'ASRM', shortName: 'ASRM', fullName: 'American Society for Reproductive Medicine', region: 'USA', priority: 9, color: '#7C3AED' },
+  { id: 'SMFM', shortName: 'SMFM', fullName: 'Society for Maternal-Fetal Medicine', region: 'USA', priority: 11, color: '#0F766E' },
+  { id: 'ISUOG', shortName: 'ISUOG', fullName: 'International Society of Ultrasound in Obstetrics and Gynecology', region: 'Global', priority: 12, color: '#9333EA' },
   { id: 'BSH', shortName: 'BSH', fullName: 'British Society for Haematology', region: 'UK', priority: 10, color: '#B91C1C' },
 ];
 
