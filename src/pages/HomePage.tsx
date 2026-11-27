@@ -4,7 +4,7 @@ import { Logo } from '@/components/brand/Logo';
 import { ModuleTile, TopicCard } from '@/components/content';
 import { SampleNotice, SearchField, SectionHeader } from '@/components/ui';
 import { getModule } from '@/config/modules';
-import { getGuideline, getTopic, PRIORITY_SOURCES, getSource, TOPICS, UPDATES } from '@/data';
+import { getGuideline, getTopic, PRIORITY_SOURCES, getSource, TOPICS, FEED } from '@/data';
 import { greeting } from '@/lib/format';
 import { salutation, useName } from '@/lib/profile';
 import { useUnreadCount } from '@/lib/feed';
@@ -19,6 +19,10 @@ export default function HomePage() {
   const name = useName();
   const unread = useUnreadCount();
   const recent = history.slice(0, 3);
+  // Featured = the newest topics and tools from the What's new feed, so Home always shows what changed last.
+  const featured = FEED.filter((f) => f.kind !== 'guideline' && f.to)
+    .slice(0, 5)
+    .map((f) => ({ id: f.id, to: f.to!, label: f.kind === 'topic' ? 'New topic' : 'New in app', title: f.title.replace(/^New:\s*/, ''), subtitle: f.body }));
   const popular = ['preeclampsia', 'postpartum-haemorrhage', 'gestational-diabetes', 'ectopic-pregnancy'].map((s) => getTopic(s)!);
 
   return (
@@ -26,8 +30,9 @@ export default function HomePage() {
       {/* Top bar */}
       <div className="flex items-center justify-between md:hidden">
         <Logo />
-        <Link to="/updates" aria-label={unread ? `What's new, ${unread} unread` : "What's new"} className="relative grid size-10 place-items-center rounded-full bg-surface shadow-card ring-1 ring-navy-100/60">
-          <Newspaper className="size-5 text-navy" />
+        <Link to="/updates" aria-label={unread ? `What's new, ${unread} unread` : "What's new"} className="relative flex h-10 items-center gap-1.5 rounded-full bg-surface pl-3 pr-3.5 text-[13px] font-bold text-navy shadow-card ring-1 ring-navy-100/60">
+          <Newspaper className="size-[18px]" aria-hidden />
+          What's new
           {unread > 0 && (
             <span className="absolute -right-0.5 -top-0.5 grid min-w-[18px] place-items-center rounded-full bg-amber px-1 text-[10px] font-bold leading-[18px] text-white ring-2 ring-canvas">
               {unread}
@@ -47,7 +52,7 @@ export default function HomePage() {
 
       {/* Featured carousel */}
       <section aria-label="Featured" className="no-scrollbar -mx-4 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-1 md:-mx-6 md:scroll-px-6 md:px-6">
-        {UPDATES.map((u) => (
+        {featured.map((u) => (
           <Link
             key={u.id}
             to={u.to}
@@ -79,7 +84,7 @@ export default function HomePage() {
       <section>
         <SectionHeader title="Quick access" to="/tools" />
         <Link to="/tools/emergency" className="flex items-center gap-3 rounded-2xl bg-alert-50 p-4 ring-1 ring-alert/20 transition hover:ring-alert/40">
-          <span className="grid size-11 place-items-center rounded-xl bg-white text-alert">
+          <span className="grid size-11 place-items-center rounded-xl bg-surface text-alert">
             <Siren className="size-6" aria-hidden />
           </span>
           <span className="flex-1">
@@ -89,7 +94,7 @@ export default function HomePage() {
           <ChevronRight className="size-5 text-alert/60" aria-hidden />
         </Link>
         <Link to="/tools/labour-room" className="mt-2.5 flex items-center gap-3 rounded-2xl bg-teal-50 p-4 ring-1 ring-teal/20 transition hover:ring-teal/40">
-          <span className="grid size-11 place-items-center rounded-xl bg-white text-teal-700">
+          <span className="grid size-11 place-items-center rounded-xl bg-surface text-teal-700">
             <Activity className="size-6" aria-hidden />
           </span>
           <span className="flex-1">

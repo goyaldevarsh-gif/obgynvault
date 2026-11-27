@@ -6,13 +6,20 @@ import { Chip, SampleNotice, SearchField } from '@/components/ui';
 import { topicsBySpecialty } from '@/data';
 import type { Specialty } from '@/types/content';
 
+/** Categories in the order a clinician meets them (pregnancy timeline; gynae by life stage). Unknown ones go last. */
+const CATEGORY_ORDER = [
+  'Antenatal', 'Early pregnancy', 'Medical disorders', 'Hypertensive disorders', 'Fetal medicine', 'Placental disorders', 'Labour & delivery', 'Postnatal',
+  'Benign gynaecology', 'Reproductive endocrinology', 'Reproductive medicine', 'Gynae oncology',
+];
+const rank = (c: string) => { const i = CATEGORY_ORDER.indexOf(c); return i < 0 ? 99 : i; };
+
 export default function SpecialtyLibraryPage() {
   const { specialty } = useParams();
   const [category, setCategory] = useState<string>('All');
   const [filter, setFilter] = useState('');
 
   const valid = specialty === 'obstetrics' || specialty === 'gynaecology';
-  const topics = useMemo(() => (valid ? topicsBySpecialty(specialty as Specialty) : []), [specialty, valid]);
+  const topics = useMemo(() => (valid ? [...topicsBySpecialty(specialty as Specialty)].sort((a, b) => rank(a.category) - rank(b.category)) : []), [specialty, valid]);
   const categories = useMemo(() => ['All', ...Array.from(new Set(topics.map((t) => t.category)))], [topics]);
 
   if (!valid) return <Navigate to="/library" replace />;

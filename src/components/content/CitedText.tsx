@@ -79,10 +79,10 @@ function PointTable({ table }: { table: NonNullable<CitedPoint['table']> }) {
 }
 
 const TONE: Record<string, string> = {
-  start: 'bg-ink text-white ring-ink',
+  start: 'bg-ink text-white ring-ink dark:bg-teal-100 dark:ring-teal/30',
   action: 'bg-surface text-navy ring-navy-100',
   decision: 'bg-amber-50 text-navy ring-amber/40',
-  urgent: 'bg-red-50 text-navy ring-red-300',
+  urgent: 'bg-alert-50 text-navy ring-alert/40',
 };
 
 /** Vertical stepwise algorithm: one card per step, arrows between, optional yes/no style branches. */
