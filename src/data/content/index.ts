@@ -30,6 +30,7 @@ import { pidVaginalDischarge } from './pid-vaginal-discharge';
 import { ovarianCystAdnexalMass } from './ovarian-cyst-adnexal-mass';
 import { miscarriageRpl } from './miscarriage-rpl';
 import { mtpIndia } from './mtp-india';
+import { pelvicOrganProlapse } from './pelvic-organ-prolapse';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -67,4 +68,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'ovarian-cyst-adnexal-mass': ovarianCystAdnexalMass,
   'miscarriage-rpl': miscarriageRpl,
   'mtp-india': mtpIndia,
+  'pelvic-organ-prolapse': pelvicOrganProlapse,
 };
