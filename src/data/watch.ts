@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-ppfp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Postpartum Contraception', body: 'PPIUCD windows, Antara, Chhaya, LAM and sterilisation timing from MoHFW and FOGSI, with WHO MEC 2025 changes.', to: '/topics/postpartum-contraception' },
   { id: 'topic-sepsis-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Intrapartum Fever & Maternal Sepsis', body: 'Fever thresholds, chorioamnionitis antibiotics, and the sepsis first-hour plan from NICE NG255 (2025) and ACOG.', to: '/topics/intrapartum-fever-sepsis' },
   { id: 'topic-twins-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Twin Pregnancy', body: 'Chorionicity, scan schedule, TTTS/TAPS, preterm prevention and timing of birth for DCDA, MCDA and MCMA.', to: '/topics/twin-pregnancy' },
   { id: 'topic-vbac-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Birth after Caesarean (VBAC)', body: 'Selection, counselling numbers, labour management, induction rules, uterine rupture and repeat caesarean timing.', to: '/topics/vbac' },

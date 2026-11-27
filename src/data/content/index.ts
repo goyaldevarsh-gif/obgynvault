@@ -23,6 +23,7 @@ import { promPprom } from './prom-pprom';
 import { vbac } from './vbac';
 import { twinPregnancy } from './twin-pregnancy';
 import { intrapartumFeverSepsis } from './intrapartum-fever-sepsis';
+import { postpartumContraception } from './postpartum-contraception';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -53,4 +54,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   vbac,
   'twin-pregnancy': twinPregnancy,
   'intrapartum-fever-sepsis': intrapartumFeverSepsis,
+  'postpartum-contraception': postpartumContraception,
 };
