@@ -132,7 +132,7 @@ export const pcos: Partial<Topic> = {
     {
       id: 'lifestyle',
       title: 'Lifestyle & Weight Management',
-      icon: 'management',
+      icon: 'lifestyle',
       body: [
         { text: 'Lifestyle change (healthy eating, physical activity and behavioural strategies) is recommended for every woman with PCOS. FOGSI advises 6 months of lifestyle change as the first step in all women. Benefits occur even without weight loss.', refs: [{ guidelineId: F, locator: '6.1, 8.1 (Grade A)' }, { guidelineId: I, locator: '3.1.1–3.1.5' }, { guidelineId: R, locator: '8.1.1' }] },
         {
@@ -169,7 +169,7 @@ export const pcos: Partial<Topic> = {
     {
       id: 'metabolic-drugs',
       title: 'Metformin, Inositol & Anti-obesity Drugs',
-      icon: 'injection',
+      icon: 'drug',
       body: [
         { heading: 'Metformin', text: 'FOGSI: with lifestyle change for adults with BMI ≥25 (Grade A); in adolescents with BMI ≥25 if lifestyle change fails (Grade B); added to a COC in women with obesity or metabolic problems. AAFP: offer ≥1500 mg/day to women with metabolic abnormalities. RCOG: consider for impaired glucose tolerance not improving with lifestyle change; it is unlicensed for PCOS.', refs: [{ guidelineId: F, locator: '7.1c, 7.2' }, { guidelineId: A }, { guidelineId: R, locator: '8.2' }] },
         {
@@ -187,7 +187,7 @@ export const pcos: Partial<Topic> = {
     {
       id: 'infertility',
       title: 'Infertility & Ovulation Induction',
-      icon: 'fetus',
+      icon: 'fertility',
       body: [
         { text: 'Before treatment: weight reduction, about 60 minutes of activity a day for up to 3 months, and stopping smoking and alcohol. Counsel on treatment options, success and cost. If LH is three times basal, FOGSI suggests a low-dose COC for at least 2 months first.', refs: [{ guidelineId: F, locator: '9.1–9.3a' }] },
         {
@@ -212,7 +212,7 @@ export const pcos: Partial<Topic> = {
     {
       id: 'pregnancy',
       title: 'Pregnancy in PCOS',
-      icon: 'delivery',
+      icon: 'fetus',
       body: [
         { text: 'Pregnancies in women with PCOS carry higher risks of gestational diabetes, miscarriage, hypertensive disorders, growth restriction (SGA) and preterm birth. Optimise weight and check OGTT and BP before pregnancy.', refs: [{ guidelineId: F, locator: '8.6' }, { guidelineId: I, locator: '1.9.11, 4.10' }] },
         { text: 'Offer an OGTT before pregnancy or at the first antenatal visit, and to all women at 24–28 weeks.', refs: [{ guidelineId: I, locator: '1.9.11' }, { guidelineId: R, locator: '6.1.1' }] },

@@ -124,7 +124,7 @@ export const inductionOfLabour: Partial<Topic> = {
     {
       id: 'outpatient',
       title: 'Outpatient Induction',
-      icon: 'followup',
+      icon: 'management',
       body: [
         { text: 'India: MoHFW says outpatient induction should never be performed, and FOGSI requires admission to a facility with caesarean capability.', refs: [{ guidelineId: M, locator: 'p. 6' }, { guidelineId: F, locator: '§2, Appendix C' }] },
         { text: 'WHO 2022: routine outpatient induction is not recommended; it may be considered in a well-organised programme for women who live near the facility with good transport. NICE and ACOG consider outpatient ripening (dinoprostone or mechanical) for low-risk women with safety procedures in place.', refs: [{ guidelineId: WO }, { guidelineId: N, locator: '1.6.1–1.6.4' }, { guidelineId: A9 }] },

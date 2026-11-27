@@ -52,7 +52,7 @@ export const abnormalUterineBleeding: Partial<Topic> = {
     {
       id: 'palm-coein',
       title: 'PALM-COEIN Classification',
-      icon: 'diagnosis',
+      icon: 'classification',
       body: [
         {
           text: 'Causes of AUB:',
@@ -206,7 +206,7 @@ export const abnormalUterineBleeding: Partial<Topic> = {
     {
       id: 'adolescents',
       title: 'Adolescents',
-      icon: 'fetus',
+      icon: 'adolescent',
       body: [
         { text: 'Bleeding disorders cause 20–33% of severe or prolonged bleeding in adolescents. Exclude pregnancy, bleeding disorders and injury. Pelvic examination only if pregnancy is suspected; ultrasound is not mandatory (transabdominal if needed). Minimum tests: CBC, peripheral smear, ferritin, PT, aPTT.', refs: [{ guidelineId: F, locator: 'p.17' }] },
         {
@@ -228,7 +228,7 @@ export const abnormalUterineBleeding: Partial<Topic> = {
     {
       id: 'surgery',
       title: 'Surgical Options',
-      icon: 'followup',
+      icon: 'surgery',
       body: [
         { text: 'If medical treatment fails, is declined or symptoms are severe, consider referral for other drugs, second-generation endometrial ablation or hysterectomy. Do not use D&C as treatment.', refs: [{ guidelineId: N, locator: '1.5.6, 1.5.23' }] },
         { text: 'Hysterectomy is the most effective treatment for heavy bleeding (SORT A). Choose the route individually, discuss total vs subtotal, and remove ovaries only with explicit consent. Hysterectomy can cause loss of ovarian function even when ovaries are kept.', refs: [{ guidelineId: A }, { guidelineId: N, locator: '1.4.9, 1.5.20–1.5.22' }] },

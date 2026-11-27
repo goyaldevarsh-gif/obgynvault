@@ -40,7 +40,7 @@ export const cervicalScreening: Partial<Topic> = {
     {
       id: 'who-when',
       title: 'Who, When & How Often',
-      icon: 'followup',
+      icon: 'screening',
       body: [
         {
           text: 'Start, stop and interval by source:',
@@ -82,7 +82,7 @@ export const cervicalScreening: Partial<Topic> = {
     {
       id: 'positive',
       title: 'Managing a Positive Screen',
-      icon: 'diagnosis',
+      icon: 'management',
       body: [
         { heading: 'Screen-and-treat', text: 'Every HPV-positive woman is treated, after a visual check (with acetic acid) of eligibility for ablation. Allows treatment at a single visit, at the cost of some overtreatment.', refs: [{ guidelineId: W, locator: 'Ch. 3' }, { guidelineId: F, locator: 'p. 7' }] },
         { heading: 'Screen-triage-and-treat', text: 'HPV-positive women are triaged with partial genotyping (HPV16/18), colposcopy, VIA or cytology, and only triage-positive women are treated. FOGSI favours triage by colposcopy or VIA where possible.', refs: [{ guidelineId: W, locator: 'Ch. 4' }, { guidelineId: F, locator: 'p. 7, Algorithm 4' }] },
@@ -95,7 +95,7 @@ export const cervicalScreening: Partial<Topic> = {
     {
       id: 'treatment',
       title: 'Treatment of Pre-cancer',
-      icon: 'injection',
+      icon: 'surgery',
       body: [
         {
           text: 'Choosing the treatment:',
@@ -137,7 +137,7 @@ export const cervicalScreening: Partial<Topic> = {
     {
       id: 'vaccination',
       title: 'HPV Vaccination',
-      icon: 'drug',
+      icon: 'injection',
       body: [
         { text: 'India national programme (launched 28 February 2026): a single dose of Gardasil-4 for about 1.15 crore girls aged 14, given only at government facilities with a medical officer present. Not given in pregnancy or with yeast or previous vaccine allergy.', refs: [{ guidelineId: MV }] },
         {

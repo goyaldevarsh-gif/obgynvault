@@ -109,7 +109,7 @@ export const infertilityEvaluation: Partial<Topic> = {
     {
       id: 'reserve',
       title: 'Ovarian Reserve',
-      icon: 'risk',
+      icon: 'lab',
       body: [
         { text: 'Age is the best initial predictor. Do not use AMH to predict natural conception; use AMH or AFC to predict response to IVF stimulation. NICE says not to use FSH.', refs: [{ guidelineId: N, locator: '1.18.2–1.18.5' }, { guidelineId: W }] },
         { text: 'ASRM: if FSH is used, measure it with oestradiol on cycle days 2–4. Inhibin B and the clomiphene challenge test are not recommended. Ovarian reserve tests must not be used to exclude women from treatment.', refs: [{ guidelineId: A }] },
@@ -119,7 +119,7 @@ export const infertilityEvaluation: Partial<Topic> = {
     {
       id: 'tubes-uterus',
       title: 'Tubes & Uterus',
-      icon: 'fetus',
+      icon: 'imaging',
       body: [
         {
           text: 'Tubal tests:',
@@ -140,7 +140,7 @@ export const infertilityEvaluation: Partial<Topic> = {
     {
       id: 'lifestyle',
       title: 'Lifestyle & Preconception',
-      icon: 'followup',
+      icon: 'lifestyle',
       body: [
         { text: 'Intercourse every 2–3 days optimises the chance of pregnancy.', refs: [{ guidelineId: N, locator: '1.5.1' }] },
         { text: 'Stop smoking (brief advice at every visit); avoid alcohol or keep to 1–2 units once or twice a week.', refs: [{ guidelineId: N, locator: '1.6–1.7' }, { guidelineId: W }] },
@@ -151,7 +151,7 @@ export const infertilityEvaluation: Partial<Topic> = {
     {
       id: 'treatment',
       title: 'First-line Treatment by Cause',
-      icon: 'drug',
+      icon: 'management',
       body: [
         {
           text: 'Treatment pathway:',
@@ -177,7 +177,7 @@ export const infertilityEvaluation: Partial<Topic> = {
     {
       id: 'unexplained',
       title: 'Unexplained Infertility',
-      icon: 'complications',
+      icon: 'management',
       body: [
         { text: 'A diagnosis of exclusion after normal semen analysis, ovulation, tubal patency and uterine assessment.', refs: [{ guidelineId: E }] },
         { text: 'NICE: do not offer ovarian stimulation on its own. Consider up to 4 cycles of IUI with gonadotrophin stimulation; offer IVF after 2 years of trying.', refs: [{ guidelineId: N, locator: '1.38' }] },

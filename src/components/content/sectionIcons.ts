@@ -1,6 +1,7 @@
 import {
   Activity, AlertTriangle, Baby, BarChart3, BookText, CalendarCheck, ClipboardList, Droplets, FlaskConical,
-  HeartPulse, Pill, ShieldAlert, Siren, Stethoscope, Syringe, type LucideIcon,
+  HeartPulse, Pill, ShieldAlert, Siren, Stethoscope, Syringe, Scissors, ScanSearch, ScanLine, ShieldCheck, Apple,
+  UserRound, MessagesSquare, ListTree, Hospital, Sprout, FileText, type LucideIcon,
 } from 'lucide-react';
 
 export const SECTION_ICONS: Record<string, LucideIcon> = {
@@ -19,4 +20,15 @@ export const SECTION_ICONS: Record<string, LucideIcon> = {
   delivery: HeartPulse,
   complications: AlertTriangle,
   followup: CalendarCheck,
+  surgery: Scissors,
+  screening: ScanSearch,
+  imaging: ScanLine,
+  prevention: ShieldCheck,
+  lifestyle: Apple,
+  adolescent: UserRound,
+  counselling: MessagesSquare,
+  classification: ListTree,
+  referral: Hospital,
+  fertility: Sprout,
+  documentation: FileText,
 };

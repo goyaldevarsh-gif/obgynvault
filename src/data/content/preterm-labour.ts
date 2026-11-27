@@ -87,7 +87,7 @@ export const pretermLabour: Partial<Topic> = {
     {
       id: 'prevention',
       title: 'Prevention: Progesterone & Cerclage',
-      icon: 'drug',
+      icon: 'prevention',
       body: [
         {
           text: 'NICE decision rules, for women with a singleton pregnancy:',

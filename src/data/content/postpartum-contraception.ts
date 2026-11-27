@@ -41,7 +41,7 @@ export const postpartumContraception: Partial<Topic> = {
     {
       id: 'counselling',
       title: 'When to Counsel',
-      icon: 'followup',
+      icon: 'counselling',
       body: [
         { text: 'Counsel during antenatal care so the woman can choose before delivery (ACOG: optimally prenatally). Contraception is not needed in the first 21 days after birth, but immediate methods prevent missed opportunities.', refs: [{ guidelineId: A, locator: 'p.e32' }, { guidelineId: U }] },
         { text: 'Fertility returns within 10–11 days after an abortion; start contraception within 48 hours (MoHFW).', refs: [{ guidelineId: M, locator: 'Ch. 1' }] },
@@ -101,7 +101,7 @@ export const postpartumContraception: Partial<Topic> = {
     {
       id: 'spacing',
       title: 'Birth Spacing Advice',
-      icon: 'definition',
+      icon: 'counselling',
       body: [
         { text: 'India: wait at least 24 months after a live birth (not more than 5 years) before the next pregnancy; ideal spacing between births 3 years (CHO booklet: at least 36 months between births). After abortion or miscarriage, at least 6 months.', refs: [{ guidelineId: M, locator: 'Ch. 1, Ch. 3' }, { guidelineId: C, locator: '1.1' }, { guidelineId: F, locator: 'Ch. 2' }] },
         { text: 'UK local guidance (citing FSRH) uses an interpregnancy interval of at least 12 months.', refs: [{ guidelineId: U }] },

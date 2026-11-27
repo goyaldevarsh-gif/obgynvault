@@ -15,7 +15,7 @@ import NotFoundPage from './NotFoundPage';
 type Tab = 'overview' | 'guidelines' | 'notes';
 
 /** Section types that hold management: shown first in a quick bar and the first one opens by default. */
-const MGMT_ICONS = new Set(['management', 'emergency', 'drug', 'injection', 'delivery', 'fluids']);
+const MGMT_ICONS = new Set(['management', 'emergency', 'drug', 'injection', 'delivery', 'fluids', 'surgery']);
 
 export default function TopicDetailPage() {
   const { slug = '' } = useParams();

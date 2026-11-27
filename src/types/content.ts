@@ -51,8 +51,26 @@ export interface CitedPoint {
   refs?: Citation[];
   /** Optional table shown under the text (e.g. shock classification, monitoring schedule). */
   table?: { caption?: string; columns: string[]; rows: string[][] };
+  /**
+   * Optional flowchart (stepwise algorithm) shown under the text. Use only where a
+   * guideline sets out an ordered pathway; every step must come from the cited source.
+   */
+  flow?: FlowChart;
   /** Render as a bullet in a list rather than a paragraph. */
   bullet?: boolean;
+}
+
+export interface FlowStep {
+  title: string;
+  text?: string;
+  /** start = entry point, decision = question with branches, urgent = escalate now. */
+  tone?: 'start' | 'action' | 'decision' | 'urgent';
+  branches?: Array<{ when: string; then: string }>;
+}
+
+export interface FlowChart {
+  caption?: string;
+  steps: FlowStep[];
 }
 
 export interface TopicSection {

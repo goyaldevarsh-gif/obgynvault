@@ -68,7 +68,7 @@ export const fetalGrowthRestriction: Partial<Topic> = {
     {
       id: 'detection',
       title: 'Detection: Fundal Height & Scans',
-      icon: 'diagnosis',
+      icon: 'imaging',
       body: [
         { text: 'NICE: measure symphysis–fundal height at each appointment from 24+0 weeks (not more than every 2 weeks, and not if the woman is having serial growth scans) and plot it on a chart. If it is small, offer a growth and wellbeing scan; urgency depends on other findings such as reduced movements or high blood pressure.', refs: [{ guidelineId: N, locator: '1.2.30–1.2.32' }] },
         { text: 'FOGSI: fundal height rises about 1 cm a week from 14 to 32 weeks; a lag of 3 cm or more suggests FGR. A routine growth scan at 32–36 weeks is an alternative where universal scanning is the policy.', refs: [{ guidelineId: F, locator: 'pp.8–11' }] },
@@ -163,7 +163,7 @@ export const fetalGrowthRestriction: Partial<Topic> = {
     {
       id: 'mode',
       title: 'Mode of Birth & Labour',
-      icon: 'emergency',
+      icon: 'delivery',
       body: [
         { text: 'FGR alone is not an indication for caesarean (ACOG). Consider caesarean with absent or reversed end-diastolic flow, taking the whole picture into account (SMFM).', refs: [{ guidelineId: A, locator: 'Level C' }, { guidelineId: S, locator: 'Rec 19' }] },
         { text: 'ISUOG: in early FGR, elective caesarean if STV is abnormal, ductus venosus is altered, there is absent or reversed flow, BPP is abnormal, or for maternal reasons. In late FGR and SGA, induction is reasonable unless there is absent or reversed flow.', refs: [{ guidelineId: I, locator: 'Mode of delivery' }] },

@@ -43,15 +43,6 @@ export const postpartumHaemorrhage: Partial<Topic> = {
       ],
     },
     {
-      id: 'epidemiology',
-      title: 'Burden',
-      icon: 'epidemiology',
-      body: [
-        { text: 'Maternal haemorrhage is the leading cause of maternal mortality worldwide. In the US, haemorrhage requiring transfusion is the leading cause of severe maternal morbidity, and PPH rates rose 26% between 1994 and 2006, mainly from more uterine atony.', refs: [{ guidelineId: A, locator: 'Summary' }] },
-        { text: 'Blood loss after birth is seldom measured in practice, and visual estimates underestimate it.', refs: [{ guidelineId: M, locator: 'p.2' }] },
-      ],
-    },
-    {
       id: 'risk-factors',
       title: 'Causes & Risk Factors (Four Ts)',
       icon: 'risk',
@@ -167,7 +158,7 @@ export const postpartumHaemorrhage: Partial<Topic> = {
     {
       id: 'mechanical-surgical',
       title: 'Mechanical & Surgical Management',
-      icon: 'management',
+      icon: 'surgery',
       body: [
         { heading: 'Tissue and trauma', text: 'Check the placenta for completeness (ultrasound if needed); perform manual removal of the placenta and curettage for retained tissue; examine the vagina and cervix, exclude uterine rupture, and repair genital tract trauma.', refs: [{ guidelineId: F, locator: 'Placenta & trauma' }] },
         { heading: 'Tamponade', text: 'Uterine tamponade with a balloon catheter or suction cannula.', refs: [{ guidelineId: F, locator: 'Mechanical & surgical' }] },
@@ -192,7 +183,7 @@ export const postpartumHaemorrhage: Partial<Topic> = {
     {
       id: 'blood-products',
       title: 'Coagulopathy & Blood Products',
-      icon: 'lab',
+      icon: 'fluids',
       body: [
         { text: 'Order products early: 4 RBC, 4 FFP and 1 platelet unit (SDP or 4 RDP), plus cryoprecipitate.', refs: [{ guidelineId: F, locator: 'Coagulopathy & blood products' }] },
         { text: 'After 4 units of RBC, 4 FFP and 1 platelet unit, consider calcium gluconate 1 g. Give fibrinogen 2 g IV if fibrinogen is below 1 g/L. Use rFVIIa if available and bleeding persists.', refs: [{ guidelineId: F, locator: 'Coagulopathy & blood products' }] },
@@ -220,6 +211,15 @@ export const postpartumHaemorrhage: Partial<Topic> = {
         { text: 'Monitor temperature, pulse, respiration, BP, SpO2 and urine output, and repeat labs (Hb, platelets, coagulation, fibrinogen, blood gas, calcium). Provide pain relief and watch for complications.', refs: [{ guidelineId: F, locator: 'Monitoring' }] },
         { text: 'Correct anaemia after PPH with iron and folate; use IV iron when rapid correction is needed.', refs: [{ guidelineId: W }] },
         { text: 'Secondary PPH (24 hours to 12 weeks after birth) is not covered yet. The RCOG and ACOG full texts that address it could not be accessed.', refs: [{ guidelineId: R }, { guidelineId: A }] },
+      ],
+    },
+    {
+      id: 'epidemiology',
+      title: 'Background: Burden',
+      icon: 'epidemiology',
+      body: [
+        { text: 'Maternal haemorrhage is the leading cause of maternal mortality worldwide. In the US, haemorrhage requiring transfusion is the leading cause of severe maternal morbidity, and PPH rates rose 26% between 1994 and 2006, mainly from more uterine atony.', refs: [{ guidelineId: A, locator: 'Summary' }] },
+        { text: 'Blood loss after birth is seldom measured in practice, and visual estimates underestimate it.', refs: [{ guidelineId: M, locator: 'p.2' }] },
       ],
     },
   ],

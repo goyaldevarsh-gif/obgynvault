@@ -30,21 +30,6 @@ export const preeclampsia: Partial<Topic> = {
   ],
   sections: [
     {
-      id: 'epidemiology',
-      title: 'Epidemiology & Burden',
-      icon: 'epidemiology',
-      body: [
-        { text: 'Preeclampsia/eclampsia and HELLP syndrome remain important worldwide, with pooled global prevalences of 0.43% and 0.39% in one meta-analysis.', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
-        { text: 'In India, a systematic review of 22 studies (92,220 pregnancies) found a pooled prevalence of hypertensive disorders of pregnancy of 9% (95% CI 5–17%).', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
-        {
-          text: 'Prevalence by zone of India:',
-          refs: [{ guidelineId: F, locator: 'Table 1, p.8' }],
-          table: { columns: ['Zone', 'HDP prevalence (95% CI)'], rows: [['Northern', '9.5% (8.7–10.3)'], ['Southern', '9.2% (8.9–9.5)'], ['Western', '8.9% (7.5–10.3)'], ['Central', '7.7% (7.1–8.2)']] },
-        },
-        { text: 'Barriers to better outcomes in India named by FOGSI: myths and misconceptions, poor transport, low socioeconomic status, limited multidisciplinary antenatal care, lack of accurate prediction, and too few high-dependency units.', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
-      ],
-    },
-    {
       id: 'definition',
       title: 'Definitions & Classification',
       icon: 'definition',
@@ -76,7 +61,7 @@ export const preeclampsia: Partial<Topic> = {
     {
       id: 'screening',
       title: 'Screening & Prevention',
-      icon: 'risk',
+      icon: 'prevention',
       body: [
         { heading: 'Screening', text: 'FOGSI recommends universal screening for preeclampsia using the HDP Gestosis score; a total of 3 or more means "at risk". Repeat it at the first visit and at every antenatal visit until 32 weeks, or at least once per trimester or whenever a new risk factor appears.', refs: [{ guidelineId: F, locator: '§4.1, p.12' }] },
         { text: 'Where available, multimodal screening at 11–14 weeks combines maternal characteristics, mean arterial pressure, uterine artery Doppler pulsatility index and serum PlGF. FOGSI notes that combined markers improve prediction but are not cost-effective at present.', refs: [{ guidelineId: F, locator: '§4.2, p.13; Annexure 3' }] },
@@ -213,7 +198,7 @@ export const preeclampsia: Partial<Topic> = {
     {
       id: 'hellp',
       title: 'HELLP Syndrome',
-      icon: 'lab',
+      icon: 'complications',
       body: [
         { text: 'HELLP is diagnosed with LDH ≥600 U/L, AST ≥70 U/L and platelets <100 × 10⁹/L. Manage it as severe preeclampsia and anticipate coagulopathy and liver complications.', refs: [{ guidelineId: F, locator: 'Annexure 2C, p.41' }] },
         { text: 'HELLP is an indication for immediate delivery after stabilisation.', refs: [{ guidelineId: F, locator: '§9.1.3, p.24' }] },
@@ -302,6 +287,21 @@ export const preeclampsia: Partial<Topic> = {
         { text: 'A hypertensive disorder of pregnancy increases later hypertension and cardiovascular disease; FOGSI says it doubles long-term cardiovascular morbidity and mortality. Advise annual BP and cardiovascular risk assessment.', refs: [{ guidelineId: N, locator: '1.10.2' }, { guidelineId: F, locator: '§12; Checklist p.31' }] },
         { text: 'Recurrence risk rises with an interpregnancy interval over 10 years. Do not routinely screen for thrombophilia.', refs: [{ guidelineId: N, locator: '1.10.6, 1.10.8' }] },
         { heading: 'Preconception', text: 'Counsel before the next pregnancy: assess cardiovascular, renal, metabolic and autoimmune status; switch to labetalol, nifedipine or amlodipine; stop ACE inhibitors, ARBs and statins before conception; achieve BP <135/85 in chronic hypertension; and plan early aspirin.', refs: [{ guidelineId: F, locator: '§13, p.34' }, { guidelineId: N, locator: '1.10.4' }] },
+      ],
+    },
+    {
+      id: 'epidemiology',
+      title: 'Background: Burden',
+      icon: 'epidemiology',
+      body: [
+        { text: 'Preeclampsia/eclampsia and HELLP syndrome remain important worldwide, with pooled global prevalences of 0.43% and 0.39% in one meta-analysis.', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
+        { text: 'In India, a systematic review of 22 studies (92,220 pregnancies) found a pooled prevalence of hypertensive disorders of pregnancy of 9% (95% CI 5–17%).', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
+        {
+          text: 'Prevalence by zone of India:',
+          refs: [{ guidelineId: F, locator: 'Table 1, p.8' }],
+          table: { columns: ['Zone', 'HDP prevalence (95% CI)'], rows: [['Northern', '9.5% (8.7–10.3)'], ['Southern', '9.2% (8.9–9.5)'], ['Western', '8.9% (7.5–10.3)'], ['Central', '7.7% (7.1–8.2)']] },
+        },
+        { text: 'Barriers to better outcomes in India named by FOGSI: myths and misconceptions, poor transport, low socioeconomic status, limited multidisciplinary antenatal care, lack of accurate prediction, and too few high-dependency units.', refs: [{ guidelineId: F, locator: '§1, p.8' }] },
       ],
     },
   ],

@@ -86,7 +86,7 @@ export const antenatalCare: Partial<Topic> = {
     {
       id: 'gdm',
       title: 'GDM Screening',
-      icon: 'diagnosis',
+      icon: 'screening',
       body: [
         { text: 'India: ICMR uses the DIPSI test at the first visit and repeats it after 24 weeks (at least 4 weeks after the first test). PMSMA lists GDM screening with OGTT. See the GDM topic for the 75 g test and cut-offs.', refs: [{ guidelineId: I }, { guidelineId: P }] },
         { text: 'NICE: assess risk factors at booking and offer an OGTT at 24+0–28+0 weeks only to women at risk.', refs: [{ guidelineId: N, locator: '1.2.21–1.2.22' }] },
@@ -95,7 +95,7 @@ export const antenatalCare: Partial<Topic> = {
     {
       id: 'ultrasound',
       title: 'Ultrasound',
-      icon: 'fetus',
+      icon: 'imaging',
       body: [
         {
           text: 'Routine scans recommended:',
@@ -176,7 +176,7 @@ export const antenatalCare: Partial<Topic> = {
     {
       id: 'prevention',
       title: 'Aspirin & Anti-D',
-      icon: 'risk',
+      icon: 'prevention',
       body: [
         { text: 'Assess pre-eclampsia risk at booking and offer aspirin to women at risk (see the Pre-eclampsia topic for dose and risk factors). US practice uses 81 mg daily from 12–16 weeks.', refs: [{ guidelineId: N, locator: '1.2.23' }, { guidelineId: US }] },
         { text: 'Routine antenatal anti-D prophylaxis at 28 weeks for RhD-negative women (NICE; US 300 µg). The Indian documents reviewed test Rh status but do not state routine anti-D; see the Rh Isoimmunisation topic.', refs: [{ guidelineId: N, locator: '1.2.16' }, { guidelineId: US }] },
@@ -185,7 +185,7 @@ export const antenatalCare: Partial<Topic> = {
     {
       id: 'counselling',
       title: 'Lifestyle & Common Symptoms',
-      icon: 'definition',
+      icon: 'lifestyle',
       body: [
         { text: 'Alcohol: no known safe level; avoid. Ask about alcohol and tobacco (including second-hand smoke) at every visit and support quitting.', refs: [{ guidelineId: N, locator: '1.3.9–1.3.10' }, { guidelineId: W, locator: 'B.1.5–B.1.6' }] },
         { text: 'Healthy diet and physical activity; about 30 minutes of moderate activity on 5 days a week (US).', refs: [{ guidelineId: W, locator: 'A.1.1' }, { guidelineId: N, locator: '1.3.9' }, { guidelineId: US }] },

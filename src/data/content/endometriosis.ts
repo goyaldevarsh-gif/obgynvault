@@ -66,7 +66,7 @@ export const endometriosis: Partial<Topic> = {
     {
       id: 'referral',
       title: 'Referral',
-      icon: 'emergency',
+      icon: 'referral',
       body: [
         { text: 'Refer to gynaecology if initial treatment is ineffective, not tolerated or contraindicated, symptoms affect daily life or keep recurring, or there are pelvic signs.', refs: [{ guidelineId: N, locator: '1.5.5' }] },
         { text: 'Refer to a specialist endometriosis centre if an endometrioma, deep endometriosis (bowel, bladder, ureter) or disease outside the pelvis is suspected or confirmed. Refer girls 17 and under to paediatric and adolescent gynaecology or a specialist centre.', refs: [{ guidelineId: N, locator: '1.5.6–1.5.7' }] },
@@ -104,7 +104,7 @@ export const endometriosis: Partial<Topic> = {
     {
       id: 'adolescents',
       title: 'Adolescents',
-      icon: 'fetus',
+      icon: 'adolescent',
       body: [
         { text: 'Suspect endometriosis when severe dysmenorrhoea interferes with daily life and persists despite NSAIDs and the pill. Risk factors include family history, obstructive genital anomalies, early menarche and short cycles. Early, progressive dysmenorrhoea should prompt a search for a Müllerian anomaly.', refs: [{ guidelineId: F, locator: 'p.6 (Grade A, GPP)' }] },
         { text: 'Use TVS where appropriate; do not use CA-125. First line: hormonal contraception (continuous pill) or progestogens, including the LNG-IUS in sexually active adolescents. NSAIDs can be used.', refs: [{ guidelineId: E }, { guidelineId: F, locator: 'p.6–7 (Grade A)' }] },
@@ -115,7 +115,7 @@ export const endometriosis: Partial<Topic> = {
     {
       id: 'surgery',
       title: 'Surgery & Endometrioma',
-      icon: 'management',
+      icon: 'surgery',
       body: [
         { text: 'Indications: failed, refused or poorly tolerated medical treatment; severe pain; endometriomas or deep disease distorting anatomy; emergencies (rupture, abscess, obstructed ureter or bowel); infertility. Operate laparoscopically and record findings with images.', refs: [{ guidelineId: F, locator: 'p.11 (LE 3)' }, { guidelineId: N, locator: '1.9.3' }] },
         { text: 'Surgery should be done once, by an expert, at an appropriate centre; repeat surgery halves pregnancy rates compared with first surgery. Excise rather than ablate where possible and treat all visible lesions.', refs: [{ guidelineId: F, locator: 'p.3, p.12' }, { guidelineId: E }] },
@@ -129,7 +129,7 @@ export const endometriosis: Partial<Topic> = {
     {
       id: 'infertility',
       title: 'Endometriosis & Infertility',
-      icon: 'followup',
+      icon: 'fertility',
       body: [
         { text: 'Do not give ovarian suppression to improve fertility, alone or after surgery; it does not raise pregnancy rates.', refs: [{ guidelineId: N, locator: '1.10.4' }, { guidelineId: E }, { guidelineId: F, locator: 'p.7 (Grade A)' }, { guidelineId: A }] },
         { text: 'Operative laparoscopy (excision or ablation with adhesiolysis) improves spontaneous pregnancy in minimal to mild (rASRM I/II) disease. Most benefit comes within 6–12 months, so plan fertility treatment promptly.', refs: [{ guidelineId: N, locator: '1.10.1' }, { guidelineId: E }, { guidelineId: F, locator: 'p.7, p.12' }] },

@@ -49,7 +49,7 @@ export const vbac: Partial<Topic> = {
     {
       id: 'counselling',
       title: 'Counselling',
-      icon: 'diagnosis',
+      icon: 'counselling',
       body: [
         { text: 'Success of planned VBAC 72–75%; previous vaginal birth (especially VBAC) is the best predictor, at 85–90%. FIGO quotes 60–80%.', refs: [{ guidelineId: R, locator: '7.3–7.4' }, { guidelineId: F }, { guidelineId: FG }] },
         { text: 'Less likely to succeed: no previous vaginal birth, previous caesarean for dystocia, induction, obesity, older age, hypertension, diabetes, baby 4 kg or more. More likely: previous vaginal birth, previous caesarean for breech or fetal distress, spontaneous labour, favourable Bishop score.', refs: [{ guidelineId: F, locator: 'Counselling' }] },

@@ -79,7 +79,7 @@ export const placentaAccretaSpectrum: Partial<Topic> = {
     {
       id: 'diagnosis',
       title: 'Ultrasound & MRI',
-      icon: 'diagnosis',
+      icon: 'imaging',
       body: [
         {
           text: 'Standard ultrasound signs (EW-AIP definitions):',
@@ -165,7 +165,7 @@ export const placentaAccretaSpectrum: Partial<Topic> = {
     {
       id: 'mdt',
       title: 'Where & Who: Centre of Excellence',
-      icon: 'followup',
+      icon: 'referral',
       body: [
         { text: 'Suspected PAS should be delivered in a specialist centre (ACOG: level III or IV) by a dedicated multidisciplinary team.', refs: [{ guidelineId: FS, locator: 'Strong' }, { guidelineId: A, locator: 'Grade 1B' }, { guidelineId: R, locator: '7.3' }, { guidelineId: F, locator: 'Level 1B' }] },
         { text: 'The team includes obstetric/MFM surgeons with complex pelvic surgery skills, urology, interventional radiology (where available), anaesthesia, critical care and neonatology, with a blood bank able to run massive transfusion, ICU/HDU and NICU on site.', refs: [{ guidelineId: A }, { guidelineId: R, locator: '7.3' }, { guidelineId: F }] },
@@ -186,7 +186,7 @@ export const placentaAccretaSpectrum: Partial<Topic> = {
     {
       id: 'surgery',
       title: 'Surgery: Caesarean Hysterectomy',
-      icon: 'injection',
+      icon: 'surgery',
       body: [
         { heading: 'Incision', text: 'Consider a midline vertical skin incision for invasive PAS. Place the hysterotomy away from the placenta, usually above its upper edge (often fundal). Map the placental edge with ultrasound beforehand. Lithotomy position is commonly used.', refs: [{ guidelineId: FS, locator: 'Weak' }, { guidelineId: A }, { guidelineId: F }, { guidelineId: R, locator: '6.4' }] },
         { heading: 'Placenta in situ', text: 'After delivering the baby, leave the placenta in place and do not give uterotonics. Caesarean hysterectomy with the placenta in situ is the accepted approach; forced removal is strongly discouraged. Total hysterectomy is preferred over subtotal for increta or percreta with praevia.', refs: [{ guidelineId: FS, locator: 'Strong' }, { guidelineId: A }, { guidelineId: R, locator: '8.4.1' }, { guidelineId: F, locator: 'Grade C' }] },
@@ -201,7 +201,7 @@ export const placentaAccretaSpectrum: Partial<Topic> = {
     {
       id: 'conservative',
       title: 'Conservative Management',
-      icon: 'complications',
+      icon: 'management',
       body: [
         { text: 'Approaches: leaving the placenta in situ, one-step conservative surgery, or the Triple-P procedure. Manual removal of a suspected PAS should be abandoned.', refs: [{ guidelineId: FC }] },
         { text: 'Suits only women who want to keep fertility, accept long follow-up and are treated in an expert centre. ACOG/SMFM consider it investigational, for carefully selected cases. Not for women who are bleeding heavily.', refs: [{ guidelineId: FC }, { guidelineId: A, locator: 'Grade 2C' }, { guidelineId: R, locator: '8.5' }] },

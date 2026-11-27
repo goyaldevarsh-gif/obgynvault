@@ -97,7 +97,7 @@ export const rhIsoimmunisation: Partial<Topic> = {
     {
       id: 'early-pregnancy',
       title: 'Early Pregnancy (<12 Weeks): Changing Practice',
-      icon: 'emergency',
+      icon: 'injection',
       body: [
         { text: 'ACOG 2024 Clinical Practice Update: for abortion or pregnancy loss before 12+0 weeks, ACOG now suggests forgoing routine Rh testing and anti-D, whether managed medically or surgically; it can still be offered through shared decision-making.', refs: [{ guidelineId: AU }] },
         { text: 'UK practice still gives at least 500 IU before 12 weeks after surgical evacuation, ectopic pregnancy, molar pregnancy or miscarriage, without an FMH test.', refs: [{ guidelineId: B, locator: '<12 weeks' }] },

@@ -146,7 +146,7 @@ export const ectopicPregnancy: Partial<Topic> = {
     {
       id: 'surgery',
       title: 'Surgical Management',
-      icon: 'management',
+      icon: 'surgery',
       body: [
         { heading: 'Indications', text: 'Surgery is first line if the woman cannot return for follow-up, or has significant pain, a mass of 35 mm or more, a visible heartbeat, hCG 5000 IU/L or more, or signs of rupture or haemoperitoneum; and when medical treatment fails.', refs: [{ guidelineId: N, locator: '1.6.9' }, { guidelineId: F, locator: 'Surgical management' }] },
         { heading: 'Approach', text: 'Use laparoscopy whenever possible; laparotomy if laparoscopy is unavailable or for life-saving surgery. FOGSI advises taking consent for laparotomy before laparoscopy when adhesions are likely (PID, previous surgery), and looking for pelvic tuberculosis at surgery.', refs: [{ guidelineId: N, locator: '1.6.12–1.6.14' }, { guidelineId: F, locator: 'Surgical management' }] },

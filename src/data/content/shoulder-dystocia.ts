@@ -54,7 +54,7 @@ export const shoulderDystocia: Partial<Topic> = {
     {
       id: 'prevention',
       title: 'Prevention & Previous Shoulder Dystocia',
-      icon: 'followup',
+      icon: 'prevention',
       body: [
         { heading: 'Induction', text: 'Induction of labour does not prevent shoulder dystocia in non-diabetic women with a suspected big baby (RCOG); ACOG does not recommend induction for this purpose. It may reduce rates in gestational diabetes.', refs: [{ guidelineId: R, locator: '5.1.1' }, { guidelineId: A }] },
         { heading: 'Elective caesarean', text: 'RCOG: consider for diabetic women with an estimated fetal weight over 4.5 kg. ACOG (as cited by AAFP): consider at an estimated weight of 5000 g without diabetes or 4500 g with diabetes.', refs: [{ guidelineId: R, locator: '5.1.2' }, { guidelineId: A }] },
@@ -112,7 +112,7 @@ export const shoulderDystocia: Partial<Topic> = {
     {
       id: 'complications',
       title: 'Complications & Aftercare',
-      icon: 'fetus',
+      icon: 'complications',
       body: [
         { heading: 'Baby', text: 'Brachial plexus injury in 2.3–16% of shoulder dystocia deliveries (RCOG; up to 20% transient, AAFP); under 10% are permanent. Some brachial plexus injuries occur without shoulder dystocia, even after caesarean. Also humeral and clavicle fractures and hypoxic injury.', refs: [{ guidelineId: R, locator: '1' }, { guidelineId: A }] },
         { text: 'The baby should be examined for injury by a neonatal clinician.', refs: [{ guidelineId: R, locator: '6.4' }] },
@@ -122,7 +122,7 @@ export const shoulderDystocia: Partial<Topic> = {
     {
       id: 'documentation',
       title: 'Documentation & Training',
-      icon: 'monitoring',
+      icon: 'documentation',
       body: [
         {
           text: 'Record:',

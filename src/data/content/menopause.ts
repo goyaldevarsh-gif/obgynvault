@@ -60,7 +60,7 @@ export const menopause: Partial<Topic> = {
     {
       id: 'mht-indications',
       title: 'MHT: Who Benefits',
-      icon: 'followup',
+      icon: 'management',
       body: [
         { text: 'Offer HRT for vasomotor symptoms after discussing short- and long-term benefits and risks: oestrogen with progestogen if she has a uterus, oestrogen alone after hysterectomy.', refs: [{ guidelineId: N }, { guidelineId: US, locator: 'SORT A' }] },
         { text: 'Benefits outweigh risks for most healthy symptomatic women under 60 or within 10 years of menopause. Starting after 60 needs careful individual assessment.', refs: [{ guidelineId: H }, { guidelineId: US }, { guidelineId: I }] },
@@ -72,7 +72,7 @@ export const menopause: Partial<Topic> = {
     {
       id: 'contraindications',
       title: 'Contraindications',
-      icon: 'emergency',
+      icon: 'risk',
       body: [
         {
           text: 'Avoid MHT with (IMS Appendix 4):',
@@ -162,7 +162,7 @@ export const menopause: Partial<Topic> = {
     {
       id: 'gsm',
       title: 'Genitourinary Syndrome (Vaginal Symptoms)',
-      icon: 'injection',
+      icon: 'drug',
       body: [
         { text: 'Low-dose vaginal oestrogen is first line, including for women already on systemic HRT, at any age and for as long as needed. A progestogen is generally not needed.', refs: [{ guidelineId: I, locator: 'Grade A' }, { guidelineId: N }, { guidelineId: H }, { guidelineId: US }] },
         { text: 'Vaginal lubricants and moisturisers also work, alone or with oestrogen.', refs: [{ guidelineId: US, locator: 'SORT B' }] },
@@ -222,7 +222,7 @@ export const menopause: Partial<Topic> = {
     {
       id: 'contraception',
       title: 'Contraception in the Perimenopause',
-      icon: 'followup',
+      icon: 'drug',
       body: [
         { text: 'Discuss contraception with perimenopausal women; HRT is not a contraceptive.', refs: [{ guidelineId: N }, { guidelineId: I }] },
         { text: 'IMS: healthy, normal-weight non-smokers can continue combined pills up to menopause; progestogen-only methods suit women with previous VTE; IUDs are suitable. Consider switching to HT at about 45–50 if FSH is above 30 IU/L and oestradiol below 20 pg/mL on two tests 6 weeks apart.', refs: [{ guidelineId: I, locator: 'Section II, Grade B' }] },

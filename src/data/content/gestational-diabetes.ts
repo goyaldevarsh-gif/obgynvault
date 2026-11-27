@@ -33,7 +33,7 @@ export const gestationalDiabetes: Partial<Topic> = {
     {
       id: 'screening',
       title: 'Screening & Diagnosis',
-      icon: 'diagnosis',
+      icon: 'screening',
       body: [
         { heading: 'Indian approach (MoHFW, FOGSI)', text: 'Universal testing of all pregnant women, because Indian women are at high risk. Test at the first antenatal contact; if negative, repeat at 24–28 weeks and at least 4 weeks after the first test. Women presenting after 28 weeks get one test.', refs: [{ guidelineId: M, locator: '§4.4, p.4' }, { guidelineId: F, locator: 'p.6' }] },
         { text: 'Method: 75 g glucose dissolved in about 300 mL water, drunk within 5–10 minutes, taken fasting or non-fasting. Measure venous plasma glucose (or use a plasma-calibrated glucometer) at 2 hours. If the woman vomits within 30 minutes, repeat the test the next day.', refs: [{ guidelineId: M, locator: '§3, §4.5, p.3–5' }] },
@@ -75,7 +75,7 @@ export const gestationalDiabetes: Partial<Topic> = {
     {
       id: 'nutrition',
       title: 'Nutrition & Exercise',
-      icon: 'management',
+      icon: 'lifestyle',
       body: [
         { text: 'Start medical nutrition therapy and exercise as soon as GDM is diagnosed, and review after 2 weeks (1 week if diagnosed in the third trimester).', refs: [{ guidelineId: F, locator: 'p.8–9' }, { guidelineId: M, locator: '§4.7, p.6' }] },
         {
@@ -150,7 +150,7 @@ export const gestationalDiabetes: Partial<Topic> = {
     {
       id: 'intrapartum',
       title: 'Intrapartum & Neonatal Care',
-      icon: 'injection',
+      icon: 'delivery',
       body: [
         { text: 'Most women with GDM need no insulin in labour. Give the usual night-before insulin, withhold the morning dose, and keep glucose 70–120 mg/dL with checks every 1–2 hours in active labour (FOGSI). NICE keeps capillary glucose 4–7 mmol/L with hourly checks and uses IV dextrose and insulin if outside this range.', refs: [{ guidelineId: F, locator: 'p.11' }, { guidelineId: N }] },
         {

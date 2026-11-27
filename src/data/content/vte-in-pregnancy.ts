@@ -32,16 +32,6 @@ export const vteInPregnancy: Partial<Topic> = {
   ],
   sections: [
     {
-      id: 'epidemiology',
-      title: 'Burden & Why It Matters',
-      icon: 'epidemiology',
-      body: [
-        { text: 'About 80% of thromboembolic events in pregnancy are venous. VTE accounts for 9.3% of maternal deaths in the US.', refs: [{ guidelineId: A, locator: 'Summary' }] },
-        { text: 'Emergency caesarean section carries roughly twice the VTE risk of elective caesarean.', refs: [{ guidelineId: R, locator: '7.4' }] },
-        { text: 'No FOGSI or ICOG guideline on VTE in pregnancy could be found for this review, so the scoring and doses here come from RCOG, NICE and ACOG. Treat this as a gap until an Indian document is located.', refs: [{ guidelineId: R }] },
-      ],
-    },
-    {
       id: 'risk-assessment',
       title: 'Risk Assessment (RCOG Score)',
       icon: 'risk',
@@ -269,7 +259,7 @@ export const vteInPregnancy: Partial<Topic> = {
     {
       id: 'mechanical',
       title: 'Mechanical Prophylaxis',
-      icon: 'monitoring',
+      icon: 'prevention',
       body: [
         { text: 'ACOG: pneumatic compression devices before caesarean for all women not already on anticoagulation, and for women with thrombophilia in labour until fully mobile.', refs: [{ guidelineId: A, locator: 'Level C' }, { guidelineId: AT, locator: 'Intrapartum' }] },
         { text: 'NICE: intermittent pneumatic compression first line when mechanical prophylaxis is used after caesarean; stockings if IPC is contraindicated. Continue until mobility is normal or discharge.', refs: [{ guidelineId: N, locator: '1.16.6' }] },
@@ -284,6 +274,16 @@ export const vteInPregnancy: Partial<Topic> = {
         { text: 'After treatment for VTE the woman may choose LMWH or warfarin postnatally. Do not start warfarin before day 5; check INR daily and continue heparin until INR is above 2.0 for 24 hours (RCOG). ACOG overlaps until INR is 2.0–3.0 on two consecutive days.', refs: [{ guidelineId: RB, locator: '10' }, { guidelineId: AT, locator: 'Warfarin' }] },
         { text: 'Heparins and warfarin do not accumulate in breast milk and do not anticoagulate the baby. DOACs: RCOG says not currently recommended in breastfeeding; ACOG says avoid in lactation.', refs: [{ guidelineId: A, locator: 'Level B' }, { guidelineId: R, locator: '8.8' }, { guidelineId: AT, locator: 'DOACs' }] },
         { text: 'Prescribe graduated compression stockings on the affected leg for post-thrombotic symptoms.', refs: [{ guidelineId: RB, locator: '11' }] },
+      ],
+    },
+    {
+      id: 'epidemiology',
+      title: 'Background: Burden',
+      icon: 'epidemiology',
+      body: [
+        { text: 'About 80% of thromboembolic events in pregnancy are venous. VTE accounts for 9.3% of maternal deaths in the US.', refs: [{ guidelineId: A, locator: 'Summary' }] },
+        { text: 'Emergency caesarean section carries roughly twice the VTE risk of elective caesarean.', refs: [{ guidelineId: R, locator: '7.4' }] },
+        { text: 'No FOGSI or ICOG guideline on VTE in pregnancy could be found for this review, so the scoring and doses here come from RCOG, NICE and ACOG. Treat this as a gap until an Indian document is located.', refs: [{ guidelineId: R }] },
       ],
     },
   ],

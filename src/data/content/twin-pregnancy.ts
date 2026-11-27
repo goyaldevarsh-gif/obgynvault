@@ -81,7 +81,7 @@ export const twinPregnancy: Partial<Topic> = {
     {
       id: 'preterm',
       title: 'Preterm Birth Prevention',
-      icon: 'risk',
+      icon: 'prevention',
       body: [
         { text: 'About 60% of twins are born spontaneously before 37 weeks. Do not use fetal fibronectin alone or home uterine activity monitoring to predict preterm birth.', refs: [{ guidelineId: N, locator: '1.9.1, 1.4.14–1.4.15' }] },
         { text: 'Do not routinely offer bed rest, cervical cerclage, Arabin pessary or oral tocolytics, alone or combined. Do not offer IM progesterone.', refs: [{ guidelineId: N, locator: '1.5.5–1.5.6' }, { guidelineId: F, locator: 'p.8' }, { guidelineId: A }] },

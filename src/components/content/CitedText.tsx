@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getGuideline, getSource } from '@/data';
-import type { Citation, CitedPoint } from '@/types/content';
+import { ArrowDown } from 'lucide-react';
+import type { Citation, CitedPoint, FlowChart } from '@/types/content';
 
 function citeLabel(c: Citation) {
   const g = getGuideline(c.guidelineId);
@@ -77,6 +78,46 @@ function PointTable({ table }: { table: NonNullable<CitedPoint['table']> }) {
   );
 }
 
+const TONE: Record<string, string> = {
+  start: 'bg-ink text-white ring-ink',
+  action: 'bg-surface text-navy ring-navy-100',
+  decision: 'bg-amber-50 text-navy ring-amber/40',
+  urgent: 'bg-red-50 text-navy ring-red-300',
+};
+
+/** Vertical stepwise algorithm: one card per step, arrows between, optional yes/no style branches. */
+export function FlowDiagram({ flow }: { flow: FlowChart }) {
+  return (
+    <figure className="rounded-2xl bg-canvas p-3 ring-1 ring-navy-100/80">
+      {flow.caption && <figcaption className="mb-2 px-1 text-[11px] font-bold uppercase tracking-wide text-teal-700">{flow.caption}</figcaption>}
+      <ol className="flex flex-col items-stretch">
+        {flow.steps.map((st, i) => {
+          const tone = st.tone ?? (i === 0 ? 'start' : 'action');
+          return (
+            <li key={i} className="flex flex-col items-stretch">
+              {i > 0 && <ArrowDown className="mx-auto my-1 size-4 text-navy-300" aria-hidden />}
+              <div className={`rounded-xl px-3.5 py-2.5 ring-1 ${TONE[tone]}`}>
+                <p className="prose-read-sm font-bold">{st.title}</p>
+                {st.text && <p className={`prose-read-sm mt-0.5 ${tone === 'start' ? 'text-white/85' : 'text-navy-700'}`}>{st.text}</p>}
+                {st.branches && (
+                  <ul className="mt-2 grid gap-1.5 sm:grid-cols-2">
+                    {st.branches.map((b) => (
+                      <li key={b.when} className="rounded-lg bg-surface/80 px-2.5 py-1.5 ring-1 ring-navy-100">
+                        <span className="block text-[11px] font-bold uppercase tracking-wide text-teal-700">{b.when}</span>
+                        <span className="prose-read-sm text-navy-700">{b.then}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </figure>
+  );
+}
+
 export function CitedParagraph({ point }: { point: CitedPoint }) {
   return (
     <div className="space-y-2">
@@ -89,7 +130,7 @@ export function CitedParagraph({ point }: { point: CitedPoint }) {
       {point.text && (
         <div className="relative pl-4 before:absolute before:left-0 before:top-[0.72em] before:size-1.5 before:rounded-full before:bg-teal/70">
           <p className="prose-read">{point.text}</p>
-          {!point.table && <CitationChips refs={point.refs} />}
+          {!point.table && !point.flow && <CitationChips refs={point.refs} />}
         </div>
       )}
       {point.table && (
@@ -98,7 +139,13 @@ export function CitedParagraph({ point }: { point: CitedPoint }) {
           <CitationChips refs={point.refs} />
         </>
       )}
-      {!point.text && !point.table && <CitationChips refs={point.refs} />}
+      {point.flow && (
+        <>
+          <FlowDiagram flow={point.flow} />
+          {!point.table && <CitationChips refs={point.refs} />}
+        </>
+      )}
+      {!point.text && !point.table && !point.flow && <CitationChips refs={point.refs} />}
     </div>
   );
 }

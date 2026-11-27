@@ -83,7 +83,7 @@ export const uterineFibroids: Partial<Topic> = {
     {
       id: 'expectant',
       title: 'When to Treat',
-      icon: 'monitoring',
+      icon: 'management',
       body: [
         { text: 'Expectant management suits women who are asymptomatic or do not want intervention. Counsel and review yearly.', refs: [{ guidelineId: A, locator: 'Level C' }, { guidelineId: F, locator: 'Expectant management' }] },
         { text: 'ICMR: asymptomatic fibroids under 5 cm need no treatment. A "large fibroid" means uterine size over 12 weeks. Explain all options, including observation; not every woman with fibroids needs a hysterectomy.', refs: [{ guidelineId: I }] },
@@ -134,7 +134,7 @@ export const uterineFibroids: Partial<Topic> = {
     {
       id: 'surgery',
       title: 'Surgical Treatment',
-      icon: 'management',
+      icon: 'surgery',
       body: [
         { heading: 'Myomectomy', text: 'Recommended for symptomatic fibroids when the woman wants to keep her uterus or have children, after counselling about recurrence (ACOG Level B). Use a minimally invasive approach where feasible. Laparoscopic myomectomy causes less fall in haemoglobin and a shorter stay than open myomectomy. FOGSI suggests waiting 3 months after myomectomy before pregnancy.', refs: [{ guidelineId: A, locator: 'Level B' }, { guidelineId: F, locator: 'Myomectomy' }] },
         { heading: 'Hysteroscopic myomectomy', text: 'First line for symptomatic intracavitary fibroids. Experienced surgeons can remove types 0, 1 and 2 up to 4–5 cm; single-step success is about 88%.', refs: [{ guidelineId: F, locator: 'Hysteroscopic myomectomy' }, { guidelineId: N, locator: '1.5.7' }] },
@@ -146,7 +146,7 @@ export const uterineFibroids: Partial<Topic> = {
     {
       id: 'uterus-sparing',
       title: 'UAE, Ablation & Fertility',
-      icon: 'fetus',
+      icon: 'surgery',
       body: [
         { text: 'Uterine artery embolisation controls symptoms and reduces size, with a shorter stay and quicker recovery, but more complications and re-interventions than surgery, and it may reduce fertility. Explain the effect on fertility before UAE or surgery.', refs: [{ guidelineId: F, locator: 'UAE' }, { guidelineId: N, locator: '1.4.4–1.4.5' }] },
         { text: 'Laparoscopic radiofrequency ablation can be considered for women who want to keep their uterus, after counselling that data on pregnancy outcomes are limited (ACOG Level B).', refs: [{ guidelineId: A, locator: 'Level B' }] },

@@ -48,7 +48,7 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
     {
       id: 'recognition',
       title: 'Recognising Sepsis',
-      icon: 'risk',
+      icon: 'diagnosis',
       body: [
         { text: 'Risk factors include prolonged rupture of membranes, continued vaginal bleeding or offensive discharge, and recent birth, termination or miscarriage.', refs: [{ guidelineId: N255, locator: '1.2.1' }] },
         { text: 'Assess temperature, heart rate, respiratory rate, blood pressure, consciousness and oxygen saturation; consider an early warning score (see the MEWS tool in Labour room).', refs: [{ guidelineId: N255, locator: '1.1.8, 1.3.1' }] },
@@ -120,7 +120,7 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
     {
       id: 'endometritis',
       title: 'Postpartum Endometritis',
-      icon: 'followup',
+      icon: 'drug',
       body: [
         { text: 'RCOG 2012 (Appendix 3): gentamicin plus cefotaxime; with penicillin allergy, options include gentamicin, clindamycin, ciprofloxacin and metronidazole; follow local antimicrobial guidance.', refs: [{ guidelineId: R, locator: 'Appendix 3' }] },
         { text: 'Consult a paediatrician if sepsis occurs in the puerperium (baby may also be at risk).', refs: [{ guidelineId: R, locator: '15' }] },
