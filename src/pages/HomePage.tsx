@@ -89,7 +89,7 @@ export default function HomePage() {
           </span>
           <span className="flex-1">
             <span className="block text-[15px] font-bold text-alert">Emergency protocols</span>
-            <span className="block text-xs font-medium text-navy-500">PPH · Eclampsia · Preterm · Shoulder dystocia · Ectopic</span>
+            <span className="block text-xs font-medium text-navy-500">PPH · Eclampsia · Sepsis · Shoulder dystocia · Rupture · Ectopic</span>
           </span>
           <ChevronRight className="size-5 text-alert/60" aria-hidden />
         </Link>

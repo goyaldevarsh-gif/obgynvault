@@ -14,6 +14,8 @@ const EMERGENCIES: { title: string; slug: string; keyPointIdx: number[]; section
   { title: 'Eclampsia & severe hypertension', slug: 'preeclampsia', keyPointIdx: [3, 4], sections: ['antihypertensives', 'magnesium-eclampsia', 'hellp'] },
   { title: 'Preterm labour (before 34 weeks)', slug: 'preterm-labour', keyPointIdx: [2, 3, 4], sections: ['steroids', 'magnesium', 'tocolysis', 'pprom'] },
   { title: 'Shoulder dystocia', slug: 'shoulder-dystocia', keyPointIdx: [0, 1, 2, 3], sections: ['management', 'avoid'] },
+  { title: 'Maternal sepsis & fever in labour', slug: 'intrapartum-fever-sepsis', keyPointIdx: [4, 5, 6], sections: ['recognition', 'sepsis-management', 'chorioamnionitis'] },
+  { title: 'Uterine rupture (VBAC)', slug: 'vbac', keyPointIdx: [5], sections: ['rupture', 'labour'] },
   { title: 'Ruptured / suspected ectopic', slug: 'ectopic-pregnancy', keyPointIdx: [0, 5], sections: ['presentation', 'diagnosis', 'surgery'] },
   { title: 'Acute heavy uterine bleeding', slug: 'abnormal-uterine-bleeding', keyPointIdx: [4], sections: ['acute', 'adolescents'] },
 ];
