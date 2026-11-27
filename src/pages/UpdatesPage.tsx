@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpenCheck, ChevronRight, RefreshCcw, ShieldCheck, Sparkles } from 'lucide-react';
+import { BookOpenCheck, ChevronRight, RefreshCcw, ShieldCheck, FilePlus2 } from 'lucide-react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { FEED, getTopic, WATCH } from '@/data';
 import { formatDate } from '@/lib/format';
@@ -8,7 +8,7 @@ import { markFeedSeen } from '@/lib/feed';
 
 const KIND = {
   guideline: { icon: BookOpenCheck, label: 'Guideline change', tint: 'bg-amber-50 text-amber-700' },
-  topic: { icon: Sparkles, label: 'New in the library', tint: 'bg-teal-50 text-teal-700' },
+  topic: { icon: FilePlus2, label: 'New in the library', tint: 'bg-teal-50 text-teal-700' },
   app: { icon: RefreshCcw, label: 'App update', tint: 'bg-navy-100/60 text-navy-600' },
 } as const;
 

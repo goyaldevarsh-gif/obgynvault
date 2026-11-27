@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Activity, AlertTriangle, Gauge, HeartPulse, Timer } from 'lucide-react';
+import { Activity, AlertTriangle, HeartPulse, Timer } from 'lucide-react';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { CitationChips } from '@/components/content';
 import { SampleNotice } from '@/components/ui';
@@ -375,7 +375,7 @@ function MewsTool() {
         <p className="rounded-xl bg-bg px-3 py-2.5 text-sm text-navy-500">Enter all 6 vital signs to see the total.</p>
       )}
       <p className="flex gap-2 rounded-xl bg-amber-50 p-3 text-xs font-medium text-amber-800">
-        <Gauge className="size-4 shrink-0" aria-hidden />
+        <AlertTriangle className="size-4 shrink-0" aria-hidden />
         Temperature bands differ between the BMJ Medicine paper (used here) and the printed chart, and the exact responder at each level should be checked against the chart your unit uses. The 2007 CEMACH MEOWS
         and any Indian early warning tool could not be verified, so they are not included.
       </p>
