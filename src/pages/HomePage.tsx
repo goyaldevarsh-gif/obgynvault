@@ -1,4 +1,4 @@
-import { ArrowRight, Newspaper, ChevronRight, Siren } from 'lucide-react';
+import { Activity, ArrowRight, Newspaper, ChevronRight, Siren } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '@/components/brand/Logo';
 import { ModuleTile, TopicCard } from '@/components/content';
@@ -87,6 +87,16 @@ export default function HomePage() {
             <span className="block text-xs font-medium text-navy-500">PPH · Eclampsia · Preterm · Shoulder dystocia · Ectopic</span>
           </span>
           <ChevronRight className="size-5 text-alert/60" aria-hidden />
+        </Link>
+        <Link to="/tools/labour-room" className="mt-2.5 flex items-center gap-3 rounded-2xl bg-teal-50 p-4 ring-1 ring-teal/20 transition hover:ring-teal/40">
+          <span className="grid size-11 place-items-center rounded-xl bg-white text-teal-700">
+            <Activity className="size-6" aria-hidden />
+          </span>
+          <span className="flex-1">
+            <span className="block text-[15px] font-bold text-teal-700">Labour room</span>
+            <span className="block text-xs font-medium text-navy-500">CTG · Labour progress · MEWS</span>
+          </span>
+          <ChevronRight className="size-5 text-teal/60" aria-hidden />
         </Link>
       </section>
 
