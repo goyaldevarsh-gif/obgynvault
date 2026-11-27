@@ -27,6 +27,8 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-prom-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: PROM & PPROM', body: 'Step-by-step PPROM management (antibiotics, steroids, MgSO4, timing) and term PROM, with FOGSI, NICE, RCOG, ACOG and WHO compared.', to: '/topics/prom-pprom' },
+  { id: 'app-drug-vault-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Drug Vault is live', body: 'What the guidelines say about 34 drugs, each line cited, gathered from the topic reviews.', to: '/tools/drug-vault' },
   { id: 'topic-iol-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Induction of Labour', body: 'Timing, Bishop score, misoprostol, Foley, oxytocin and previous caesarean, with FOGSI, MoHFW, NICE, WHO and ACOG side by side.', to: '/topics/induction-of-labour' },
   { id: 'app-labour-room-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Labour room toolkit', body: 'CTG classifier (NICE NG229), labour progress checks (WHO LCG, NICE) and the NHS maternity early warning score.', to: '/tools/labour-room' },
   { id: '2026-11-27-share', date: '2026-11-27', kind: 'app', title: 'Share any topic as a summary card', body: 'Tap Share on a topic to send a clean summary image on WhatsApp.', to: '/topics/postpartum-haemorrhage' },

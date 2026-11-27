@@ -19,6 +19,7 @@ import { cervicalScreening } from './cervical-screening';
 import { infertilityEvaluation } from './infertility-evaluation';
 import { menopause } from './menopause';
 import { inductionOfLabour } from './induction-of-labour';
+import { promPprom } from './prom-pprom';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -45,4 +46,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'infertility-evaluation': infertilityEvaluation,
   menopause,
   'induction-of-labour': inductionOfLabour,
+  'prom-pprom': promPprom,
 };
