@@ -1,5 +1,6 @@
 import { Bookmark, History, NotebookPen, PlayCircle, Trash2 } from 'lucide-react';
 import { showGettingStarted } from '@/components/onboarding/GettingStarted';
+import { saveName, useName } from '@/lib/profile';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { AccountCard } from '@/components/account/AccountCard';
@@ -51,6 +52,7 @@ export default function MyVaultPage() {
 
         {tab === 'display' && (
           <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-navy-100/60">
+            <NameField />
             <ReadingSettingsPanel />
             <button type="button" onClick={showGettingStarted} className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-navy-100 py-3 text-sm font-semibold text-navy-600">
               <PlayCircle className="size-4 text-teal" /> Show the welcome tour again
@@ -130,5 +132,21 @@ export default function MyVaultPage() {
         <p className="text-center text-[11px] text-navy-400">Saved on this device. Cloud sync arrives with accounts in Phase 2.</p>
       </div>
     </div>
+  );
+}
+
+function NameField() {
+  const name = useName();
+  return (
+    <label className="mb-5 block">
+      <span className="mb-1.5 block text-sm font-bold text-navy">Your name</span>
+      <input
+        defaultValue={name}
+        onBlur={(e) => saveName(e.target.value)}
+        placeholder="Used for your greeting on Home"
+        autoComplete="name"
+        className="w-full rounded-xl bg-canvas px-3.5 py-3 text-[15px] font-medium text-navy ring-1 ring-navy-100 outline-none placeholder:text-navy-300 focus:ring-2 focus:ring-teal"
+      />
+    </label>
   );
 }

@@ -4,6 +4,7 @@ import { ArrowRight, BookmarkCheck, CheckCircle2, ChevronLeft, FileCheck2, Quote
 import { LogoMark } from '@/components/brand/Logo';
 import { getSource, PRIORITY_SOURCES, TOPICS } from '@/data';
 import { cx } from '@/lib/format';
+import { loadName, saveName } from '@/lib/profile';
 import welcomeArt from '@/assets/onboarding/welcome.webp';
 import sourcesArt from '@/assets/onboarding/sources.webp';
 import searchArt from '@/assets/onboarding/search.webp';
@@ -119,6 +120,7 @@ export function GettingStarted() {
   const [open, setOpen] = useState(() => !readDone());
   const [i, setI] = useState(0);
   const [agreed, setAgreed] = useState(false);
+  const [name, setName] = useState(loadName);
   const startX = useRef<number | null>(null);
   const last = i === SLIDES.length - 1;
 
@@ -144,6 +146,7 @@ export function GettingStarted() {
   if (!open) return null;
 
   const finish = () => {
+    saveName(name);
     try {
       localStorage.setItem(KEY, '1');
     } catch {
@@ -192,6 +195,19 @@ export function GettingStarted() {
             <h2 className="font-display text-[26px] font-extrabold leading-tight tracking-tight text-navy">{slide.title}</h2>
             <p className="mx-auto mt-3 max-w-sm text-[15px] leading-relaxed text-navy-500">{slide.body}</p>
           </div>
+          {i === 0 && (
+            <label className="mx-auto block w-full max-w-sm">
+              <span className="mb-1.5 block text-center text-xs font-semibold uppercase tracking-wide text-navy-400">What should we call you?</span>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onPointerDown={(e) => e.stopPropagation()}
+                placeholder="Your name (optional)"
+                autoComplete="name"
+                className="w-full rounded-2xl bg-surface px-4 py-3.5 text-center text-[15px] font-semibold text-navy shadow-card ring-1 ring-navy-100/60 outline-none placeholder:font-medium placeholder:text-navy-300 focus:ring-2 focus:ring-teal"
+              />
+            </label>
+          )}
           {last && (
             <label className="mx-auto flex max-w-sm cursor-pointer items-start gap-3 rounded-2xl bg-surface p-4 text-left text-sm font-medium text-navy-700 shadow-card ring-1 ring-navy-100/60">
               <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} className="mt-0.5 size-5 shrink-0 accent-teal" />

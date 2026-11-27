@@ -6,6 +6,7 @@ import { SampleNotice, SearchField, SectionHeader } from '@/components/ui';
 import { getModule } from '@/config/modules';
 import { getGuideline, getTopic, PRIORITY_SOURCES, getSource, TOPICS, UPDATES } from '@/data';
 import { greeting } from '@/lib/format';
+import { salutation, useName } from '@/lib/profile';
 import { useVault } from '@/store/VaultContext';
 import { GuidelineCard } from '@/components/content';
 
@@ -14,6 +15,7 @@ const HOME_TILES = ['obstetrics', 'gynaecology', 'guidelines', 'compare', 'calcu
 export default function HomePage() {
   const navigate = useNavigate();
   const { history } = useVault();
+  const name = useName();
   const recent = history.slice(0, 3);
   const popular = ['preeclampsia', 'postpartum-haemorrhage', 'gestational-diabetes', 'ectopic-pregnancy'].map((s) => getTopic(s)!);
 
@@ -30,7 +32,7 @@ export default function HomePage() {
 
       {/* Greeting + search */}
       <section>
-        <h1 className="text-2xl font-extrabold tracking-tight text-navy md:text-3xl">{greeting()}, Doctor</h1>
+        <h1 className="text-2xl font-extrabold tracking-tight text-navy md:text-3xl">{greeting()}, {salutation(name)}</h1>
         <p className="mt-0.5 text-sm font-medium text-navy-500">Your clinical knowledge partner</p>
         <button type="button" onClick={() => navigate('/search', { state: { focus: true } })} className="mt-4 block w-full text-left" aria-label="Open clinical search">
           <SearchField value="" onChange={() => {}} placeholder="Search guidelines, topics, drugs…" readOnly tabIndex={-1} className="pointer-events-none" />
