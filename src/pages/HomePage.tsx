@@ -1,4 +1,4 @@
-import { ArrowRight, Bell, ChevronRight, Siren } from 'lucide-react';
+import { ArrowRight, Newspaper, ChevronRight, Siren } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from '@/components/brand/Logo';
 import { ModuleTile, TopicCard } from '@/components/content';
@@ -7,6 +7,7 @@ import { getModule } from '@/config/modules';
 import { getGuideline, getTopic, PRIORITY_SOURCES, getSource, TOPICS, UPDATES } from '@/data';
 import { greeting } from '@/lib/format';
 import { salutation, useName } from '@/lib/profile';
+import { useUnreadCount } from '@/lib/feed';
 import { useVault } from '@/store/VaultContext';
 import { GuidelineCard } from '@/components/content';
 
@@ -16,6 +17,7 @@ export default function HomePage() {
   const navigate = useNavigate();
   const { history } = useVault();
   const name = useName();
+  const unread = useUnreadCount();
   const recent = history.slice(0, 3);
   const popular = ['preeclampsia', 'postpartum-haemorrhage', 'gestational-diabetes', 'ectopic-pregnancy'].map((s) => getTopic(s)!);
 
@@ -24,10 +26,14 @@ export default function HomePage() {
       {/* Top bar */}
       <div className="flex items-center justify-between md:hidden">
         <Logo />
-        <button type="button" aria-label="Notifications" className="relative grid size-10 place-items-center rounded-full bg-surface shadow-card ring-1 ring-navy-100/60">
-          <Bell className="size-5 text-navy" />
-          <span className="absolute right-2.5 top-2.5 size-2 rounded-full bg-amber ring-2 ring-surface" />
-        </button>
+        <Link to="/updates" aria-label={unread ? `What's new, ${unread} unread` : "What's new"} className="relative grid size-10 place-items-center rounded-full bg-surface shadow-card ring-1 ring-navy-100/60">
+          <Newspaper className="size-5 text-navy" />
+          {unread > 0 && (
+            <span className="absolute -right-0.5 -top-0.5 grid min-w-[18px] place-items-center rounded-full bg-amber px-1 text-[10px] font-bold leading-[18px] text-white ring-2 ring-canvas">
+              {unread}
+            </span>
+          )}
+        </Link>
       </div>
 
       {/* Greeting + search */}

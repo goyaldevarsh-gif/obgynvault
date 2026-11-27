@@ -25,6 +25,7 @@ const ComparePage = lazy(() => import('@/pages/ComparePage'));
 const AdminPage = lazy(() => import('@/pages/AdminPage'));
 const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
 const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
+const UpdatesPage = lazy(() => import('@/pages/UpdatesPage'));
 
 const s = (el: React.ReactNode) => <Suspense fallback={<PageSkeleton />}>{el}</Suspense>;
 
@@ -51,6 +52,7 @@ const router = createRouter(
         { path: 'tools/admin', element: s(<AdminPage />) },
         { path: 'tools/calculators', element: s(<CalculatorsPage />) },
         { path: 'tools/emergency', element: s(<EmergencyPage />) },
+        { path: 'updates', element: s(<UpdatesPage />) },
         { path: 'tools/:module', element: s(<ComingSoonPage />) },
         { path: '*', element: <NotFoundPage /> },
       ],
