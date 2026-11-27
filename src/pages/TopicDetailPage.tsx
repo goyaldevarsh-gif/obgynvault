@@ -159,13 +159,13 @@ export default function TopicDetailPage() {
               </p>
             )}
 
-            <Link to="/tools/compare" className="flex items-center gap-3 rounded-2xl bg-amber-50 p-4 ring-1 ring-amber/30">
+            {topic.positions?.length ? (<Link to={`/tools/compare?topic=${topic.slug}`} className="flex items-center gap-3 rounded-2xl bg-amber-50 p-4 ring-1 ring-amber/30">
               <GitCompareArrows className="size-6 shrink-0 text-amber-700" aria-hidden />
               <span className="flex-1 text-sm">
                 <strong className="block font-bold text-navy">Compare FOGSI · ACOG · RCOG · NICE</strong>
-                <span className="text-navy-500">Side-by-side comparison arrives in Phase 3.</span>
+                <span className="text-navy-500">See every source side by side for this topic.</span>
               </span>
-            </Link>
+            </Link>) : null}
             <p className="text-xs text-navy-400">Last updated {formatDate(topic.updatedAt)}{topic.status === 'sample' ? ' (sample date)' : ''}</p>
           </>
         )}

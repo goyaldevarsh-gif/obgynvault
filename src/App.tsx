@@ -16,6 +16,7 @@ const TopicDetailPage = lazy(() => import('@/pages/TopicDetailPage'));
 const MyVaultPage = lazy(() => import('@/pages/MyVaultPage'));
 const ToolsPage = lazy(() => import('@/pages/ToolsPage'));
 const ComingSoonPage = lazy(() => import('@/pages/ComingSoonPage'));
+const ComparePage = lazy(() => import('@/pages/ComparePage'));
 
 const Loading = () => <div className="grid min-h-[50vh] place-items-center"><div className="size-8 animate-spin rounded-full border-4 border-teal-100 border-t-teal" /></div>;
 const s = (el: React.ReactNode) => <Suspense fallback={<Loading />}>{el}</Suspense>;
@@ -39,6 +40,7 @@ const router = createRouter(
         { path: 'topics/:slug', element: s(<TopicDetailPage />) },
         { path: 'vault', element: s(<MyVaultPage />) },
         { path: 'tools', element: s(<ToolsPage />) },
+        { path: 'tools/compare', element: s(<ComparePage />) },
         { path: 'tools/:module', element: s(<ComingSoonPage />) },
         { path: '*', element: <NotFoundPage /> },
       ],

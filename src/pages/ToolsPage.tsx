@@ -9,7 +9,7 @@ export default function ToolsPage() {
     <div>
       <PageHeader title="Clinical Tools" back={false} />
       <div className="space-y-2.5 px-4 md:px-6">
-        <p className="pb-1 text-sm text-navy-500">These modules are planned for later phases. Each one opens a preview of what it will do.</p>
+        <p className="pb-1 text-sm text-navy-500">Live tools open directly. Tools marked "Soon" show a preview of what they will do.</p>
         {TOOL_MODULES.map((m) => {
           const Icon = m.icon;
           return (
@@ -21,7 +21,11 @@ export default function ToolsPage() {
                 <span className="block text-[15px] font-bold text-navy">{m.label}</span>
                 <span className="block text-xs text-navy-500">{m.description}</span>
               </span>
-              <span className="rounded-full bg-navy-100 px-2 py-0.5 text-[10px] font-bold uppercase text-navy-500">Phase {m.phase}</span>
+              {m.phase > 1 ? (
+                <span className="rounded-full bg-navy-100 px-2 py-0.5 text-[10px] font-bold uppercase text-navy-500">Soon</span>
+              ) : (
+                <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-bold uppercase text-teal-700">Live</span>
+              )}
               <ChevronRight className="size-5 text-navy-300" aria-hidden />
             </Link>
           );
