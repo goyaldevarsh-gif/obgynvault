@@ -9,6 +9,7 @@ import { AuthProvider } from '@/store/AuthContext';
 import { ReviewProvider } from '@/store/ReviewContext';
 import { PageSkeleton } from '@/components/ui/Skeleton';
 import { GettingStarted } from '@/components/onboarding/GettingStarted';
+import { UpdateBanner } from '@/components/layout/UpdateBanner';
 
 // Route-level code splitting keeps the first load small on mobile networks.
 const SearchPage = lazy(() => import('@/pages/SearchPage'));
@@ -66,6 +67,7 @@ export default function App() {
           <ToastProvider>
             <RouterProvider router={router} />
             <GettingStarted />
+            <UpdateBanner />
           </ToastProvider>
         </VaultProvider>
       </ReviewProvider>

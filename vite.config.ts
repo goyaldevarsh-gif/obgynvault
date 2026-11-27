@@ -24,7 +24,9 @@ export default defineConfig({
     singleFile && viteSingleFile(),
     VitePWA({
       disable: singleFile,
-      registerType: 'autoUpdate',
+      // Registered from src/lib/pwaUpdate.ts, which checks for and applies new versions automatically.
+      registerType: 'prompt',
+      injectRegister: false,
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'ObGynVault',
