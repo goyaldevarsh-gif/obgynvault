@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'app-checklists-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Labour room: IOL and VBAC checklists', body: 'Tick-as-you-go bedside checklists, each line cited. Plus flowcharts in Ectopic, Hyperemesis, PROM and Endometrial Hyperplasia.', to: '/tools/labour-room' },
   { id: 'topic-eh-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Endometrial Hyperplasia', body: 'LNG-IUS first line, surveillance biopsies, when to operate and fertility-sparing care (RCOG GTG 67), with a flowchart.', to: '/topics/endometrial-hyperplasia' },
   { id: 'topic-hg-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Hyperemesis Gravidarum', body: 'Stepwise antiemetics, admission criteria, fluids, thiamine and steroids from FOGSI and RCOG 2024.', to: '/topics/hyperemesis-gravidarum' },
   { id: 'topic-ppfp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Postpartum Contraception', body: 'PPIUCD windows, Antara, Chhaya, LAM and sterilisation timing from MoHFW and FOGSI, with WHO MEC 2025 changes.', to: '/topics/postpartum-contraception' },

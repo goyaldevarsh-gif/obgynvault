@@ -1,5 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { Activity, AlertTriangle, ClipboardList, Copy, HeartPulse, Plus, Timer, Trash2 } from 'lucide-react';
+import { Activity, AlertTriangle, ClipboardList, Copy, HeartPulse, ListChecks, Plus, RotateCcw, Timer, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CHECKLISTS } from '@/data';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { CitationChips } from '@/components/content';
 import { SampleNotice } from '@/components/ui';
@@ -10,11 +12,12 @@ import {
 } from '@/lib/labour';
 
 /** Labour room toolkit: CTG classifier, labour progress checks and maternal early warning score. Draft, cited. */
-type Tab = 'ctg' | 'progress' | 'mews' | 'log';
+type Tab = 'ctg' | 'progress' | 'mews' | 'checks' | 'log';
 const TABS: { key: Tab; label: string; icon: typeof Activity }[] = [
   { key: 'ctg', label: 'CTG', icon: Activity },
   { key: 'progress', label: 'Progress', icon: Timer },
   { key: 'mews', label: 'MEWS', icon: HeartPulse },
+  { key: 'checks', label: 'Checklist', icon: ListChecks },
   { key: 'log', label: 'Log', icon: ClipboardList },
 ];
 
@@ -25,7 +28,7 @@ export default function LabourRoomPage() {
       <PageHeader title="Labour room" />
       <div className="space-y-4 px-4 md:px-6">
         <SampleNotice compact status="draft" />
-        <div className="grid grid-cols-4 gap-1 rounded-2xl bg-surface p-1 ring-1 ring-navy-100/60">
+        <div className="grid grid-cols-5 gap-1 rounded-2xl bg-surface p-1 ring-1 ring-navy-100/60">
           {TABS.map((t) => (
             <button
               key={t.key}
@@ -40,6 +43,7 @@ export default function LabourRoomPage() {
         {tab === 'ctg' && <CtgTool />}
         {tab === 'progress' && <ProgressTool />}
         {tab === 'mews' && <MewsTool />}
+        {tab === 'checks' && <ChecklistTool />}
         {tab === 'log' && <LogTool />}
         <p className="pb-2 text-xs leading-relaxed text-navy-400">
           Decision aids for trained staff. They support, and never replace, clinical judgement, the whole clinical picture and your unit protocol.
@@ -508,5 +512,51 @@ function LogTool() {
         </Panel>
       )}
     </>
+  );
+}
+
+/** IOL and VBAC bedside checklists: tick as you go; ticks are not saved (start fresh each case). */
+function ChecklistTool() {
+  const [which, setWhich] = useState(CHECKLISTS[0].id);
+  const [done, setDone] = useState<Set<string>>(new Set());
+  const list = CHECKLISTS.find((c) => c.id === which)!;
+  const total = list.groups.reduce((n, g) => n + g.items.length, 0);
+  const ticked = list.groups.reduce((n, g, gi) => n + g.items.filter((_, i) => done.has(`${which}-${gi}-${i}`)).length, 0);
+  const toggle = (k: string) => setDone((prev) => { const next = new Set(prev); if (next.has(k)) next.delete(k); else next.add(k); return next; });
+  return (
+    <div className="space-y-3">
+      <div className="flex gap-2">
+        {CHECKLISTS.map((c) => (
+          <button key={c.id} type="button" onClick={() => setWhich(c.id)} className={cx('flex-1 rounded-xl px-3 py-2 text-[13px] font-bold ring-1', which === c.id ? 'bg-ink text-white ring-ink' : 'bg-surface text-navy-600 ring-navy-100')}>
+            {c.id === 'iol' ? 'Induction' : 'VBAC'}
+          </button>
+        ))}
+      </div>
+      <div className="flex items-center justify-between px-1">
+        <p className="text-sm font-bold text-navy">{list.title} <span className="font-semibold text-navy-400">· {ticked}/{total}</span></p>
+        <button type="button" onClick={() => setDone(new Set())} className="flex items-center gap-1 text-xs font-bold text-teal-700"><RotateCcw className="size-3.5" aria-hidden /> Reset</button>
+      </div>
+      {list.groups.map((g, gi) => (
+        <Panel key={g.title} title={g.title}>
+          <ul className="space-y-2">
+            {g.items.map((it, i) => {
+              const k = `${which}-${gi}-${i}`;
+              return (
+                <li key={k}>
+                  <label className={cx('flex cursor-pointer gap-3 rounded-xl p-2.5 ring-1 transition', done.has(k) ? 'bg-teal-50 ring-teal/30' : 'ring-navy-100')}>
+                    <input type="checkbox" checked={done.has(k)} onChange={() => toggle(k)} className="mt-1 size-4 shrink-0 accent-teal" />
+                    <span className="min-w-0">
+                      <span className={cx('prose-read-sm block', done.has(k) ? 'text-navy-500' : 'text-navy')}>{it.text}</span>
+                      <CitationChips refs={it.refs} />
+                    </span>
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        </Panel>
+      ))}
+      <Link to={`/topics/${list.topicSlug}`} className="block text-center text-sm font-bold text-teal-700">Open full topic</Link>
+    </div>
   );
 }
