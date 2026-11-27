@@ -24,6 +24,7 @@ import { vbac } from './vbac';
 import { twinPregnancy } from './twin-pregnancy';
 import { intrapartumFeverSepsis } from './intrapartum-fever-sepsis';
 import { postpartumContraception } from './postpartum-contraception';
+import { hyperemesisGravidarum } from './hyperemesis-gravidarum';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -55,4 +56,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'twin-pregnancy': twinPregnancy,
   'intrapartum-fever-sepsis': intrapartumFeverSepsis,
   'postpartum-contraception': postpartumContraception,
+  'hyperemesis-gravidarum': hyperemesisGravidarum,
 };
