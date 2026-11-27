@@ -28,6 +28,7 @@ import { hyperemesisGravidarum } from './hyperemesis-gravidarum';
 import { endometrialHyperplasia } from './endometrial-hyperplasia';
 import { pidVaginalDischarge } from './pid-vaginal-discharge';
 import { ovarianCystAdnexalMass } from './ovarian-cyst-adnexal-mass';
+import { miscarriageRpl } from './miscarriage-rpl';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -63,4 +64,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'endometrial-hyperplasia': endometrialHyperplasia,
   'pid-vaginal-discharge': pidVaginalDischarge,
   'ovarian-cyst-adnexal-mass': ovarianCystAdnexalMass,
+  'miscarriage-rpl': miscarriageRpl,
 };

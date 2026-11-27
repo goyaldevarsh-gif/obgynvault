@@ -22,6 +22,7 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'IMS', shortName: 'IMS (India)', fullName: 'Indian Menopause Society', region: 'India', priority: 18, color: '#BE185D' },
   { id: 'NAMS', shortName: 'Menopause Society', fullName: 'The Menopause Society (formerly NAMS)', region: 'USA', priority: 19, color: '#9D174D' },
   { id: 'CDC', shortName: 'CDC', fullName: 'US Centers for Disease Control and Prevention', region: 'USA', priority: 21, color: '#0E7490' },
+  { id: 'RANZCOG', shortName: 'RANZCOG', fullName: 'Royal Australian and New Zealand College of Obstetricians and Gynaecologists', region: 'Australia/NZ', priority: 22, color: '#1D4ED8' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 

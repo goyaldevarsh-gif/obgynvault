@@ -27,6 +27,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-misc-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Miscarriage & Recurrent Pregnancy Loss', body: 'Expectant, medical and MVA pathways with doses (NICE, MoHFW CAC, WHO, ACOG), progesterone positions, RPL work-up and APS treatment (ESHRE, RANZCOG).', to: '/topics/miscarriage-rpl' },
   { id: 'app-rmi-2026-11-28', date: '2026-11-28', kind: 'app', title: 'Calculator: RMI for ovarian masses', body: 'RMI I with both cut-offs shown (RCOG/NHS 200, NICE 250). Bishop score now shows the NICE threshold.', to: '/tools/calculators' },
   { id: 'topic-ovary-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Ovarian Cyst & Adnexal Mass', body: 'Pre- and postmenopausal flowcharts, RMI I scoring table, IOTA, follow-up by cyst size and surgery (RCOG GTG 62, NICE CG122).', to: '/topics/ovarian-cyst-adnexal-mass' },
   { id: 'topic-pid-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: PID & Vaginal Discharge', body: 'NACO colour-coded kits, CDC 2021 PID regimens and admission criteria, BV, candida and trichomonas, with a PID flowchart.', to: '/topics/pid-vaginal-discharge' },
