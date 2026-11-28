@@ -47,6 +47,24 @@ export const twinPregnancy: Partial<Topic> = {
       title: 'Antenatal Care Plan',
       icon: 'management',
       body: [
+        {
+          text: 'Twin pregnancy care by chorionicity (NICE NG137, FOGSI GCPR, ISUOG 2025).',
+          refs: [{ guidelineId: N }, { guidelineId: F }, { guidelineId: I }],
+          flow: {
+            caption: 'Twin pregnancy',
+            steps: [
+              { title: 'Chorionicity before 13+6 weeks', text: 'Placental masses, membrane, lambda or T sign. Unsure: second opinion, else treat as monochorionic.', tone: 'start' },
+              { title: 'Type', tone: 'decision', branches: [
+                { when: 'DCDA', then: 'Scans at 20, 24, 28, 32, 36 weeks; birth at 37 weeks' },
+                { when: 'MCDA', then: 'Scan every 2 weeks from 16 weeks (fluid in each sac for TTTS); birth at 36 weeks' },
+                { when: 'MCMA', then: 'Tertiary centre; caesarean at 32+0 to 33+6 weeks' },
+              ] },
+              { title: 'For all', text: 'Aspirin if risk factors; CBC at 20–24 and 28 weeks; cervical length at 16–20 weeks, vaginal progesterone 200 mg if 25 mm or less (NICE). No cerclage, pessary or bed rest routinely.' },
+              { title: 'Refer to fetal medicine', tone: 'urgent', text: 'MC: fluid under 2 cm in one sac and over 8 cm (over 10 cm from 20 weeks) in the other; growth discordance 25% or more.' },
+              { title: 'Mode', text: 'Twin 1 cephalic, over 32 weeks, no big discordance: vaginal birth reasonable, continuous CTG of both; otherwise caesarean.' },
+            ],
+          },
+        },
         { heading: 'Team and visits', text: 'Care by a multidisciplinary specialist team. NICE: DCDA at least 8 appointments (2 with the specialist obstetrician); MCDA at least 11; MCMA individualised by a tertiary consultant.', refs: [{ guidelineId: N, locator: '1.3.6–1.3.11' }] },
         {
           text: 'NICE scan schedule:',

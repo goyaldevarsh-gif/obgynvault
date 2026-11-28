@@ -146,6 +146,24 @@ export const placentaAccretaSpectrum: Partial<Topic> = {
       icon: 'delivery',
       body: [
         {
+          text: 'Suspected PAS: from scan to surgery (FOGSI GCPR, RCOG GTG 27a, FIGO, ACOG/SMFM OCC 7).',
+          refs: [{ guidelineId: F }, { guidelineId: R }, { guidelineId: FS }, { guidelineId: A }],
+          flow: {
+            caption: 'Placenta accreta spectrum',
+            steps: [
+              { title: 'At-risk woman', text: 'Previous caesarean + low-lying placenta: expert TVS with colour Doppler; MRI only if posterior or unclear.', tone: 'start' },
+              { title: 'PAS suspected', tone: 'urgent', text: 'Refer to a specialist centre with a multidisciplinary team and massive-transfusion capacity.' },
+              { title: 'Before birth', text: 'Hb above 11 g/dL (iron); come in at once with any bleeding; steroids if birth before 37 weeks; plan blood with the lab.' },
+              { title: 'Planned caesarean', text: '35+0–36+6 weeks (RCOG, FOGSI) or 34+0–35+6 (ACOG). Earlier for heavy bleeding or instability.' },
+              { title: 'At surgery', tone: 'decision', branches: [
+                { when: 'Standard', then: 'Midline incision, fundal hysterotomy away from placenta, baby out, placenta left in situ, caesarean hysterectomy' },
+                { when: 'Found unexpectedly', then: 'Do not pull the placenta; wait for team and blood, or close and transfer' },
+                { when: 'Wants fertility (expert centre)', then: 'Conservative: placenta in situ, close follow-up' },
+              ] },
+            ],
+          },
+        },
+        {
           text: 'Planned delivery gestation:',
           refs: [{ guidelineId: R, locator: '5, 7.4' }, { guidelineId: F }, { guidelineId: A }],
           table: {
