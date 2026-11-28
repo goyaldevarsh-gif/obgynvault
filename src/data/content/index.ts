@@ -32,6 +32,7 @@ import { miscarriageRpl } from './miscarriage-rpl';
 import { mtpIndia } from './mtp-india';
 import { pelvicOrganProlapse } from './pelvic-organ-prolapse';
 import { antepartumHaemorrhage } from './antepartum-haemorrhage';
+import { cholestasisOfPregnancy } from './cholestasis-of-pregnancy';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -71,4 +72,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'mtp-india': mtpIndia,
   'pelvic-organ-prolapse': pelvicOrganProlapse,
   'antepartum-haemorrhage': antepartumHaemorrhage,
+  'cholestasis-of-pregnancy': cholestasisOfPregnancy,
 };

@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-icp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Intrahepatic Cholestasis of Pregnancy', body: 'Bile acid bands, timing of birth table (UK vs SMFM), UDCA positions and postnatal follow-up, with a flowchart.', to: '/topics/cholestasis-of-pregnancy' },
   { id: 'topic-aph-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Antepartum Haemorrhage', body: 'First-response flowchart, placenta praevia timing, abruption and vasa praevia (FOGSI, RCOG 27a/27b, NHS).', to: '/topics/antepartum-haemorrhage' },
   { id: 'topic-pop-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Pelvic Organ Prolapse', body: 'PFMT, pessary care, surgery by compartment and mesh rules from NICE NG123, with a flowchart and POP-Q table.', to: '/topics/pelvic-organ-prolapse' },
   { id: 'topic-mtp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Medical Termination of Pregnancy (India)', body: 'MTP Act and Rules 2021 limits and forms, medical abortion up to 9 weeks, MVA steps, and when to start each contraceptive (MoHFW CAC 2023).', to: '/topics/mtp-india' },
