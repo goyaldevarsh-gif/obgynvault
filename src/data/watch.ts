@@ -30,6 +30,8 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-breech-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Breech Presentation & ECV', body: 'ECV timing and contraindications, caesarean vs vaginal breech counselling, and a second-stage manoeuvres flowchart.', to: '/topics/breech-ecv' },
+  { id: 'topic-thyroid-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Thyroid Disease in Pregnancy', body: 'FOGSI vs ATA 2026 thresholds, levothyroxine dosing, PTU vs methimazole, postpartum thyroiditis. Includes the new ATA 2026 guideline.', to: '/topics/thyroid-in-pregnancy' },
   { id: 'topic-icp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Intrahepatic Cholestasis of Pregnancy', body: 'Bile acid bands, timing of birth table (UK vs SMFM), UDCA positions and postnatal follow-up, with a flowchart.', to: '/topics/cholestasis-of-pregnancy' },
   { id: 'topic-aph-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Antepartum Haemorrhage', body: 'First-response flowchart, placenta praevia timing, abruption and vasa praevia (FOGSI, RCOG 27a/27b, NHS).', to: '/topics/antepartum-haemorrhage' },
   { id: 'topic-pop-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Pelvic Organ Prolapse', body: 'PFMT, pessary care, surgery by compartment and mesh rules from NICE NG123, with a flowchart and POP-Q table.', to: '/topics/pelvic-organ-prolapse' },

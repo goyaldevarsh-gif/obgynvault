@@ -33,6 +33,8 @@ import { mtpIndia } from './mtp-india';
 import { pelvicOrganProlapse } from './pelvic-organ-prolapse';
 import { antepartumHaemorrhage } from './antepartum-haemorrhage';
 import { cholestasisOfPregnancy } from './cholestasis-of-pregnancy';
+import { thyroidInPregnancy } from './thyroid-in-pregnancy';
+import { breechEcv } from './breech-ecv';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -73,4 +75,6 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'pelvic-organ-prolapse': pelvicOrganProlapse,
   'antepartum-haemorrhage': antepartumHaemorrhage,
   'cholestasis-of-pregnancy': cholestasisOfPregnancy,
+  'thyroid-in-pregnancy': thyroidInPregnancy,
+  'breech-ecv': breechEcv,
 };

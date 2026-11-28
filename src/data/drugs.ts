@@ -47,6 +47,8 @@ export const DRUGS: DrugDef[] = [
   { slug: 'metronidazole', name: 'Metronidazole & nitroimidazoles', group: 'Other', terms: ['metronidazole', 'tinidazole', 'secnidazole'] },
   { slug: 'doxycycline', name: 'Doxycycline', group: 'Other', terms: ['doxycycline'] },
   { slug: 'antifungals', name: 'Antifungals (azoles)', group: 'Other', terms: ['fluconazole', 'clotrimazole', 'miconazole'] },
+  { slug: 'levothyroxine', name: 'Levothyroxine', group: 'Hormonal', terms: ['levothyroxine', 'LT4'] },
+  { slug: 'antithyroid', name: 'Antithyroid drugs (PTU, methimazole, carbimazole)', group: 'Hormonal', terms: ['PTU', 'propylthiouracil', 'methimazole', 'carbimazole'] },
   { slug: 'udca', name: 'Ursodeoxycholic acid', group: 'Other', terms: ['ursodeoxycholic', 'UDCA'] },
   { slug: 'methotrexate', name: 'Methotrexate', group: 'Other', terms: ['methotrexate'] },
   { slug: 'letrozole', name: 'Letrozole', group: 'Hormonal', terms: ['letrozole'] },
