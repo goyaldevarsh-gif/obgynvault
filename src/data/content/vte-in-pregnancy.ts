@@ -359,5 +359,5 @@ export const vteInPregnancy: Partial<Topic> = {
     },
   ],
   editorNote:
-    'Sources read on 27 Nov 2026: RCOG GTG 37a and 37b (2015) from third-party copies of the PDFs (not rcog.org.uk), the 37a scoring tool from the NICE evidence copy, and NICE NG89 section 1.16. ACOG PB 197 was read in full; PB 196 is paywalled, so only its graded statements (via Guideline Central) are used, and its PE algorithm and dose table were not seen. No FOGSI or ICOG guideline on VTE in pregnancy was found. NICE NG158 could not be read. Whether RCOG or ACOG have updated these 2015 and 2018 documents was not checked. All doses are quoted from the source for clinician and pharmacology review.',
+    'Sources read on 27 Nov 2026: RCOG GTG 37a and 37b (2015) from third-party copies of the PDFs (not rcog.org.uk), the 37a scoring tool from the NICE evidence copy, and NICE NG89 section 1.16. ACOG PB 197 was read in full; PB 196 is paywalled, so only its graded statements (via Guideline Central) are used, and its PE algorithm and dose table were not seen. No FOGSI or ICOG guideline on VTE in pregnancy was found. NICE NG158 could not be read (nice.org.uk blocked from the research tool on 28 Nov 2026). Whether RCOG or ACOG have updated these 2015 and 2018 documents was not checked. All doses are quoted from the source for clinician and pharmacology review.',
 };

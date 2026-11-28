@@ -11,6 +11,7 @@ const FU = 'fogsi-thyroid-update-2021';
 const A = 'ata-2026';
 const AH = 'ata-2026-healio';
 const N = 'nice-ng145';
+const AC = 'acog-pb-223';
 
 export const thyroidInPregnancy: Partial<Topic> = {
   status: 'draft',
@@ -89,6 +90,7 @@ export const thyroidInPregnancy: Partial<Topic> = {
         { heading: 'Doses (FOGSI)', text: 'PTU 50–150 mg three times daily to start, then 50 mg two or three times daily. Methimazole 10–20 mg once daily, then adjust to thyroid function.', refs: [{ guidelineId: FU, locator: 'Kulkarni' }] },
         { heading: 'Monitoring', text: 'Titrate on FT4, not TSH; reduce the dose when FT4 reaches the upper limit of normal. Thyroid function every 3–4 weeks at first. ATA 2026: high-normal to slightly raised FT4 is probably safest.', refs: [{ guidelineId: FU, locator: 'Kulkarni' }, { guidelineId: AH }] },
         { heading: 'Fetus', text: 'Uncontrolled disease can cause growth restriction, fetal tachycardia and fetal goitre: record fetal heart rate and thyroid size on anomaly and growth scans.', refs: [{ guidelineId: FU, locator: 'Kulkarni' }] },
+        { heading: 'ACOG PB 223', text: 'Treat overt hyperthyroidism with thioamides and monitor free T4 (Level A). TRAb or TSI can identify risk of fetal or neonatal hyperthyroidism and may lead to serial growth scans, but routine testing is not strongly supported. Routine fetal goitre ultrasound is not recommended; cord blood sampling only in rare cases. Do not test thyroid function in hyperemesis unless there are signs of overt hyperthyroidism (Level C).', refs: [{ guidelineId: AC, locator: 'Summary of Recs' }] },
         { heading: 'After birth', text: 'Graves’ often relapses within 3 months: check TSH and FT4 at 6 and 12 weeks.', refs: [{ guidelineId: FU, locator: 'Kulkarni' }] },
       ],
     },
@@ -119,6 +121,7 @@ export const thyroidInPregnancy: Partial<Topic> = {
       entries: [
         { guidelineId: FP, text: 'FT4, TSH and anti-TPO for all at first visit.' },
         { guidelineId: A, text: 'Risk-based TSH; no universal screening.', locator: 'Sect C' },
+        { guidelineId: AC, text: 'No universal screening (Level A); TSH first if testing is indicated.', locator: 'Summary of Recs' },
       ],
     },
     {
@@ -134,9 +137,10 @@ export const thyroidInPregnancy: Partial<Topic> = {
         { guidelineId: FU, text: 'PTU in T1, methimazole from T2.', locator: 'Kulkarni' },
         { guidelineId: AH, text: 'PTU before conception; after 16 weeks unclear.' },
         { guidelineId: N, text: 'PTU if pregnant or planning within 6 months.', locator: '1.6' },
+        { guidelineId: AC, text: 'Either can be used (Level B); methimazole usually avoided in T1.' },
       ],
     },
   ],
   editorNote:
-    'Read on 28 Nov 2026. ATA 2026 (Thyroid, May 2026, doi 10.1177/10507256261445624) was read from the eScholarship copy, which ends before Section G (hyperthyroidism, Graves’, TRAb) and Section I (postpartum thyroiditis); ATA hyperthyroidism points come from a Healio news report (Oct 2026). Its Flowchart 2 text for subclinical hypothyroidism was garbled and is not used. ITS-FOGSI 2019 is cited only as quoted in the FOGSI documents. Not read: ACOG PB 223, MoHFW 2014 national guideline, ETA 2014, Endocrine Society. TRAb timing and threshold, gestational transient thyrotoxicosis and neonatal Graves’ assessment are not covered by any source read, so they are left out. Beta-blocker doses in the FOGSI postpartum chapter were garbled and are omitted.',
+    'Read on 28 Nov 2026. ATA 2026 (Thyroid, May 2026, doi 10.1177/10507256261445624) was read from the eScholarship copy, which ends before Section G (hyperthyroidism, Graves’, TRAb) and Section I (postpartum thyroiditis); ATA hyperthyroidism points come from a Healio news report (Oct 2026). Its Flowchart 2 text for subclinical hypothyroidism was garbled and is not used. ITS-FOGSI 2019 is cited only as quoted in the FOGSI documents. ACOG PB 223 read from a third-party full-text copy (some sentences truncated). Not read: MoHFW 2014 national guideline, ETA 2014, Endocrine Society. TRAb timing and threshold, gestational transient thyrotoxicosis and neonatal Graves’ assessment are not covered by any source read, so they are left out. Beta-blocker doses in the FOGSI postpartum chapter were garbled and are omitted.',
 };
