@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { Download, Image as ImageIcon, Link2, Loader2, Share2, X } from 'lucide-react';
+import { Download, Image as ImageIcon, Link2, Loader2, Printer, Share2, X } from 'lucide-react';
 import { renderTopicCard } from '@/lib/shareCard';
 import { useToast } from '@/store/ToastContext';
 import type { SourceId, Topic } from '@/types/content';
@@ -51,6 +51,14 @@ export function TopicShareButton({ topic, sourceIds }: { topic: Topic; sourceIds
     toast('Image saved');
   };
 
+  const printCard = () => {
+    if (!url) return;
+    const w = window.open('', '_blank');
+    if (!w) return;
+    w.document.write(`<!doctype html><title>${topic.title}</title><style>@page{margin:10mm}body{margin:0}img{width:100%;height:auto}</style><img src="${url}" onload="setTimeout(()=>print(),200)">`);
+    w.document.close();
+  };
+
   const shareLink = async () => {
     try {
       if (navigator.share) {
@@ -85,12 +93,15 @@ export function TopicShareButton({ topic, sourceIds }: { topic: Topic; sourceIds
                   <X className="size-5" />
                 </button>
               </div>
-              <div className="mx-auto mb-4 grid aspect-[4/5] w-full max-w-[300px] place-items-center overflow-hidden rounded-2xl bg-canvas ring-1 ring-navy-100">
-                {url ? <img src={url} alt={`${topic.title} summary card`} className="size-full object-cover" /> : <Loader2 className="size-6 animate-spin text-teal" />}
+              <div className="mx-auto mb-4 grid max-h-[46vh] min-h-40 w-full max-w-[300px] place-items-center overflow-y-auto rounded-2xl bg-canvas ring-1 ring-navy-100">
+                {url ? <img src={url} alt={`${topic.title} bedside card`} className="h-auto w-full" /> : <Loader2 className="size-6 animate-spin text-teal" />}
               </div>
               <div className="grid gap-2.5">
                 <button type="button" disabled={!blob} onClick={shareImage} className="flex items-center justify-center gap-2 rounded-2xl bg-ink py-3.5 text-[15px] font-bold text-white disabled:opacity-50 dark:bg-teal-600 dark:text-ink">
-                  {'canShare' in navigator ? <ImageIcon className="size-5" /> : <Download className="size-5" />} Share summary card
+                  {'canShare' in navigator ? <ImageIcon className="size-5" /> : <Download className="size-5" />} Share bedside card
+                </button>
+                <button type="button" disabled={!blob} onClick={printCard} className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[15px] font-semibold text-navy ring-1 ring-navy-100 disabled:opacity-50">
+                  <Printer className="size-5" /> Print
                 </button>
                 <button type="button" onClick={shareLink} className="flex items-center justify-center gap-2 rounded-2xl py-3 text-[15px] font-semibold text-navy ring-1 ring-navy-100">
                   <Link2 className="size-5" /> Share link

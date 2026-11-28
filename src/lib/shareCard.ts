@@ -1,12 +1,11 @@
 import { LOGO_PATHS } from '@/components/brand/logoPaths';
-import { getSource } from '@/data';
+import { getGuideline, getSource } from '@/data';
 import type { SourceId, Topic } from '@/types/content';
 
 /** Public address printed on every card. */
 export const APP_URL = 'goyaldevarsh-gif.github.io/obgynvault';
 
 const W = 1080;
-const H = 1350;
 const PAD = 72;
 const C = {
   navy: '#102A43',
@@ -81,19 +80,41 @@ export async function renderTopicCard(topic: Topic, sourceIds: SourceId[]): Prom
     document.fonts.load('600 26px Inter'),
   ]).catch(() => {});
 
+  const display = 'Manrope, Inter, system-ui, sans-serif';
+  const body = 'Inter, system-ui, sans-serif';
+
+  // Layout pass: wrap every step in full (bedside card shows all of them), so the card grows to fit.
+  const headH = 420;
+  const cardX = PAD - 16;
+  const cardW = W - (PAD - 16) * 2;
+  const textX = cardX + 104;
+  const textW = cardW - 104 - 40;
+  const lineH = 40;
+  const measure = document.createElement('canvas').getContext('2d')!;
+  measure.font = `400 29px ${body}`;
+  const steps = topic.keyPoints.map((k) => {
+    const lines = wrap(measure, k.text, textW);
+    const refs = (k.refs ?? []).slice(0, 3).map((r) => {
+      const g = getGuideline(r.guidelineId);
+      const src = g ? getSource(g.sourceId) : null;
+      return { label: src ? `${src.shortName.split(' ')[0]}${g!.reference ? ` ${g!.reference}` : g!.year ? ` ${g!.year}` : ''}` : r.guidelineId, color: src?.color ?? C.muted };
+    });
+    return { lines, refs, h: lines.length * lineH + (refs.length ? 44 : 0) + 26 };
+  });
+  const cardY = headH + 40;
+  const cardBottom = cardY + 140 + steps.reduce((a, x) => a + x.h, 0) + 10;
+  const H = Math.max(1350, cardBottom + 250);
+
   const cv = document.createElement('canvas');
   cv.width = W;
   cv.height = H;
   const ctx = cv.getContext('2d')!;
-  const display = 'Manrope, Inter, system-ui, sans-serif';
-  const body = 'Inter, system-ui, sans-serif';
 
   // Background
   ctx.fillStyle = C.bg;
   ctx.fillRect(0, 0, W, H);
 
   // Header band
-  const headH = 420;
   const g = ctx.createLinearGradient(0, 0, W, headH);
   g.addColorStop(0, C.navy);
   g.addColorStop(0.65, C.navy2);
@@ -139,11 +160,7 @@ export async function renderTopicCard(topic: Topic, sourceIds: SourceId[]): Prom
   ctx.fillStyle = 'rgba(255,255,255,0.78)';
   ctx.fillText(clampLines(ctx, [topic.subtitle], 1, W - PAD * 2)[0], PAD, Math.min(y + 4, headH - 34));
 
-  // Key points card
-  const cardX = PAD - 16;
-  const cardY = headH + 40;
-  const cardW = W - (PAD - 16) * 2;
-  const cardBottom = H - 250;
+  // Management steps card
   ctx.fillStyle = '#FFFFFF';
   ctx.shadowColor = 'rgba(16,42,67,0.08)';
   ctx.shadowBlur = 30;
@@ -154,22 +171,13 @@ export async function renderTopicCard(topic: Topic, sourceIds: SourceId[]): Prom
 
   ctx.font = `800 30px ${display}`;
   ctx.fillStyle = C.navy;
-  ctx.fillText('Key points', cardX + 40, cardY + 64);
+  ctx.fillText(topic.status === 'sample' ? 'Key points' : 'Management in short', cardX + 40, cardY + 64);
   ctx.fillStyle = C.teal;
   roundRect(ctx, cardX + 40, cardY + 82, 56, 6, 3);
   ctx.fill();
 
-  ctx.font = `400 29px ${body}`;
-  const textX = cardX + 104;
-  const textW = cardW - 104 - 40;
   let py = cardY + 140;
-  const lineH = 40;
-  for (let i = 0; i < topic.keyPoints.length; i++) {
-    const lines = wrap(ctx, topic.keyPoints[i].text, textW);
-    const room = Math.floor((cardBottom - 30 - py) / lineH);
-    if (room < 1) break;
-    const shown = clampLines(ctx, lines, Math.min(lines.length, room, 4), textW);
-    // number bubble
+  steps.forEach((st, i) => {
     ctx.fillStyle = C.tealSoft;
     ctx.beginPath();
     ctx.arc(cardX + 62, py - 10, 22, 0, Math.PI * 2);
@@ -181,12 +189,27 @@ export async function renderTopicCard(topic: Topic, sourceIds: SourceId[]): Prom
     ctx.textAlign = 'left';
     ctx.font = `400 29px ${body}`;
     ctx.fillStyle = C.ink;
-    for (const l of shown) {
+    for (const l of st.lines) {
       ctx.fillText(l, textX, py);
       py += lineH;
     }
-    py += 22;
-  }
+    if (st.refs.length) {
+      let rx = textX;
+      ctx.font = `700 19px ${body}`;
+      for (const r of st.refs) {
+        const bw = ctx.measureText(r.label).width + 22;
+        if (rx + bw > cardX + cardW - 30) break;
+        ctx.fillStyle = `${r.color}1F`;
+        roundRect(ctx, rx, py - 22, bw, 32, 8);
+        ctx.fill();
+        ctx.fillStyle = r.color;
+        ctx.fillText(r.label, rx + 11, py);
+        rx += bw + 8;
+      }
+      py += 44;
+    }
+    py += 26;
+  });
 
   // Sources row
   let sx = PAD;
