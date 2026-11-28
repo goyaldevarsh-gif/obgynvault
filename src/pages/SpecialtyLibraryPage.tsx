@@ -13,13 +13,31 @@ const CATEGORY_ORDER = [
 ];
 const rank = (c: string) => { const i = CATEGORY_ORDER.indexOf(c); return i < 0 ? 99 : i; };
 
+/** Most commonly seen first (Indian practice, OPD + labour room). Editorial order; unknown topics go last. */
+const COMMON_ORDER = [
+  // Obstetrics
+  'preeclampsia', 'postpartum-haemorrhage', 'anaemia-in-pregnancy', 'gestational-diabetes', 'antenatal-care', 'preterm-labour',
+  'prom-pprom', 'induction-of-labour', 'caesarean-section', 'miscarriage-rpl', 'fetal-growth-restriction', 'thyroid-in-pregnancy',
+  'vbac', 'hyperemesis-gravidarum', 'antepartum-haemorrhage', 'rh-isoimmunisation', 'twin-pregnancy', 'breech-ecv',
+  'perineal-tears-oasis', 'intrapartum-fever-sepsis', 'postpartum-contraception', 'cholestasis-of-pregnancy', 'stillbirth-iufd',
+  'shoulder-dystocia', 'vte-in-pregnancy', 'hiv-hbv-syphilis-pregnancy', 'heart-disease-pregnancy', 'placenta-accreta-spectrum',
+  'gestational-trophoblastic-disease',
+  // Gynaecology
+  'abnormal-uterine-bleeding', 'pcos', 'uterine-fibroids', 'pid-vaginal-discharge', 'infertility-evaluation', 'ectopic-pregnancy',
+  'contraception-ec', 'ovarian-cyst-adnexal-mass', 'mtp-india', 'cervical-screening', 'menopause', 'endometriosis',
+  'pelvic-organ-prolapse', 'postmenopausal-bleeding', 'amenorrhoea-poi', 'urinary-incontinence', 'endometrial-hyperplasia',
+  'cervical-vulval-cancer', 'endometrial-ovarian-cancer',
+];
+const common = (slug: string) => { const i = COMMON_ORDER.indexOf(slug); return i < 0 ? 999 : i; };
+const TOP_N = 8;
+
 export default function SpecialtyLibraryPage() {
   const { specialty } = useParams();
   const [category, setCategory] = useState<string>('All');
   const [filter, setFilter] = useState('');
 
   const valid = specialty === 'obstetrics' || specialty === 'gynaecology';
-  const topics = useMemo(() => (valid ? [...topicsBySpecialty(specialty as Specialty)].sort((a, b) => rank(a.category) - rank(b.category)) : []), [specialty, valid]);
+  const topics = useMemo(() => (valid ? [...topicsBySpecialty(specialty as Specialty)].sort((a, b) => rank(a.category) - rank(b.category) || common(a.slug) - common(b.slug)) : []), [specialty, valid]);
   const categories = useMemo(() => ['All', ...Array.from(new Set(topics.map((t) => t.category)))], [topics]);
 
   if (!valid) return <Navigate to="/library" replace />;
@@ -29,7 +47,11 @@ export default function SpecialtyLibraryPage() {
   const visible = topics.filter(
     (t) => (category === 'All' || t.category === category) && (!f || t.title.toLowerCase().includes(f) || t.tags.some((x) => x.toLowerCase().includes(f))),
   );
-  const grouped = visible.reduce<Record<string, typeof visible>>((acc, t) => {
+  // In the unfiltered view, the most common topics come first; the rest follow by category.
+  const showTop = category === 'All' && !f;
+  const top = showTop ? [...visible].sort((a, b) => common(a.slug) - common(b.slug)).slice(0, TOP_N) : [];
+  const topSlugs = new Set(top.map((t) => t.slug));
+  const grouped = visible.filter((t) => !topSlugs.has(t.slug)).reduce<Record<string, typeof visible>>((acc, t) => {
     (acc[t.category] ??= []).push(t);
     return acc;
   }, {});
@@ -46,6 +68,16 @@ export default function SpecialtyLibraryPage() {
             </Chip>
           ))}
         </div>
+        {top.length > 0 && (
+          <section>
+            <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-teal-700">Most common</h2>
+            <div className="space-y-2.5">
+              {top.map((t) => (
+                <TopicCard key={t.slug} topic={t} />
+              ))}
+            </div>
+          </section>
+        )}
         {Object.entries(grouped).map(([cat, list]) => (
           <section key={cat}>
             <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-navy-400">{cat}</h2>
