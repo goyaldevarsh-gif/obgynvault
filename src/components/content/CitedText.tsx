@@ -160,6 +160,12 @@ export function CitedParagraph({ point }: { point: CitedPoint }) {
           {!point.table && <CitationChips refs={point.refs} />}
         </>
       )}
+      {point.figure && (
+        <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-navy-100">
+          <img src={`${import.meta.env.BASE_URL}figures/${point.figure.src}`} alt={point.figure.alt} loading="lazy" className="w-full" />
+          {point.figure.caption && <figcaption className="px-3 py-2 text-[12.5px] text-navy-600">{point.figure.caption}</figcaption>}
+        </figure>
+      )}
       {!point.text && !point.table && !point.flow && <CitationChips refs={point.refs} />}
     </div>
   );

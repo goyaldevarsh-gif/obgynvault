@@ -56,6 +56,8 @@ export interface CitedPoint {
    * guideline sets out an ordered pathway; every step must come from the cited source.
    */
   flow?: FlowChart;
+  /** Optional illustration: file in public/figures/, with a caption. */
+  figure?: { src: string; alt: string; caption?: string };
   /**
    * Set by the weekly Guideline Watch job when this statement was added or changed from a new guideline.
    * Shown to readers as "Updated <date> · not yet verified" until a clinician removes it.
