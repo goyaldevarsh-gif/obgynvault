@@ -143,32 +143,14 @@ export default function TopicDetailPage() {
 
         {tab === 'overview' && (
           <>
-            {glance && (
-              <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-teal/25">
-                <h3 className="flex items-center gap-2 bg-ink px-4 py-3 text-[17px] font-extrabold text-white dark:bg-teal-900">
-                  <Workflow className="size-5 text-teal-200" aria-hidden />
-                  Management at a glance
-                </h3>
-                <div className="space-y-2 p-3">
-                  <FlowDiagram flow={glance.p.flow!} />
-                  <div className="flex flex-wrap items-center justify-between gap-2 px-1">
-                    <CitationChips refs={glance.p.refs} />
-                    <button type="button" onClick={() => jumpTo(glance.sec.id)} className="text-xs font-bold text-teal-700 hover:text-teal">
-                      Full details: {glance.sec.title} →
-                    </button>
-                  </div>
-                </div>
-              </section>
-            )}
-
             <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-teal/25">
-              <h3 className="flex items-center gap-2 bg-teal-50 px-4 py-3 text-[17px] font-extrabold text-navy">
-                <CheckCircle2 className="size-5 fill-teal text-white" aria-hidden />
-                {topic.status === 'sample' ? 'Key points' : 'Summary & recommendations'}
+              <h3 className="flex items-center gap-2 bg-ink px-4 py-3 text-[17px] font-extrabold text-white dark:bg-teal-900">
+                <CheckCircle2 className="size-5 fill-teal text-ink dark:text-teal-900" aria-hidden />
+                {topic.status === 'sample' ? 'Key points' : 'Management in short'}
               </h3>
               <ol className="divide-y divide-navy-100/70">
-                {(allKeys ? topic.keyPoints : topic.keyPoints.slice(0, 5)).map((k, i) => (
-                  <li key={k.text} className="flex gap-3 px-4 py-3.5">
+                {topic.keyPoints.map((k, i) => (
+                  <li key={k.text} className="flex gap-3 px-4 py-3">
                     <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-teal text-[12px] font-bold text-white tabular-nums">{i + 1}</span>
                     <div className="min-w-0">
                       {k.update && <UnverifiedUpdate update={k.update} />}
@@ -178,13 +160,33 @@ export default function TopicDetailPage() {
                   </li>
                 ))}
               </ol>
-              {topic.keyPoints.length > 5 && (
-                <button type="button" onClick={() => setAllKeys(!allKeys)} className="flex w-full items-center justify-center gap-1 border-t border-navy-100/70 py-2.5 text-sm font-bold text-teal-700">
-                  {allKeys ? 'Show fewer' : `Show all ${topic.keyPoints.length}`}
-                  <ChevronDown className={`size-4 transition ${allKeys ? 'rotate-180' : ''}`} aria-hidden />
-                </button>
-              )}
             </section>
+
+            {glance && (
+              <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
+                <button
+                  type="button"
+                  onClick={() => setAllKeys(!allKeys)}
+                  aria-expanded={allKeys}
+                  className="flex w-full items-center gap-2 px-4 py-3 text-left text-[15px] font-extrabold text-navy"
+                >
+                  <Workflow className="size-5 text-teal-700" aria-hidden />
+                  <span className="min-w-0 flex-1">Flowchart: {glance.sec.title}</span>
+                  <ChevronDown className={`size-4 text-navy-400 transition ${allKeys ? 'rotate-180' : ''}`} aria-hidden />
+                </button>
+                {allKeys && (
+                  <div className="space-y-2 px-3 pb-3">
+                    <FlowDiagram flow={glance.p.flow!} />
+                    <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+                      <CitationChips refs={glance.p.refs} />
+                      <button type="button" onClick={() => jumpTo(glance.sec.id)} className="text-xs font-bold text-teal-700 hover:text-teal">
+                        Full details →
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </section>
+            )}
 
             {mgmtIds.length > 0 && (
               <section className="rounded-2xl bg-ink p-4 text-white shadow-card dark:bg-teal-900">
