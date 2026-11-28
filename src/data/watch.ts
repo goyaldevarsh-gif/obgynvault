@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-pmb-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Postmenopausal Bleeding', body: 'Work-up flowchart, endometrial thickness table (no HRT, ccHRT, sHRT, tamoxifen, incidental) and the new 2026 BMS guidance on bleeding on HRT.', to: '/topics/postmenopausal-bleeding' },
   { id: 'topic-triple-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: HIV, Hepatitis B & Syphilis in Pregnancy', body: 'NACO EVTHS 2024, MoHFW syphilis and NVHCP hepatitis B guidance with WHO 2024: screening flow, penicillin by stage, HBIG and tenofovir.', to: '/topics/hiv-hbv-syphilis-pregnancy' },
   { id: 'topic-cardiac-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Heart Disease in Pregnancy', body: 'mWHO risk and care setting, mitral stenosis, mechanical valve anticoagulation (ESC vs MoHFW), labour care, PPCM. Notes the new ESC 2025 guideline.', to: '/topics/heart-disease-pregnancy' },
   { id: 'topic-cs-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Caesarean Section', body: 'Urgency categories, perioperative pathway, NICE technique points, Robson ten groups and how India audits CS (LaQshya).', to: '/topics/caesarean-section' },

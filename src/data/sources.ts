@@ -26,6 +26,8 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'ATA', shortName: 'ATA', fullName: 'American Thyroid Association', region: 'USA', priority: 23, color: '#7C3AED' },
   { id: 'EOTTD', shortName: 'EOTTD', fullName: 'European Organisation for Treatment of Trophoblastic Diseases', region: 'Europe', priority: 24, color: '#0F766E' },
   { id: 'ESC', shortName: 'ESC', fullName: 'European Society of Cardiology', region: 'Europe', priority: 25, color: '#B91C1C' },
+  { id: 'BMS', shortName: 'BMS', fullName: 'British Menopause Society', region: 'UK', priority: 26, color: '#9D174D' },
+  { id: 'HSE', shortName: 'HSE Ireland', fullName: 'Health Service Executive (Ireland) national clinical guidelines', region: 'Ireland', priority: 27, color: '#047857' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 

@@ -41,6 +41,7 @@ import { perinealTearsOasis } from './perineal-tears-oasis';
 import { caesareanSection } from './caesarean-section';
 import { heartDiseasePregnancy } from './heart-disease-pregnancy';
 import { hivHbvSyphilisPregnancy } from './hiv-hbv-syphilis-pregnancy';
+import { postmenopausalBleeding } from './postmenopausal-bleeding';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -89,4 +90,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'caesarean-section': caesareanSection,
   'heart-disease-pregnancy': heartDiseasePregnancy,
   'hiv-hbv-syphilis-pregnancy': hivHbvSyphilisPregnancy,
+  'postmenopausal-bleeding': postmenopausalBleeding,
 };
