@@ -25,13 +25,24 @@ export default function EmergencyPage() {
     <div>
       <PageHeader title="Emergency" />
       <div className="space-y-3 px-4 md:px-6">
-        <p className="text-sm text-navy-500">Key points first, then one tap to the full section with doses and tables.</p>
+        <nav aria-label="Jump to emergency" className="no-scrollbar sticky top-14 z-20 -mx-4 flex gap-2 overflow-x-auto bg-canvas/95 px-4 py-2 backdrop-blur md:mx-0 md:flex-wrap md:px-0">
+          {EMERGENCIES.map((e) => (
+            <button
+              key={e.slug}
+              type="button"
+              onClick={() => document.getElementById(`em-${e.slug}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+              className="shrink-0 rounded-full bg-alert-50 px-3 py-1.5 text-[13px] font-bold text-alert ring-1 ring-alert/20"
+            >
+              {e.title.split(/ [(&/]| \(/)[0]}
+            </button>
+          ))}
+        </nav>
         {EMERGENCIES.map((e) => {
           const t = getTopic(e.slug);
           if (!t) return null;
           const points = e.keyPointIdx.map((i) => t.keyPoints[i]).filter(Boolean) as CitedPoint[];
           return (
-            <article key={e.slug} className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
+            <article key={e.slug} id={`em-${e.slug}`} className="scroll-mt-28 overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
               <h2 className="flex items-center gap-2 bg-alert-50 px-4 py-3 text-[15px] font-extrabold text-alert">
                 <Siren className="size-5" aria-hidden /> {e.title}
               </h2>
