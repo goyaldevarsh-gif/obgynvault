@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-ui-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Urinary Incontinence', body: 'FOGSI 2024 urogynae GCPR with NICE and EAU: assessment, PFMT, OAB drugs, botulinum toxin, and stress incontinence surgery compared.', to: '/topics/urinary-incontinence' },
   { id: 'topic-amen-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Amenorrhoea & POI', body: 'Stepwise work-up flowchart, hypothalamic amenorrhoea, prolactin, and the ESHRE 2024 single-FSH POI diagnosis with HRT doses.', to: '/topics/amenorrhoea-poi' },
   { id: 'topic-contra-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Contraception & Emergency Contraception', body: 'Mala-N, Chhaya, Antara, IUCD start rules, WHO missed-pill table, EC options compared, and what changed in WHO MEC 2025.', to: '/topics/contraception-ec' },
   { id: 'topic-pmb-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Postmenopausal Bleeding', body: 'Work-up flowchart, endometrial thickness table (no HRT, ccHRT, sHRT, tamoxifen, incidental) and the new 2026 BMS guidance on bleeding on HRT.', to: '/topics/postmenopausal-bleeding' },

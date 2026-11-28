@@ -44,6 +44,7 @@ import { hivHbvSyphilisPregnancy } from './hiv-hbv-syphilis-pregnancy';
 import { postmenopausalBleeding } from './postmenopausal-bleeding';
 import { contraceptionEc } from './contraception-ec';
 import { amenorrhoeaPoi } from './amenorrhoea-poi';
+import { urinaryIncontinence } from './urinary-incontinence';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -95,4 +96,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'postmenopausal-bleeding': postmenopausalBleeding,
   'contraception-ec': contraceptionEc,
   'amenorrhoea-poi': amenorrhoeaPoi,
+  'urinary-incontinence': urinaryIncontinence,
 };

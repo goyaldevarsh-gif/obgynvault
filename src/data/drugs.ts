@@ -57,6 +57,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'dmpa', name: 'DMPA (Antara)', group: 'Hormonal', terms: ['DMPA', 'Antara', 'medroxyprogesterone'] },
   { slug: 'ormeloxifene', name: 'Ormeloxifene (Chhaya)', group: 'Hormonal', terms: ['ormeloxifene', 'centchroman', 'Chhaya'] },
   { slug: 'emergency-contraception', name: 'Emergency contraception (LNG, ulipristal)', group: 'Hormonal', terms: ['ulipristal', 'levonorgestrel 1.5', 'LNG 1.5'] },
+  { slug: 'oab-drugs', name: 'Overactive bladder drugs', group: 'Other', terms: ['mirabegron', 'anticholinergic', 'solifenacin', 'oxybutynin', 'botulinum'] },
   { slug: 'udca', name: 'Ursodeoxycholic acid', group: 'Other', terms: ['ursodeoxycholic', 'UDCA'] },
   { slug: 'methotrexate', name: 'Methotrexate', group: 'Other', terms: ['methotrexate'] },
   { slug: 'letrozole', name: 'Letrozole', group: 'Hormonal', terms: ['letrozole'] },
