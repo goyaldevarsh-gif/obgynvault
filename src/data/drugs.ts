@@ -50,6 +50,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'levothyroxine', name: 'Levothyroxine', group: 'Hormonal', terms: ['levothyroxine', 'LT4'] },
   { slug: 'antithyroid', name: 'Antithyroid drugs (PTU, methimazole, carbimazole)', group: 'Hormonal', terms: ['PTU', 'propylthiouracil', 'methimazole', 'carbimazole'] },
   { slug: 'cabergoline', name: 'Cabergoline', group: 'Hormonal', terms: ['cabergoline', 'bromocriptine'] },
+  { slug: 'warfarin', name: 'Warfarin & heparin (valve anticoagulation)', group: 'Haematology', terms: ['warfarin', 'VKA', 'unfractionated heparin', 'UFH'] },
   { slug: 'udca', name: 'Ursodeoxycholic acid', group: 'Other', terms: ['ursodeoxycholic', 'UDCA'] },
   { slug: 'methotrexate', name: 'Methotrexate', group: 'Other', terms: ['methotrexate'] },
   { slug: 'letrozole', name: 'Letrozole', group: 'Hormonal', terms: ['letrozole'] },

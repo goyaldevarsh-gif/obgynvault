@@ -39,6 +39,7 @@ import { stillbirthIufd } from './stillbirth-iufd';
 import { gestationalTrophoblasticDisease } from './gestational-trophoblastic-disease';
 import { perinealTearsOasis } from './perineal-tears-oasis';
 import { caesareanSection } from './caesarean-section';
+import { heartDiseasePregnancy } from './heart-disease-pregnancy';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -85,4 +86,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'gestational-trophoblastic-disease': gestationalTrophoblasticDisease,
   'perineal-tears-oasis': perinealTearsOasis,
   'caesarean-section': caesareanSection,
+  'heart-disease-pregnancy': heartDiseasePregnancy,
 };

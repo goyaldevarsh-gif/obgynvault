@@ -25,6 +25,7 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'RANZCOG', shortName: 'RANZCOG', fullName: 'Royal Australian and New Zealand College of Obstetricians and Gynaecologists', region: 'Australia/NZ', priority: 22, color: '#1D4ED8' },
   { id: 'ATA', shortName: 'ATA', fullName: 'American Thyroid Association', region: 'USA', priority: 23, color: '#7C3AED' },
   { id: 'EOTTD', shortName: 'EOTTD', fullName: 'European Organisation for Treatment of Trophoblastic Diseases', region: 'Europe', priority: 24, color: '#0F766E' },
+  { id: 'ESC', shortName: 'ESC', fullName: 'European Society of Cardiology', region: 'Europe', priority: 25, color: '#B91C1C' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 
