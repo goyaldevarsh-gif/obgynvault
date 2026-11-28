@@ -40,9 +40,9 @@ export const caesareanSection: Partial<Topic> = {
             columns: ['Category', 'Meaning', 'Target'],
             rows: [
               ['1', 'Immediate threat to life of woman or fetus (e.g. suspected uterine rupture, cord prolapse)', 'As soon as possible; usually within 30 min of decision'],
-              ['2', 'See NICE NG192 1.4.2 (wording not captured)', 'As soon as possible; usually within 75 min'],
-              ['3', 'See NICE NG192 1.4.2 (wording not captured)', 'No time target given'],
-              ['4', 'Birth timed to suit the woman or provider', 'Planned'],
+              ['2', 'Maternal or fetal compromise, not immediately life-threatening', 'As soon as possible; usually within 75 min'],
+              ['3', 'No maternal or fetal compromise, but needs early birth', 'No time target given by NICE'],
+              ['4', 'Birth timed to suit the woman or healthcare provider', 'Planned; no time target'],
             ],
           },
         },

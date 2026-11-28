@@ -7,6 +7,7 @@ import type { Topic } from '@/types/content';
  */
 const N = 'nice-ng123';
 const AF = 'aafp-pop-2017';
+const IU = 'iuga-ics-pop-2016';
 
 export const pelvicOrganProlapse: Partial<Topic> = {
   status: 'draft',
@@ -113,19 +114,25 @@ export const pelvicOrganProlapse: Partial<Topic> = {
       body: [
         { text: 'Consider referral to a clinician with expertise in prolapse when prolapse is found incidentally. Consider a validated pelvic floor symptom questionnaire. If the examination does not explain the symptoms, repeat it standing or squatting, or at another time.', refs: [{ guidelineId: N, locator: '1.6.2, 1.6.4, 1.6.6' }] },
         {
-          text: 'POP-Q stages (AAFP).',
-          refs: [{ guidelineId: AF }],
+          text: 'POP-Q stages. Stage 0: no prolapse demonstrated.',
+          refs: [{ guidelineId: IU, locator: 'p.659' }, { guidelineId: AF }],
           table: {
             columns: ['Stage', 'Most distal point'],
             rows: [
               ['I', 'More than 1 cm above the hymen'],
               ['II', '1 cm or less above or below the hymen'],
               ['III', 'More than 1 cm below the hymen, but no further than 2 cm less than total vaginal length'],
-              ['IV', 'Complete eversion'],
+              ['IV', 'Complete eversion, or eversion to within 2 cm of total vaginal length'],
             ],
           },
         },
         { text: 'Ask about urinary and faecal incontinence, overactive bladder and sexual function; women often do not volunteer symptoms.', refs: [{ guidelineId: AF, locator: 'SORT (C)' }] },
+        {
+          heading: 'POP-Q points',
+          text: 'Hymen is the reference (0): above it is negative, below it positive, in cm. Aa: anterior midline 3 cm proximal to the external urethral meatus (range −3 to +3). Ap: posterior midline 3 cm proximal to the hymen (range −3 to +3). Ba and Bp: most dependent point of the upper anterior and posterior walls; −3 when there is no prolapse. C: cervix or vault. D: posterior fornix, omitted when there is no cervix. gh: mid urethral meatus to posterior hymen. pb: posterior hymen to mid anal opening. tvl: posterior fornix to hymen with C or D reduced. Record on a 3 × 3 grid.',
+          refs: [{ guidelineId: IU, locator: 'pp.661–662' }],
+          figure: { src: 'figures/fig-popq-grid.svg', alt: 'POP-Q 3 × 3 grid: Aa Ba C; gh pb tvl; Ap Bp D', caption: 'Grid order as commonly taught (IUGA/ICS 2016 Fig. 8 not read cell by cell).' },
+        },
       ],
     },
   ],

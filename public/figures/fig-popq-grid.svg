@@ -32,7 +32,7 @@
 <text x='305.0' y='660' text-anchor='middle' font-size='22' font-weight='700' fill='#102A43'>Values in cm</text>
 <rect x='620' y='120' width='830' height='48' rx='10' fill='#EEF6F8'/>
 <text x='636' y='153' font-size='24' font-weight='800' fill='#102A43'>Aa</text>
-<text x='700' y='153' font-size='22' fill='#102A43'>anterior wall, 3 cm above the hymen</text>
+<text x='700' y='153' font-size='22' fill='#102A43'>anterior wall, 3 cm in from the urethral meatus</text>
 <rect x='620' y='178' width='830' height='48' rx='10' fill='#EEF6F8'/>
 <text x='636' y='211' font-size='24' font-weight='800' fill='#102A43'>Ba</text>
 <text x='700' y='211' font-size='22' fill='#102A43'>most dependent point of the upper anterior wall</text>

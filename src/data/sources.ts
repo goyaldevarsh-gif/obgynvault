@@ -31,6 +31,7 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'ENDO', shortName: 'Endocrine Society', fullName: 'Endocrine Society', region: 'USA', priority: 28, color: '#1E40AF' },
   { id: 'EAU', shortName: 'EAU', fullName: 'European Association of Urology', region: 'Europe', priority: 29, color: '#0369A1' },
   { id: 'ESGO', shortName: 'ESGO', fullName: 'European Society of Gynaecological Oncology', region: 'Europe', priority: 30, color: '#7E22CE' },
+  { id: 'IUGA', shortName: 'IUGA/ICS', fullName: 'International Urogynecological Association / International Continence Society', region: 'Global', priority: 31, color: '#0D9488' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#86198F' },
 ];
 
