@@ -1,15 +1,18 @@
 /**
  * Guideline Watch. Updated every week by the scheduled "Guideline Watch" job (see docs/GUIDELINE-WATCH.md).
  * - lastChecked: date the cited guidelines were last checked against their official pages.
- * - pending: topics whose source guideline changed; an updated draft is waiting for clinician review.
- * - FEED: what the bell on Home shows, newest first.
- * Only this metadata is changed automatically. Clinical text changes always go through a reviewed pull request.
+ * - pending: topics updated from a new or changed guideline whose new text is NOT yet verified by a clinician.
+ *   The topic shows a banner, and each changed CitedPoint carries `update` so readers see "not yet verified".
+ * - FEED: what the What's new page shows, newest first.
+ * Policy (Devarsh, 28 Nov 2026): the weekly job applies guideline changes straight to the topic text on main,
+ * flags every changed line, and lists what needs verifying. Nothing waits for approval.
  */
 export interface PendingUpdate {
   guidelineId: string;
   note: string; // what changed, in one line
-  detected: string; // ISO date
-  prUrl?: string;
+  detected: string; // ISO date the change was applied
+  /** Short list of the changed statements, shown on What's new and in the topic banner. */
+  changes?: string[];
 }
 
 export interface FeedItem {

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { getGuideline, getSource } from '@/data';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, RefreshCcw } from 'lucide-react';
+import { formatDate } from '@/lib/format';
 import type { Citation, CitedPoint, FlowChart } from '@/types/content';
 
 function citeLabel(c: Citation) {
@@ -118,9 +119,23 @@ export function FlowDiagram({ flow }: { flow: FlowChart }) {
   );
 }
 
+/** Amber marker on a statement the weekly Guideline Watch changed and no clinician has checked yet. */
+export function UnverifiedUpdate({ update }: { update: NonNullable<CitedPoint['update']> }) {
+  return (
+    <Link
+      to={`/guidelines/${update.guidelineId}`}
+      className="inline-flex items-center gap-1 rounded-md bg-amber-50 px-1.5 py-0.5 text-[11px] font-bold leading-4 text-amber-700 ring-1 ring-amber/40"
+    >
+      <RefreshCcw className="size-3" aria-hidden />
+      Updated {formatDate(update.date)} · not yet verified · check source
+    </Link>
+  );
+}
+
 export function CitedParagraph({ point }: { point: CitedPoint }) {
   return (
     <div className="space-y-2">
+      {point.update && <UnverifiedUpdate update={point.update} />}
       {point.heading && (
         <h4 className="flex items-center gap-2 pt-2 font-display text-[15px] font-bold text-navy">
           <span className="h-4 w-1 rounded-full bg-teal" aria-hidden />

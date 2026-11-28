@@ -2,7 +2,7 @@ import { CheckCircle2, GitCompareArrows, Info, ListOrdered } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { BookmarkButton, CitationChips, CitedParagraph, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
+import { BookmarkButton, CitationChips, CitedParagraph, ReaderCheckCard, UnverifiedUpdate, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
 import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui';
 import { getGuideline, getSource, getTopic, WATCH } from '@/data';
 import { useVault } from '@/store/VaultContext';
@@ -110,9 +110,10 @@ export default function TopicDetailPage() {
 
         <SampleNotice compact status={status} />
         {WATCH.pending[topic.slug] && (
-          <Link to="/updates" className="block rounded-2xl bg-amber-50 px-4 py-3 text-sm ring-1 ring-amber/30">
-            <strong className="block font-bold text-amber-800">Guideline updated: review pending</strong>
-            <span className="text-navy-600">{WATCH.pending[topic.slug].note}</span>
+          <Link to={`/guidelines/${WATCH.pending[topic.slug].guidelineId}`} className="block rounded-2xl bg-amber-50 px-4 py-3 text-sm ring-1 ring-amber/30">
+            <strong className="block font-bold text-amber-800">Updated {formatDate(WATCH.pending[topic.slug].detected)} from a new guideline: not yet verified</strong>
+            <span className="block text-navy-600">{WATCH.pending[topic.slug].note}</span>
+            <span className="mt-1 block text-xs font-semibold text-amber-700">Changed lines are marked. Please check them against the original guideline before relying on them.</span>
           </Link>
         )}
 
@@ -130,6 +131,7 @@ export default function TopicDetailPage() {
                   <li key={k.text} className="flex gap-3 px-4 py-3.5">
                     <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-teal text-[12px] font-bold text-white tabular-nums">{i + 1}</span>
                     <div className="min-w-0">
+                      {k.update && <UnverifiedUpdate update={k.update} />}
                       <p className="prose-read font-medium text-navy">{k.text}</p>
                       <CitationChips refs={k.refs} />
                     </div>
@@ -205,6 +207,7 @@ export default function TopicDetailPage() {
                 <span className="text-navy-500">See every source side by side for this topic.</span>
               </span>
             </Link>) : null}
+            {topic.status !== 'sample' && <ReaderCheckCard slug={topic.slug} />}
             <p className="text-xs text-navy-400">Last updated {formatDate(topic.updatedAt)}{topic.status === 'sample' ? ' (sample date)' : ''} · Guidelines last checked {formatDate(WATCH.lastChecked)}</p>
           </>
         )}

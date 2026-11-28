@@ -8,6 +8,7 @@ import { TOPICS } from '@/data';
 import { relativeTime } from '@/lib/format';
 import { useAuth } from '@/store/AuthContext';
 import { useReviews, type ReviewRecord, type ReviewStatus } from '@/store/ReviewContext';
+import { useReaderChecks } from '@/store/ReaderChecksContext';
 
 const ACTIONS: { status: ReviewStatus; label: string; cls: string }[] = [
   { status: 'verified', label: 'Mark verified', cls: 'bg-teal text-white' },
@@ -51,6 +52,7 @@ export default function AdminPage() {
         ) : (
           <>
             <AccountCard />
+            <ReaderProblems />
             <div className="flex gap-2">
               <Chip active={filter === 'pending'} onClick={() => setFilter('pending')}>Pending</Chip>
               <Chip active={filter === 'verified'} onClick={() => setFilter('verified')}>Verified</Chip>
@@ -156,6 +158,24 @@ function SetupCard() {
         <li>Copy apiKey, authDomain, projectId and appId from the web app config into the <code className="rounded bg-bg px-1">VITE_FIREBASE_*</code> settings.</li>
         <li>Sign in once, then set your own role to <code className="rounded bg-bg px-1">admin</code> in Firestore → users.</li>
       </ol>
+    </section>
+  );
+}
+
+/** Problems reported by readers through "Help verify", newest first. */
+function ReaderProblems() {
+  const { allProblems } = useReaderChecks();
+  if (!allProblems.length) return null;
+  return (
+    <section className="space-y-2 rounded-2xl bg-alert-50 p-4 ring-1 ring-alert/20">
+      <h2 className="text-sm font-bold uppercase tracking-wide text-alert">Reader-reported problems ({allProblems.length})</h2>
+      {allProblems.map((p) => (
+        <Link key={`${p.topic_slug}-${p.user_id}`} to={`/topics/${p.topic_slug}`} className="block rounded-xl bg-surface p-3 text-sm ring-1 ring-navy-100">
+          <span className="block font-bold text-navy">{TOPICS.find((t) => t.slug === p.topic_slug)?.title ?? p.topic_slug}</span>
+          <span className="block text-navy-700">{p.note}</span>
+          <span className="block text-xs text-navy-400">{p.reader_name ?? 'Reader'} · {new Date(p.created_at).toLocaleDateString('en-IN')}</span>
+        </Link>
+      ))}
     </section>
   );
 }

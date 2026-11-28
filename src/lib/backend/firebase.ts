@@ -10,7 +10,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { addDoc, collection, doc, getDoc, getDocs, getFirestore, serverTimestamp, setDoc, Timestamp } from 'firebase/firestore';
-import type { Backend, Role, ReviewRecord } from './types';
+import type { Backend, ReaderCheck, Role, ReviewRecord } from './types';
 
 const EMAIL_KEY = 'obgynvault.signin-email';
 
@@ -19,6 +19,7 @@ const EMAIL_KEY = 'obgynvault.signin-email';
  *   users/{uid}         { email, name, role }   role is reader on creation; an admin changes it in the console
  *   vaults/{uid}        { data, updatedAt }     owner only
  *   topicReviews/{id}   { topicSlug, status, comment, reviewerId, reviewerName, createdAt }   public read, editors write
+ *   readerChecks/{slug}__{uid}  { topicSlug, uid, verdict, note, readerName, createdAt }   public read, each reader writes own
  */
 export function createFirebaseBackend(config: { apiKey: string; authDomain: string; projectId: string; appId: string }): Backend {
   const app = initializeApp(config);
@@ -92,6 +93,29 @@ export function createFirebaseBackend(config: { apiKey: string; authDomain: stri
           return { topic_slug: x.topicSlug, status: x.status, comment: x.comment ?? null, reviewer_name: x.reviewerName ?? null, created_at: at };
         })
         .sort((a, b) => (a.created_at < b.created_at ? 1 : -1));
+    },
+    async listReaderChecks() {
+      const snap = await getDocs(collection(db, 'readerChecks'));
+      return snap.docs.map((d): ReaderCheck => {
+        const x = d.data();
+        const at = x.createdAt instanceof Timestamp ? x.createdAt.toDate().toISOString() : new Date().toISOString();
+        return { topic_slug: x.topicSlug, user_id: x.uid, verdict: x.verdict, note: x.note ?? null, reader_name: x.readerName ?? null, created_at: at };
+      });
+    },
+    async setReaderCheck(c) {
+      try {
+        await setDoc(doc(db, 'readerChecks', `${c.slug}__${c.uid}`), {
+          topicSlug: c.slug,
+          uid: c.uid,
+          verdict: c.verdict,
+          note: c.note,
+          readerName: c.name,
+          createdAt: serverTimestamp(),
+        });
+        return null;
+      } catch (e) {
+        return msg(e);
+      }
     },
     async addReview(r) {
       try {

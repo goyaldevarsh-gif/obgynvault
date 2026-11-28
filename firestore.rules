@@ -21,6 +21,17 @@ service cloud.firestore {
       allow read, write: if signedIn() && request.auth.uid == uid;
     }
 
+    // Reader checks: anyone can read; a signed-in reader writes only their own check per topic (id = slug__uid).
+    match /readerChecks/{id} {
+      allow read: if true;
+      allow create, update: if signedIn()
+        && id == request.resource.data.topicSlug + '__' + request.auth.uid
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.verdict in ['matches', 'problem']
+        && (request.resource.data.note == null || (request.resource.data.note is string && request.resource.data.note.size() <= 600));
+      allow delete: if signedIn() && resource.data.uid == request.auth.uid;
+    }
+
     // Clinical review log: everyone can read statuses; editors add entries in their own name; nobody edits history.
     match /topicReviews/{id} {
       allow read: if true;

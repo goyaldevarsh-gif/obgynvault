@@ -7,6 +7,7 @@ import { VaultProvider } from '@/store/VaultContext';
 import { ToastProvider } from '@/store/ToastContext';
 import { AuthProvider } from '@/store/AuthContext';
 import { ReviewProvider } from '@/store/ReviewContext';
+import { ReaderChecksProvider } from '@/store/ReaderChecksContext';
 import { PageSkeleton } from '@/components/ui/Skeleton';
 import { GettingStarted } from '@/components/onboarding/GettingStarted';
 import { UpdateBanner } from '@/components/layout/UpdateBanner';
@@ -70,6 +71,7 @@ export default function App() {
   return (
     <AuthProvider>
       <ReviewProvider>
+        <ReaderChecksProvider>
         <VaultProvider>
           <ToastProvider>
             <RouterProvider router={router} />
@@ -77,6 +79,7 @@ export default function App() {
             <UpdateBanner />
           </ToastProvider>
         </VaultProvider>
+        </ReaderChecksProvider>
       </ReviewProvider>
     </AuthProvider>
   );

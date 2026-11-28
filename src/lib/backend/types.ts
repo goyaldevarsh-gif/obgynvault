@@ -19,6 +19,17 @@ export interface ReviewRecord {
   created_at: string;
 }
 
+/** A reader's own check of a topic against its cited guidelines (one per reader per topic; latest wins). */
+export type CheckVerdict = 'matches' | 'problem';
+export interface ReaderCheck {
+  topic_slug: string;
+  user_id: string;
+  verdict: CheckVerdict;
+  note: string | null;
+  reader_name: string | null;
+  created_at: string;
+}
+
 export interface Backend {
   /** Calls back with the signed-in user (or null) now and on every change. Returns an unsubscribe. */
   onUser(cb: (u: BackendUser | null) => void): () => void;
@@ -31,5 +42,7 @@ export interface Backend {
   loadVault(uid: string): Promise<unknown | null>;
   saveVault(uid: string, data: unknown): Promise<string | null>;
   listReviews(): Promise<ReviewRecord[]>;
+  listReaderChecks(): Promise<ReaderCheck[]>;
+  setReaderCheck(c: { slug: string; uid: string; verdict: CheckVerdict; note: string | null; name: string | null }): Promise<string | null>;
   addReview(r: { slug: string; status: ReviewStatus; comment: string | null; reviewerId: string; reviewerName: string | null }): Promise<string | null>;
 }

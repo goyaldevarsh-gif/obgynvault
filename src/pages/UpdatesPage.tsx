@@ -35,13 +35,15 @@ export default function UpdatesPage() {
 
         {pending.length > 0 && (
           <section>
-            <h2 className="mb-2 text-sm font-bold uppercase tracking-wide text-amber-700">Review pending</h2>
+            <h2 className="mb-1 text-sm font-bold uppercase tracking-wide text-amber-700">Updated, not yet verified</h2>
+            <p className="mb-2 text-xs text-navy-500">These topics were updated from a new guideline. Changed lines are marked in the topic; check them against the source.</p>
             <div className="space-y-2">
               {pending.map(([slug, p]) => (
                 <Link key={slug} to={`/topics/${slug}`} className="flex items-center gap-3 rounded-2xl bg-amber-50 p-4 ring-1 ring-amber/30">
                   <span className="flex-1 text-sm">
                     <span className="block font-bold text-navy">{getTopic(slug)?.title ?? slug}</span>
                     <span className="block text-navy-600">{p.note}</span>
+                    {p.changes?.length ? <span className="mt-1 block text-xs text-navy-500">{p.changes.length} line{p.changes.length > 1 ? 's' : ''} changed · {formatDate(p.detected)}</span> : null}
                   </span>
                   <ChevronRight className="size-5 text-amber-700" aria-hidden />
                 </Link>
