@@ -154,6 +154,24 @@ export const infertilityEvaluation: Partial<Topic> = {
       icon: 'management',
       body: [
         {
+          text: 'Work-up and first treatment (ICMR STWs, NICE NG257, ASRM, WHO 2025).',
+          refs: [{ guidelineId: IF }, { guidelineId: IM }, { guidelineId: N }, { guidelineId: A }, { guidelineId: W }],
+          flow: {
+            caption: 'Infertile couple',
+            steps: [
+              { title: 'When to start', text: 'After 12 months if under 35, 6 months if 35 or older, at once if over 40 or a known cause.', tone: 'start' },
+              { title: 'Test both partners together', text: 'Semen analysis (WHO 2021); mid-luteal progesterone; TVS with AFC; tubal test (HSG/HyCoSy, or laparoscopy if pelvic disease suspected).' },
+              { title: 'Cause found', tone: 'decision', branches: [
+                { when: 'Anovulation (PCOS)', then: 'Letrozole first; then gonadotrophins or drilling; then IVF' },
+                { when: 'Male factor', then: 'Hormones, repeat semen at 3 months; severe or azoospermia: ICSI with retrieval or donor' },
+                { when: 'Tubal block', then: 'IVF (or tubal surgery in selected cases)' },
+                { when: 'Unexplained', then: 'Expectant 6 months if good prognosis; stimulated IUI up to 4 cycles; IVF after 2 years' },
+              ] },
+              { title: 'Advise', text: 'Intercourse every 2–3 days; stop smoking; folic acid; rubella immunity.' },
+            ],
+          },
+        },
+        {
           text: 'Treatment pathway:',
           refs: [{ guidelineId: W }, { guidelineId: F }, { guidelineId: IF }, { guidelineId: N }],
           table: {
