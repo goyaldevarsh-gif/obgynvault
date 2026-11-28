@@ -85,6 +85,27 @@ export const uterineFibroids: Partial<Topic> = {
       title: 'When to Treat',
       icon: 'management',
       body: [
+        {
+          text: 'Choosing treatment for fibroids (ICMR STW, FOGSI, NICE NG88, ACOG PB 228).',
+          refs: [{ guidelineId: I }, { guidelineId: F }, { guidelineId: N, locator: '1.5' }, { guidelineId: A }],
+          flow: {
+            caption: 'Uterine fibroids',
+            steps: [
+              { title: 'Confirm', text: 'TAS + TVS; CBC; hysteroscopy or saline sonography if submucous suspected; MRI for mapping before UAE or complex myomectomy.', tone: 'start' },
+              { title: 'Symptoms?', tone: 'decision', branches: [
+                { when: 'None', then: 'No treatment (ICMR: under 5 cm); counsel, yearly review' },
+                { when: 'Heavy bleeding, under 3 cm, cavity normal', then: 'LNG-IUS first; else tranexamic acid, NSAID, COC, progestogen' },
+                { when: 'Submucous (type 0–2)', then: 'Hysteroscopic myomectomy (up to 4–5 cm in experienced hands)' },
+                { when: '3 cm or more, symptomatic', then: 'Specialist choice below' },
+              ] },
+              { title: 'Wants uterus or fertility?', tone: 'decision', branches: [
+                { when: 'Yes', then: 'Myomectomy (laparoscopic preferred); UAE or RFA only after counselling on fertility' },
+                { when: 'No', then: 'Hysterectomy (vaginal or laparoscopic); UAE or ablation as alternatives' },
+              ] },
+              { title: 'Before surgery', text: 'GnRH agonist 3–4 months to shrink fibroids and correct anaemia (max 3–6 months).' },
+            ],
+          },
+        },
         { text: 'Expectant management suits women who are asymptomatic or do not want intervention. Counsel and review yearly.', refs: [{ guidelineId: A, locator: 'Level C' }, { guidelineId: F, locator: 'Expectant management' }] },
         { text: 'ICMR: asymptomatic fibroids under 5 cm need no treatment. A "large fibroid" means uterine size over 12 weeks. Explain all options, including observation; not every woman with fibroids needs a hysterectomy.', refs: [{ guidelineId: I }] },
         { text: 'FOGSI: discuss medical or surgical treatment if the uterus is 14 weeks\' size or more. Consider hysterectomy for asymptomatic fibroids that keep growing after menopause without HRT.', refs: [{ guidelineId: F, locator: 'Expectant management' }] },

@@ -115,6 +115,25 @@ export const abnormalUterineBleeding: Partial<Topic> = {
       title: 'Acute Heavy Bleeding',
       icon: 'emergency',
       body: [
+        {
+          text: 'Stepwise approach to AUB (FOGSI–ICOG GCPR 2024, NICE NG88).',
+          refs: [{ guidelineId: F, locator: 'pp.11–20' }, { guidelineId: N }],
+          flow: {
+            caption: 'Abnormal uterine bleeding',
+            steps: [
+              { title: 'Assess', text: 'History and examination; pregnancy test, CBC, TSH; bleeding-disorder screen; TVS. Biopsy if 45 or older or risk factors.', tone: 'start' },
+              { title: 'Acute heavy bleeding?', tone: 'urgent', text: 'Resuscitate; MPA 20 mg or norethisterone 10 mg three times daily, or COC 2 pills 12-hourly, or tranexamic acid 10 mg/kg IV 8-hourly.' },
+              { title: 'Cause (PALM-COEIN)', tone: 'decision', branches: [
+                { when: 'Polyp', then: 'Hysteroscopic polypectomy; histology' },
+                { when: 'Fibroid', then: 'Medical (TXA, NSAID, LNG-IUS); submucous under 4 cm: hysteroscopic resection; larger: myomectomy' },
+                { when: 'Adenomyosis', then: 'NSAID, progestogen, dienogest, LNG-IUS; hysterectomy if medical fails' },
+                { when: 'Ovulatory', then: 'Oral progestogens; COC or LNG-IUS if no pregnancy wish' },
+                { when: 'No structural cause', then: 'Tranexamic acid ± NSAID; LNG-IUS (NICE first line)' },
+              ] },
+              { title: 'Medical treatment fails', text: 'Endometrial ablation or hysterectomy, by fertility wish and patient choice.' },
+            ],
+          },
+        },
         { text: 'Medical treatment first for most women. Hormonal treatment is first line when no bleeding disorder is known or suspected. Resuscitate and transfuse as needed.', refs: [{ guidelineId: F, locator: 'p.13 (A; L1)' }] },
         {
           text: 'Acute regimens:',
