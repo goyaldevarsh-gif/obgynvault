@@ -133,7 +133,7 @@ export const cervicalScreening: Partial<Topic> = {
         { text: 'The Indian NCD guidelines name only cryotherapy at primary level; FOGSI allows cryotherapy or thermal ablation.', refs: [{ guidelineId: M }, { guidelineId: F }] },
         { text: 'About 10% of ablations fail; excision has lower failure rates.', refs: [{ guidelineId: W, locator: 'Ch. 4' }] },
         { text: 'CIN1: FOGSI advises repeat cytology at 1–2 years rather than treatment.', refs: [{ guidelineId: F }] },
-        { heading: 'Transformation zone types (figure)', text: 'Ablation only for a type 1 transformation zone with the whole lesion visible; type 2 and 3 zones need excision.', refs: [{ guidelineId: W, locator: 'Ch. 3' }, { guidelineId: F, locator: 'pp. 7–8' }], figure: { src: 'fig-cx-tz-types.webp', alt: 'Three cervix diagrams showing transformation zone types 1, 2 and 3 with the squamocolumnar junction', caption: 'Type 1: fully ectocervical. Type 2: partly in the canal, SCJ visible. Type 3: SCJ not fully visible.' } },
+        { heading: 'Transformation zone types', text: 'Ablation only for a type 1 transformation zone with the whole lesion visible; type 2 and 3 zones need excision.', refs: [{ guidelineId: W, locator: 'Ch. 3' }, { guidelineId: F, locator: 'pp. 7–8' }], figure: { src: 'fig-cx-tz-types.webp', alt: 'Three cervix diagrams showing transformation zone types 1, 2 and 3 with the squamocolumnar junction', caption: 'Type 1: fully ectocervical. Type 2: partly in the canal, SCJ visible. Type 3: SCJ not fully visible.' } },
       ],
     },
     {

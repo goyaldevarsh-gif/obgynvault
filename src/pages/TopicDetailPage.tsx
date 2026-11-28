@@ -1,4 +1,4 @@
-import { CheckCircle2, ChevronDown, GitCompareArrows, Info, ListOrdered, Workflow } from 'lucide-react';
+import { CheckCircle2, ChevronDown, GitCompareArrows, Image as ImageIcon, Info, ListOrdered, Table2, Workflow } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
@@ -12,7 +12,7 @@ import { formatDate } from '@/lib/format';
 import { ReadingSettingsButton } from '@/components/settings/ReadingSettings';
 import NotFoundPage from './NotFoundPage';
 
-type Tab = 'overview' | 'guidelines' | 'notes';
+type Tab = 'overview' | 'graphics' | 'guidelines' | 'notes';
 
 /** Section types that hold management: shown first in a quick bar and the first one opens by default. */
 const MGMT_ICONS = new Set(['management', 'emergency', 'drug', 'injection', 'delivery', 'fluids', 'surgery']);
@@ -91,6 +91,22 @@ export default function TopicDetailPage() {
   }, [topic]);
   const firstBg = ordered.findIndex((x) => BG_ICONS.has(x.icon));
 
+  // Every flowchart, table and figure in the topic, in page order (like a "Graphics" list in a textbook review).
+  const graphics = useMemo(
+    () =>
+      ordered.flatMap((sec, si) =>
+        sec.body.flatMap((p) => {
+          const out: { kind: 'flow' | 'table' | 'figure'; title: string; secId: string; secNo: number; secTitle: string }[] = [];
+          const base = { secId: sec.id, secNo: si + 1, secTitle: sec.title };
+          if (p.flow) out.push({ kind: 'flow', title: p.heading ?? sec.title, ...base });
+          if (p.table) out.push({ kind: 'table', title: p.table.caption ?? (p.heading && p.heading.length > 8 ? p.heading : sec.title), ...base });
+          if (p.figure) out.push({ kind: 'figure', title: p.heading ?? p.figure.alt, ...base });
+          return out;
+        }),
+      ),
+    [ordered],
+  );
+
   const sourceIds = useMemo(() => Array.from(new Set(guidelines.map((g) => g.sourceId))), [guidelines]);
 
   if (!topic) return <NotFoundPage />;
@@ -112,7 +128,8 @@ export default function TopicDetailPage() {
       <div className="space-y-4 px-4 md:px-6">
         <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:px-0" role="tablist" aria-label="Topic sections">
           <Chip role="tab" active={tab === 'overview'} onClick={() => setTab('overview')}>Overview</Chip>
-          <Chip role="tab" active={tab === 'guidelines'} count={guidelines.length} onClick={() => setTab('guidelines')}>Guidelines</Chip>
+          {graphics.length > 0 && <Chip role="tab" active={tab === 'graphics'} count={graphics.length} onClick={() => setTab('graphics')}>Graphics</Chip>}
+          <Chip role="tab" active={tab === 'guidelines'} count={guidelines.length} onClick={() => setTab('guidelines')}>Society guidelines</Chip>
           <Chip role="tab" active={tab === 'notes'} onClick={() => setTab('notes')}>My notes</Chip>
         </div>
 
@@ -125,6 +142,7 @@ export default function TopicDetailPage() {
           </div>
           <h2 className="text-[30px] font-extrabold leading-[1.15] tracking-tight text-navy">{topic.title}</h2>
           <p className="mt-1 text-[16px] font-medium text-navy-500">{topic.subtitle}</p>
+          <p className="mt-1.5 text-xs text-navy-400">Guidelines last checked {formatDate(WATCH.lastChecked)} · {guidelines.length} source documents</p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {Array.from(new Set(guidelines.map((g) => g.sourceId))).map((id) => (
               <SourceBadge key={id} id={id} />
@@ -234,7 +252,7 @@ export default function TopicDetailPage() {
                   {idx === firstBg && idx > 0 && (
                     <p className="border-t border-navy-100 bg-canvas px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-navy-400">Background</p>
                   )}
-                  <AccordionItem id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined} open={openSections.has(s.id)} onToggle={() => toggleSection(s.id)}>
+                  <AccordionItem id={s.id} title={`${idx + 1}. ${s.title}`} icon={Icon ? <Icon className="size-5" /> : undefined} open={openSections.has(s.id)} onToggle={() => toggleSection(s.id)}>
                     {s.body.map((p) => (
                       <CitedParagraph key={p.text} point={p} />
                     ))}
@@ -273,6 +291,36 @@ export default function TopicDetailPage() {
             {topic.status !== 'sample' && <ReaderCheckCard slug={topic.slug} />}
             <p className="text-xs text-navy-400">Last updated {formatDate(topic.updatedAt)}{topic.status === 'sample' ? ' (sample date)' : ''} · Guidelines last checked {formatDate(WATCH.lastChecked)}</p>
           </>
+        )}
+
+        {tab === 'graphics' && (
+          <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
+            <ol className="divide-y divide-navy-100/70">
+              {graphics.map((g, i) => {
+                const Icon = g.kind === 'flow' ? Workflow : g.kind === 'table' ? Table2 : ImageIcon;
+                return (
+                  <li key={`${g.secId}-${i}`}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setTab('overview');
+                        jumpTo(g.secId);
+                      }}
+                      className="flex w-full items-start gap-3 px-4 py-3 text-left hover:bg-teal-50"
+                    >
+                      <Icon className="mt-0.5 size-5 shrink-0 text-teal-700" aria-hidden />
+                      <span className="min-w-0">
+                        <span className="block text-[14.5px] font-semibold text-navy">{g.title}</span>
+                        <span className="block text-xs text-navy-400">
+                          {g.kind === 'flow' ? 'Flowchart' : g.kind === 'table' ? 'Table' : 'Figure'} · Section {g.secNo}: {g.secTitle}
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
         )}
 
         {tab === 'guidelines' && (

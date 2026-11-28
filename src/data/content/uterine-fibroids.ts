@@ -66,7 +66,7 @@ export const uterineFibroids: Partial<Topic> = {
           },
         },
         { text: 'The ESGE classification for submucosal fibroids: type 0 entirely in the cavity; type I less than 50% in the myometrium (angle <90°); type II 50% or more in the myometrium (angle ≥90°).', refs: [{ guidelineId: F, locator: 'Table 1' }] },
-        { heading: 'FIGO types on the uterus (figure)', text: 'Where each FIGO type sits: 0–2 distort the cavity, 3 touches the endometrium, 4 is within the wall, 5–7 are subserosal, 8 is elsewhere (e.g. cervical).', refs: [{ guidelineId: F, locator: 'Figure 1' }, { guidelineId: I }], figure: { src: 'fig-figo-fibroid.svg', alt: 'Schematic coronal uterus showing fibroid FIGO types 0 to 8 in their positions, with a table of definitions', caption: 'Schematic, not to scale.' } },
+        { heading: 'FIGO types on the uterus', text: 'Where each FIGO type sits: 0–2 distort the cavity, 3 touches the endometrium, 4 is within the wall, 5–7 are subserosal, 8 is elsewhere (e.g. cervical).', refs: [{ guidelineId: F, locator: 'Figure 1' }, { guidelineId: I }], figure: { src: 'fig-figo-fibroid.svg', alt: 'Schematic coronal uterus showing fibroid FIGO types 0 to 8 in their positions, with a table of definitions', caption: 'Schematic, not to scale.' } },
       ],
     },
     {

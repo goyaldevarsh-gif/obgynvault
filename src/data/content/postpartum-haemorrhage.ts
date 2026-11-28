@@ -201,7 +201,7 @@ export const postpartumHaemorrhage: Partial<Topic> = {
             ],
           },
         },
-        { heading: 'Bimanual compression and balloon (figure)', text: 'Bimanual compression is a bridging measure while definitive care is arranged; uterine tamponade uses a balloon catheter.', refs: [{ guidelineId: F, locator: 'Mechanical & surgical' }], figure: { src: 'fig-pph-compression.webp', alt: 'Bimanual uterine compression with a fist in the anterior fornix and the abdominal hand behind the fundus; uterine balloon tamponade filled with saline draining to a bag', caption: 'Illustration of the technique: fist in the anterior fornix, abdominal hand behind the fundus; balloon filled with saline.' } },
+        { heading: 'Bimanual compression and balloon', text: 'Bimanual compression is a bridging measure while definitive care is arranged; uterine tamponade uses a balloon catheter.', refs: [{ guidelineId: F, locator: 'Mechanical & surgical' }], figure: { src: 'fig-pph-compression.webp', alt: 'Bimanual uterine compression with a fist in the anterior fornix and the abdominal hand behind the fundus; uterine balloon tamponade filled with saline draining to a bag', caption: 'Illustration of the technique: fist in the anterior fornix, abdominal hand behind the fundus; balloon filled with saline.' } },
       ],
     },
     {
