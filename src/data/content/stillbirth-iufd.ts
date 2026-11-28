@@ -39,7 +39,7 @@ export const stillbirthIufd: Partial<Topic> = {
               { title: 'Confirm', text: 'Real-time ultrasound; second opinion if wished. Break news in a private space with a companion present.', tone: 'start' },
               { title: 'Unwell or high risk?', text: 'Check BP, urine protein, temperature, bleeding, membranes, FBC, coagulation.', tone: 'decision', branches: [
                 { when: 'Pre-eclampsia, sepsis, abruption, ruptured membranes or DIC', then: 'Deliver promptly; treat the cause (IV antibiotics for sepsis)' },
-                { when: 'Well, membranes intact, no DIC', then: 'Delay up to 48 hours is acceptable; she may go home' },
+                { when: 'Well, membranes intact, no DIC', then: 'A delay of up to 48 hours is unlikely to harm' },
               ] },
               { title: 'Previous caesarean?', tone: 'decision', branches: [
                 { when: 'No', then: 'Mifepristone 200 mg, then misoprostol by gestation' },

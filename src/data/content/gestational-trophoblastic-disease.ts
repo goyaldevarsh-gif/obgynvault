@@ -36,7 +36,7 @@ export const gestationalTrophoblasticDisease: Partial<Topic> = {
           flow: {
             caption: 'Molar pregnancy',
             steps: [
-              { title: 'Suspected mole', text: 'Ultrasound; baseline serum hCG; blood group. FOGSI also suggests chest X-ray.', tone: 'start' },
+              { title: 'Suspected mole', text: 'Ultrasound; serum hCG before evacuation; blood group for anti-D.', tone: 'start' },
               { title: 'Suction evacuation', text: 'Ultrasound-guided suction (FIGO: 12–14 mm cannula); blood available if uterus over 16 weeks; anti-D if Rh negative. Send all tissue for histology.', tone: 'action' },
               { title: 'Histology', tone: 'decision', branches: [
                 { when: 'Partial mole', then: 'hCG every 1–2 weeks until normal; stop after confirmatory normal (RCOG: 2 samples 4 weeks apart)' },
