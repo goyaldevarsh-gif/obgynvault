@@ -1,0 +1,68 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 860' width='1500' height='860' font-family='Manrope,Segoe UI,Roboto,Helvetica,Arial,sans-serif'>
+<rect width='1500' height='860' fill='#fff'/>
+<rect width='1500' height='64' fill='#102A43'/>
+<text x='750.0' y='43' text-anchor='middle' font-size='30' font-weight='800' fill='#fff'>FIGO classification of fibroids (types 0 to 8)</text>
+<g transform='translate(60,60) scale(1.05)'>
+<path d='M160,200 Q90,170 60,230' fill='none' stroke='#E8A0A0' stroke-width='16' stroke-linecap='round'/>
+<path d='M540,200 Q610,170 640,230' fill='none' stroke='#E8A0A0' stroke-width='16' stroke-linecap='round'/>
+<ellipse cx='70' cy='270' rx='34' ry='24' fill='#F7D9D2' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='630' cy='270' rx='34' ry='24' fill='#F7D9D2' stroke='#102A43' stroke-width='2'/>
+<path d='M150,200 Q150,110 350,110 Q550,110 550,200 L540,420 Q520,500 420,520 L410,690 L290,690 L280,520 Q180,500 160,420 Z' fill='#F2A7A7' stroke='#102A43' stroke-width='3'/>
+<path d='M350,455 L350,690' stroke='#B4475A' stroke-width='6'/>
+<path d='M235,195 L465,195 L350,455 Z' fill='#FBE3E3' stroke='#B4475A' stroke-width='5' stroke-linejoin='round'/>
+<line x1='350' y1='197' x2='350' y2='240' stroke='#E5A34C' stroke-width='5'/>
+<circle cx='350' cy='268' r='28' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='350' y='279' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>0</text>
+<circle cx='296' cy='299' r='30' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='296' y='310' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>1</text>
+<circle cx='441' cy='284' r='30' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='441' y='295' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>2</text>
+<circle cx='294' cy='402' r='28' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='294' y='413' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>3</text>
+<circle cx='466' cy='385' r='28' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='466' y='396' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>4</text>
+<circle cx='533' cy='250' r='30' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='533' y='261' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>5</text>
+<circle cx='250' cy='96' r='30' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='250' y='107' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>6</text>
+<line x1='118' y1='340' x2='158' y2='340' stroke='#E5A34C' stroke-width='5'/>
+<circle cx='88' cy='340' r='30' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='88' y='351' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>7</text>
+<circle cx='350' cy='605' r='28' fill='#FFF6E0' stroke='#E5A34C' stroke-width='4'/>
+<text x='350' y='616' text-anchor='middle' font-size='32' font-weight='800' fill='#102A43'>8</text>
+
+
+
+</g>
+<rect x='820' y='100' width='630' height='56' rx='10' fill='#20A69A'/>
+<text x='865' y='137' text-anchor='middle' font-size='24' font-weight='800' fill='#fff'>Type</text><text x='930' y='137' font-size='24' font-weight='800' fill='#fff'>Description</text>
+<rect x='820' y='156' width='630' height='62' fill='#fff' stroke='#D5DEE8'/>
+<text x='865' y='197' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>0</text>
+<text x='930' y='196' font-size='22' fill='#102A43'>Pedunculated intracavitary</text>
+<rect x='820' y='218' width='630' height='62' fill='#F4F8FA' stroke='#D5DEE8'/>
+<text x='865' y='259' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>1</text>
+<text x='930' y='258' font-size='22' fill='#102A43'>Submucosal, less than 50% intramural</text>
+<rect x='820' y='280' width='630' height='62' fill='#fff' stroke='#D5DEE8'/>
+<text x='865' y='321' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>2</text>
+<text x='930' y='320' font-size='22' fill='#102A43'>Submucosal, 50% or more intramural</text>
+<rect x='820' y='342' width='630' height='62' fill='#F4F8FA' stroke='#D5DEE8'/>
+<text x='865' y='383' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>3</text>
+<text x='930' y='382' font-size='22' fill='#102A43'>Contacts endometrium, 100% intramural</text>
+<rect x='820' y='404' width='630' height='62' fill='#fff' stroke='#D5DEE8'/>
+<text x='865' y='445' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>4</text>
+<text x='930' y='444' font-size='22' fill='#102A43'>Intramural</text>
+<rect x='820' y='466' width='630' height='62' fill='#F4F8FA' stroke='#D5DEE8'/>
+<text x='865' y='507' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>5</text>
+<text x='930' y='506' font-size='22' fill='#102A43'>Subserosal, 50% or more intramural</text>
+<rect x='820' y='528' width='630' height='62' fill='#fff' stroke='#D5DEE8'/>
+<text x='865' y='569' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>6</text>
+<text x='930' y='568' font-size='22' fill='#102A43'>Subserosal, less than 50% intramural</text>
+<rect x='820' y='590' width='630' height='62' fill='#F4F8FA' stroke='#D5DEE8'/>
+<text x='865' y='631' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>7</text>
+<text x='930' y='630' font-size='22' fill='#102A43'>Subserosal pedunculated</text>
+<rect x='820' y='652' width='630' height='62' fill='#fff' stroke='#D5DEE8'/>
+<text x='865' y='693' text-anchor='middle' font-size='28' font-weight='800' fill='#102A43'>8</text>
+<text x='930' y='692' font-size='22' fill='#102A43'>Other (e.g. cervical, parasitic)</text>
+
+<text x='120' y='830' font-size='19' fill='#486581'>Dark red line = endometrium · pink wall = myometrium · outer line = serosa</text>
+</svg>
