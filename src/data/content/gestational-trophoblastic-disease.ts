@@ -9,6 +9,8 @@ const F = 'fogsi-gtd-gcpr';
 const FI = 'figo-gtd-2021';
 const R = 'rcog-gtg-38';
 const E = 'eottd-gtd-2020';
+const F25 = 'figo-gtd-2025';
+const CX = 'charing-cross-mole-guide';
 
 export const gestationalTrophoblasticDisease: Partial<Topic> = {
   status: 'draft',
@@ -97,6 +99,23 @@ export const gestationalTrophoblasticDisease: Partial<Topic> = {
       title: 'Gestational Trophoblastic Neoplasia: Staging & Scoring',
       icon: 'classification',
       body: [
+        {
+          heading: 'When to start chemotherapy after a mole',
+          text: 'UK GTD centre indications (Charing Cross). FIGO 2025 diagnoses GTN on plateau, rise or choriocarcinoma only (Box 1).',
+          refs: [{ guidelineId: CX }, { guidelineId: F25, locator: 'Box 1' }],
+          table: {
+            columns: ['Indication'],
+            rows: [
+              ['hCG rising in 2 consecutive samples, or plateau in 3 consecutive samples'],
+              ['hCG over 20,000 IU/L more than 4 weeks after evacuation'],
+              ['hCG still raised 6 months after evacuation, even if falling'],
+              ['Heavy vaginal, GI or intraperitoneal bleeding'],
+              ['Histological choriocarcinoma'],
+              ['Brain, liver or GI metastases, or lung metastases over 2 cm on chest X-ray'],
+              ['Pulmonary, vulval or vaginal metastases, unless hCG is falling'],
+            ],
+          },
+        },
         { text: 'Work-up: chest X-ray (lungs), CT or ultrasound (liver), MRI or CT (brain). FIGO stage: I uterus; II adnexa or vagina; III lungs; IV other sites. Report as stage:score (e.g. II:4).', refs: [{ guidelineId: F, locator: 'p.6' }, { guidelineId: FI, locator: 'Table 1' }] },
         {
           text: 'Modified WHO/FIGO prognostic score (total 6 or less low risk, 7 or more high risk).',
@@ -125,7 +144,8 @@ export const gestationalTrophoblasticDisease: Partial<Topic> = {
       body: [
         { heading: 'Low risk (FIGO)', text: 'Methotrexate 50 mg IM on days 1, 3, 5, 7 with folinic acid 15 mg orally 24 hours after each dose (days 2, 4, 6, 8), every 2 weeks. Or methotrexate 0.4 mg/kg (max 25 mg) IV/IM daily for 5 days every 2 weeks. Or actinomycin D 1.25 mg/m² IV pulse every 2 weeks, or 0.5 mg IV daily for 5 days every 2 weeks.', refs: [{ guidelineId: FI, locator: 'Box 3' }] },
         { heading: 'Low risk (FOGSI)', text: 'Methotrexate 1 mg/kg IM on alternate days ×4 with folinic acid 0.1 mg/kg 24 hours after each dose, every 2 weeks; or actinomycin D 9–12 µg/kg IV daily ×5 days every 2 weeks. CBC, renal and liver function before each course; weekly hCG.', refs: [{ guidelineId: F, locator: 'p.7' }] },
-        { heading: 'Resistance', text: 'Switch to the other single agent if hCG plateaus or rises or toxicity limits treatment (FIGO). EOTTD: actinomycin D if hCG 1000 IU/L or less, EMA-CO if over 1000.', refs: [{ guidelineId: FI }, { guidelineId: E }] },
+        { heading: 'Start multi-agent directly (FIGO 2025)', text: 'Higher risk of single-agent failure: score 5–6, especially with metastases, or pre-treatment hCG 411,000 IU/L or more without metastases (149,000 or more with metastases or choriocarcinoma). These women should start multi-agent chemotherapy.', refs: [{ guidelineId: F25, locator: '5.4.1' }] },
+        { heading: 'Resistance', text: 'Primary resistance: hCG rise or plateau (under 10% fall) during the first 2 cycles. Switch to the other single agent if hCG plateaus or rises or toxicity limits dosing; methotrexate to actinomycin D gives 76–87% response, best when hCG is low. Thresholds for multi-agent therapy vary: EOTTD actinomycin D if hCG 1000 IU/L or less, EMA-CO if over; Charing Cross uses 300 IU/L.', refs: [{ guidelineId: F25, locator: '5.4.1' }, { guidelineId: E }, { guidelineId: CX }] },
         { heading: 'Consolidation after normal hCG', text: 'Sources differ: RCOG 6 weeks; FIGO 2–3 cycles; EOTTD at least 2 cycles (4 weeks) for low risk; FOGSI at least 1, usually 2–3 courses.', refs: [{ guidelineId: R }, { guidelineId: FI }, { guidelineId: E }, { guidelineId: F, locator: 'p.7' }] },
         { heading: 'High risk: EMA-CO (FIGO)', text: 'Refer to a specialist centre. Ultra-high risk: induction etoposide 100 mg/m² + cisplatin 20 mg/m² on days 1–2, weekly for 1–3 weeks, before EMA-CO.', table: { columns: ['Day', 'Drugs and doses'], rows: [['Day 1', 'Etoposide 100 mg/m² IV over 30 min; actinomycin D 0.5 mg IV; methotrexate 100 mg/m² IV bolus then 200 mg/m² over 12 hours'], ['Day 2', 'Etoposide 100 mg/m²; actinomycin D 0.5 mg; folinic acid 15 mg every 12 hours ×4, starting 24 hours after methotrexate'], ['Day 8', 'Vincristine 1 mg/m² (max 2 mg); cyclophosphamide 600 mg/m²']] }, refs: [{ guidelineId: FI, locator: 'Table 3' }, { guidelineId: E }, { guidelineId: F, locator: 'p.7' }] },
         { heading: 'After treatment', text: 'FIGO: hCG monthly for at least 12 months with contraception. Later pregnancies occur in about 80%; combination chemotherapy brings menopause earlier.', refs: [{ guidelineId: FI }, { guidelineId: R }] },
@@ -156,5 +176,5 @@ export const gestationalTrophoblasticDisease: Partial<Topic> = {
     },
   ],
   editorNote:
-    'Read on 28 Nov 2026. The only Indian source is the ICOG/FOGSI GCPR (drafted 2004–2009), which is old; newer international guidance is shown alongside. RCOG GTG 38 (2020) was read as a reprint in a Ukrainian journal; its chemotherapy-indications box and methotrexate doses were not captured. EOTTD regimen appendices were not in the text read. Not read: ESGO-ISSTD-EORTC-GCIG 2021, FIGO Cancer Report 2025, ACOG, ESMO. Chemotherapy doses are quoted from guidelines for reference; treatment should be given in an oncology or GTD centre.',
+    'Read on 28 Nov 2026. The only Indian source is the ICOG/FOGSI GCPR (drafted 2004–2009), which is old; newer international guidance is shown alongside. RCOG GTG 38 (2020) was read as a reprint in a Ukrainian journal; it has no chemotherapy-indications box in that copy and no methotrexate doses, so the indications list is from the Charing Cross GTD centre guide (undated). FIGO 2025 update added for criteria, multi-agent thresholds and resistance. EOTTD regimen appendices were not in the text read. Not read: ESGO-ISSTD-EORTC-GCIG 2021, FIGO Cancer Report 2025, ACOG, ESMO. Chemotherapy doses are quoted from guidelines for reference; treatment should be given in an oncology or GTD centre.',
 };
