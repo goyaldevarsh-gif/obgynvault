@@ -11,6 +11,7 @@ const C = 'nhsrc-cho-fp-2021';
 const W = 'who-fp-handbook-2022';
 const F = 'fsrh-ec-2017';
 const M = 'who-mec-2025';
+const CB = 'nhsrc-fp-cho';
 
 export const contraceptionEc: Partial<Topic> = {
   status: 'draft',
@@ -76,6 +77,7 @@ export const contraceptionEc: Partial<Topic> = {
         },
         { heading: 'DMPA side effects', text: 'Managing common DMPA problems:', table: { columns: ['Problem', 'Action'], rows: [['Irregular bleeding', 'Ibuprofen 400 mg three times daily or tranexamic acid 500 mg three times daily for 5 days'], ['Prolonged or heavy bleeding (over 8 days or twice usual)', 'Same first; if no response, EE 50 µg daily for 21 days or refer, plus iron'], ['Amenorrhoea', 'Reassure'], ['Weight gain', 'About 1–2 kg in a year'], ['Migraine with aura', 'Stop DMPA'], ['Bone density', 'Falls 5–6% over 5 years and recovers; routine BMD checks not needed']] }, refs: [{ guidelineId: D, locator: '§7.1–7.2, 8.1' }] },
         { heading: 'Chhaya missed pill', text: 'Less than 7 days late: take and continue with backup until next period. More than 7 days: restart as a new user. Periods delayed over 15 days: rule out pregnancy.', refs: [{ guidelineId: C, locator: 'pp.21–22' }] },
+        { heading: 'Chhaya in breastfeeding', text: 'Safe for breastfeeding women: no effect on the quantity or quality of milk. Expected effects are delayed, prolonged or, over time, scanty periods; these are not harmful and reverse on stopping.', refs: [{ guidelineId: CB }] },
       ],
     },
     {
@@ -151,5 +153,5 @@ export const contraceptionEc: Partial<Topic> = {
     },
   ],
   editorNote:
-    'Read on 28 Nov 2026. The MoHFW OCP Reference Manual 2016 could not be fetched, so national POP rules, the Chhaya 30 mg dose and its contraindications are not covered. WHO MEC 6th edition main document not read (web annex only); COC contraindications are from the WHO Handbook. FSRH amendment date needs checking. Not read: MoHFW IUCD manual 2018, MoHFW sterilisation standards (NSV backup and semen analysis), FOGSI, FSRH COC/UKMEC, NICE CG30. Postpartum and post-abortion timing: see Postpartum Contraception.',
+    'Read on 28 Nov 2026. The MoHFW OCP Reference Manual 2016 could not be fetched, so national POP rules, the Chhaya 30 mg dose and its contraindications are not covered (government sites blocked automated access again on 28 Nov 2026; check the PDF by hand). WHO MEC 6th edition main document not read (web annex only); COC contraindications are from the WHO Handbook. FSRH amendment date needs checking. Not read: MoHFW IUCD manual 2018, MoHFW sterilisation standards (NSV backup and semen analysis), FOGSI, FSRH COC/UKMEC, NICE CG30. Postpartum and post-abortion timing: see Postpartum Contraception.',
 };
