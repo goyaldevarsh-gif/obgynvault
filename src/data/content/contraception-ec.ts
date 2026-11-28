@@ -74,7 +74,7 @@ export const contraceptionEc: Partial<Topic> = {
             ],
           },
         },
-        { heading: 'DMPA side effects', text: 'Irregular bleeding: ibuprofen 400 mg three times daily or tranexamic acid 500 mg three times daily for 5 days. Prolonged or heavy bleeding (over 8 days or twice usual): same first; if no response, EE 50 µg daily for 21 days or refer, plus iron. Amenorrhoea: reassure. Weight gain about 1–2 kg in a year. Stop if migraine with aura develops. BMD falls 5–6% over 5 years and recovers; routine BMD checks not needed.', refs: [{ guidelineId: D, locator: '§7.1–7.2, 8.1' }] },
+        { heading: 'DMPA side effects', text: 'Managing common DMPA problems:', table: { columns: ['Problem', 'Action'], rows: [['Irregular bleeding', 'Ibuprofen 400 mg three times daily or tranexamic acid 500 mg three times daily for 5 days'], ['Prolonged or heavy bleeding (over 8 days or twice usual)', 'Same first; if no response, EE 50 µg daily for 21 days or refer, plus iron'], ['Amenorrhoea', 'Reassure'], ['Weight gain', 'About 1–2 kg in a year'], ['Migraine with aura', 'Stop DMPA'], ['Bone density', 'Falls 5–6% over 5 years and recovers; routine BMD checks not needed']] }, refs: [{ guidelineId: D, locator: '§7.1–7.2, 8.1' }] },
         { heading: 'Chhaya missed pill', text: 'Less than 7 days late: take and continue with backup until next period. More than 7 days: restart as a new user. Periods delayed over 15 days: rule out pregnancy.', refs: [{ guidelineId: C, locator: 'pp.21–22' }] },
       ],
     },
