@@ -98,6 +98,28 @@ export const vteInPregnancy: Partial<Topic> = {
       icon: 'management',
       body: [
         {
+          text: 'Thromboprophylaxis decision (RCOG GTG 37a risk score).',
+          refs: [{ guidelineId: R, locator: 'Appendix I, 4.2, 5.2, 7.1–7.5' }],
+          flow: {
+            caption: 'VTE prophylaxis in pregnancy',
+            steps: [
+              { title: 'Score risk at booking, every admission and after birth', text: 'RCOG risk score (previous VTE, thrombophilia, BMI, age, parity, IVF, caesarean and others).', tone: 'start' },
+              { title: 'Antenatal', tone: 'decision', branches: [
+                { when: 'Previous VTE (not single surgical)', then: 'LMWH from early pregnancy' },
+                { when: 'Score 4 or more', then: 'Consider LMWH from first trimester' },
+                { when: 'Score 3', then: 'Consider LMWH from 28 weeks' },
+                { when: 'Any admission', then: 'Consider LMWH' },
+              ] },
+              { title: 'Postnatal', tone: 'decision', branches: [
+                { when: 'High risk (e.g. any previous VTE)', then: 'LMWH for at least 6 weeks' },
+                { when: 'Score 2 or more', then: 'LMWH for at least 10 days' },
+                { when: 'Lower risk', then: 'Early mobilisation, avoid dehydration' },
+              ] },
+              { title: 'Dose by weight', text: 'Enoxaparin 40 mg daily at 50–90 kg (20 mg under 50 kg; 60 mg at 91–130 kg).' },
+            ],
+          },
+        },
+        {
           text: 'RCOG thresholds (the guideline says "consider" rather than "must"):',
           refs: [{ guidelineId: R, locator: 'App. III, 4.1, 5.1, 7.1' }],
           table: {
@@ -224,6 +246,23 @@ export const vteInPregnancy: Partial<Topic> = {
       title: 'Treatment & Massive PE',
       icon: 'drug',
       body: [
+        {
+          text: 'Suspected VTE in pregnancy (RCOG GTG 37b).',
+          refs: [{ guidelineId: RB, locator: '4–8' }],
+          flow: {
+            caption: 'Suspected DVT or PE',
+            steps: [
+              { title: 'Start treatment-dose LMWH now', text: 'Unless strongly contraindicated; send FBC, coagulation, U&E, LFT first. D-dimer not useful in pregnancy.', tone: 'urgent' },
+              { title: 'Test', tone: 'decision', branches: [
+                { when: 'Suspected DVT', then: 'Compression duplex; if negative but suspicion high, repeat on days 3 and 7' },
+                { when: 'Suspected PE', then: 'ECG + chest X-ray; leg duplex if leg signs; else V/Q or CTPA (CTPA if X-ray abnormal)' },
+                { when: 'Massive PE', then: 'UFH 80 units/kg IV bolus then 18 units/kg/h; consider thrombolysis' },
+              ] },
+              { title: 'Confirmed', text: 'Therapeutic LMWH for rest of pregnancy and at least 6 weeks after birth (3 months total minimum). No warfarin or DOACs in pregnancy.' },
+              { title: 'Around birth', text: 'Stop at labour onset; stop 24 h before planned birth; neuraxial block 24 h after last treatment dose.' },
+            ],
+          },
+        },
         { text: 'Therapeutic LMWH for the rest of pregnancy and at least 6 weeks after birth, with at least 3 months of treatment in total. Once-daily and twice-daily regimens are both acceptable.', refs: [{ guidelineId: RB, locator: '6.2, 8.1' }, { guidelineId: A, locator: 'Level C' }] },
         { text: 'Add leg elevation, graduated compression stockings and early mobilisation. Consider a temporary IVC filter around delivery for iliac vein VTE, or for recurrent PE despite adequate anticoagulation.', refs: [{ guidelineId: RB, locator: '7.1–7.2' }] },
         { heading: 'Massive PE', text: 'Unfractionated heparin is the preferred first treatment: 80 units/kg IV bolus, then 18 units/kg/hour adjusted by APTT. Get an urgent echocardiogram or CTPA within 1 hour and consider thrombolysis. If resuscitation fails beyond 20 weeks, perform a perimortem caesarean within 5 minutes.', refs: [{ guidelineId: RB, locator: '6.4' }] },

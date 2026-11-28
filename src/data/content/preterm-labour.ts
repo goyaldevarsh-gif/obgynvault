@@ -139,6 +139,24 @@ export const pretermLabour: Partial<Topic> = {
       title: 'Tocolysis',
       icon: 'drug',
       body: [
+        {
+          text: 'Stepwise care in threatened preterm labour (NICE NG25, FOGSI 2025).',
+          refs: [{ guidelineId: N }, { guidelineId: F, locator: 'pp.6–13' }],
+          flow: {
+            caption: 'Preterm labour, intact membranes',
+            steps: [
+              { title: 'Suspected preterm labour', text: 'Speculum and digital exam; urine culture, STI and BV screen.', tone: 'start' },
+              { title: 'Confirm', tone: 'decision', branches: [
+                { when: '29+6 weeks or less', then: 'Treat as preterm labour without further tests (NICE)' },
+                { when: '30+0 weeks or more', then: 'TV cervical length: 15 mm or less = preterm labour; over 15 mm = unlikely' },
+              ] },
+              { title: 'Steroids', text: 'Betamethasone 12 mg IM × 2 (24 h apart) or dexamethasone 6 mg IM × 4 (12 h apart); offer at 24+0 to 33+6 weeks.' },
+              { title: 'Tocolysis to gain 48 h', text: 'Nifedipine first (NICE, from 24+0 to 33+6); atosiban if nifedipine unsuitable. Not with infection, abruption, fetal compromise or severe preeclampsia.' },
+              { title: 'Magnesium for neuroprotection', text: '4 g IV then 1 g/h; offer at 24+0 to 29+6 (NICE) or to 31+6 (FOGSI) weeks.', tone: 'action' },
+              { title: 'Transfer and birth', text: 'In-utero transfer to a NICU centre; no scalp electrode below 34 weeks; delay cord clamping at least 60 s.' },
+            ],
+          },
+        },
         { text: 'Tocolysis gains about 48 hours (sometimes up to 7 days). It does not on its own reduce perinatal death or morbidity. Its purpose is to complete steroids, give magnesium and transfer the mother to a unit with a NICU.', refs: [{ guidelineId: A, locator: 'SORT; Tocolytics' }, { guidelineId: FF, locator: 'Ch. 4.2' }, { guidelineId: F, locator: 'p.6' }] },
         { text: 'NICE: in suspected or diagnosed preterm labour, consider nifedipine at 24+0 to 25+6 weeks and offer it at 26+0 to 33+6. If nifedipine is contraindicated, offer an oxytocin receptor antagonist (atosiban). Do not offer betamimetics.', refs: [{ guidelineId: N, locator: 'Tocolysis' }] },
         {

@@ -126,6 +126,28 @@ export const anaemiaInPregnancy: Partial<Topic> = {
       icon: 'drug',
       body: [
         {
+          text: 'Treatment by Hb level (MoHFW Anemia Mukt Bharat training protocol, FOGSI GCPR).',
+          refs: [{ guidelineId: MT }, { guidelineId: M, locator: '4.4' }, { guidelineId: F, locator: '2.9' }],
+          flow: {
+            caption: 'Anaemia in pregnancy (India)',
+            steps: [
+              { title: 'Hb at every ANC visit', text: 'Anaemia: under 11 g/dL (1st and 3rd trimester), under 10.5 (2nd). CBC, smear, ferritin with CRP if microcytic; malaria and stool where relevant.', tone: 'start' },
+              { title: 'Severity', tone: 'decision', branches: [
+                { when: 'Mild or moderate (7–10.9)', then: 'Oral iron: 2 IFA tablets daily (MoHFW); retest Hb after 1 month' },
+                { when: 'Severe 5–6.9, 13–34 weeks', then: 'IV iron (MoHFW); consider transfusion if heart failure impending (FOGSI)' },
+                { when: 'Under 7 after 34 weeks', then: 'Admit and transfuse' },
+                { when: 'Under 5 any time', then: 'Admit immediately and transfuse' },
+              ] },
+              { title: 'Rise under 1 g/dL in a month?', tone: 'decision', branches: [
+                { when: 'Check first', then: 'Adherence, folate deficiency, malabsorption, haemoglobinopathy' },
+                { when: 'Then', then: 'IV iron after 1st trimester (iron sucrose or FCM) or refer to FRU' },
+              ] },
+              { title: 'Birth', text: 'Hb under 10: obstetric-led unit, IV access, active third stage; delay cord clamping 1–3 min.' },
+              { title: 'After Hb normal', text: 'Continue iron 2–3 months (MoHFW) to refill stores; IFA for 180 days postpartum.' },
+            ],
+          },
+        },
+        {
           text: 'Treatment doses:',
           refs: [{ guidelineId: M, locator: 'Table 1–2' }, { guidelineId: F, locator: '1.3, 2.4' }, { guidelineId: B, locator: 'Oral iron (2C)' }],
           table: {

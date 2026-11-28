@@ -79,6 +79,24 @@ export const inductionOfLabour: Partial<Topic> = {
       title: 'Methods',
       icon: 'management',
       body: [
+        {
+          text: 'Choosing the method (NICE NG207, FOGSI GCPR, WHO, MoHFW).',
+          refs: [{ guidelineId: N, locator: '1.3–1.7' }, { guidelineId: F }, { guidelineId: W22 }, { guidelineId: M }],
+          flow: {
+            caption: 'Induction of labour',
+            steps: [
+              { title: 'Before induction', text: 'Confirm indication; facility with caesarean capability; NST/CTG; record Bishop score.', tone: 'start' },
+              { title: 'Bishop score', tone: 'decision', branches: [
+                { when: 'Over 6 (favourable)', then: 'Amniotomy + IV oxytocin (start within 2 h, FOGSI)' },
+                { when: '6 or less', then: 'Ripen: dinoprostone gel 0.5 mg 6-hourly (max 3/24 h), misoprostol oral 25 mcg 2-hourly or vaginal 25 mcg 6-hourly, or balloon catheter' },
+                { when: 'Previous caesarean', then: 'No misoprostol; balloon if unfavourable, amniotomy + oxytocin if favourable' },
+              ] },
+              { title: 'Monitor', text: 'Never leave unattended on uterotonics; CTG and contractions; partogram.' },
+              { title: 'Tachysystole or abnormal FHR?', tone: 'urgent', text: 'Stop oxytocin or remove pessary; tocolysis (terbutaline 250 mcg IV, MoHFW); expedite birth if FHR stays abnormal. Suspected rupture: category 1 caesarean.' },
+              { title: 'Failed induction', text: 'No regular contractions after one ripening cycle: reassess, repeat, or caesarean.' },
+            ],
+          },
+        },
         { heading: 'Membrane sweep', text: 'Recommended to reduce formal induction (WHO). NICE: offer after 39+0 weeks with consent, and repeat if labour does not start. It only improves the chance of spontaneous labour (FOGSI).', refs: [{ guidelineId: W11, locator: 'Rec 15' }, { guidelineId: N, locator: '1.3.2–1.3.3' }, { guidelineId: F, locator: '§5.4' }] },
         { heading: 'Dinoprostone', text: 'FOGSI: gel 0.5 mg, repeat after 6 h, not more than 3 doses in 24 h; 10 mg pessary removed at 24 h, with oxytocin from 30 minutes after removal. ACOG: gel 0.5 mg every 6 h, maximum 3 doses; 10 mg insert for up to 12 h.', refs: [{ guidelineId: F, locator: '§5.1.1–5.1.2' }, { guidelineId: A9, locator: 'Box 1' }] },
         { heading: 'Misoprostol', text: 'WHO and MoHFW: oral 25 mcg every 2 hours, or low-dose vaginal 25 mcg every 6 hours. MoHFW: if no response after two 25 mcg doses, increase to 50 mcg 6-hourly; never more than 50 mcg at a time and not more than four doses (200 mcg total).', refs: [{ guidelineId: W11, locator: 'Rec 8–9' }, { guidelineId: M, locator: 'p. 7' }] },
