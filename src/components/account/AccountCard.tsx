@@ -1,4 +1,5 @@
-import { Cloud, CloudOff, LogOut, Mail, RefreshCw } from 'lucide-react';
+import { Cloud, CloudOff, LogOut, Mail, RefreshCw, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useState, type FormEvent } from 'react';
 import { useAuth } from '@/store/AuthContext';
 import { useVault } from '@/store/VaultContext';
@@ -46,6 +47,11 @@ export function AccountCard() {
             {sync === 'error' && syncError ? <span className="mt-0.5 block break-words text-[11px] text-amber-700">{syncError}</span> : null}
           </span>
         </span>
+        {auth.role === 'admin' || auth.role === 'editor' ? (
+          <Link to="/tools/admin" className="flex items-center gap-1 rounded-full bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-700 ring-1 ring-teal-100 hover:bg-teal-100">
+            <ShieldCheck className="size-3.5" aria-hidden /> Admin
+          </Link>
+        ) : null}
         <button type="button" onClick={() => auth.signOut()} className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-navy-600 ring-1 ring-navy-100 hover:bg-navy-50">
           <LogOut className="size-3.5" aria-hidden /> Sign out
         </button>
