@@ -30,7 +30,7 @@ export function showGettingStarted() {
 function Art({ src, children }: { src: string; children: ReactNode }) {
   const [loaded, setLoaded] = useState(false);
   return (
-    <div className="relative mx-auto grid aspect-square w-full max-w-[280px] place-items-center">
+    <div className="relative mx-auto grid aspect-square w-full max-w-[min(280px,34dvh)] place-items-center">
       {!loaded && children}
       <img src={src} alt="" className={cx('absolute inset-0 size-full rounded-[2rem] object-cover shadow-card', !loaded && 'hidden')} onLoad={() => setLoaded(true)} />
     </div>
@@ -173,8 +173,8 @@ export function GettingStarted() {
         if (dx > 50) back();
       }}
     >
-      <div className="mx-auto flex w-full max-w-md flex-1 flex-col px-6 pb-safe pt-[max(env(safe-area-inset-top),1rem)]">
-        <div className="flex h-12 items-center justify-between">
+      <div className="mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col px-6 pb-safe pt-[max(env(safe-area-inset-top),1rem)]">
+        <div className="flex h-12 shrink-0 items-center justify-between">
           {i > 0 ? (
             <button type="button" onClick={back} className="-ml-2 flex items-center gap-1 rounded-full px-2 py-1.5 text-sm font-semibold text-navy-500" aria-label="Previous">
               <ChevronLeft className="size-4" /> Back
@@ -189,7 +189,7 @@ export function GettingStarted() {
           )}
         </div>
 
-        <div key={i} className="flex flex-1 flex-col justify-center gap-8 motion-safe:animate-[onb-in_.35s_ease-out]">
+        <div key={i} className="-mx-6 flex min-h-0 flex-1 flex-col justify-center gap-5 overflow-y-auto px-6 py-2 sm:gap-8 [@media(max-height:700px)]:justify-start motion-safe:animate-[onb-in_.35s_ease-out]">
           {slide.art}
           <div className="text-center">
             <h2 className="font-display text-[26px] font-extrabold leading-tight tracking-tight text-navy">{slide.title}</h2>
@@ -216,7 +216,7 @@ export function GettingStarted() {
           )}
         </div>
 
-        <div className="space-y-5 pb-6 pt-4">
+        <div className="shrink-0 space-y-4 pb-5 pt-3">
           <div className="flex justify-center gap-2" aria-hidden>
             {SLIDES.map((_, k) => (
               <span key={k} className={cx('h-2 rounded-full transition-all', k === i ? 'w-6 bg-teal' : 'w-2 bg-navy-200')} />
