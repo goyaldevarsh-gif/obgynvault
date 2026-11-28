@@ -1,0 +1,62 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 860' width='1500' height='860' font-family='Manrope,Segoe UI,Roboto,Helvetica,Arial,sans-serif'>
+<rect width='1500' height='860' fill='#fff'/>
+<rect width='1500' height='64' fill='#102A43'/>
+<text x='750.0' y='43' text-anchor='middle' font-size='30' font-weight='800' fill='#fff'>POP-Q: recording grid</text>
+<rect x='50' y='110' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='50' y='110' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='135.0' y='152' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>Aa</text>
+<rect x='220' y='110' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='220' y='110' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='305.0' y='152' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>Ba</text>
+<rect x='390' y='110' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='390' y='110' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='475.0' y='152' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>C</text>
+<rect x='50' y='280' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='50' y='280' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='135.0' y='322' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>gh</text>
+<rect x='220' y='280' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='220' y='280' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='305.0' y='322' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>pb</text>
+<rect x='390' y='280' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='390' y='280' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='475.0' y='322' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>tvl</text>
+<rect x='50' y='450' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='50' y='450' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='135.0' y='492' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>Ap</text>
+<rect x='220' y='450' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='220' y='450' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='305.0' y='492' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>Bp</text>
+<rect x='390' y='450' width='170' height='170' fill='#fff' stroke='#102A43' stroke-width='3'/>
+<rect x='390' y='450' width='170' height='58' fill='#20A69A' stroke='#102A43' stroke-width='3'/>
+<text x='475.0' y='492' text-anchor='middle' font-size='34' font-weight='800' fill='#fff'>D</text>
+<text x='305.0' y='660' text-anchor='middle' font-size='22' font-weight='700' fill='#102A43'>Values in cm</text>
+<rect x='620' y='120' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='153' font-size='24' font-weight='800' fill='#102A43'>Aa</text>
+<text x='700' y='153' font-size='22' fill='#102A43'>anterior wall, 3 cm above the hymen</text>
+<rect x='620' y='178' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='211' font-size='24' font-weight='800' fill='#102A43'>Ba</text>
+<text x='700' y='211' font-size='22' fill='#102A43'>most dependent point of the upper anterior wall</text>
+<rect x='620' y='236' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='269' font-size='24' font-weight='800' fill='#102A43'>C</text>
+<text x='700' y='269' font-size='22' fill='#102A43'>cervix or vaginal vault</text>
+<rect x='620' y='294' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='327' font-size='24' font-weight='800' fill='#102A43'>D</text>
+<text x='700' y='327' font-size='22' fill='#102A43'>posterior fornix (omit after hysterectomy)</text>
+<rect x='620' y='352' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='385' font-size='24' font-weight='800' fill='#102A43'>Ap</text>
+<text x='700' y='385' font-size='22' fill='#102A43'>posterior wall, 3 cm above the hymen</text>
+<rect x='620' y='410' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='443' font-size='24' font-weight='800' fill='#102A43'>Bp</text>
+<text x='700' y='443' font-size='22' fill='#102A43'>most dependent point of the upper posterior wall</text>
+<rect x='620' y='468' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='501' font-size='24' font-weight='800' fill='#102A43'>gh</text>
+<text x='700' y='501' font-size='22' fill='#102A43'>genital hiatus: mid urethral meatus to posterior hymen</text>
+<rect x='620' y='526' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='559' font-size='24' font-weight='800' fill='#102A43'>pb</text>
+<text x='700' y='559' font-size='22' fill='#102A43'>perineal body: posterior hymen to mid anal opening</text>
+<rect x='620' y='584' width='830' height='48' rx='10' fill='#EEF6F8'/>
+<text x='636' y='617' font-size='24' font-weight='800' fill='#102A43'>tvl</text>
+<text x='700' y='617' font-size='22' fill='#102A43'>total vaginal length</text>
+<rect x='50' y='740' width='1400' height='70' rx='14' fill='#E6F6F4' stroke='#20A69A' stroke-width='2.5'/>
+<text x='750' y='785' text-anchor='middle' font-size='26' font-weight='700' fill='#102A43'>Hymen = 0. Above the hymen = negative (−). Below the hymen = positive (+).</text>
+</svg>
