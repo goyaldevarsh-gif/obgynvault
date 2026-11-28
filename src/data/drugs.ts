@@ -49,6 +49,7 @@ export const DRUGS: DrugDef[] = [
   { slug: 'antifungals', name: 'Antifungals (azoles)', group: 'Other', terms: ['fluconazole', 'clotrimazole', 'miconazole'] },
   { slug: 'levothyroxine', name: 'Levothyroxine', group: 'Hormonal', terms: ['levothyroxine', 'LT4'] },
   { slug: 'antithyroid', name: 'Antithyroid drugs (PTU, methimazole, carbimazole)', group: 'Hormonal', terms: ['PTU', 'propylthiouracil', 'methimazole', 'carbimazole'] },
+  { slug: 'cabergoline', name: 'Cabergoline', group: 'Hormonal', terms: ['cabergoline', 'bromocriptine'] },
   { slug: 'udca', name: 'Ursodeoxycholic acid', group: 'Other', terms: ['ursodeoxycholic', 'UDCA'] },
   { slug: 'methotrexate', name: 'Methotrexate', group: 'Other', terms: ['methotrexate'] },
   { slug: 'letrozole', name: 'Letrozole', group: 'Hormonal', terms: ['letrozole'] },

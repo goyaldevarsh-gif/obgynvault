@@ -35,6 +35,7 @@ import { antepartumHaemorrhage } from './antepartum-haemorrhage';
 import { cholestasisOfPregnancy } from './cholestasis-of-pregnancy';
 import { thyroidInPregnancy } from './thyroid-in-pregnancy';
 import { breechEcv } from './breech-ecv';
+import { stillbirthIufd } from './stillbirth-iufd';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -77,4 +78,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'cholestasis-of-pregnancy': cholestasisOfPregnancy,
   'thyroid-in-pregnancy': thyroidInPregnancy,
   'breech-ecv': breechEcv,
+  'stillbirth-iufd': stillbirthIufd,
 };
