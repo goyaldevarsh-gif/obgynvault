@@ -46,6 +46,7 @@ import { contraceptionEc } from './contraception-ec';
 import { amenorrhoeaPoi } from './amenorrhoea-poi';
 import { urinaryIncontinence } from './urinary-incontinence';
 import { cervicalVulvalCancer } from './cervical-vulval-cancer';
+import { endometrialOvarianCancer } from './endometrial-ovarian-cancer';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -99,4 +100,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'amenorrhoea-poi': amenorrhoeaPoi,
   'urinary-incontinence': urinaryIncontinence,
   'cervical-vulval-cancer': cervicalVulvalCancer,
+  'endometrial-ovarian-cancer': endometrialOvarianCancer,
 };

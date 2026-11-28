@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-ecov-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Endometrial & Ovarian Cancer', body: 'FIGO 2023 molecular staging, ESGO 2025 risk groups, ICMR pathways, ovarian cytoreduction vs NACT, BRCA testing and PARP maintenance.', to: '/topics/endometrial-ovarian-cancer' },
   { id: 'topic-cxvu-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Cervical & Vulval Cancer', body: 'FIGO 2018 cervical staging, treatment by stage (ICMR and FIGO), chemoradiation, LACC, and ESGO 2023 vulval groin-node rules.', to: '/topics/cervical-vulval-cancer' },
   { id: 'topic-ui-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Urinary Incontinence', body: 'FOGSI 2024 urogynae GCPR with NICE and EAU: assessment, PFMT, OAB drugs, botulinum toxin, and stress incontinence surgery compared.', to: '/topics/urinary-incontinence' },
   { id: 'topic-amen-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Amenorrhoea & POI', body: 'Stepwise work-up flowchart, hypothalamic amenorrhoea, prolactin, and the ESHRE 2024 single-FSH POI diagnosis with HRT doses.', to: '/topics/amenorrhoea-poi' },
