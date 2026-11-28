@@ -40,6 +40,7 @@ import { gestationalTrophoblasticDisease } from './gestational-trophoblastic-dis
 import { perinealTearsOasis } from './perineal-tears-oasis';
 import { caesareanSection } from './caesarean-section';
 import { heartDiseasePregnancy } from './heart-disease-pregnancy';
+import { hivHbvSyphilisPregnancy } from './hiv-hbv-syphilis-pregnancy';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -87,4 +88,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'perineal-tears-oasis': perinealTearsOasis,
   'caesarean-section': caesareanSection,
   'heart-disease-pregnancy': heartDiseasePregnancy,
+  'hiv-hbv-syphilis-pregnancy': hivHbvSyphilisPregnancy,
 };

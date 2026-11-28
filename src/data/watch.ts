@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-triple-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: HIV, Hepatitis B & Syphilis in Pregnancy', body: 'NACO EVTHS 2024, MoHFW syphilis and NVHCP hepatitis B guidance with WHO 2024: screening flow, penicillin by stage, HBIG and tenofovir.', to: '/topics/hiv-hbv-syphilis-pregnancy' },
   { id: 'topic-cardiac-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Heart Disease in Pregnancy', body: 'mWHO risk and care setting, mitral stenosis, mechanical valve anticoagulation (ESC vs MoHFW), labour care, PPCM. Notes the new ESC 2025 guideline.', to: '/topics/heart-disease-pregnancy' },
   { id: 'topic-cs-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Caesarean Section', body: 'Urgency categories, perioperative pathway, NICE technique points, Robson ten groups and how India audits CS (LaQshya).', to: '/topics/caesarean-section' },
   { id: 'topic-oasis-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Perineal Tears & OASIS', body: 'FOGSI 2024 GCPR with RCOG and NICE: prevention, episiotomy, layer-by-layer OASIS repair table, aftercare and next birth.', to: '/topics/perineal-tears-oasis' },
