@@ -14,7 +14,7 @@ export function BookmarkButton({ kind, id, className, label }: { kind: BookmarkK
     e.preventDefault();
     e.stopPropagation();
     const now = toggleBookmark(kind, id);
-    toast(now ? 'Saved to My Vault' : 'Removed from My Vault');
+    toast(now ? 'Saved. Find it under Saved' : 'Removed from Saved');
   };
 
   return (
@@ -22,7 +22,7 @@ export function BookmarkButton({ kind, id, className, label }: { kind: BookmarkK
       type="button"
       onClick={onClick}
       aria-pressed={saved}
-      aria-label={saved ? `Remove ${label ?? 'item'} from My Vault` : `Save ${label ?? 'item'} to My Vault`}
+      aria-label={saved ? `Remove ${label ?? 'item'} from Saved` : `Save ${label ?? 'item'}`}
       className={cx('grid size-9 shrink-0 place-items-center rounded-full transition hover:bg-amber-50', className)}
     >
       <Bookmark className={cx('size-5', saved ? 'fill-amber text-amber' : 'text-navy-400')} />

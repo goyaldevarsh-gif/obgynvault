@@ -56,7 +56,7 @@ export function ReaderChecksProvider({ children }: { children: ReactNode }) {
   const submit = useCallback(
     async (slug: string, verdict: CheckVerdict, note: string) => {
       const b = await getBackend();
-      if (!b || !userId) return 'Please sign in first (My Vault → Account).';
+      if (!b || !userId) return 'Please sign in first (Saved tab → Sign in).';
       const err = await b.setReaderCheck({ slug, uid: userId, verdict, note: note.trim() ? note.trim().slice(0, 600) : null, name: name ?? email });
       if (!err) setTick((t) => t + 1);
       return err;
