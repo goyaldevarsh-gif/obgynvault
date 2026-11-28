@@ -36,7 +36,7 @@ export function NoteEditor({ kind, targetId }: { kind: BookmarkKind; targetId: s
           disabled={!dirty}
           onClick={() => {
             saveNote(kind, targetId, text);
-            toast(text.trim() ? 'Note saved. Find it under Saved → Notes' : 'Note removed');
+            toast(text.trim() ? 'Note saved. Find it in Profile → Notes' : 'Note removed');
           }}
           className="rounded-xl bg-teal px-4 py-2 text-sm font-bold text-white transition enabled:hover:bg-teal-600 disabled:opacity-40"
         >

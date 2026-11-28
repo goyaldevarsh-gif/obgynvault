@@ -40,8 +40,8 @@ export default function MyVaultPage() {
 
   return (
     <div>
-      <PageHeader title="Saved & Settings" back={false} />
-      <p className="-mt-2 mb-3 px-4 text-sm text-navy-500 md:px-6">Your bookmarked topics, your own notes, reading history, text size and sign-in, all in one place.</p>
+      <PageHeader title="My Profile" back={false} />
+      <p className="-mt-2 mb-3 px-4 text-sm text-navy-500 md:px-6">Sign in, your saved topics, your notes, reading history and app settings.</p>
       <div className="space-y-4 px-4 md:px-6">
         <AccountCard />
         <Link to="/about" className="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60 transition hover:ring-teal/50">

@@ -1,4 +1,4 @@
-import { BookmarkCheck, Home, Library, Search, Wrench } from 'lucide-react';
+import { CircleUserRound, Home, Library, Search, Wrench } from 'lucide-react';
 
 /** Bottom navigation (mobile) and primary side nav (desktop). Order matches the brand mockup. */
 export const NAV_ITEMS = [
@@ -6,7 +6,7 @@ export const NAV_ITEMS = [
   { to: '/search', label: 'Search', icon: Search, end: false },
   { to: '/library', label: 'Library', icon: Library, end: false, match: ['/library', '/topics', '/guidelines'] },
   { to: '/tools', label: 'Tools', icon: Wrench, end: false },
-  { to: '/vault', label: 'Saved', icon: BookmarkCheck, end: false },
+  { to: '/vault', label: 'Profile', icon: CircleUserRound, end: false },
 ] as const;
 
 export function isNavActive(pathname: string, item: (typeof NAV_ITEMS)[number]): boolean {

@@ -32,8 +32,8 @@ const FEATURES: Step[] = [
   { icon: Calculator, title: 'Calculators', text: 'EDD and gestational age, shock index, Bishop score, RMI and BMI. Each result shows the guideline threshold it uses.', to: '/tools/calculators', link: 'Open calculators' },
   { icon: Pill, title: 'Drug Vault', text: 'For each drug, what each topic and guideline in the app says about it, with links back to the source line.', to: '/tools/drug-vault', link: 'Open Drug Vault' },
   { icon: Newspaper, title: "What's new", text: 'New topics and guideline changes, newest first. Guidelines are checked every Monday and changes are added to topics straight away.', to: '/updates', link: "Open What's new" },
-  { icon: Bookmark, title: 'Saved & Settings', text: 'Bookmark topics and guidelines, keep your own notes (e.g. local protocol), and see your reading history. Sign in to sync across devices.', to: '/vault', link: 'Open Saved' },
-  { icon: Type, title: 'Text size and theme', text: 'Saved tab → "Text & theme" sets font size, spacing and light or dark mode.', to: '/vault?tab=display', link: 'Change display' },
+  { icon: Bookmark, title: 'My Profile', text: 'Bookmark topics and guidelines, keep your own notes (e.g. local protocol), and see your reading history. Sign in to sync across devices.', to: '/vault', link: 'Open Profile' },
+  { icon: Type, title: 'Text size and theme', text: 'Profile tab → "Text & theme" sets font size, spacing and light or dark mode.', to: '/vault?tab=display', link: 'Change display' },
   { icon: Download, title: 'Install as an app', text: 'Android (Chrome): menu ⋮ → "Add to Home screen" or "Install app". iPhone (Safari): Share → "Add to Home Screen". The app then opens full screen and updates itself.' },
   { icon: WifiOff, title: 'Works offline', text: 'Pages you have opened once stay available without internet, which helps in labour rooms and OTs with poor signal.' },
 ];
