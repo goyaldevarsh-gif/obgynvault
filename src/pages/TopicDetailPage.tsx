@@ -1,8 +1,8 @@
-import { CheckCircle2, GitCompareArrows, Info, ListOrdered } from 'lucide-react';
+import { CheckCircle2, ChevronDown, GitCompareArrows, Info, ListOrdered, Workflow } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
-import { BookmarkButton, CitationChips, CitedParagraph, ReaderCheckCard, UnverifiedUpdate, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
+import { BookmarkButton, CitationChips, CitedParagraph, FlowDiagram, ReaderCheckCard, UnverifiedUpdate, GuidelineCard, NoteEditor, PositionsTable, SECTION_ICONS, SPECIALTY, SourceBadge } from '@/components/content';
 import { AccordionItem, Chip, SampleNotice, StatusBadge } from '@/components/ui';
 import { getGuideline, getSource, getTopic, WATCH } from '@/data';
 import { useVault } from '@/store/VaultContext';
@@ -35,6 +35,8 @@ export default function TopicDetailPage() {
     window.setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   };
   const [showJump, setShowJump] = useState(false);
+  const [allKeys, setAllKeys] = useState(false);
+  const [bgOpen, setBgOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setShowJump(window.scrollY > 700);
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -47,6 +49,8 @@ export default function TopicDetailPage() {
   useEffect(() => {
     if (topic) recordView('topic', topic.slug);
     setTab('overview');
+    setAllKeys(false);
+    setBgOpen(false);
     // Open the first management section by default: management is what clinicians come for.
     setOpenSections(new Set((topic?.sections ?? []).filter((x) => MGMT_ICONS.has(x.icon)).slice(0, 1).map((x) => x.id)));
   }, [topic, recordView]);
@@ -66,6 +70,16 @@ export default function TopicDetailPage() {
         .sort((a, b) => getSource(a.sourceId).priority - getSource(b.sourceId).priority),
     [topic],
   );
+
+  // The topic's main algorithm: first flowchart in a management section (else any section), shown at the top.
+  const glance = useMemo(() => {
+    const secs = [...(topic?.sections ?? [])].sort((a, b) => Number(MGMT_ICONS.has(b.icon)) - Number(MGMT_ICONS.has(a.icon)));
+    for (const sec of secs) {
+      const p = sec.body.find((x) => x.flow);
+      if (p) return { sec, p };
+    }
+    return null;
+  }, [topic]);
 
   const sourceIds = useMemo(() => Array.from(new Set(guidelines.map((g) => g.sourceId))), [guidelines]);
 
@@ -119,7 +133,23 @@ export default function TopicDetailPage() {
 
         {tab === 'overview' && (
           <>
-            <p className="prose-read text-[16.5px] text-navy-700">{topic.overview}</p>
+            {glance && (
+              <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-teal/25">
+                <h3 className="flex items-center gap-2 bg-ink px-4 py-3 text-[17px] font-extrabold text-white dark:bg-teal-900">
+                  <Workflow className="size-5 text-teal-200" aria-hidden />
+                  Management at a glance
+                </h3>
+                <div className="space-y-2 p-3">
+                  <FlowDiagram flow={glance.p.flow!} />
+                  <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+                    <CitationChips refs={glance.p.refs} />
+                    <button type="button" onClick={() => jumpTo(glance.sec.id)} className="text-xs font-bold text-teal-700 hover:text-teal">
+                      Full details: {glance.sec.title} →
+                    </button>
+                  </div>
+                </div>
+              </section>
+            )}
 
             <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-teal/25">
               <h3 className="flex items-center gap-2 bg-teal-50 px-4 py-3 text-[17px] font-extrabold text-navy">
@@ -127,7 +157,7 @@ export default function TopicDetailPage() {
                 {topic.status === 'sample' ? 'Key points' : 'Summary & recommendations'}
               </h3>
               <ol className="divide-y divide-navy-100/70">
-                {topic.keyPoints.map((k, i) => (
+                {(allKeys ? topic.keyPoints : topic.keyPoints.slice(0, 5)).map((k, i) => (
                   <li key={k.text} className="flex gap-3 px-4 py-3.5">
                     <span className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-teal text-[12px] font-bold text-white tabular-nums">{i + 1}</span>
                     <div className="min-w-0">
@@ -138,6 +168,12 @@ export default function TopicDetailPage() {
                   </li>
                 ))}
               </ol>
+              {topic.keyPoints.length > 5 && (
+                <button type="button" onClick={() => setAllKeys(!allKeys)} className="flex w-full items-center justify-center gap-1 border-t border-navy-100/70 py-2.5 text-sm font-bold text-teal-700">
+                  {allKeys ? 'Show fewer' : `Show all ${topic.keyPoints.length}`}
+                  <ChevronDown className={`size-4 transition ${allKeys ? 'rotate-180' : ''}`} aria-hidden />
+                </button>
+              )}
             </section>
 
             {mgmtIds.length > 0 && (
@@ -192,6 +228,16 @@ export default function TopicDetailPage() {
             </section>
 
             {topic.positions && <PositionsTable positions={topic.positions} />}
+
+            {topic.overview && (
+              <section className="rounded-2xl bg-surface p-4 shadow-card ring-1 ring-navy-100/60">
+                <h3 className="mb-1.5 text-xs font-bold uppercase tracking-wider text-navy-400">Background</h3>
+                <p className={`prose-read text-navy-700 ${bgOpen ? '' : 'line-clamp-3'}`}>{topic.overview}</p>
+                <button type="button" onClick={() => setBgOpen(!bgOpen)} className="mt-1 text-sm font-bold text-teal-700">
+                  {bgOpen ? 'Show less' : 'Read more'}
+                </button>
+              </section>
+            )}
 
             {topic.editorNote && (
               <p className="flex gap-2 rounded-xl bg-navy-100/40 p-3.5 text-[13.5px] leading-relaxed text-navy-600">
