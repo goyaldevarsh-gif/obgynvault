@@ -8,7 +8,7 @@ import type { Topic } from '@/types/content';
  *  - NICE NG195 Neonatal infection (intrapartum antibiotics)                          -> nice-ng195
  *  - ACOG Committee Opinion 712 (2017)                                                -> acog-co-712
  *  - RCOG GTG 64b (2012, superseded by GTG 64, 2024)                                  -> rcog-gtg-64b, rcog-gtg-64
- *  NOT READ: any FOGSI / MoHFW / ICMR source, WHO 2015/2017. Indian guidance still to add.
+ *  Added 2026-11-28 (pm): NCDC NTG 2016 Section G and NTG 2025 §3.4 (India), WHO 2017 statement, WHO 2015 treatment recs (via BIGG-REC).
  */
 const N235 = 'nice-ng235';
 const N121 = 'nice-ng121';
@@ -17,6 +17,10 @@ const N195 = 'nice-ng195';
 const A = 'acog-co-712';
 const R = 'rcog-gtg-64b';
 const R24 = 'rcog-gtg-64';
+const NT16 = 'ncdc-ntg-2016';
+const NT25 = 'ncdc-ntg-2025';
+const W17 = 'who-maternal-sepsis-2017';
+const W15 = 'who-peripartum-infection-2015';
 
 export const intrapartumFeverSepsis: Partial<Topic> = {
   status: 'draft',
@@ -30,6 +34,7 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
     { text: 'Intra-amniotic infection alone is rarely, if ever, an indication for caesarean. If the genital tract is the source of sepsis, expedite the birth.', refs: [{ guidelineId: A }, { guidelineId: N121, locator: '1.13.10' }] },
     { text: 'Sepsis high-risk criteria (any one): RR 25 or more, systolic BP 90 or less, HR over 130, no urine for 18 h, new altered mental state, or lactate over 2 mmol/L.', refs: [{ guidelineId: N255, locator: '1.5.2 Table 1, 1.7.11' }] },
     { text: 'High risk: senior review immediately; blood cultures, lactate and bloods; broad-spectrum IV antibiotic within 1 hour; 500 mL crystalloid bolus if lactate over 4 or SBP 90 or less, and critical care referral.', refs: [{ guidelineId: N255, locator: '1.7.2–1.7.4, 1.9.2' }, { guidelineId: R, locator: '11–12' }] },
+    { text: 'India (NCDC): obstetric sepsis in pregnancy or after birth: ceftriaxone 2 g IV once daily + metronidazole 500 mg IV 8-hourly ± gentamicin 7 mg/kg once daily; in shock, piperacillin-tazobactam or cefoperazone-sulbactam. Follow the hospital antibiogram.', refs: [{ guidelineId: NT16, locator: 'Section G' }] },
     { text: 'Take blood cultures before antibiotics, but never let this delay treatment.', refs: [{ guidelineId: N121, locator: '1.13.22' }, { guidelineId: R, locator: '12' }] },
     { text: 'Sepsis in labour: multidisciplinary review (senior obstetrician, obstetric anaesthetist, senior midwife; add neonatologist and microbiologist if confirmed; intensivist if organ dysfunction). Continuous CTG; start antibiotics before regional anaesthesia.', refs: [{ guidelineId: N121, locator: '1.13.4–1.13.17' }] },
     { text: 'Paracetamol may be given for fever but is not a treatment for sepsis and must not delay investigation. Tell the neonatal team.', refs: [{ guidelineId: N121, locator: '1.12.1–1.12.2' }, { guidelineId: A }] },
@@ -40,6 +45,7 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
       title: 'Definitions',
       icon: 'definition',
       body: [
+        { heading: 'WHO definition', text: 'Maternal sepsis is a life-threatening condition defined as organ dysfunction resulting from infection during pregnancy, childbirth, post-abortion or the postpartum period. Identify it from simple bedside signs and act (antibiotics, fluids) before laboratory confirmation.', refs: [{ guidelineId: W17, locator: 'pp.2–3, Box 2' }] },
         { text: 'Maternal fever in labour (NICE): 38°C or above on a single reading, or 37.5°C or above on 2 consecutive readings 1 hour apart.', refs: [{ guidelineId: N235, locator: '1.8.11, 1.8.20' }, { guidelineId: N121, locator: '1.11.5' }] },
         { text: 'ACOG: suspected intra-amniotic infection = 38.0–38.9°C with one additional risk factor, or 39.0°C or above. Confirmed = positive amniotic fluid test. Isolated maternal fever = 38.0–38.9°C with no other risk factor.', refs: [{ guidelineId: A, locator: 'Definitions' }] },
         { text: 'Recently pregnant (NICE NG255): within 4 weeks after birth, or 24 hours after a termination or miscarriage. Birth, termination or miscarriage in the past 6 weeks places a woman in a high-risk group for sepsis.', refs: [{ guidelineId: N255, locator: 'Terms, 1.2.1' }] },
@@ -101,6 +107,30 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
       ],
     },
     {
+      id: 'india-regimens',
+      title: 'Indian Antibiotic Regimens (NCDC)',
+      icon: 'drug',
+      body: [
+        {
+          text: 'NCDC National Treatment Guidelines (2016, Section G). Send cultures first; adjust to the hospital antibiogram.',
+          refs: [{ guidelineId: NT16, locator: 'Section G' }],
+          table: {
+            columns: ['Condition', 'First line', 'If shock / already treated / other'],
+            rows: [
+              ['Obstetric sepsis in pregnancy', 'Ceftriaxone 2 g IV once daily + metronidazole 500 mg IV 8-hourly ± gentamicin 7 mg/kg once daily', 'Shock: piperacillin-tazobactam or cefoperazone-sulbactam'],
+              ['Puerperal sepsis', 'Same as above', 'Shock: piperacillin-tazobactam or cefoperazone-sulbactam; add vancomycin or teicoplanin if MRSA suspected'],
+              ['Septic abortion; endomyometritis', 'Ampicillin + metronidazole 500 mg IV 8-hourly if no prior antibiotic (ampicillin dose: check the original)', 'IV ceftriaxone; partly treated: piperacillin-tazobactam or cefoperazone-sulbactam'],
+              ['Chorioamnionitis', 'Clindamycin, vancomycin or teicoplanin + cefoperazone-sulbactam', 'Not septic: IV ampicillin'],
+              ['GBS prophylaxis in labour', 'Penicillin G 5 million units IV, then 2.5–3 million units 6-hourly until birth; or ampicillin 2 g IV, then 1 g 6-hourly', 'Allergy: clindamycin 900 mg IV 8-hourly, vancomycin, teicoplanin or cefazolin'],
+            ],
+          },
+        },
+        { text: 'No duration of treatment is stated in the NCDC table. Fluoroquinolones and cotrimoxazole are contraindicated in the first trimester; avoid doxycycline while breastfeeding.', refs: [{ guidelineId: NT16, locator: 'Section G' }] },
+        { heading: 'Sepsis with no clear source (adult, NTG 2025)', text: 'Community-acquired: piperacillin-tazobactam 4.5 g IV 6-hourly (or cefoperazone-sulbactam 3 g IV 12-hourly). Septic shock: meropenem 1 g IV 8-hourly + teicoplanin 400 mg IV 12-hourly for 3 doses, then 6–12 mg/kg daily. De-escalate if cultures are negative at 48 h and she is improving. First hour: lactate, blood cultures, antibiotics, 30 mL/kg crystalloid for hypotension or lactate 4 or more, norepinephrine for MAP under 65.', refs: [{ guidelineId: NT25, locator: '§3.4, pp.30–32' }] },
+        { text: 'The 2025 NCDC obstetric section (septic abortion, puerperal sepsis, chorioamnionitis) could not be read, so the 2016 rows above may have changed.', refs: [{ guidelineId: NT25 }] },
+      ],
+    },
+    {
       id: 'chorioamnionitis',
       title: 'Chorioamnionitis in Labour',
       icon: 'drug',
@@ -108,12 +138,14 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
         { text: 'Offer intrapartum antibiotics with a clinical diagnosis of chorioamnionitis; give the first dose as soon as possible and continue until the baby is born.', refs: [{ guidelineId: N195, locator: '1.6.1, 1.6.4' }, { guidelineId: A }] },
         {
           text: 'Regimens as stated:',
-          refs: [{ guidelineId: N195, locator: 'Table 1, 1.6.3' }, { guidelineId: A, locator: 'Table 1' }],
+          refs: [{ guidelineId: N195, locator: 'Table 1, 1.6.3' }, { guidelineId: A, locator: 'Table 1' }, { guidelineId: W15 }, { guidelineId: NT16, locator: 'Section G' }],
           table: {
             columns: ['Source', 'First line', 'Penicillin allergy'],
             rows: [
               ['NICE NG195', 'Benzylpenicillin + gentamicin + metronidazole (no doses given; gentamicin once daily)', 'Severe: vancomycin + gentamicin + metronidazole'],
               ['ACOG CO 712', 'Ampicillin 2 g IV 6-hourly + gentamicin 2 mg/kg IV load, then 1.5 mg/kg 8-hourly', 'Mild: cefazolin 2 g IV 8-hourly. Severe: clindamycin 900 mg IV 8-hourly or vancomycin 1 g IV 12-hourly'],
+              ['WHO 2015 (maintained)', 'Ampicillin + once-daily gentamicin, or another simple, locally available regimen (no doses given)', 'Not stated'],
+              ['India NCDC NTG 2016', 'Clindamycin, vancomycin or teicoplanin + cefoperazone-sulbactam (no doses given); IV ampicillin if not septic', 'Not stated'],
             ],
           },
         },
@@ -139,6 +171,7 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
       title: 'Postpartum Endometritis',
       icon: 'drug',
       body: [
+        { text: 'WHO (2015, maintained): clindamycin + gentamicin first line (no doses given). India NCDC 2016: treat as for septic abortion (see Indian regimens).', refs: [{ guidelineId: W15 }, { guidelineId: NT16, locator: 'Section G' }] },
         { text: 'RCOG 2012 (Appendix 3): gentamicin plus cefotaxime; with penicillin allergy, options include gentamicin, clindamycin, ciprofloxacin and metronidazole; follow local antimicrobial guidance.', refs: [{ guidelineId: R, locator: 'Appendix 3' }] },
         { text: 'Consult a paediatrician if sepsis occurs in the puerperium (baby may also be at risk).', refs: [{ guidelineId: R, locator: '15' }] },
       ],
@@ -150,6 +183,8 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
       entries: [
         { guidelineId: N195, text: 'Benzylpenicillin + gentamicin + metronidazole.', locator: 'Table 1' },
         { guidelineId: A, text: 'Ampicillin + gentamicin.', locator: 'Table 1' },
+        { guidelineId: W15, text: 'Ampicillin + once-daily gentamicin (conditional).' },
+        { guidelineId: NT16, text: 'Clindamycin/vancomycin/teicoplanin + cefoperazone-sulbactam; ampicillin if not septic.', locator: 'Section G' },
       ],
     },
     {
@@ -161,5 +196,5 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
     },
   ],
   editorNote:
-    'IMPORTANT GAP: no FOGSI, ICOG, MoHFW or ICMR source on maternal sepsis or chorioamnionitis could be read before the web-reading limit was reached, and WHO 2015/2017 were not read; Indian guidance must be added. Sources read on 28 Nov 2026 through a summarising fetch tool. NICE NG235 was read only to about section 1.9. The status of NICE NG121 was not confirmed. NICE NG255 (Nov 2025) table columns were partly unclear in extraction. NICE NG195 gives no doses. ACOG Committee Opinion 712 (2017) was read from a third-party copy and its reaffirmation status is unknown. RCOG GTG 64 (2024) is paywalled; RCOG content comes from the superseded GTG 64b (2012). Doses are quoted from the guidelines; follow local antimicrobial policy.',
+    'Indian guidance added 28 Nov 2026 from NCDC NTG 2016 Section G (obstetric regimens) and NTG 2025 §3.4 (adult sepsis); NTG 2025 Section 6 (obstetric) could not be read, and the septic-abortion ampicillin dose needs checking against the original. WHO 2017 statement read; WHO 2015 treatment recommendations read only as recommendation records (no doses). No FOGSI sepsis guideline was found. Sources read on 28 Nov 2026 through a summarising fetch tool. NICE NG235 was read only to about section 1.9. The status of NICE NG121 was not confirmed. NICE NG255 (Nov 2025) table columns were partly unclear in extraction. NICE NG195 gives no doses. ACOG Committee Opinion 712 (2017) was read from a third-party copy and its reaffirmation status is unknown. RCOG GTG 64 (2024) is paywalled; RCOG content comes from the superseded GTG 64b (2012). Doses are quoted from the guidelines; follow local antimicrobial policy.',
 };
