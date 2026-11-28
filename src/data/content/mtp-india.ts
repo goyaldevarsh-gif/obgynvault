@@ -4,12 +4,14 @@ import type { Topic } from '@/types/content';
  * DRAFT, pending clinician verification. Management-first.
  * Written 2026-11-28 from MoHFW CAC Training & Service Delivery Guidelines (3rd ed., 2023),
  * MTP (Amendment) Rules 2021 and the MoHFW CAC Providers Manual.
- * Not read: MTP (Amendment) Act 2021 text, MTP Amendment Rules 2024, WHO Abortion Care 2022 regimens by gestation,
+ * WHO Abortion Care 2022 regimens added (recommendation numbers; pages unconfirmed).
+ * Not read: MTP (Amendment) Act 2021 text, MTP Amendment Rules 2024,
  * any FOGSI document, second-trimester regimens. Emergency contraception not covered.
  */
 const MC = 'mohfw-cac-2023';
 const MR = 'mtp-rules-2021';
 const MM = 'mohfw-cac-manual';
+const WA = 'who-abortion-care';
 
 export const mtpIndia: Partial<Topic> = {
   status: 'draft',
@@ -93,6 +95,31 @@ export const mtpIndia: Partial<Topic> = {
       ],
     },
     {
+      id: 'who-regimens',
+      title: 'WHO 2022 Regimens by Gestation',
+      icon: 'drug',
+      body: [
+        {
+          text: 'WHO Abortion Care 2022 medical regimens. Interval between mifepristone and misoprostol at least 24 hours; misoprostol may be repeated if needed. Indian law and the CAC guidance still decide who may use these, and up to what gestation (medical abortion approved to 9 weeks in India).',
+          refs: [{ guidelineId: WA, locator: 'Recs 27, 29, 31, 32, 36' }],
+          table: {
+            columns: ['Situation', 'Mifepristone + misoprostol', 'Misoprostol alone'],
+            rows: [
+              ['Induced, under 12 weeks', 'Mifepristone 200 mg oral, then 1–2 days later misoprostol 800 µg vaginal, sublingual or buccal', '800 µg vaginal, sublingual or buccal'],
+              ['Induced, 12 weeks or more', 'Mifepristone 200 mg oral, then 1–2 days later misoprostol 400 µg vaginal, sublingual or buccal every 3 h', '400 µg every 3 h (vaginal route most effective)'],
+              ['Missed abortion, under 14 weeks', 'Mifepristone 200 mg oral, then misoprostol 800 µg any route (preferred)', '800 µg any route; repeat dosing works better from 9 weeks'],
+              ['Fetal death, 14 to 28 weeks', 'Mifepristone 200 mg oral, then 1–2 days later misoprostol 400 µg sublingual or vaginal every 4–6 h', '400 µg sublingual or vaginal every 4–6 h'],
+              ['Incomplete abortion, uterus under 14 weeks', 'Not needed', '600 µg oral or 400 µg sublingual (or vacuum aspiration)'],
+              ['Incomplete abortion, uterus 14 weeks or more', 'Not needed', '400 µg sublingual, vaginal or buccal every 3 h'],
+            ],
+          },
+        },
+        { heading: 'Previous uterine scar', text: 'At 12 weeks or more, use caution and clinical judgement in deciding the maximum number of misoprostol doses. WHO gives no fixed maximum.', refs: [{ guidelineId: WA, locator: 'Rec 29 footnote' }] },
+        { heading: 'Cervical priming (surgical)', text: 'Under 12 weeks, if priming is used: mifepristone 200 mg oral 24–48 h before, or misoprostol 400 µg sublingual 1–2 h before, or 400 µg vaginal or buccal 2–3 h before; no osmotic dilators. 12–19 weeks: priming suggested, with medication (mifepristone plus misoprostol preferred) or dilator plus medication. 19 weeks or more: dilator plus medication. Dilators no longer than 2 days before.', refs: [{ guidelineId: WA, locator: 'Recs 17–18' }] },
+        { heading: 'Anti-D: WHO vs India', text: 'WHO recommends against anti-D for medical or surgical abortion under 12 weeks; standard care applies from 12 weeks. The Indian CAC guidance gives anti-D 50 µg to Rh-negative women after vacuum aspiration. Follow local protocol.', refs: [{ guidelineId: WA, locator: 'Rec 8' }, { guidelineId: MC }] },
+      ],
+    },
+    {
       id: 'contraception',
       title: 'Post-abortion Contraception',
       icon: 'counselling',
@@ -116,5 +143,5 @@ export const mtpIndia: Partial<Topic> = {
     },
   ],
   editorNote:
-    'Read on 28 Nov 2026. The CAC 2023 text extraction did not include the medical abortion dose tables, second-trimester regimens or anti-D by gestation; the MMA regimen shown is from the CAC Providers Manual (year not captured). The MTP (Amendment) Act 2021 itself and the MTP Amendment Rules 2024 were not read and may change details. WHO Abortion Care 2022 regimens by gestation, FOGSI guidance and all emergency contraception sources were not read, so emergency contraception is not covered yet. Check the Rule 3B(f) fetal malformation category against the Act section 3(2B).',
+    'Read on 28 Nov 2026. The CAC 2023 text extraction did not include the medical abortion dose tables, second-trimester regimens or anti-D by gestation; the MMA regimen shown is from the CAC Providers Manual (year not captured). The MTP (Amendment) Act 2021 itself and the MTP Amendment Rules 2024 were not read and may change details. WHO Abortion Care 2022 regimens were read from the executive summary and a hosted copy of the full guideline; page numbers were not confirmed, so locators use recommendation numbers. FOGSI guidance and all emergency contraception sources were not read, so emergency contraception is not covered yet. Check the Rule 3B(f) fetal malformation category against the Act section 3(2B).',
 };
