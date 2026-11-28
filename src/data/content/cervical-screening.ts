@@ -84,6 +84,27 @@ export const cervicalScreening: Partial<Topic> = {
       title: 'Managing a Positive Screen',
       icon: 'management',
       body: [
+        {
+          text: 'Screening and management pathway (WHO 2021, FOGSI–ICOG GCPR 2024, MoHFW).',
+          refs: [{ guidelineId: W, locator: 'Ch. 4' }, { guidelineId: F }, { guidelineId: M }],
+          flow: {
+            caption: 'Cervical screening (India)',
+            steps: [
+              { title: 'Screen from 30', text: 'HPV DNA preferred (every 5–10 years); VIA every 3–5 years (programme: every 5) or cytology every 3 years if no HPV test. HIV: from 25, every 3–5 years.', tone: 'start' },
+              { title: 'Result', tone: 'decision', branches: [
+                { when: 'Negative', then: 'Rescreen at the interval' },
+                { when: 'HPV-positive', then: 'Screen-and-treat, or triage with VIA, colposcopy, cytology or HPV16/18' },
+                { when: 'VIA-positive (programme)', then: 'Refer to CHC or district hospital for colposcopy and treatment' },
+                { when: 'Suspicious of cancer', then: 'Biopsy and refer to a cancer centre' },
+              ] },
+              { title: 'Treat', tone: 'decision', branches: [
+                { when: 'Ablation eligible', then: 'Type 1 TZ, whole lesion visible: thermal ablation or cryotherapy' },
+                { when: 'Not eligible', then: 'LLETZ/LEEP or cone biopsy' },
+              ] },
+              { title: 'Follow-up', text: 'HPV DNA at 12 months after treatment. HPV-positive but triage-negative: retest at 24 months.' },
+            ],
+          },
+        },
         { heading: 'Screen-and-treat', text: 'Every HPV-positive woman is treated, after a visual check (with acetic acid) of eligibility for ablation. Allows treatment at a single visit, at the cost of some overtreatment.', refs: [{ guidelineId: W, locator: 'Ch. 3' }, { guidelineId: F, locator: 'p. 7' }] },
         { heading: 'Screen-triage-and-treat', text: 'HPV-positive women are triaged with partial genotyping (HPV16/18), colposcopy, VIA or cytology, and only triage-positive women are treated. FOGSI favours triage by colposcopy or VIA where possible.', refs: [{ guidelineId: W, locator: 'Ch. 4' }, { guidelineId: F, locator: 'p. 7, Algorithm 4' }] },
         { text: 'WHO follow-up: HPV-positive but triage-negative, retest with HPV DNA at 24 months; cytology-positive with normal colposcopy, retest at 12 months.', refs: [{ guidelineId: W, locator: 'Ch. 4' }] },

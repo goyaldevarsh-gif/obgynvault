@@ -62,6 +62,28 @@ export const menopause: Partial<Topic> = {
       title: 'MHT: Who Benefits',
       icon: 'management',
       body: [
+        {
+          text: 'Deciding on menopausal hormone therapy (IMS 2020, NICE NG23, The Menopause Society).',
+          refs: [{ guidelineId: I }, { guidelineId: N }, { guidelineId: H }],
+          flow: {
+            caption: 'Menopause symptoms',
+            steps: [
+              { title: 'Diagnose clinically', text: 'Over 45 with symptoms: no tests needed. Under 40: POI work-up (FSH twice, 4–6 weeks apart).', tone: 'start' },
+              { title: 'Any contraindication?', tone: 'decision', branches: [
+                { when: 'Yes', then: 'Hormone-dependent cancer, undiagnosed bleeding, VTE, CVD or stroke, active liver disease: non-hormonal options, CBT' },
+                { when: 'No', then: 'Under 60 or within 10 years of menopause: benefits usually outweigh risks' },
+              ] },
+              { title: 'Choose regimen', tone: 'decision', branches: [
+                { when: 'Has uterus, perimenopause', then: 'Oestrogen + progestogen 10–14 days a month (sequential)' },
+                { when: 'Has uterus, over a year since last period', then: 'Continuous combined' },
+                { when: 'No uterus', then: 'Oestrogen alone' },
+                { when: 'VTE or stroke risk', then: 'Prefer transdermal oestrogen' },
+              ] },
+              { title: 'Vaginal symptoms only', text: 'Low-dose vaginal oestrogen, any age, as long as needed; no progestogen needed.' },
+              { title: 'Review yearly', text: 'No fixed stop date; reassess benefits and risks.' },
+            ],
+          },
+        },
         { text: 'Offer HRT for vasomotor symptoms after discussing short- and long-term benefits and risks: oestrogen with progestogen if she has a uterus, oestrogen alone after hysterectomy.', refs: [{ guidelineId: N }, { guidelineId: US, locator: 'SORT A' }] },
         { text: 'Benefits outweigh risks for most healthy symptomatic women under 60 or within 10 years of menopause. Starting after 60 needs careful individual assessment.', refs: [{ guidelineId: H }, { guidelineId: US }, { guidelineId: I }] },
         { text: 'Low-dose combined pills can be used during the transition for contraception and symptom control in suitable women.', refs: [{ guidelineId: I, locator: 'Grade A' }] },

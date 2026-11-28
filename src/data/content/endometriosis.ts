@@ -78,6 +78,23 @@ export const endometriosis: Partial<Topic> = {
       title: 'Medical Treatment',
       icon: 'drug',
       body: [
+        {
+          text: 'Stepwise management of endometriosis (FOGSI, NICE NG73, ESHRE 2022).',
+          refs: [{ guidelineId: F }, { guidelineId: N, locator: '1.4–1.10' }, { guidelineId: E }],
+          flow: {
+            caption: 'Endometriosis',
+            steps: [
+              { title: 'Suspect', text: 'Examination + TVS for all (normal scan does not exclude it); no CA-125. Treat while investigating.', tone: 'start' },
+              { title: 'Main goal', tone: 'decision', branches: [
+                { when: 'Pain', then: 'NSAID/paracetamol 3 months + COC (continuous), dienogest 2 mg, other progestogen or LNG-IUS' },
+                { when: 'Fertility', then: 'No ovarian suppression; laparoscopy for stage I–II then try 6–12 months; IVF if EFI low or severe disease' },
+              ] },
+              { title: 'First line fails', text: 'GnRH agonist with add-back, or GnRH antagonist; refer to gynaecology.' },
+              { title: 'Refer to specialist centre', tone: 'urgent', text: 'Endometrioma, deep disease (bowel, bladder, ureter) or disease outside the pelvis.' },
+              { title: 'Surgery once, by an expert', text: 'Excise all visible lesions; cystectomy for endometrioma; then LNG-IUS or COC 18–24 months unless pregnancy wanted.' },
+            ],
+          },
+        },
         { text: 'Analgesia: consider a 3-month trial of paracetamol or an NSAID, alone or together. NSAIDs relieve pain but do not stop progression.', refs: [{ guidelineId: N, locator: '1.4.2' }, { guidelineId: F, locator: 'p.9 (LE 4, Grade C)' }, { guidelineId: E }] },
         { text: 'Hormonal treatment reduces pain and does not harm later fertility. Offer the combined pill or a progestogen to women with suspected, confirmed or recurrent disease.', refs: [{ guidelineId: N, locator: '1.4.5–1.4.6' }, { guidelineId: E }] },
         {

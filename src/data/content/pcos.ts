@@ -158,6 +158,24 @@ export const pcos: Partial<Topic> = {
       title: 'Irregular Cycles, Hirsutism & Acne',
       icon: 'drug',
       body: [
+        {
+          text: 'Management by what the woman wants (FOGSI 2023, International PCOS guideline).',
+          refs: [{ guidelineId: F, locator: '7–9' }, { guidelineId: I }],
+          flow: {
+            caption: 'PCOS',
+            steps: [
+              { title: 'Confirm (Rotterdam, 2 of 3)', text: 'Irregular cycles, hyperandrogenism, PCO on TVS or AMH (adults). Exclude thyroid, prolactin, NCAH. OGTT and lipids for all.', tone: 'start' },
+              { title: 'Lifestyle for everyone', text: '5–10% weight loss if overweight; 150 min/week activity; 6 months first step (FOGSI).' },
+              { title: 'Main concern', tone: 'decision', branches: [
+                { when: 'Irregular cycles / no pregnancy wish', then: 'Low-dose COC; or cyclical progestogen (bleed every 3–4 months)' },
+                { when: 'Hirsutism or acne', then: 'COC with antiandrogenic progestin 6 months + laser; antiandrogen only if COC fails' },
+                { when: 'Metabolic (BMI 25+ or IGT)', then: 'Metformin 500 mg, up by 500 mg weekly, max 2.5 g/day' },
+                { when: 'Wants pregnancy', then: 'Letrozole first (up to 6 cycles); then clomiphene ± metformin, gonadotrophins or drilling; then IVF' },
+              ] },
+              { title: 'Long term', text: 'Screen glucose, lipids, BP, mood; protect endometrium.' },
+            ],
+          },
+        },
         { heading: 'Combined oral contraceptives', text: 'First line for irregular cycles and hyperandrogenism in adults and adolescents who do not want pregnancy. All COCs work equally well; use the lowest effective dose (20–30 µg ethinylestradiol). Check contraindications, especially obesity, hypertension and dyslipidaemia.', refs: [{ guidelineId: F, locator: '7.1a–b (Grade A)' }, { guidelineId: A }] },
         { text: 'For hirsutism and severe acne, FOGSI prefers a low-dose COC with an antiandrogenic progestin (cyproterone acetate, drospirenone or desogestrel) for at least 6 months, combined with laser hair removal. Refer to a dermatologist for cosmetic methods and moderate to severe acne.', refs: [{ guidelineId: F, locator: '8.3a–b' }] },
         { text: 'The International guideline considers 35 µg EE with cyproterone acetate a second-line option because of VTE risk.', refs: [{ guidelineId: I, locator: '4.2.5 (from summary)' }] },
