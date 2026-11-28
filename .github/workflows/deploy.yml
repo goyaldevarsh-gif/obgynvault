@@ -33,6 +33,7 @@ jobs:
           VITE_FIREBASE_AUTH_DOMAIN: "obgynvault-a4c7f.firebaseapp.com"
           VITE_FIREBASE_PROJECT_ID: "obgynvault-a4c7f"
           VITE_FIREBASE_APP_ID: "1:758963806642:web:e0d3edf57a3f77e05384ab"
+          VITE_RECAPTCHA_SITE_KEY: "6LdiLzYuAAAAAAS38ts7IjYJLY-sQHAp7lSELNvz"
       # SPA fallback so deep links like /topics/preeclampsia work on GitHub Pages
       - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
