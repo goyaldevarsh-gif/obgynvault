@@ -1,0 +1,94 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1500 640' width='1500' height='640' font-family='Manrope,Segoe UI,Roboto,Helvetica,Arial,sans-serif'>
+<rect width='1500' height='640' fill='#fff'/>
+<rect x='0' y='0' width='1500' height='64' fill='#102A43'/>
+<text x='750.0' y='43' text-anchor='middle' font-size='30' font-weight='800' fill='#fff'>Perineal tear classification (RCOG, FOGSI)</text>
+<rect x='48' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='150.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>1st degree</text>
+<rect x='50' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='150.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='80.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='150.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='150.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='150.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='150.0' cy='360' r='8' fill='#102A43'/>
+<path d='M139.0,198 L161.0,198 L152.0,224 L148.0,224 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='150.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>Perineal skin and/or</text>
+<text x='150.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>vaginal mucosa</text>
+<rect x='288' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='390.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>2nd degree</text>
+<rect x='290' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='390.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='320.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='390.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='390.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='390.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='390.0' cy='360' r='8' fill='#102A43'/>
+<path d='M379.0,198 L401.0,198 L392.0,286 L388.0,286 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='390.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>Perineal muscles,</text>
+<text x='390.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>anal sphincter intact</text>
+<line x1='270' y1='90' x2='270' y2='520' stroke='#D5DEE8' stroke-width='1.5'/>
+<rect x='528' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='630.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>3a</text>
+<rect x='530' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='630.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='560.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='630.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='630.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='630.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='630.0' cy='360' r='8' fill='#102A43'/>
+<path d='M619.0,198 L641.0,198 L632.0,311 L628.0,311 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='630.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>Less than 50% of</text>
+<text x='630.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>EAS thickness</text>
+<line x1='510' y1='90' x2='510' y2='520' stroke='#D5DEE8' stroke-width='1.5'/>
+<rect x='768' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='870.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>3b</text>
+<rect x='770' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='870.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='800.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='870.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='870.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='870.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='870.0' cy='360' r='8' fill='#102A43'/>
+<path d='M859.0,198 L881.0,198 L872.0,322 L868.0,322 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='870.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>More than 50% of</text>
+<text x='870.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>EAS thickness</text>
+<line x1='750' y1='90' x2='750' y2='520' stroke='#D5DEE8' stroke-width='1.5'/>
+<rect x='1008' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='1110.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>3c</text>
+<rect x='1010' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='1110.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='1040.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1110.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1110.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1110.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1110.0' cy='360' r='8' fill='#102A43'/>
+<path d='M1099.0,198 L1121.0,198 L1112.0,335 L1108.0,335 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='1110.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>EAS and IAS</text>
+<text x='1110.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>torn</text>
+<line x1='990' y1='90' x2='990' y2='520' stroke='#D5DEE8' stroke-width='1.5'/>
+<rect x='1248' y='86' width='204' height='44' rx='12' fill='#20A69A'/>
+<text x='1350.0' y='116' text-anchor='middle' font-size='22' font-weight='800' fill='#fff'>4th degree</text>
+<rect x='1250' y='150' width='200' height='290' rx='26' fill='#F6C9C4' stroke='#102A43' stroke-width='2'/>
+<ellipse cx='1350.0' cy='180' rx='52' ry='20' fill='#B4475A' stroke='#102A43' stroke-width='2'/>
+<rect x='1280.0' y='228' width='140' height='64' rx='16' fill='#D9534F' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1350.0' cy='360' r='56' fill='#7B61C9' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1350.0' cy='360' r='34' fill='#20A69A' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1350.0' cy='360' r='20' fill='#E5A34C' stroke='#102A43' stroke-width='1.5'/>
+<circle cx='1350.0' cy='360' r='8' fill='#102A43'/>
+<path d='M1339.0,198 L1361.0,198 L1352.0,355 L1348.0,355 Z' fill='#1B1B1B' stroke='#fff' stroke-width='1.2'/>
+<text x='1350.0' y='475' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>EAS, IAS and</text>
+<text x='1350.0' y='501' text-anchor='middle' font-size='19' font-weight='600' fill='#102A43'>anorectal mucosa</text>
+<line x1='1230' y1='90' x2='1230' y2='520' stroke='#D5DEE8' stroke-width='1.5'/>
+<rect x='90' y='548' width='22' height='22' rx='4' fill='#F6C9C4' stroke='#102A43' stroke-width='1'/>
+<text x='122' y='566' font-size='19' fill='#102A43'>Skin / vaginal mucosa</text>
+<rect x='550' y='548' width='22' height='22' rx='4' fill='#D9534F' stroke='#102A43' stroke-width='1'/>
+<text x='582' y='566' font-size='19' fill='#102A43'>Perineal muscles</text>
+<rect x='1010' y='548' width='22' height='22' rx='4' fill='#7B61C9' stroke='#102A43' stroke-width='1'/>
+<text x='1042' y='566' font-size='19' fill='#102A43'>External anal sphincter (EAS)</text>
+<rect x='90' y='584' width='22' height='22' rx='4' fill='#20A69A' stroke='#102A43' stroke-width='1'/>
+<text x='122' y='602' font-size='19' fill='#102A43'>Internal anal sphincter (IAS)</text>
+<rect x='550' y='584' width='22' height='22' rx='4' fill='#E5A34C' stroke='#102A43' stroke-width='1'/>
+<text x='582' y='602' font-size='19' fill='#102A43'>Anorectal mucosa</text>
+<rect x='1010' y='584' width='22' height='22' rx='4' fill='#1B1B1B' stroke='#102A43' stroke-width='1'/>
+<text x='1042' y='602' font-size='19' fill='#102A43'>Tear</text>
+</svg>

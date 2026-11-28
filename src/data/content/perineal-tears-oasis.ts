@@ -50,6 +50,7 @@ export const perinealTearsOasis: Partial<Topic> = {
             ],
           },
         },
+        { heading: 'Classification (figure)', text: '1st skin and/or vaginal mucosa; 2nd perineal muscles; 3a under 50% of EAS; 3b over 50% of EAS; 3c EAS and IAS; 4th sphincter complex and anorectal mucosa. If in doubt, grade higher.', refs: [{ guidelineId: R, locator: '§4.1' }, { guidelineId: F, locator: 'p.4, Table 1' }], figure: { src: 'fig-perineal-tears.svg', alt: 'Schematic of perineal tear degrees from 1st degree to 4th degree, showing skin, perineal muscles, external and internal anal sphincter and anorectal mucosa', caption: 'Depth of the tear through each layer. Schematic, not to scale.' } },
       ],
     },
     {
@@ -62,6 +63,7 @@ export const perinealTearsOasis: Partial<Topic> = {
         { heading: 'Episiotomy indications', text: 'Not routine in spontaneous birth. Indications: operative vaginal birth, suspected fetal compromise, high risk of severe tear, soft-tissue dystocia, female genital mutilation (FOGSI). OASI bundle: always with forceps; with vacuum in first births; may be omitted in multiparae.', refs: [{ guidelineId: N, locator: '1.9.16, 1.9.22' }, { guidelineId: W, locator: 'Rec 39' }, { guidelineId: F, locator: 'pp.4–5 (Level A–B)' }, { guidelineId: B, locator: 'p.3' }] },
         { heading: 'Technique', text: 'Mediolateral from the fourchette, usually to the right: 60° from the midline when the perineum is distended (RCOG, OASI bundle); NICE 45–60° to the vertical. Give effective analgesia first except in an emergency.', refs: [{ guidelineId: R, locator: '§5.2' }, { guidelineId: N, locator: '1.9.21, 1.9.23' }, { guidelineId: B, locator: 'p.3' }] },
         { heading: 'OASI Care Bundle', text: 'Antenatal information at 32–36 weeks; manual perineal protection at all singleton vaginal births unless declined; mediolateral episiotomy at 60° when indicated; systematic examination including PR after every vaginal birth. In a UK multicentre study OASI fell from 3.3% to 3.0% (aOR 0.80) with no change in caesarean rate.', refs: [{ guidelineId: B, locator: 'pp.1–4' }] },
+        { heading: 'Episiotomy angle (figure)', text: 'Mediolateral from the fourchette, usually to the right, 60° from the midline at crowning (NICE 45–60°).', refs: [{ guidelineId: R, locator: '§5.2' }, { guidelineId: N, locator: '1.9.21, 1.9.23' }, { guidelineId: B, locator: 'p.3' }], figure: { src: 'fig-episiotomy-angle.svg', alt: 'Schematic of a mediolateral episiotomy cut from the fourchette to the woman\'s right at 60 degrees from the midline', caption: 'Schematic, not to scale.' } },
       ],
     },
     {
