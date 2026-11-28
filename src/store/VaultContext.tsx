@@ -20,6 +20,8 @@ export type SyncState = 'local' | 'syncing' | 'synced' | 'error';
 
 interface VaultApi extends VaultState {
   sync: SyncState;
+  /** Last sync error message, shown so the cause is visible. */
+  syncError: string | null;
   isBookmarked: (kind: BookmarkKind, id: string) => boolean;
   toggleBookmark: (kind: BookmarkKind, id: string) => boolean; // returns new state
   removeBookmark: (kind: BookmarkKind, id: string) => void;
@@ -47,6 +49,8 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   // Phase 2 sync: when signed in, merge the cloud copy once, then save changes (debounced).
   const { userId } = useAuth();
   const [sync, setSync] = useState<SyncState>('local');
+  const [syncError, setSyncError] = useState<string | null>(null);
+  const [retry, setRetry] = useState(0);
   const merged = useRef<string | null>(null);
 
   useEffect(() => {
@@ -64,14 +68,21 @@ export function VaultProvider({ children }: { children: ReactNode }) {
         setState((local) => mergeVaults(local, (remote ?? {}) as Partial<VaultState>));
         merged.current = userId;
         setSync('synced');
+        setSyncError(null);
       })
-      .catch(() => {
-        if (!cancelled) setSync('error');
+      .catch((e: unknown) => {
+        if (cancelled) return;
+        setSync('error');
+        setSyncError(e instanceof Error ? e.message : String(e));
+        // Really retry: try loading again after 20 s.
+        retryTimer = window.setTimeout(() => setRetry((n) => n + 1), 20000);
       });
+    let retryTimer: number | undefined;
     return () => {
       cancelled = true;
+      if (retryTimer) window.clearTimeout(retryTimer);
     };
-  }, [userId]);
+  }, [userId, retry]);
 
   useEffect(() => {
     if (!isBackendConfigured || !userId || merged.current !== userId) return;
@@ -79,8 +90,14 @@ export function VaultProvider({ children }: { children: ReactNode }) {
       setSync('syncing');
       getBackend()
         .then((b) => b!.saveVault(userId, state))
-        .then((error) => setSync(error ? 'error' : 'synced'))
-        .catch(() => setSync('error'));
+        .then((error) => {
+          setSync(error ? 'error' : 'synced');
+          setSyncError(error ?? null);
+        })
+        .catch((e: unknown) => {
+          setSync('error');
+          setSyncError(e instanceof Error ? e.message : String(e));
+        });
     }, 1200);
     return () => window.clearTimeout(t);
   }, [state, userId]);
@@ -151,8 +168,8 @@ export function VaultProvider({ children }: { children: ReactNode }) {
   const clearRecentSearches = useCallback(() => setState((s) => ({ ...s, recentSearches: [] })), []);
 
   const api = useMemo<VaultApi>(
-    () => ({ ...state, sync, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches }),
-    [state, sync, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches],
+    () => ({ ...state, sync, syncError, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches }),
+    [state, sync, syncError, isBookmarked, toggleBookmark, removeBookmark, saveNote, deleteNote, noteFor, recordView, clearHistory, addRecentSearch, clearRecentSearches],
   );
 
   return <VaultCtx.Provider value={api}>{children}</VaultCtx.Provider>;

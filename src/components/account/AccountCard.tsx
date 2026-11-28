@@ -6,7 +6,7 @@ import { useVault } from '@/store/VaultContext';
 /** Sign-in and sync status. Hidden entirely when the backend is not configured. */
 export function AccountCard() {
   const auth = useAuth();
-  const { sync } = useVault();
+  const { sync, syncError } = useVault();
   const [email, setEmail] = useState('');
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -43,6 +43,7 @@ export function AccountCard() {
           <span className="block text-xs text-navy-500">
             {label}
             {auth.role && auth.role !== 'reader' ? ` · ${auth.role}` : ''}
+            {sync === 'error' && syncError ? <span className="mt-0.5 block break-words text-[11px] text-amber-700">{syncError}</span> : null}
           </span>
         </span>
         <button type="button" onClick={() => auth.signOut()} className="flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-bold text-navy-600 ring-1 ring-navy-100 hover:bg-navy-50">
