@@ -51,6 +51,19 @@ export const heartDiseasePregnancy: Partial<Topic> = {
       ],
     },
     {
+      id: 'esc-2025',
+      title: 'ESC 2025: What Changed',
+      icon: 'management',
+      body: [
+        { heading: 'Pregnancy Heart Team', text: 'Women at mWHO 2.0 class II–III or higher should be managed by a Pregnancy Heart Team from before pregnancy to after birth (Class I, new). mWHO I–II: local hospital; II–III: shared care; III: care led by the team; IV: expert centre, with counselling that includes shared decision-making about termination.', refs: [{ guidelineId: E25, locator: 'Table 4; Table 6' }] },
+        { heading: 'Anticoagulation with mechanical valves', text: 'A written anticoagulation plan is required (Class I), including whether to continue a VKA or switch to therapeutic LMWH in the first trimester. Continuing the VKA until 36 weeks can be considered at higher thrombosis risk (IIa); LMWH with anti-Xa monitoring may be considered if a high VKA dose is needed (IIb).', refs: [{ guidelineId: E25, locator: 'Tables 4–5' }] },
+        { heading: 'Delivery', text: 'Vaginal birth is advised for most women. In cardiomyopathy, plan vaginal birth (Class I) unless there are obstetric indications, severe heart failure (EF under 30% and/or NYHA III–IV), uncontrolled arrhythmia, severe outflow obstruction (50 mmHg or more) or labour on a VKA. Without other indications, keep induction before 39 weeks for obstetric reasons.', refs: [{ guidelineId: E25, locator: '§4.5.1, §4.5.3; Table 4' }] },
+        { heading: 'Labour', text: 'A mechanical balloon may be preferable for ripening when a fall in vascular resistance would be harmful; avoid intramyometrial dinoprostone. In mWHO III–IV, oxytocin is first line for the third stage; misoprostol and carboprost are second line. Endocarditis prophylaxis at delivery may be considered in high-risk women (IIb; was Class III in 2018).', refs: [{ guidelineId: E25, locator: '§4.5.2; Table 5' }] },
+        { heading: 'Drugs', text: 'Not recommended in pregnancy (Class III, new): ACE inhibitors, ARBs, ARNI, MRA, ivabradine and SGLT2 inhibitors. Continue beta-blockers in Marfan or heritable aortic disease through pregnancy and after birth (Class I).', refs: [{ guidelineId: E25, locator: 'Tables 4–5' }] },
+        { heading: 'Other new points', text: 'BP target under 140/90 mmHg (Class I). Peripartum cardiomyopathy: consider genetic testing and continue heart failure treatment for at least 12 months after full recovery (IIa). Wait at least 1 year after heart transplant. Manual left uterine displacement from 20 weeks during cardiac arrest (Class I).', refs: [{ guidelineId: E25, locator: 'Table 4' }] },
+      ],
+    },
+    {
       id: 'stepwise',
       title: 'Step-by-step Management',
       icon: 'management',
@@ -138,5 +151,5 @@ export const heartDiseasePregnancy: Partial<Topic> = {
     },
   ],
   editorNote:
-    'Read on 28 Nov 2026. ESC 2025 (Eur Heart J 2025;46:4462–4568) supersedes ESC 2018 but its full text could not be read; only a news summary was available, so most ESC numbers here are from 2018 and need checking against 2025. ESC 2018 sections on valvular disease (anti-Xa targets, mitral stenosis drugs and valvotomy thresholds) and PPCM were not reached. mWHO event rates are omitted because two extractions disagreed. The MoHFW STG is undated (probably 2012–2016). No FOGSI guideline on heart disease in pregnancy was found. Not read: RCOG Good Practice Paper 13, ICMR STW, CARPREG II scoring.',
+    'Read on 28 Nov 2026. ESC 2025 (Eur Heart J 2025;46:4462–4568) was read in part (front matter, what\'s-new Tables 3–5, Table 6 and sections 4.5.1–4.5.3); its sections on valves (12.5), mitral stenosis, PPCM drugs (bromocriptine), pulmonary hypertension, labour analgesia, follow-up frequency and the drug table were not reached, so those numbers here are still from ESC 2018 and need checking. mWHO 2.0 class for EF under 30% differed between two readings and is not shown. mWHO event rates are omitted. The MoHFW STG is undated (probably 2012–2016). No FOGSI guideline on heart disease in pregnancy was found. Not read: RCOG Good Practice Paper 13, ICMR STW, CARPREG II scoring.',
 };
