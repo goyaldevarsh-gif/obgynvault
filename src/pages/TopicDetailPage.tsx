@@ -16,6 +16,8 @@ type Tab = 'overview' | 'guidelines' | 'notes';
 
 /** Section types that hold management: shown first in a quick bar and the first one opens by default. */
 const MGMT_ICONS = new Set(['management', 'emergency', 'drug', 'injection', 'delivery', 'fluids', 'surgery']);
+/** Theory sections: shown last, under a Background label, so management leads the page. */
+const BG_ICONS = new Set(['definition', 'epidemiology']);
 
 export default function TopicDetailPage() {
   const { slug = '' } = useParams();
@@ -80,6 +82,14 @@ export default function TopicDetailPage() {
     }
     return null;
   }, [topic]);
+
+  // Section order on the page: management first, then other clinical sections, then background.
+  const ordered = useMemo(() => {
+    const secs = topic?.sections ?? [];
+    const rank = (icon: string) => (MGMT_ICONS.has(icon) ? 0 : BG_ICONS.has(icon) ? 2 : 1);
+    return [...secs].sort((a, b) => rank(a.icon) - rank(b.icon));
+  }, [topic]);
+  const firstBg = ordered.findIndex((x) => BG_ICONS.has(x.icon));
 
   const sourceIds = useMemo(() => Array.from(new Set(guidelines.map((g) => g.sourceId))), [guidelines]);
 
@@ -203,7 +213,7 @@ export default function TopicDetailPage() {
                 </button>
               </div>
               <ol className="grid gap-1 sm:grid-cols-2">
-                {topic.sections.map((x, i) => (
+                {ordered.map((x, i) => (
                   <li key={x.id}>
                     <button type="button" onClick={() => jumpTo(x.id)} className="flex w-full items-baseline gap-2 rounded-lg px-2 py-2 text-left text-[14.5px] font-semibold text-navy-700 hover:bg-teal-50 hover:text-teal-700">
                       <span className="w-4 shrink-0 text-right tabular-nums text-navy-300">{i + 1}</span>
@@ -215,14 +225,19 @@ export default function TopicDetailPage() {
             </nav>
 
             <section className="overflow-hidden rounded-2xl bg-surface shadow-card ring-1 ring-navy-100/60">
-              {topic.sections.map((s) => {
+              {ordered.map((s, idx) => {
                 const Icon = SECTION_ICONS[s.icon];
                 return (
-                  <AccordionItem key={s.id} id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined} open={openSections.has(s.id)} onToggle={() => toggleSection(s.id)}>
+                  <div key={s.id}>
+                  {idx === firstBg && idx > 0 && (
+                    <p className="border-t border-navy-100 bg-canvas px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-navy-400">Background</p>
+                  )}
+                  <AccordionItem id={s.id} title={s.title} icon={Icon ? <Icon className="size-5" /> : undefined} open={openSections.has(s.id)} onToggle={() => toggleSection(s.id)}>
                     {s.body.map((p) => (
                       <CitedParagraph key={p.text} point={p} />
                     ))}
                   </AccordionItem>
+                  </div>
                 );
               })}
             </section>
