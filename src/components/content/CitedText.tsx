@@ -2,30 +2,36 @@ import { Link } from 'react-router-dom';
 import { getGuideline, getSource } from '@/data';
 import { ArrowDown, RefreshCcw } from 'lucide-react';
 import { formatDate } from '@/lib/format';
+import { SOURCE_TINT, tintStyle } from '@/lib/sourceColor';
 import type { Citation, CitedPoint, FlowChart } from '@/types/content';
 
-function citeLabel(c: Citation) {
+function citeParts(c: Citation) {
   const g = getGuideline(c.guidelineId);
-  if (!g) return c.guidelineId;
-  const src = getSource(g.sourceId).shortName.split(' ')[0];
+  if (!g) return { color: '#64748B', source: c.guidelineId, rest: '' };
+  const src = getSource(g.sourceId);
   const ref = g.reference ?? (g.year ? String(g.year) : '');
-  return `${src}${ref ? ` ${ref}` : ''}${c.locator ? ` · ${c.locator}` : ''}`;
+  return { color: src.color, source: src.shortName.split(' ')[0], rest: `${ref ? ` ${ref}` : ''}${c.locator ? ` · ${c.locator}` : ''}` };
 }
 
-/** Quiet source line under a statement: readable but visually secondary to the clinical text. */
+/** Source line under a statement: each guideline body in its own pale colour, so the origin is obvious at a glance. */
 export function CitationChips({ refs, inline = false }: { refs?: Citation[]; inline?: boolean }) {
   if (!refs?.length) return null;
   return (
     <span className={inline ? 'ml-1 inline-flex flex-wrap gap-1 align-middle' : 'mt-1.5 flex flex-wrap gap-1.5'}>
-      {refs.map((c) => (
-        <Link
-          key={`${c.guidelineId}-${c.locator ?? ''}`}
-          to={`/guidelines/${c.guidelineId}`}
-          className="rounded-md px-1.5 py-0.5 text-[11px] font-medium leading-4 text-navy-400 ring-1 ring-navy-100 transition hover:bg-teal-50 hover:text-teal-700 hover:ring-teal/30"
-        >
-          {citeLabel(c)}
-        </Link>
-      ))}
+      {refs.map((c) => {
+        const p = citeParts(c);
+        return (
+          <Link
+            key={`${c.guidelineId}-${c.locator ?? ''}`}
+            to={`/guidelines/${c.guidelineId}`}
+            style={tintStyle(p.color)}
+            className={`inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[11px] font-medium leading-4 transition hover:brightness-95 ${SOURCE_TINT}`}
+          >
+            <span className="size-1.5 shrink-0 rounded-full" style={{ backgroundColor: p.color }} aria-hidden />
+            <span><b className="font-extrabold">{p.source}</b>{p.rest}</span>
+          </Link>
+        );
+      })}
     </span>
   );
 }
