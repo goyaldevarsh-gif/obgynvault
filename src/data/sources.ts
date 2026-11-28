@@ -30,6 +30,7 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'HSE', shortName: 'HSE Ireland', fullName: 'Health Service Executive (Ireland) national clinical guidelines', region: 'Ireland', priority: 27, color: '#047857' },
   { id: 'ENDO', shortName: 'Endocrine Society', fullName: 'Endocrine Society', region: 'USA', priority: 28, color: '#1E40AF' },
   { id: 'EAU', shortName: 'EAU', fullName: 'European Association of Urology', region: 'Europe', priority: 29, color: '#0369A1' },
+  { id: 'ESGO', shortName: 'ESGO', fullName: 'European Society of Gynaecological Oncology', region: 'Europe', priority: 30, color: '#7E22CE' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 
