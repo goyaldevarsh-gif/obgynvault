@@ -64,6 +64,23 @@ export const rhIsoimmunisation: Partial<Topic> = {
       icon: 'injection',
       body: [
         {
+          text: 'Anti-D pathway for an RhD-negative woman (FOGSI 2022).',
+          refs: [{ guidelineId: F }],
+          flow: {
+            caption: 'RhD-negative pregnancy (India)',
+            steps: [
+              { title: 'Booking: blood group, Rh and indirect Coombs test (ICT)', text: 'Whatever the husband\'s Rh type.', tone: 'start' },
+              { title: 'ICT result', tone: 'decision', branches: [
+                { when: 'Positive (sensitised)', then: 'No anti-D; refer to fetal medicine; MCA Doppler for fetal anaemia' },
+                { when: 'Negative', then: 'Repeat ICT at 28 weeks; continue prophylaxis below' },
+              ] },
+              { title: 'Any sensitising event', text: 'Anti-D within 72 h: 150 mcg (750 IU) before 20 weeks; 300 mcg (1500 IU) after 20 weeks. IM deltoid or thigh.' },
+              { title: '28 weeks', text: '300 mcg (1500 IU) IM if the 28-week ICT is negative, regardless of earlier doses.' },
+              { title: 'After birth', text: 'Cord blood group; baby RhD-positive: 300 mcg within 72 h; Kleihauer if large bleed suspected.' },
+            ],
+          },
+        },
+        {
           text: 'Sensitising events that need anti-D in a non-sensitised RhD-negative woman:',
           refs: [{ guidelineId: A, locator: 'Box 1' }, { guidelineId: B, locator: 'Appendix 1' }, { guidelineId: F, locator: 'Sensitising events' }],
           table: {

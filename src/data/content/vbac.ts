@@ -64,6 +64,24 @@ export const vbac: Partial<Topic> = {
       title: 'Managing VBAC Labour',
       icon: 'management',
       body: [
+        {
+          text: 'VBAC decision and labour care (FOGSI GCPR, RCOG GTG 45, FIGO 2025).',
+          refs: [{ guidelineId: F }, { guidelineId: R, locator: '6–8' }, { guidelineId: FG }],
+          flow: {
+            caption: 'Birth after one caesarean',
+            steps: [
+              { title: 'Eligible?', tone: 'decision', branches: [
+                { when: 'Suitable', then: 'One previous LSCS, singleton, cephalic, term, no contraindication' },
+                { when: 'Not suitable', then: 'Classical or T/J scar, previous rupture, cavity-entering myomectomy, placenta praevia: repeat caesarean' },
+              ] },
+              { title: 'Counsel and decide by 36 weeks', text: 'Success 72–75% (85–90% after a vaginal birth); rupture about 0.5%. VBAC checklist.' },
+              { title: 'Labour', text: 'Unit with caesarean within 30 min and blood bank; continuous CTG from regular contractions; epidural allowed.', tone: 'action' },
+              { title: 'Induction if needed', text: 'Foley or amniotomy; no misoprostol; oxytocin under 20 mU/min.' },
+              { title: 'Signs of rupture?', tone: 'urgent', text: 'Prolonged deceleration, pain between contractions, scar tenderness, tachycardia, bleeding, loss of station: immediate category 1 caesarean.' },
+              { title: 'Chose repeat caesarean', text: 'Plan at 39+0 weeks after one LSCS.' },
+            ],
+          },
+        },
         { heading: 'Where', text: 'A suitably staffed delivery suite with immediate caesarean (within 30 minutes), on-site blood transfusion and advanced neonatal resuscitation.', refs: [{ guidelineId: F, locator: 'Grade B' }, { guidelineId: R, locator: '8.1' }, { guidelineId: N, locator: '1.8.3' }, { guidelineId: FG, locator: 'Rec 28' }] },
         { heading: 'Monitoring', text: 'Continuous electronic fetal monitoring from the onset of regular contractions for the whole labour; one-to-one care (FIGO).', refs: [{ guidelineId: F, locator: 'Grade C' }, { guidelineId: R, locator: '8.1' }, { guidelineId: FG, locator: 'Rec 29' }] },
         { heading: 'IV access and bloods', text: 'RCOG and FOGSI: IV access with full blood count and group and save. NICE NG121 differs: do not routinely insert a cannula.', refs: [{ guidelineId: R, locator: '8.1' }, { guidelineId: F }, { guidelineId: N121, locator: '1.19.1' }] },

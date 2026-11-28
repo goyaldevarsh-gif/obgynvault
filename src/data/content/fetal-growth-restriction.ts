@@ -117,6 +117,24 @@ export const fetalGrowthRestriction: Partial<Topic> = {
       icon: 'delivery',
       body: [
         {
+          text: 'Surveillance and timing of birth by Doppler finding (FOGSI, SMFM/ACOG).',
+          refs: [{ guidelineId: F, locator: 'pp.30–35' }, { guidelineId: S }, { guidelineId: A, locator: 'Timing' }],
+          flow: {
+            caption: 'Fetal growth restriction',
+            steps: [
+              { title: 'EFW or AC under 10th centile', text: 'Detailed anatomy scan; microarray if anomaly or early unexplained FGR; umbilical artery (UA) Doppler.', tone: 'start' },
+              { title: 'UA Doppler', tone: 'decision', branches: [
+                { when: 'Normal, EFW 3rd–10th', then: 'UA Doppler every 1–2 weeks, growth 3–4 weekly; birth 37–39 weeks' },
+                { when: 'EFW under 3rd or raised UA PI', then: 'Weekly Doppler, NST 1–2 a week; birth at 37 weeks (FOGSI 34–37 for Doppler change)' },
+                { when: 'Absent end-diastolic flow', then: 'Admit; birth 32–34 weeks, caesarean (FOGSI)' },
+                { when: 'Reversed end-diastolic flow', then: 'Inpatient; birth 30–32 weeks, caesarean' },
+              ] },
+              { title: 'Before birth', text: 'Steroids if under 34 weeks; magnesium sulphate if under 32 weeks.' },
+              { title: 'Labour', text: 'FGR alone is not an indication for caesarean; continuous fetal monitoring in labour.' },
+            ],
+          },
+        },
+        {
           text: 'Recommended timing by finding:',
           refs: [{ guidelineId: S, locator: 'Recs 15–18' }, { guidelineId: F, locator: 'Table 8.1' }, { guidelineId: I, locator: 'Delivery' }],
           table: {

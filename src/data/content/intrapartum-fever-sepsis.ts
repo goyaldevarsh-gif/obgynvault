@@ -74,6 +74,23 @@ export const intrapartumFeverSepsis: Partial<Topic> = {
       title: 'Sepsis: First Hour',
       icon: 'emergency',
       body: [
+        {
+          text: 'Fever in labour or suspected maternal sepsis (NICE NG235, NG255, NG195; ACOG CO 712).',
+          refs: [{ guidelineId: N235, locator: '1.8.11, 1.8.20' }, { guidelineId: N255, locator: '1.5–1.7' }, { guidelineId: N195, locator: '1.6' }, { guidelineId: A }],
+          flow: {
+            caption: 'Intrapartum fever and sepsis',
+            steps: [
+              { title: 'Fever in labour', text: '38°C or more once, or 37.5°C or more twice 1 hour apart. Check HR, RR, BP, SpO2, mental state, urine output.', tone: 'start' },
+              { title: 'Any high-risk sepsis sign?', tone: 'decision', branches: [
+                { when: 'Yes', then: 'RR 25+, SBP 90 or less, HR over 130, no urine 18 h, new confusion, lactate over 2' },
+                { when: 'No', then: 'Treat as suspected intra-amniotic infection if fever + fetal tachycardia, leukocytosis or purulent discharge' },
+              ] },
+              { title: 'Sepsis: first hour', tone: 'urgent', text: 'Senior review now; cultures, lactate, bloods; broad-spectrum IV antibiotic within 1 hour; 500 mL crystalloid if lactate over 4 or SBP 90 or less; critical care referral.' },
+              { title: 'Chorioamnionitis antibiotics until birth', text: 'NICE: benzylpenicillin + gentamicin + metronidazole. ACOG: ampicillin 2 g IV 6-hourly + gentamicin.' },
+              { title: 'Birth', text: 'Infection alone is rarely a reason for caesarean; continuous CTG; expedite if genital tract is the source. Inform the neonatal team.' },
+            ],
+          },
+        },
         { heading: '1. Senior review now', text: 'If any high-risk criterion is met, the senior clinical decision maker assesses immediately and a consultant is informed.', refs: [{ guidelineId: N255, locator: '1.7.2' }] },
         { heading: '2. Investigations', text: 'Venous blood gas with glucose and lactate, blood cultures, FBC, CRP, U&E and creatinine, LFTs, clotting. Consider urine analysis and chest X-ray to find the source. Blood cultures before antibiotics.', refs: [{ guidelineId: N255, locator: '1.7.2, 1.11.2' }, { guidelineId: N121, locator: '1.13.22' }, { guidelineId: R, locator: '12' }] },
         { heading: '3. Antibiotic within 1 hour', text: 'Give a broad-spectrum antimicrobial without delay, within 1 hour of identifying high-risk criteria. Clear source: follow local guidance; unclear source: broad-spectrum IV antimicrobial from the local formulary. RCOG 2012 example: piperacillin–tazobactam or a carbapenem plus clindamycin; add vancomycin or teicoplanin if MRSA is suspected.', refs: [{ guidelineId: N255, locator: '1.7.2' }, { guidelineId: N121, locator: '1.13.23–1.13.24' }, { guidelineId: R, locator: '11, 13.1' }] },
