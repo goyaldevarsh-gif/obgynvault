@@ -31,6 +31,7 @@ import { ovarianCystAdnexalMass } from './ovarian-cyst-adnexal-mass';
 import { miscarriageRpl } from './miscarriage-rpl';
 import { mtpIndia } from './mtp-india';
 import { pelvicOrganProlapse } from './pelvic-organ-prolapse';
+import { antepartumHaemorrhage } from './antepartum-haemorrhage';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -69,4 +70,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'miscarriage-rpl': miscarriageRpl,
   'mtp-india': mtpIndia,
   'pelvic-organ-prolapse': pelvicOrganProlapse,
+  'antepartum-haemorrhage': antepartumHaemorrhage,
 };

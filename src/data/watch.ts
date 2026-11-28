@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-aph-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Antepartum Haemorrhage', body: 'First-response flowchart, placenta praevia timing, abruption and vasa praevia (FOGSI, RCOG 27a/27b, NHS).', to: '/topics/antepartum-haemorrhage' },
   { id: 'topic-pop-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Pelvic Organ Prolapse', body: 'PFMT, pessary care, surgery by compartment and mesh rules from NICE NG123, with a flowchart and POP-Q table.', to: '/topics/pelvic-organ-prolapse' },
   { id: 'topic-mtp-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Medical Termination of Pregnancy (India)', body: 'MTP Act and Rules 2021 limits and forms, medical abortion up to 9 weeks, MVA steps, and when to start each contraceptive (MoHFW CAC 2023).', to: '/topics/mtp-india' },
   { id: 'topic-misc-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Miscarriage & Recurrent Pregnancy Loss', body: 'Expectant, medical and MVA pathways with doses (NICE, MoHFW CAC, WHO, ACOG), progesterone positions, RPL work-up and APS treatment (ESHRE, RANZCOG).', to: '/topics/miscarriage-rpl' },
