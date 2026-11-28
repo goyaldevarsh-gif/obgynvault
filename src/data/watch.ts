@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-gtd-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Molar Pregnancy & GTD', body: 'Suction evacuation, hCG follow-up schedules compared, GTN criteria, WHO/FIGO score table and chemotherapy regimens.', to: '/topics/gestational-trophoblastic-disease' },
   { id: 'topic-iufd-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Stillbirth & Intrauterine Fetal Death', body: 'FOGSI 2024 and the new RCOG GTG 55 (2024): misoprostol by gestation, previous caesarean, investigations, cabergoline, next pregnancy.', to: '/topics/stillbirth-iufd' },
   { id: 'topic-breech-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Breech Presentation & ECV', body: 'ECV timing and contraindications, caesarean vs vaginal breech counselling, and a second-stage manoeuvres flowchart.', to: '/topics/breech-ecv' },
   { id: 'topic-thyroid-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Thyroid Disease in Pregnancy', body: 'FOGSI vs ATA 2026 thresholds, levothyroxine dosing, PTU vs methimazole, postpartum thyroiditis. Includes the new ATA 2026 guideline.', to: '/topics/thyroid-in-pregnancy' },
