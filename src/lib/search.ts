@@ -122,3 +122,29 @@ export function search(raw: string): SearchResult[] {
 }
 
 export const TRENDING_SEARCHES = ['Preeclampsia', 'PPH', 'GDM', 'Ectopic', 'PCOS', 'Fibroids'];
+
+/**
+ * The line in a topic that best answers the query (key points first, then section text),
+ * so a search for "MgSO4 dose" shows the actual sentence and opens the right section.
+ */
+export function matchSnippet(topic: Topic, raw: string): { text: string; where: string; anchor?: string } | undefined {
+  const terms = norm(raw).split(/\s+/).filter(Boolean);
+  if (!terms.length) return undefined;
+  const hits = (text: string) => {
+    const t = norm(text);
+    return terms.every((term) => [term, ...(SYNONYMS[term] ?? []).map(norm)].some((a) => (a.length <= 2 ? t.split(/\s+/).includes(a) : t.includes(a))));
+  };
+  // A title match needs no snippet.
+  if (hits(topic.title) || topic.tags.some(hits)) return undefined;
+  for (const k of topic.keyPoints) if (hits(k.text)) return { text: k.text, where: 'Summary' };
+  for (const s of topic.sections) {
+    for (const p of s.body) {
+      const txt = [p.heading ?? '', p.text, ...(p.table ? p.table.rows.flat() : [])].join(' ');
+      if (hits(txt)) {
+        const row = p.table?.rows.find((r) => hits(r.join(' ')));
+        return { text: row ? row.join(' · ') : p.text, where: s.title, anchor: s.id };
+      }
+    }
+  }
+  return undefined;
+}

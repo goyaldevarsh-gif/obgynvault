@@ -17,7 +17,7 @@ type Tab = 'saved' | 'notes' | 'history' | 'display';
 function targetInfo(kind: BookmarkKind, id: string) {
   if (kind === 'topic') {
     const t = getTopic(id);
-    return t ? { title: t.title, to: `/topics/${t.slug}`, meta: 'Clinical topic' } : null;
+    return t ? { title: t.title, to: `/topics/${t.slug}`, meta: 'Topic' } : null;
   }
   const g = getGuideline(id);
   return g ? { title: g.title, to: `/guidelines/${g.id}`, meta: 'Guideline' } : null;
@@ -138,7 +138,7 @@ export default function MyVaultPage() {
               </Card>
             </>
           ))}
-        <p className="text-center text-[11px] text-navy-400">Saved on this device. Cloud sync arrives with accounts in Phase 2.</p>
+        <p className="text-center text-[11px] text-navy-400">Saved on this device. Sign in to keep it on all your devices.</p>
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
-import { Clock, SearchX, TrendingUp, X } from 'lucide-react';
+import { ChevronRight, Clock, Pill, SearchX, TrendingUp, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { GuidelineCard, TopicCard } from '@/components/content';
 import { Chip, EmptyState, SampleNotice, SearchField } from '@/components/ui';
-import { search, TRENDING_SEARCHES } from '@/lib/search';
+import { matchSnippet, search, TRENDING_SEARCHES } from '@/lib/search';
 import { useVault } from '@/store/VaultContext';
+import { DRUGS } from '@/data';
 
 type Filter = 'all' | 'topic' | 'guideline';
 
@@ -38,6 +39,11 @@ export default function SearchPage() {
     [results],
   );
   const visible = filter === 'all' ? results : results.filter((r) => r.kind === filter);
+  const drugHits = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (q.length < 3 || filter === 'guideline') return [];
+    return DRUGS.filter((d) => d.name.toLowerCase().includes(q) || d.terms.some((t) => t.toLowerCase().includes(q) || (t.length >= 4 && q.includes(t.toLowerCase())))).slice(0, 2);
+  }, [query, filter]);
 
   const runSearch = (q: string) => {
     setQuery(q);
@@ -101,8 +107,6 @@ export default function SearchPage() {
               <Chip active={filter === 'all'} count={counts.all} onClick={() => setFilter('all')}>All</Chip>
               <Chip active={filter === 'topic'} count={counts.topic} onClick={() => setFilter('topic')}>Topics</Chip>
               <Chip active={filter === 'guideline'} count={counts.guideline} onClick={() => setFilter('guideline')}>Guidelines</Chip>
-              <Chip disabled className="opacity-50">Drugs · soon</Chip>
-              <Chip disabled className="opacity-50">Algorithms · soon</Chip>
             </div>
 
             {visible.length === 0 ? (
@@ -114,14 +118,24 @@ export default function SearchPage() {
               </EmptyState>
             ) : (
               <section aria-label="Results" className="space-y-2.5">
-                <h2 className="text-sm font-bold text-navy">Top results</h2>
+                {drugHits.map((d) => (
+                  <Link key={d.slug} to={`/tools/drug-vault/${d.slug}`} className="flex items-center gap-3 rounded-2xl bg-amber-50 p-3 ring-1 ring-amber/30">
+                    <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-white text-amber-700"><Pill className="size-5" aria-hidden /></span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[15px] font-bold text-navy">{d.name}</span>
+                      <span className="block text-xs text-navy-500">Drug Vault: every cited dose and use, all topics</span>
+                    </span>
+                    <ChevronRight className="size-5 text-navy-300" aria-hidden />
+                  </Link>
+                ))}
+                {visible.some((r) => r.kind === 'topic') && <h2 className="text-sm font-bold text-navy">Topics</h2>}
                 {visible.map((r, i) =>
                   r.kind === 'topic' ? (
-                    <TopicCard key={`t-${r.item.slug}`} topic={r.item} highlight={i === 0} />
-                  ) : (
-                    <GuidelineCard key={`g-${r.item.id}`} guideline={r.item} />
-                  ),
+                    <TopicCard key={`t-${r.item.slug}`} topic={r.item} highlight={i === 0} snippet={matchSnippet(r.item, query)} />
+                  ) : null,
                 )}
+                {visible.some((r) => r.kind === 'guideline') && <h2 className="pt-2 text-sm font-bold text-navy">Guidelines</h2>}
+                {visible.map((r) => (r.kind === 'guideline' ? <GuidelineCard key={`g-${r.item.id}`} guideline={r.item} /> : null))}
               </section>
             )}
             <SampleNotice compact status="draft" />

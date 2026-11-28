@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom';
 import { PageHeader } from '@/components/layout/PageHeader';
 import { TOOL_MODULES } from '@/config/modules';
 import { cx } from '@/lib/format';
+import { useAuth } from '@/store/AuthContext';
 
 export default function ToolsPage() {
+  const { role } = useAuth();
+  const isStaff = role === 'admin' || role === 'editor';
+  // Only working tools; Admin only for admins/editors.
+  const tools = TOOL_MODULES.filter((m) => m.phase === 1 && (m.key !== 'admin' || isStaff));
   return (
     <div>
       <PageHeader title="Clinical Tools" back={false} />
       <div className="space-y-2.5 px-4 md:px-6">
-        <p className="pb-1 text-sm text-navy-500">Live tools open directly. Tools marked "Soon" show a preview of what they will do.</p>
-        {TOOL_MODULES.map((m) => {
+        {tools.map((m) => {
           const Icon = m.icon;
           return (
             <Link key={m.key} to={m.to} className="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60 transition hover:ring-teal/50">
@@ -21,11 +25,6 @@ export default function ToolsPage() {
                 <span className="block text-[15px] font-bold text-navy">{m.label}</span>
                 <span className="block text-xs text-navy-500">{m.description}</span>
               </span>
-              {m.phase > 1 ? (
-                <span className="rounded-full bg-navy-100 px-2 py-0.5 text-[10px] font-bold uppercase text-navy-500">Soon</span>
-              ) : (
-                <span className="rounded-full bg-teal-50 px-2 py-0.5 text-[10px] font-bold uppercase text-teal-700">Live</span>
-              )}
               <ChevronRight className="size-5 text-navy-300" aria-hidden />
             </Link>
           );
