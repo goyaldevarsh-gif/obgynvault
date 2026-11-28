@@ -38,6 +38,7 @@ import { breechEcv } from './breech-ecv';
 import { stillbirthIufd } from './stillbirth-iufd';
 import { gestationalTrophoblasticDisease } from './gestational-trophoblastic-disease';
 import { perinealTearsOasis } from './perineal-tears-oasis';
+import { caesareanSection } from './caesarean-section';
 
 /**
  * Topics with real, source-cited text. Each is status 'draft' until a clinician
@@ -83,4 +84,5 @@ export const AUTHORED_TOPICS: Record<string, Partial<Topic>> = {
   'stillbirth-iufd': stillbirthIufd,
   'gestational-trophoblastic-disease': gestationalTrophoblasticDisease,
   'perineal-tears-oasis': perinealTearsOasis,
+  'caesarean-section': caesareanSection,
 };

@@ -30,6 +30,7 @@ export const WATCH: { lastChecked: string; pending: Record<string, PendingUpdate
 };
 
 export const FEED: FeedItem[] = [
+  { id: 'topic-cs-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Caesarean Section', body: 'Urgency categories, perioperative pathway, NICE technique points, Robson ten groups and how India audits CS (LaQshya).', to: '/topics/caesarean-section' },
   { id: 'topic-oasis-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Perineal Tears & OASIS', body: 'FOGSI 2024 GCPR with RCOG and NICE: prevention, episiotomy, layer-by-layer OASIS repair table, aftercare and next birth.', to: '/topics/perineal-tears-oasis' },
   { id: 'topic-gtd-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Molar Pregnancy & GTD', body: 'Suction evacuation, hCG follow-up schedules compared, GTN criteria, WHO/FIGO score table and chemotherapy regimens.', to: '/topics/gestational-trophoblastic-disease' },
   { id: 'topic-iufd-2026-11-28', date: '2026-11-28', kind: 'topic', title: 'New: Stillbirth & Intrauterine Fetal Death', body: 'FOGSI 2024 and the new RCOG GTG 55 (2024): misoprostol by gestation, previous caesarean, investigations, cabergoline, next pregnancy.', to: '/topics/stillbirth-iufd' },
