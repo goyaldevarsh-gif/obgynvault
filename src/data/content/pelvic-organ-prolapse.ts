@@ -131,7 +131,7 @@ export const pelvicOrganProlapse: Partial<Topic> = {
           heading: 'POP-Q points',
           text: 'Hymen is the reference (0): above it is negative, below it positive, in cm. Aa: anterior midline 3 cm proximal to the external urethral meatus (range −3 to +3). Ap: posterior midline 3 cm proximal to the hymen (range −3 to +3). Ba and Bp: most dependent point of the upper anterior and posterior walls; −3 when there is no prolapse. C: cervix or vault. D: posterior fornix, omitted when there is no cervix. gh: mid urethral meatus to posterior hymen. pb: posterior hymen to mid anal opening. tvl: posterior fornix to hymen with C or D reduced. Record on a 3 × 3 grid.',
           refs: [{ guidelineId: IU, locator: 'pp.661–662' }],
-          figure: { src: 'figures/fig-popq-grid.svg', alt: 'POP-Q 3 × 3 grid: Aa Ba C; gh pb tvl; Ap Bp D', caption: 'Grid order as commonly taught (IUGA/ICS 2016 Fig. 8 not read cell by cell).' },
+          figure: { src: 'fig-popq-grid.svg', alt: 'POP-Q 3 × 3 grid: Aa Ba C; gh pb tvl; Ap Bp D', caption: 'Grid order as commonly taught (IUGA/ICS 2016 Fig. 8 not read cell by cell).' },
         },
       ],
     },
