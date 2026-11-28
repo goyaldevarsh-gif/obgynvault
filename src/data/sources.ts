@@ -28,6 +28,7 @@ export const SOURCES: GuidelineSource[] = [
   { id: 'ESC', shortName: 'ESC', fullName: 'European Society of Cardiology', region: 'Europe', priority: 25, color: '#B91C1C' },
   { id: 'BMS', shortName: 'BMS', fullName: 'British Menopause Society', region: 'UK', priority: 26, color: '#9D174D' },
   { id: 'HSE', shortName: 'HSE Ireland', fullName: 'Health Service Executive (Ireland) national clinical guidelines', region: 'Ireland', priority: 27, color: '#047857' },
+  { id: 'ENDO', shortName: 'Endocrine Society', fullName: 'Endocrine Society', region: 'USA', priority: 28, color: '#1E40AF' },
   { id: 'IMSI', shortName: 'Intl Menopause Soc', fullName: 'International Menopause Society and partner societies', region: 'Global', priority: 20, color: '#6D28D9' },
 ];
 
