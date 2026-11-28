@@ -1,4 +1,4 @@
-import { Bookmark, History, NotebookPen, PlayCircle, Trash2 } from 'lucide-react';
+import { Bookmark, ChevronRight, CircleHelp, History, NotebookPen, PlayCircle, Trash2 } from 'lucide-react';
 import { showGettingStarted } from '@/components/onboarding/GettingStarted';
 import { saveName, useName } from '@/lib/profile';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -43,6 +43,14 @@ export default function MyVaultPage() {
       <PageHeader title="My Vault" back={false} />
       <div className="space-y-4 px-4 md:px-6">
         <AccountCard />
+        <Link to="/about" className="flex items-center gap-3 rounded-2xl bg-surface p-3 shadow-card ring-1 ring-navy-100/60 transition hover:ring-teal/50">
+          <span className="grid size-10 place-items-center rounded-xl bg-teal-50 text-teal-700"><CircleHelp className="size-5" aria-hidden /></span>
+          <span className="flex-1">
+            <span className="block text-[15px] font-bold text-navy">Help &amp; About</span>
+            <span className="block text-xs text-navy-500">How to use the app, FAQ, disclaimer</span>
+          </span>
+          <ChevronRight className="size-5 text-navy-300" aria-hidden />
+        </Link>
         <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 md:mx-0 md:px-0" role="tablist">
           <Chip role="tab" active={tab === 'saved'} count={bookmarks.length} onClick={() => setTab('saved')}>Saved</Chip>
           <Chip role="tab" active={tab === 'notes'} count={notes.length} onClick={() => setTab('notes')}>Notes</Chip>

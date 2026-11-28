@@ -1,4 +1,4 @@
-import { Newspaper } from 'lucide-react';
+import { CircleHelp, Newspaper } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useUnreadCount } from '@/lib/feed';
 import { NAV_ITEMS, isNavActive } from './navItems';
@@ -41,6 +41,16 @@ export function SideNav() {
               <Newspaper className="size-5" aria-hidden />
               <span className="flex-1">What's new</span>
               {unread > 0 && <span className="rounded-full bg-amber px-1.5 text-[11px] font-bold leading-[18px] text-white">{unread}</span>}
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/about"
+              aria-current={pathname === '/about' ? 'page' : undefined}
+              className={cx('flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition', pathname === '/about' ? 'bg-teal-50 text-teal-700' : 'text-navy-500 hover:bg-canvas hover:text-navy')}
+            >
+              <CircleHelp className="size-5" aria-hidden />
+              Help &amp; About
             </Link>
           </li>
         </ul>

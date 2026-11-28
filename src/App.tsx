@@ -27,6 +27,7 @@ const AdminPage = lazy(() => import('@/pages/AdminPage'));
 const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
 const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
 const UpdatesPage = lazy(() => import('@/pages/UpdatesPage'));
+const AboutPage = lazy(() => import('@/pages/AboutPage'));
 const LabourRoomPage = lazy(() => import('@/pages/LabourRoomPage'));
 const DrugVaultPage = lazy(() => import('@/pages/DrugVaultPage'));
 
@@ -56,6 +57,8 @@ const router = createRouter(
         { path: 'tools/calculators', element: s(<CalculatorsPage />) },
         { path: 'tools/emergency', element: s(<EmergencyPage />) },
         { path: 'updates', element: s(<UpdatesPage />) },
+        { path: 'about', element: s(<AboutPage />) },
+        { path: 'help', element: s(<AboutPage />) },
         { path: 'tools/labour-room', element: s(<LabourRoomPage />) },
         { path: 'tools/drug-vault', element: s(<DrugVaultPage />) },
         { path: 'tools/drug-vault/:slug', element: s(<DrugVaultPage />) },
