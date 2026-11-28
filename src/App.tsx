@@ -28,6 +28,7 @@ const CalculatorsPage = lazy(() => import('@/pages/CalculatorsPage'));
 const EmergencyPage = lazy(() => import('@/pages/EmergencyPage'));
 const UpdatesPage = lazy(() => import('@/pages/UpdatesPage'));
 const AboutPage = lazy(() => import('@/pages/AboutPage'));
+const AiAssistantPage = lazy(() => import('@/pages/AiAssistantPage'));
 const LabourRoomPage = lazy(() => import('@/pages/LabourRoomPage'));
 const DrugVaultPage = lazy(() => import('@/pages/DrugVaultPage'));
 
@@ -54,6 +55,7 @@ const router = createRouter(
         { path: 'tools', element: s(<ToolsPage />) },
         { path: 'tools/compare', element: s(<ComparePage />) },
         { path: 'tools/admin', element: s(<AdminPage />) },
+        { path: 'tools/ai-assistant', element: s(<AiAssistantPage />) },
         { path: 'tools/calculators', element: s(<CalculatorsPage />) },
         { path: 'tools/emergency', element: s(<EmergencyPage />) },
         { path: 'updates', element: s(<UpdatesPage />) },

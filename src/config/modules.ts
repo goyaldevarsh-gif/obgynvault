@@ -23,7 +23,7 @@ export const MODULES: ModuleDef[] = [
   { key: 'guidelines', label: 'Guidelines', description: 'FOGSI, ACOG, RCOG, NICE, WHO, FIGO', to: '/guidelines', icon: BookOpen, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },
   { key: 'topics', label: 'Clinical Topics', description: 'Structured topic pages', to: '/library', icon: Library, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 1 },
   { key: 'compare', label: 'Compare', description: 'Side-by-side guideline comparison', to: '/tools/compare', icon: GitCompareArrows, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },
-  { key: 'ai', label: 'AI Assistant', description: 'Source-grounded clinical Q&A', to: '/tools/ai-assistant', icon: Sparkles, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 4 },
+  { key: 'ai', label: 'AI Assistant', description: 'Source-grounded clinical Q&A', to: '/tools/ai-assistant', icon: Sparkles, tint: 'bg-navy-100/60', fg: 'text-navy-600', phase: 1 },
   { key: 'drugs', label: 'Drug Vault', description: 'What guidelines say about each drug', to: '/tools/drug-vault', icon: Pill, tint: 'bg-amber-50', fg: 'text-amber', phase: 1 },
   { key: 'calculators', label: 'Calculators', description: 'EDD, GA, shock index, Bishop, RMI, BMI', to: '/tools/calculators', icon: Calculator, tint: 'bg-teal-50', fg: 'text-teal', phase: 1 },
   { key: 'labour', label: 'Labour Room', description: 'CTG, labour progress, MEWS, IOL & VBAC checklists, labour log', to: '/tools/labour-room', icon: Activity, tint: 'bg-teal-50', fg: 'text-teal-700', phase: 1 },

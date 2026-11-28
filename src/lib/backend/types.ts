@@ -44,5 +44,9 @@ export interface Backend {
   listReviews(): Promise<ReviewRecord[]>;
   listReaderChecks(): Promise<ReaderCheck[]>;
   setReaderCheck(c: { slug: string; uid: string; verdict: CheckVerdict; note: string | null; name: string | null }): Promise<string | null>;
+  /** True when App Check (reCAPTCHA Enterprise) is configured, which Firebase AI Logic requires. */
+  aiReady: boolean;
+  /** Asks Gemini (Firebase AI Logic) with a system instruction. Returns the answer text or an error. */
+  askAI(question: string, system: string): Promise<{ text: string } | { error: string }>;
   addReview(r: { slug: string; status: ReviewStatus; comment: string | null; reviewerId: string; reviewerName: string | null }): Promise<string | null>;
 }

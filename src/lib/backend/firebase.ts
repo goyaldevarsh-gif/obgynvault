@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check';
 import {
   GoogleAuthProvider,
   getAuth,
@@ -21,8 +22,16 @@ const EMAIL_KEY = 'obgynvault.signin-email';
  *   topicReviews/{id}   { topicSlug, status, comment, reviewerId, reviewerName, createdAt }   public read, editors write
  *   readerChecks/{slug}__{uid}  { topicSlug, uid, verdict, note, readerName, createdAt }   public read, each reader writes own
  */
-export function createFirebaseBackend(config: { apiKey: string; authDomain: string; projectId: string; appId: string }): Backend {
+/** Gemini model for the AI Assistant (Gemini Developer API via Firebase AI Logic; Flash-Lite needs no billing). */
+export const AI_MODEL = 'gemini-3.5-flash-lite';
+
+export function createFirebaseBackend(config: { apiKey: string; authDomain: string; projectId: string; appId: string; recaptchaKey?: string }): Backend {
   const app = initializeApp(config);
+  // App Check is required by Firebase AI Logic (enforced since Nov 2026). Local dev uses a debug token.
+  if (config.recaptchaKey) {
+    if (import.meta.env.DEV) (self as unknown as { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean }).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    initializeAppCheck(app, { provider: new ReCaptchaEnterpriseProvider(config.recaptchaKey), isTokenAutoRefreshEnabled: true });
+  }
   const auth = getAuth(app);
   const db = getFirestore(app);
   const msg = (e: unknown) => (e instanceof Error ? e.message.replace(/^Firebase: /, '') : 'Something went wrong.');
@@ -82,6 +91,19 @@ export function createFirebaseBackend(config: { apiKey: string; authDomain: stri
         return null;
       } catch (e) {
         return msg(e);
+      }
+    },
+    aiReady: !!config.recaptchaKey,
+    async askAI(question, system) {
+      try {
+        const { getAI, getGenerativeModel, GoogleAIBackend } = await import('firebase/ai');
+        const ai = getAI(app, { backend: new GoogleAIBackend() });
+        const model = getGenerativeModel(ai, { model: AI_MODEL, systemInstruction: system, generationConfig: { temperature: 0.2, maxOutputTokens: 1200 } });
+        const res = await model.generateContent(question);
+        const text = res.response.text().trim();
+        return text ? { text } : { error: 'No answer came back. Please try again.' };
+      } catch (e) {
+        return { error: msg(e) };
       }
     },
     async listReviews() {
