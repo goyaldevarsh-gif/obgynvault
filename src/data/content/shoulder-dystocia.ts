@@ -98,6 +98,7 @@ export const shoulderDystocia: Partial<Topic> = {
         { text: 'Posterior arm delivery carries a humeral fracture risk of 2–12%. One study linked rotational methods to fewer brachial plexus injuries and fractures. Choice between them depends on the clinician\'s training.', refs: [{ guidelineId: R, locator: '6.3.2' }] },
         { text: 'Symphysiotomy carries a high rate of serious maternal morbidity and poor neonatal outcome.', refs: [{ guidelineId: R, locator: '6.3.3' }] },
         { heading: 'Time', text: 'No fixed time limit is set. The risk of hypoxic-ischaemic injury is very low up to 5 minutes, but in the CESDI report 47% of babies who died did so within 5 minutes of the head delivering. Work calmly and quickly.', refs: [{ guidelineId: R, locator: '6.3' }] },
+        { heading: 'Internal manoeuvres (figure)', text: 'Second line: posterior arm, or internal rotation with Rubin II (behind the anterior shoulder) or Woods screw (front of the posterior shoulder).', refs: [{ guidelineId: R, locator: '6.3.2' }], figure: { src: 'fig-sd-internal.webp', alt: 'View from the perineum: delivery of the posterior arm, Rubin II pressure behind the anterior shoulder, and Woods screw pressure on the front of the posterior shoulder', caption: 'Internal manoeuvres. Pubic symphysis at the top in each view.' } },
       ],
     },
     {

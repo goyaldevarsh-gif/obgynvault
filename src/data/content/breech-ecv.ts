@@ -77,6 +77,7 @@ export const breechEcv: Partial<Topic> = {
         { heading: 'Procedure', text: 'CTG before and repeat CTG after (ACOG: nonstress test or BPP before and after; JOGI: monitor 30 minutes after). Tocolysis improves success; one NHS protocol uses terbutaline 0.5 mg subcutaneously unless contraindicated. Anti-D for Rh-negative women whether ECV succeeds or not.', refs: [{ guidelineId: S, locator: 'pp.2, 5' }, { guidelineId: AC }, { guidelineId: J, locator: 'p.408' }] },
         { heading: 'Risks', text: 'Emergency caesarean within 24 hours about 1 in 200. After successful ECV, labour has slightly higher caesarean and instrumental birth rates than spontaneous cephalic labour.', refs: [{ guidelineId: S, locator: 'p.2' }] },
         { heading: 'Moxibustion', text: 'Moxibustion at BL67 reduced the need for ECV in a Cochrane review (RR 0.47) as cited in a JOGI editorial; no guideline read recommends it.', refs: [{ guidelineId: J, locator: 'p.409' }] },
+        { heading: 'Forward roll (figure)', text: 'CTG before and after the procedure. The figure shows the usual forward-roll technique; the sources read do not describe hand technique.', refs: [{ guidelineId: S, locator: 'pp.2, 5' }], figure: { src: 'fig-ecv-hands.webp', alt: 'External cephalic version: one hand lifting the breech from the pelvis, the other guiding the fetal head down in a forward roll, ultrasound inset', caption: 'Forward roll: lift the breech out of the pelvis, guide the head down.' } },
       ],
     },
     {

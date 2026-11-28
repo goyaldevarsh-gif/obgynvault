@@ -162,8 +162,10 @@ export function CitedParagraph({ point }: { point: CitedPoint }) {
       )}
       {point.figure && (
         <figure className="overflow-hidden rounded-2xl bg-white ring-1 ring-navy-100">
-          <img src={`${import.meta.env.BASE_URL}figures/${point.figure.src}`} alt={point.figure.alt} loading="lazy" className="w-full" />
-          {point.figure.caption && <figcaption className="px-3 py-2 text-[12.5px] text-navy-600">{point.figure.caption}</figcaption>}
+          <a href={`${import.meta.env.BASE_URL}figures/${point.figure.src}`} target="_blank" rel="noreferrer" aria-label="Open figure full size">
+            <img src={`${import.meta.env.BASE_URL}figures/${point.figure.src}`} alt={point.figure.alt} loading="lazy" className="w-full" />
+          </a>
+          <figcaption className="px-3 py-2 text-[12.5px] text-navy-600">{point.figure.caption ? `${point.figure.caption} ` : ''}<span className="text-navy-400">Tap to enlarge.</span></figcaption>
         </figure>
       )}
       {!point.text && !point.table && !point.flow && <CitationChips refs={point.refs} />}
