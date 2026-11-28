@@ -77,19 +77,20 @@ export const shoulderDystocia: Partial<Topic> = {
       icon: 'emergency',
       body: [
         {
-          text: 'Sequence of manoeuvres (RCOG algorithm; ACOG order is the same in principle):',
+          text: 'Shoulder dystocia drill (RCOG GTG 42 algorithm; ACOG order the same in principle).',
           refs: [{ guidelineId: R, locator: '6.3' }, { guidelineId: A }],
-          table: {
-            columns: ['Step', 'Action'],
-            rows: [
-              ['Call for help', 'Midwife coordinator, senior obstetrician, neonatal team, anaesthetist. Say "shoulder dystocia". Start timing.'],
-              ['McRoberts', 'Lie her flat, hyperflex and abduct the thighs onto the abdomen (two assistants).'],
-              ['Suprapubic pressure', 'From the side of the fetal back, pushing the anterior shoulder towards the fetal chest; continuous or rocking. Combine with routine axial traction.'],
-              ['Consider episiotomy', 'Only if a whole hand cannot easily enter the vagina for internal manoeuvres.'],
-              ['Posterior arm', 'Hand along the posterior arm, flex the elbow, sweep the forearm across the chest and deliver the hand.'],
-              ['Internal rotation', 'Rubin II, Woods screw or reverse Woods: pressure on the shoulder to rotate it into an oblique diameter.'],
-              ['All-fours', 'Roll her onto hands and knees and try gentle traction on the posterior (now uppermost) shoulder; then internal manoeuvres.'],
-              ['Third line', 'Cleidotomy, symphysiotomy or Zavanelli (replace the head, then caesarean). Rarely required.'],
+          flow: {
+            caption: 'Shoulder dystocia',
+            steps: [
+              { title: 'Recognise and call for help', text: 'Turtle sign, no restitution. Call senior obstetrician, neonatal team, anaesthetist; say "shoulder dystocia"; start timing. No fundal pressure, no downward traction.', tone: 'urgent' },
+              { title: 'McRoberts + suprapubic pressure', text: 'Flat, thighs hyperflexed onto abdomen; pressure from the side of the fetal back; routine axial traction.' },
+              { title: 'Episiotomy only if needed', text: 'If a whole hand cannot enter the vagina for internal manoeuvres.' },
+              { title: 'Internal manoeuvres', tone: 'decision', branches: [
+                { when: 'Posterior arm', then: 'Flex elbow, sweep forearm across chest, deliver hand' },
+                { when: 'Internal rotation', then: 'Rubin II, Woods screw or reverse Woods' },
+              ] },
+              { title: 'All-fours', text: 'Hands and knees, gentle traction on the posterior (now uppermost) shoulder, then repeat internal manoeuvres.' },
+              { title: 'Third line (rare)', text: 'Cleidotomy, symphysiotomy or Zavanelli then caesarean.', tone: 'urgent' },
             ],
           },
         },

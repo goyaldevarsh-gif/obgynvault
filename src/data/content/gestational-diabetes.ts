@@ -92,6 +92,28 @@ export const gestationalDiabetes: Partial<Topic> = {
       title: 'Insulin & Metformin',
       icon: 'drug',
       body: [
+        {
+          text: 'Stepwise GDM care (MoHFW 2018, FOGSI; NICE thresholds where stated).',
+          refs: [{ guidelineId: M, locator: 'p.5–17' }, { guidelineId: F, locator: 'p.6–10' }],
+          flow: {
+            caption: 'Gestational diabetes (India)',
+            steps: [
+              { title: 'Test every pregnant woman', text: '75 g OGTT, fasting or non-fasting, 2-h plasma glucose at first visit; if negative repeat at 24–28 weeks.', tone: 'start' },
+              { title: '2-h glucose', tone: 'decision', branches: [
+                { when: '140 mg/dL or more', then: 'GDM' },
+                { when: '120–139 mg/dL', then: 'Glucose intolerance: follow up (FOGSI)' },
+                { when: 'Under 120 mg/dL', then: 'Normal: repeat as scheduled' },
+              ] },
+              { title: 'Nutrition therapy and exercise', text: '2 weeks (1 week in third trimester); targets fasting under 95, 2-h post-meal under 120 mg/dL.' },
+              { title: '2-h post-meal still 120 mg/dL or more?', tone: 'decision', branches: [
+                { when: 'Yes', then: 'Insulin (any gestation) or metformin (from 20 weeks)' },
+                { when: 'No', then: 'Continue diet; monitor' },
+              ] },
+              { title: 'Refer if', text: 'Fasting over 200 mg/dL, insulin over 20 U/day, or repeated hypoglycaemia.', tone: 'urgent' },
+              { title: 'Birth and after', text: 'Diet-controlled: not before 39 weeks; poorly controlled: 37+0 to 38+6 weeks. Retest glucose after birth.' },
+            ],
+          },
+        },
         { heading: 'When to start', text: 'MoHFW: after 2 weeks of nutrition therapy, check the 2-h post-meal glucose. If it is ≥120 mg/dL, start metformin or insulin.', refs: [{ guidelineId: M, locator: 'p.6, p.11' }] },
         { text: 'NICE: if fasting glucose is below 7.0 mmol/L at diagnosis, try diet and exercise first and offer metformin if targets are not met in 1–2 weeks. Offer insulin at diagnosis if fasting glucose is 7.0 mmol/L or more, and consider it at 6.0–6.9 mmol/L with macrosomia or polyhydramnios.', refs: [{ guidelineId: N }] },
         { heading: 'Choice of drug', text: 'FOGSI and MoHFW: insulin is the drug of choice and can be started at any gestation. Metformin can be used from 20 weeks (MoHFW); about 26–50% of women on metformin later need insulin (FOGSI).', refs: [{ guidelineId: F, locator: 'p.9–10' }, { guidelineId: M, locator: 'p.11–12' }] },

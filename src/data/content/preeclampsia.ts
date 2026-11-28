@@ -120,6 +120,28 @@ export const preeclampsia: Partial<Topic> = {
       title: 'Antihypertensive Treatment',
       icon: 'drug',
       body: [
+        {
+          text: 'Stepwise management of preeclampsia (FOGSI 2019 with NICE NG133).',
+          refs: [{ guidelineId: F, locator: '§8–§10' }, { guidelineId: N, locator: '1.5, 1.8, Table 3' }],
+          flow: {
+            caption: 'Preeclampsia',
+            steps: [
+              { title: 'BP 140/90 or more with preeclampsia', text: 'Assess severity; bloods (platelets, LFT, renal function); fetal growth and Doppler.', tone: 'start' },
+              { title: 'Severe? (160/110 or more, or severe features)', tone: 'decision', branches: [
+                { when: 'Not severe', then: 'Oral labetalol (first), nifedipine SR, or methyldopa; target 135/85' },
+                { when: 'Severe BP', then: 'Treat within 1 hour: IV labetalol, oral nifedipine (never sublingual) or IV hydralazine' },
+                { when: 'Severe features or eclampsia', then: 'MgSO4: Pritchard 4 g IV + 5 g IM each buttock, or Zuspan 4 g IV then 1 g/h; continue 24 h' },
+              ] },
+              { title: 'Fluids and steroids', text: 'Restrict fluids to 80 mL/h; dexamethasone 6 mg IM 12-hourly × 4 if 24–34 weeks and birth likely within 7 days.' },
+              { title: 'Timing of birth', tone: 'decision', branches: [
+                { when: 'No severe features', then: 'Deliver at 37 completed weeks' },
+                { when: 'Severe, 34 weeks or more', then: '34–37 weeks depending on clinical picture' },
+                { when: 'Immediate (after stabilising)', then: 'Eclampsia, uncontrolled BP on 3 drugs, HELLP, abruption, pulmonary oedema, DIC, fetal compromise' },
+              ] },
+              { title: 'After birth', text: 'Continue MgSO4 for 24 hours after delivery or last fit; keep monitoring BP.' },
+            ],
+          },
+        },
         { heading: 'When to treat and target', text: 'Treat sustained BP ≥140/90, including isolated systolic hypertension, and aim for 135/85 mmHg.', refs: [{ guidelineId: F, locator: '§8, §8.1, p.19' }, { guidelineId: N, locator: 'Table 2' }] },
         { text: 'Drug order: labetalol first; nifedipine if labetalol is unsuitable; methyldopa if both are unsuitable.', refs: [{ guidelineId: N, locator: '1.5.6' }] },
         {

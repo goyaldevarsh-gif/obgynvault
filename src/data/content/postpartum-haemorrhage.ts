@@ -119,6 +119,29 @@ export const postpartumHaemorrhage: Partial<Topic> = {
       title: 'First Response & Medical Management',
       icon: 'emergency',
       body: [
+        {
+          text: 'Stepwise PPH management (FOGSI with WHO 2025 MOTIVE bundle).',
+          refs: [{ guidelineId: F, locator: 'Flow of management; Medical management; Mechanical & surgical' }, { guidelineId: W }],
+          flow: {
+            caption: 'Postpartum haemorrhage',
+            steps: [
+              { title: 'PPH recognised', text: 'Measure loss on a calibrated drape (trigger lines 300 and 500 mL); shock index = heart rate ÷ systolic BP (0.9 or more: transfusion risk).', tone: 'start' },
+              { title: 'Start the MOTIVE bundle together', text: 'Massage uterus, Oxytocic, Tranexamic acid 1 g IV over 10 min, IV fluids, Vaginal and genital tract examination, Escalate if bleeding continues.', tone: 'urgent' },
+              { title: 'Call help, resuscitate, send tests', text: 'Anaesthetist; lie flat; oxygen 10–15 L/min; catheter; Hb, platelets, PT/INR, aPTT, fibrinogen; order blood.' },
+              { title: 'Treat the cause (4 Ts)', tone: 'decision', branches: [
+                { when: 'Tone', then: 'Oxytocin 15 IU IV then 10–20 IU/h; misoprostol 800 µg; methylergometrine 0.2 mg; carboprost 250 µg every 15 min (max 8)' },
+                { when: 'Tissue', then: 'Manual removal of placenta, curettage' },
+                { when: 'Trauma', then: 'Examine vagina and cervix, exclude rupture, repair' },
+                { when: 'Thrombin', then: 'Bedside clotting test; blood products' },
+              ] },
+              { title: 'Still bleeding?', tone: 'urgent', branches: [
+                { when: 'First', then: 'Balloon tamponade; bimanual or aortic compression or NASG as a bridge' },
+                { when: 'Stable', then: 'Consider uterine artery embolisation' },
+                { when: 'Laparotomy', then: 'Compression sutures, uterine then internal iliac ligation, hysterectomy' },
+              ] },
+            ],
+          },
+        },
         { heading: 'MOTIVE bundle (WHO 2025)', text: 'As soon as PPH is diagnosed, start all of these together: Massage of the uterus; Oxytocic drugs; Tranexamic acid; Intravenous fluids; Vaginal and genital tract examination; Escalation of care if bleeding continues.', refs: [{ guidelineId: W }] },
         { heading: 'Initial assessment (FOGSI)', text: 'Assess Tone, Trauma, Tissue and Thrombin; check vital signs; call the anaesthetist; send baseline tests (Hb, platelets, PT/INR, aPTT, fibrinogen, ROTEM if available, blood gas, calcium and electrolytes); and order blood products.', refs: [{ guidelineId: F, locator: 'Flow of management' }] },
         {
